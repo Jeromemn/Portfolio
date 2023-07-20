@@ -1,9 +1,11 @@
 "use client";
+import React from "react";
 import ArtistCover from "./components/artistCover";
 import Header from "./components/header";
 import Intro from "./components/intro";
 import styled from "styled-components";
 import mainImage from "./images/mainImage.jpg";
+import Footer from "./components/Footer";
 
 export const metadata = {
   title: "Home",
@@ -38,40 +40,47 @@ const ArtistCoverWrapper = styled.div`
   justify-content: center;
   height: 70%;
   width: 100%;
-  background-image: linear-gradient( rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 75%,rgba(0, .8, .8, .8) 95%, rgba(0, 1, 1, 1) 100% ),
-  url(${props => props.image.src});
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0) 75%,
+      rgba(0, 0.8, 0.8, 0.8) 95%,
+      rgba(0, 1, 1, 1) 100%
+    ),
+    url(${(props) => props.image.src});
   background-repeat: no-repeat;
   background-size: cover;
-  
-  `;
+  background-position: center;
+`;
 
 const BottomSection = styled.div`
   display: flex;
   bottom: 0;
   /* position: fixed; */
-  `;
+`;
 
-  const IntroWrapper = styled.div`
+const IntroWrapper = styled.div`
   display: flex;
   width: 100%;
-  `;
+`;
 
-export default function Home() {
+const Home = () => {
   return (
-    <ContentWrapper>
-      <ArtistCoverWrapper image={mainImage}>
-        {/* <ArtistCover /> */}
-      <IntroWrapper>
-
-        <Intro></Intro>
-      </IntroWrapper>
-      </ArtistCoverWrapper>
-    {/* <BottomSection>  */}
-      <ArtistInfo>
-        <Header />
-      </ArtistInfo>
-    {/* </BottomSection> */}
-      {/* <h1 color="black"> Home </h1> */}
-    </ContentWrapper>
+      <ContentWrapper>
+        <ArtistCoverWrapper image={mainImage}>
+          {/* <ArtistCover /> */}
+          <IntroWrapper>
+            <Intro></Intro>
+          </IntroWrapper>
+        </ArtistCoverWrapper>
+        {/* <BottomSection>  */}
+        <ArtistInfo>
+          <Header />
+        </ArtistInfo>
+        {/* </BottomSection> */}
+        {/* <h1 color="black"> Home </h1> */}
+        {/* <Footer /> */}
+      </ContentWrapper>
   );
 }
+
+export default Home;

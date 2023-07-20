@@ -66,6 +66,7 @@ const HeaderItems = styled.p`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  width: 60px;
 
 
 `;
@@ -105,6 +106,16 @@ ${HeaderItemWrapper}:hover & {
 
 `;
 
+const ItemSection = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  gap: 10rem;
+
+`;
+
 
 const Header = () => {
   return (
@@ -126,9 +137,13 @@ const Header = () => {
             </AlbumCover>
             {/* <PlayCover> */}
             {/* </PlayCover> */}
-            <Link href={path}>
+            <ItemSection>
+              
+            <Link href={`${path}`}>
               <HeaderItems>{name}</HeaderItems>
             </Link>
+            <p> Jerome </p>
+            </ItemSection>
           </HeaderItemWrapper>
         ))}
       </NavigationContainer>

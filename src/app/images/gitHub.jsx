@@ -20,12 +20,12 @@ const GitHub = ({ color }) => (
 </svg>
 );
 
-GitHub.propTypes = {  
-  color: PropTypes.string,
-};
+// GitHub.propTypes = {  
+//   color: PropTypes.string,
+// };
 
-GitHub.defaultProps = {
-  color: 'currentColor',
-};
+// GitHub.defaultProps = {
+//   color: 'currentColor',
+// };
 
 export default GitHub;
