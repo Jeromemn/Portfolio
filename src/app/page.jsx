@@ -38,7 +38,7 @@ const ArtistInfo = styled.div`
 const ArtistCoverWrapper = styled.div`
   display: flex;
   justify-content: center;
-  height: 70%;
+  height: 65%;
   width: 100%;
   background-image: linear-gradient(
       rgba(0, 0, 0, 0) 0%,
@@ -73,7 +73,7 @@ const Home = () => {
           </IntroWrapper>
         </ArtistCoverWrapper>
         {/* <BottomSection>  */}
-        <ArtistInfo>
+        <ArtistInfo> 
           <Header />
         </ArtistInfo>
         {/* </BottomSection> */}
