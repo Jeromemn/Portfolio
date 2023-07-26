@@ -8,6 +8,9 @@ import PlayCustom from "../images/playCustom";
 import LinkedIn from "../images/linkedIn";
 import GitHub from "../images/gitHub";
 import Verified from "../images/verified";
+import Shuffle from "../images/newShuffle";
+import YouTubeShuffle from "../images/youTubeShuffle";
+import PlayYouTube from "../images/playYouTube";
 
 const IntroContainer = styled.div`
   display: flex;
@@ -60,7 +63,7 @@ const ButtonName = styled.p`
   color: black;
   /* padding-left: 10px; */
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
 `;
 
 const VerifiedHeader = styled.p`
@@ -73,6 +76,20 @@ const VerifiedContainer = styled.div`
   justify-content: center;
   align-items: center;
   gap: 10px;
+`;
+
+const PlayIconWrappper = styled.div`
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; 
+  vertical-align: middle;
+  /* padding: 8px; */
+  outline: none;
+  z-index: 0;
+  line-height: 1;
+  width: 20px;
+  height: 20px;
 `;
 
 const Intro = () => {
@@ -94,19 +111,28 @@ const Intro = () => {
       </IntroText>
       <ButtonContainer>
         <MusicButton>
-          {
-            <Image
+          <div>
+
+          <YouTubeShuffle color='black' width={20} height={20}/>
+          </div>
+          {/* <Shuffle color='black' width={20} height={20}/> */}
+          
+            {/* <Image
               src={shuffle}
               alt="shuffle"
               width={20}
               height={20}
               margin-right="6px"
-            />
-          }
+            /> */}
+          
           <ButtonName>Shuffle</ButtonName>
         </MusicButton>
         <MusicButton>
-          <PlayCustom />
+          <PlayIconWrappper>
+
+          <PlayYouTube color='black' width={20} height={20}/>
+          </PlayIconWrappper>
+          {/* <PlayCustom color='black' width={20} height={20}/> */}
           {/* {<Image src={PlayCustom} alt="play" width={20} height={20} margin-right='6px' />} */}
           <ButtonName>Play</ButtonName>
         </MusicButton>

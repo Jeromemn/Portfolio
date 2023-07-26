@@ -3,15 +3,15 @@ import styled from "styled-components";
 import Image from "next/image";
 import Link from "next/link";
 import play from "../images/play.svg";
-import projectImage from "../images/projectImage.png";
-import contactImage from "../images/contactImage.png";
-import about from "../images/about.png";
+// import projects from "/projects.png";
+// import contactImage from "../images/contactImage.png";
+// import about from "../images/about.png";
 
 const headerList = [
-  { id: 1, name: "Home", path: "/", image: projectImage },
-  { id: 2, name: "About", path: "/about", image: about },
-  { id: 3, name: "Contact", path: "/contact", image: contactImage },
-  { id: 4, name: "Projects", path: "/projects", image: projectImage },
+  { id: 1, name: "Home", path: "/", image: '/projects.png'},
+  { id: 2, name: "About", path: "/about", image: '/about.png'},
+  { id: 3, name: "Contact", path: "/contact", image: '/contactImage.png' },
+  { id: 4, name: "Projects", path: "/projects", image: '/projects.png' },
 ];
 
 const HeaderContainer = styled.div`
@@ -126,7 +126,7 @@ const Header = () => {
           <HeaderItemWrapper key={id}>
             <AlbumCover>
               <AlbumImage
-                src={image}
+                src={`${image}`}
                 alt={name}
                 quality={100}
                 width={40}
