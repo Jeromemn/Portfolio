@@ -54,6 +54,7 @@ const ProjectName = styled.h3`
 
 const ProjectInfo = styled.p`
   color: white;
+  padding-top: 5px;
 `;
 
 const projectsList = [
@@ -62,7 +63,8 @@ const projectsList = [
     name: "Tuff Skin Website",
     description: "Tuff Skin Website",
     image: "/tuffSkint.png",
-    link: "https://tuff-skin-website-wkt284e86-webfluent.vercel.app/",
+    Website: "https://tuff-skin-website-wkt284e86-webfluent.vercel.app/",
+    link: "/projects/tuffSkin",
   },
   {
     id: 2,
@@ -109,6 +111,8 @@ const AllAlbums = () => {
         {projectsList.map((project) => (
           <Albums key={project.id}>
             <AlbumCover>
+              <Link href={project.link}>
+
               <Image
                 src={project.image}
                 alt="project image"
@@ -118,6 +122,7 @@ const AllAlbums = () => {
                 style={{objectFit: 'fill', objectPosition: 'center'}}
                 // object-position="center"
               />
+              </Link>
             </AlbumCover>
             <AlbumInfo>
               <ProjectName>{project.name}</ProjectName>

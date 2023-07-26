@@ -190,6 +190,11 @@ const Footer = () => {
       alt: "some alt text",
       title: "Projects",
     },
+    "/projects/tuffSkin": {
+      url: "/projects.png",
+      alt: "some alt text",
+      title: "Projects",
+    },
   };
 
   const { url, alt, title } = images[pathname] || {};
