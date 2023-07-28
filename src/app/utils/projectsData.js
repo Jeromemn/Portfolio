@@ -1,0 +1,151 @@
+const projectsData = [
+  {
+    id: 1,
+    name: "Tuff Skin Website",
+    team: "WebFluent",
+    description: "Tuff Skin Website and content management system",
+    image: "/tuffSkint.png",
+    Website: "https://tuff-skin-website-wkt284e86-webfluent.vercel.app/",
+    gitHub: "https://github.com/WebFluent/tuff-skin",
+    link: "/projects/tuffSkin",
+    about: "Tuff Skin Website",
+    techUsed: [
+      "React",
+      "Next.js",
+      "esLint",
+      "Formik",
+      "mongoDB",
+      "NextAuth",
+      "React-toastify",
+      "styled-components",
+      "Tanstack/react-table",
+      "prop-types",
+      "React-responsive-carousel",
+
+    ]
+  },
+  {
+    id: 2,
+    name: "Modern Pilgrims",
+    team: "School Project",
+    description: "Modern Pilgrim",
+    image: "/mp2.png",
+    webSite: "https://modern-pilgrims.vercel.app/",
+    gitHub: "https://github.com/Jeromemn/Modern-Pilgrim",
+    link: "/projects/modernPilgrims",
+    about: "Modern Pilgrim Website",
+    techUsed: [
+      "React.js",
+      "Node.js",
+      "graphQL",
+      "Mongoose",
+      "MongoDB",
+      "Cloudinary",
+      "auth0",
+      "express",
+      "Material UI",
+      "bootstrap",
+      "styled-components",
+    ]
+
+  },
+  {
+    id: 3,
+    name: "Traders Journal",
+    team: "Personal Project",
+    description: "A trading journal application",
+    image: "/TJAlbum.jpg",
+    webSite: "https://traders-journal-ivgdojk5d-jeromemn.vercel.app/",
+    gitHub: "https://github.com/Jeromemn/Traders-Journal",
+    link: "/projects/tradersJournal",
+    about: "A trading journal application",
+    techUsed: [    
+      "React",
+      "Next",
+      "Tanstack",
+      "React Charts",
+      "Styled Components",
+      "Formik",
+      "luxon",
+      "Mongoose",
+      "MongoDB",
+      "API Requests",
+    ]
+
+  },
+  {
+    id: 4,
+    name: "Switch",
+    team: "WebFluent",
+    description: "Switch a feature flag management application",
+    image: "/images/switchAlbum.jpg",
+    webSite: "https://ft-emd51pitl-webfluent.vercel.app/",
+    gitHub: "https://github.com/WebFluent/switch",
+    link: "/projects/switch",
+    about: "Switch a feature flag management application",
+    techUsed: [
+      "React",
+      "TypeScript",
+      "Jest",
+      "esLint",
+      "Next",
+      "ts-node",
+      "prisma",
+      "radix-ui",
+      "next-auth",
+      "stitches/react",
+      "nodemon",
+    ]
+
+  },
+  {
+    id: 5,
+    name: "Card Battle",
+    team: "School Project",
+    description: "A JavaScript implementation of a custom card game. Card battle is both a fun solitaire and multiplayer game since you can play against the A.I.(novice).",
+    image: "/images/Card-Battle-git.gif",
+    webSite: "https://card-battle.herokuapp.com/",
+    gitHub: "https://github.com/Jeromemn/card-battle",
+    link: "/projects/modernPilgrims",
+    about:"The goal of the game is eliminate your opponent by lowering their hitpoints to 0 first. All 10 cards have the same option to attack, defend, or skip. Click a card to call it to action. The game checks the attributes of the selected card: attack and defend. If the selected card attacks, the opponent will have their hitpoints deducted by the attack subtracted by the defending cards defense. You can regain hitpoints by selecting a card and using defense. The first player to 0 hitpoints loses.",
+    techUsed: [
+      "JavaScript",
+      "bCrypt",
+      "connect Session Sequelize",
+      "Express",
+      "Express Handlebars",
+      "mysql2",
+      "sequelize",
+      "tailwindcss",
+    ]
+
+  },
+  {
+    id: 6,
+    name: "Web App Text Editor",
+    team: "School Project",
+    description: "a Progressive Web Application that recognized JavaScript and can be typed in and saved both via a live web application and a local application that is off line. The online and offline versions will sync together to ensure nothing is lost",
+    image: "/images/textedit.jpg",
+    webSite: "https://pwathejateway.herokuapp.com/",
+    gitHub: "https://github.com/Jeromemn/Progressive-Web-App-TextEditor",
+    link: "/projects/pwaTextEditor",
+    about: "Online offline text editor",
+    techUsed: [
+      "JavaScript",
+      "CSS",
+      "HTML",
+      "Webpack",
+      "HTML Webpack Plugin",
+      "Inject Manifest",
+      "Webpack PWA Mainfest",
+      "nodemon",
+      "express",
+      "idb",
+      "concurrently",
+
+    ]
+
+  },
+];
+
+export default projectsData;

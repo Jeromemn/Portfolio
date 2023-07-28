@@ -209,10 +209,10 @@ const Footer = () => {
             <BackYouTube color="white" width={30} height={30} />
           </SkipIconWrapper>
           <PlayIconWrapper>
-            <PlayYouTube color="White" />
+            <PlayYouTube color="white" width={30} height={30}  />
           </PlayIconWrapper>
           <SkipIconWrapper>
-            <ForwardYouTube color="white" />
+            <ForwardYouTube color="white" width={30} height={30} />
           </SkipIconWrapper>
         </PlayPauseWrapper>
 
@@ -225,32 +225,32 @@ const Footer = () => {
           </div>
           <ThumbsSection>
             <ThumbsContainer>
-              <ThumbsDown color="White" />
+              <ThumbsDown color="white" width={30} height={30} />
             </ThumbsContainer>
             <ThumbsContainer>
-              <ThumbsUp color="White" />
+              <ThumbsUp color="white"  width={30} height={30} />
             </ThumbsContainer>
             <FilledThumbsContainer>
-              <FilledThumbsDown color="White" />
+              <FilledThumbsDown color="white" width={30} height={30}  />
             </FilledThumbsContainer>
             <FilledThumbsContainer>
-              <FilledThumbsUp color="White" />
+              <FilledThumbsUp color="white" width={30} height={30}  />
             </FilledThumbsContainer>
           </ThumbsSection>
         </NowPlayingSection>
 
         <ShuffleRepeatSection>
           <IconWrapper>
-            <YouTubeShuffle color="white" />
+            <YouTubeShuffle color="white" width={30} height={30} />
           </IconWrapper>
           <IconWrapper>
-            <VolumeIcon color="white" />
+            <VolumeIcon color="white" width={30} height={30} />
           </IconWrapper>
           <IconWrapper>
-            <ReplayIcon color="white" />
+            <ReplayIcon color="white" width={30} height={30}/>
           </IconWrapper>
           <ArrowWrapper>
-            <UpArrow color="white" />
+            <UpArrow color="white" width={30} height={30}/>
           </ArrowWrapper>
         </ShuffleRepeatSection>
       </FooterSectionContainer>

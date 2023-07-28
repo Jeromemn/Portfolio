@@ -1,11 +1,12 @@
-const FilledThumbsDown = ({ color }) => (
+const FilledThumbsDown = ({ color, width, height }) => (
   <svg
     viewBox="0 0 24 24"
     preserveAspectRatio="xMidYMid meet"
     focusable="false"
-    
+    width={width}
+    height={height}
     fill={color}
-    style={{pointerEvents: "none", display: "block", width: "100%", height:" 100%"}}
+    // style={{pointerEvents: "none", display: "block", width: "100%", height:" 100%"}}
   >
     <g >
       <path

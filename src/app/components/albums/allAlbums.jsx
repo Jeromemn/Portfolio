@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
+import projectsData from "src/app/utils/projectsData";
 // import tuffSkin from 'src/app/images/projectImages/tuffSkin.png';
 
 const ProjectContainer = styled.div`
@@ -17,6 +18,9 @@ const Albums = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  overflow: hidden;
+  flex-wrap: wrap;
+  width: 200px;
   
 `;
 
@@ -57,58 +61,58 @@ const ProjectInfo = styled.p`
   padding-top: 5px;
 `;
 
-const projectsList = [
-  {
-    id: 1,
-    name: "Tuff Skin Website",
-    description: "Tuff Skin Website",
-    image: "/tuffSkint.png",
-    Website: "https://tuff-skin-website-wkt284e86-webfluent.vercel.app/",
-    link: "/projects/tuffSkin",
-  },
-  {
-    id: 2,
-    name: "Modern Pilgrims",
-    description: "This is project 1",
-    image: "/mp2.png",
-    link: "https://www.google.com",
-  },
-  {
-    id: 3,
-    name: "Project 3",
-    description: "This is project 1",
-    // image: "https://picsum.photos/200/300",
-    link: "https://www.google.com",
-  },
-  {
-    id: 4,
-    name: "Project 1",
-    description: "This is project 1",
-    // image: "https://picsum.photos/200/300",
-    link: "https://www.google.com",
-  },
-  {
-    id: 5,
-    name: "Project 1",
-    description: "This is project 1",
-    // image: "https://picsum.photos/200/300",
-    link: "https://www.google.com",
-  },
-  {
-    id: 6,
-    name: "Project 1",
-    description: "This is project 1",
-    // image: "https://picsum.photos/200/300",
-    link: "https://www.google.com",
-  },
-];
+// const projectsList = [
+//   {
+//     id: 1,
+//     name: "Tuff Skin Website",
+//     description: "Tuff Skin Website",
+//     image: "/tuffSkint.png",
+//     Website: "https://tuff-skin-website-wkt284e86-webfluent.vercel.app/",
+//     link: "/projects/tuffSkin",
+//   },
+//   {
+//     id: 2,
+//     name: "Modern Pilgrims",
+//     description: "This is project 1",
+//     image: "/mp2.png",
+//     link: "https://www.google.com",
+//   },
+//   {
+//     id: 3,
+//     name: "Project 3",
+//     description: "This is project 1",
+//     // image: "https://picsum.photos/200/300",
+//     link: "https://www.google.com",
+//   },
+//   {
+//     id: 4,
+//     name: "Project 1",
+//     description: "This is project 1",
+//     // image: "https://picsum.photos/200/300",
+//     link: "https://www.google.com",
+//   },
+//   {
+//     id: 5,
+//     name: "Project 1",
+//     description: "This is project 1",
+//     // image: "https://picsum.photos/200/300",
+//     link: "https://www.google.com",
+//   },
+//   {
+//     id: 6,
+//     name: "Project 1",
+//     description: "This is project 1",
+//     // image: "https://picsum.photos/200/300",
+//     link: "https://www.google.com",
+//   },
+// ];
 
 const AllAlbums = () => {
   return (
     <div>
       <ProjectsTitle>Projects</ProjectsTitle>
       <ProjectContainer>
-        {projectsList.map((project) => (
+        {projectsData.map((project) => (
           <Albums key={project.id}>
             <AlbumCover>
               <Link href={project.link}>
@@ -119,7 +123,7 @@ const AllAlbums = () => {
                 // width={200}
                 // height={200}
                 fill={true}
-                style={{objectFit: 'fill', objectPosition: 'center'}}
+                style={{objectFit: 'cover', objectPosition: 'center'}}
                 // object-position="center"
               />
               </Link>

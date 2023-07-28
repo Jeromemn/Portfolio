@@ -1,10 +1,11 @@
-const ThumbsUp = ({ color }) => (
+const ThumbsUp = ({ color, width, height }) => (
   <svg
     viewBox="0 0 24 24"
     preserveAspectRatio="xMidYMid meet"
     focusable="false"
-    
-    style={{pointerEvents: "none", display: "block", width: "100%", height:" 100%"}}
+    width={width}
+    height={height}
+    // style={{pointerEvents: "none", display: "block", width: "100%", height:" 100%"}}
     fill={color}
   >
     <g >

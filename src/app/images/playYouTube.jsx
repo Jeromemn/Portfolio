@@ -4,10 +4,10 @@ const PlayYouTube = ({ color, width, height }) => (
     preserveAspectRatio="xMidYMid meet"
     focusable="false"
    
-    // width={width}
-    // height={height}
+    width={width}
+    height={height}
     fill={color}
-    style={{pointerEvents: "none", display: "block", width: "100%", height:" 100%"}}
+    // style={{pointerEvents: "none", display: "block", }}
   >
     <g >
       <path d="M6,4l12,8L6,20V4z" ></path>
