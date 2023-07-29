@@ -16,7 +16,7 @@ export const metadata = {
 const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: calc(100vh - 72px);
   overflow: hidden;
   /* justify-content: center; */
   /* align-items: center; */
@@ -28,10 +28,10 @@ const ArtistInfo = styled.div`
   /* justify-content: center; */
   background-color: black;
   /* border: 1px solid black; */
-  /* position: relative; */
+  /* position: inherit; */
   /* box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75); */
 
-  height: 30%;
+  height: 40%;
   width: 100%;
 `;
 

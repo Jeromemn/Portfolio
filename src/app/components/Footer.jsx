@@ -22,6 +22,7 @@ import ThumbsUp from "../images/ThumbsUp";
 import FilledThumbsUp from "../images/FilledThumbsUp";
 import ThumbsDown from "../images/ThumbsDown";
 import FilledThumbsDown from "../images/FilledThumbsDown";
+import projectsData from "../utils/projectsData";
 // import projectImage from "/projectImage.png";
 
 const FooterWrapper = styled.div`
@@ -165,10 +166,16 @@ const ThumbsSection = styled.div`
 
 const Footer = () => {
   const pathname = usePathname();
-  console.log(pathname);
+  // console.log(pathname);
   // const searchParams = useSearchParams();
   // const [currentPage, setCurrentPage] = useState(null);
   // const [image, setImage] = useState("");
+
+  const projectImages = projectsData.reduce(
+    (acc, current) => ({...acc, [current.link]: current.imageData}),
+    {}
+  );
+  
   const images = {
     "/": {
       url: "/home.png",
@@ -190,15 +197,17 @@ const Footer = () => {
       alt: "some alt text",
       title: "Projects",
     },
-    "/projects/tuffSkin": {
-      url: "/projects.png",
-      alt: "some alt text",
-      title: "Projects",
-    },
+    ...projectImages,
+    // "/projects/tuffSkin": {
+      //   url: "/projects.png",
+    //   alt: "some alt text",
+    //   title: "Projects",
+    // },
   };
-
+  // console.log(images);
+  
   const { url, alt, title } = images[pathname] || {};
-  console.log(images[pathname]);
+  // console.log(images[pathname]);
 
   return (
     <FooterWrapper>
@@ -209,7 +218,7 @@ const Footer = () => {
             <BackYouTube color="white" width={30} height={30} />
           </SkipIconWrapper>
           <PlayIconWrapper>
-            <PlayYouTube color="white" width={30} height={30}  />
+            <PlayYouTube color="white" width={30} height={30} />
           </PlayIconWrapper>
           <SkipIconWrapper>
             <ForwardYouTube color="white" width={30} height={30} />
@@ -228,13 +237,13 @@ const Footer = () => {
               <ThumbsDown color="white" width={30} height={30} />
             </ThumbsContainer>
             <ThumbsContainer>
-              <ThumbsUp color="white"  width={30} height={30} />
+              <ThumbsUp color="white" width={30} height={30} />
             </ThumbsContainer>
             <FilledThumbsContainer>
-              <FilledThumbsDown color="white" width={30} height={30}  />
+              <FilledThumbsDown color="white" width={30} height={30} />
             </FilledThumbsContainer>
             <FilledThumbsContainer>
-              <FilledThumbsUp color="white" width={30} height={30}  />
+              <FilledThumbsUp color="white" width={30} height={30} />
             </FilledThumbsContainer>
           </ThumbsSection>
         </NowPlayingSection>
@@ -247,10 +256,10 @@ const Footer = () => {
             <VolumeIcon color="white" width={30} height={30} />
           </IconWrapper>
           <IconWrapper>
-            <ReplayIcon color="white" width={30} height={30}/>
+            <ReplayIcon color="white" width={30} height={30} />
           </IconWrapper>
           <ArrowWrapper>
-            <UpArrow color="white" width={30} height={30}/>
+            <UpArrow color="white" width={30} height={30} />
           </ArrowWrapper>
         </ShuffleRepeatSection>
       </FooterSectionContainer>

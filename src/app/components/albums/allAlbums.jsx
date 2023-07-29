@@ -57,7 +57,7 @@ const ProjectName = styled.h3`
 `;
 
 const ProjectInfo = styled.p`
-  color: white;
+  color: rgba(255, 255, 255, 0.7);
   padding-top: 5px;
 `;
 
@@ -120,17 +120,17 @@ const AllAlbums = () => {
               <Image
                 src={project.image}
                 alt="project image"
-                // width={200}
-                // height={200}
-                fill={true}
-                style={{objectFit: 'cover', objectPosition: 'center'}}
+                width={200}
+                height={200}
+                // fill={true}
+                style={{objectFit: 'scale-down', objectPosition: 'center'}}
                 // object-position="center"
               />
               </Link>
             </AlbumCover>
             <AlbumInfo>
               <ProjectName>{project.name}</ProjectName>
-              <ProjectInfo>{project.description}</ProjectInfo>
+              <ProjectInfo>{project.team}</ProjectInfo>
             </AlbumInfo>
           </Albums>
         ))}
@@ -140,3 +140,13 @@ const AllAlbums = () => {
 };
 
 export default AllAlbums;
+
+export async function getStaticProps() {
+  const projects = projectsData;
+
+  return {
+    props: {
+      projects,
+    },
+  };
+}
