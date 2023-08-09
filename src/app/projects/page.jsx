@@ -18,8 +18,11 @@ const ProjectsPageWrapper = styled.div`
 
 const ArtistHeaderWapper = styled.div`
   display: flex;
-  padding: 1rem 0;
-  justify-content: flex-start;
+  padding: 0 0 1.5rem 0;
+  /* justify-content: space-between; */
+  flex-direction: column;
+  gap: 1.5rem;
+  /* align-items: center; */
 `;
 
 const ArtistHeader = styled.h1`
@@ -28,15 +31,30 @@ const ArtistHeader = styled.h1`
   color: white;
 `;
 
+const ProjectsContentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  width: 90%;
+  height: calc(100vh - 72px);
+
+`;
+
+const ProjectsTitle = styled.h2`
+  color: white;
+  font-family: Roboto, Noto Naskh Arabic UI, Arial, sans-serif;
+`;
+
 const ProjectsPage = () => {
   return (
     <ProjectsPageWrapper>
-      <div>
+      <ProjectsContentWrapper>
         <ArtistHeaderWapper>
           <ArtistHeader>Jerome</ArtistHeader>
+          <ProjectsTitle>Projects</ProjectsTitle>
         </ArtistHeaderWapper>
         <AllAlbums />
-      </div>
+      </ProjectsContentWrapper>
     </ProjectsPageWrapper>
   );
 };

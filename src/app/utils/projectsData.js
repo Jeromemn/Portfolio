@@ -1,11 +1,12 @@
 const projectsData = [
   {
     id: 1,
-    name: "Tuff Skin Website",
+    name: "tuffSkin",
+    title: "Tuff Skin Website",
     team: "WebFluent",
     description: "Tuff Skin Website and content management system",
-    image: "/tuffSkint.png",
-    imageData: {
+    // image: "/tuffSkint.png",
+    image: {
       url: "/tuffSkint.png",
       alt: "Tuff Skin Website",
       title: "Tuff Skin",
@@ -14,7 +15,8 @@ const projectsData = [
     gitHub: "https://github.com/WebFluent/tuff-skin",
     link: "/projects/tuffSkin",
     about: "Tuff Skin Website",
-    techUsed: [
+    year: "2023",
+    commits: "https://github.com/WebFluent/tuff-skin/commits?author=Jeromemn",    techUsed: [
       "React",
       "Next.js",
       "esLint",
@@ -36,8 +38,8 @@ const projectsData = [
     title: "Modern Pilgrim Website",
     team: "School Project",
     description: "Modern Pilgrim",
-    image: "/modernPilgrims.png",
-    imageData: {
+    // image: "/modernPilgrims.png",
+    image: {
       url: "/modernPilgrims.png",
       alt: "Traders Journal",
       title: "Traders Journal",
@@ -46,6 +48,7 @@ const projectsData = [
     gitHub: "https://github.com/Jeromemn/Modern-Pilgrim",
     link: "/projects/modernpilgrim",
     about: "Modern Pilgrim Website",
+    year: "2022",
     techUsed: [
       "React.js",
       "Node.js",
@@ -66,8 +69,8 @@ const projectsData = [
     name: "Traders Journal",
     team: "Personal Project",
     description: "A trading journal application",
-    image: "/images/TJAlbum.jpg",
-    imageData: {
+    // image: "/images/TJAlbum.jpg",
+    image: {
       url: "/images/TJAlbum.jpg",
       alt: "Traders Journal",
       title: "Traders Journal",
@@ -76,6 +79,7 @@ const projectsData = [
     gitHub: "https://github.com/Jeromemn/Traders-Journal",
     link: "/projects/tradersJournal",
     about: "A trading journal application",
+    year: "2023",
     techUsed: [    
       "React",
       "Next",
@@ -95,16 +99,17 @@ const projectsData = [
     name: "Switch",
     team: "WebFluent",
     description: "Switch a feature flag management application",
-    image: "/images/switchAlbum.jpg",
-    imageData: {
-      url: "/images/TJAlbum.jpg",
-      alt: "Traders Journal",
-      title: "Traders Journal",
+    // image: "/images/switchAlbum.jpg",
+    image: {
+      url: "/images/switchAlbum.jpg",
+      alt: "swicth webpage",
+      title: "Switch application",
     },
     webSite: "https://ft-emd51pitl-webfluent.vercel.app/",
     gitHub: "https://github.com/WebFluent/switch",
     link: "/projects/switch",
     about: "Switch a feature flag management application",
+    year: "2023",
     techUsed: [
       "React",
       "TypeScript",
@@ -125,16 +130,17 @@ const projectsData = [
     name: "Card Battle",
     team: "School Project",
     description: "A JavaScript implementation of a custom card game. Card battle is both a fun solitaire and multiplayer game since you can play against the A.I.(novice).",
-    image: "/images/Card-Battle-gif.gif",
-    imageData: {
-      url: "/images/TJAlbum.jpg",
-      alt: "Traders Journal",
-      title: "Traders Journal",
+    // image: "/images/Card-Battle-gif.gif",
+    image: {
+      url: "/images/Card-Battle-gif.gif",
+      alt: "card battle page",
+      title: "CardBattle",
     },
     webSite: "https://card-battle.herokuapp.com/",
     gitHub: "https://github.com/Jeromemn/card-battle",
     link: "/projects/cardbattle",
     about:"The goal of the game is eliminate your opponent by lowering their hitpoints to 0 first. All 10 cards have the same option to attack, defend, or skip. Click a card to call it to action. The game checks the attributes of the selected card: attack and defend. If the selected card attacks, the opponent will have their hitpoints deducted by the attack subtracted by the defending cards defense. You can regain hitpoints by selecting a card and using defense. The first player to 0 hitpoints loses.",
+    year: "2022",
     techUsed: [
       "JavaScript",
       "bCrypt",
@@ -152,16 +158,17 @@ const projectsData = [
     name: "Web App Text Editor",
     team: "School Project",
     description: "a Progressive Web Application that recognized JavaScript and can be typed in and saved both via a live web application and a local application that is off line. The online and offline versions will sync together to ensure nothing is lost",
-    image: "/images/textedit.jpg",
-    imageData: {
-      url: "/images/TJAlbum.jpg",
-      alt: "Traders Journal",
-      title: "Traders Journal",
+    // image: "/images/textedit.jpg",
+    image: {
+      url: "/images/textedit.jpg",
+      alt: "text editor page",
+      title: "text editor",
     },
     webSite: "https://pwathejateway.herokuapp.com/",
     gitHub: "https://github.com/Jeromemn/Progressive-Web-App-TextEditor",
     link: "/projects/pwaTextEditor",
     about: "Online offline text editor",
+    year: "2022",
     techUsed: [
       "JavaScript",
       "CSS",

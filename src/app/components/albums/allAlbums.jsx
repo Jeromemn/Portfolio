@@ -5,13 +5,20 @@ import styled from "styled-components";
 import projectsData from "src/app/utils/projectsData";
 // import tuffSkin from 'src/app/images/projectImages/tuffSkin.png';
 
+const ProjectsPageWrapper = styled.div`
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 80%; */
+`;
+
 const ProjectContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
   gap: 2rem;
-  padding: 2rem 0rem;
+  /* padding: 2rem 0rem; */
 `;
 
 const Albums = styled.div`
@@ -20,7 +27,7 @@ const Albums = styled.div`
   gap: 1rem;
   overflow: hidden;
   flex-wrap: wrap;
-  width: 200px;
+  /* width: 200px; */
   
 `;
 
@@ -28,8 +35,8 @@ const AlbumCover = styled.div`
   /* display: flex; */
   justify-content: center;
   align-items: center;
-  width: 200px;
-  height: 200px;
+  /* width: 200px; */
+  /* height: 200px; */
   border: 1px solid grey;
   border-radius: 4px;
   overflow: hidden;
@@ -47,10 +54,10 @@ const AlbumInfo = styled.div`
  
 `;
 
-const ProjectsTitle = styled.h2`
-  color: white;
-  font-family: Roboto, Noto Naskh Arabic UI, Arial, sans-serif;
-`;
+// const ProjectsTitle = styled.h2`
+//   color: white;
+//   font-family: Roboto, Noto Naskh Arabic UI, Arial, sans-serif;
+// `;
 
 const ProjectName = styled.h3`
   color: white;
@@ -108,9 +115,10 @@ const ProjectInfo = styled.p`
 // ];
 
 const AllAlbums = () => {
+  // const projectImage 
+  console.log(projectsData);
   return (
-    <div>
-      <ProjectsTitle>Projects</ProjectsTitle>
+
       <ProjectContainer>
         {projectsData.map((project) => (
           <Albums key={project.id}>
@@ -118,10 +126,10 @@ const AllAlbums = () => {
               <Link href={project.link}>
 
               <Image
-                src={project.image}
-                alt="project image"
-                width={200}
-                height={200}
+                src={project.image.url}
+                alt={project.image.alt}
+                width={300}
+                height={150}
                 // fill={true}
                 style={{objectFit: 'scale-down', objectPosition: 'center'}}
                 // object-position="center"
@@ -130,14 +138,14 @@ const AllAlbums = () => {
             </AlbumCover>
             <AlbumInfo>
               <ProjectName>{project.name}</ProjectName>
-              <ProjectInfo>{project.team}</ProjectInfo>
+              <ProjectInfo>{project.team} • {project.year}</ProjectInfo>
             </AlbumInfo>
           </Albums>
         ))}
       </ProjectContainer>
-    </div>
   );
 };
+
 
 export default AllAlbums;
 

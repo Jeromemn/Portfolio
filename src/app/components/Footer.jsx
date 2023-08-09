@@ -172,7 +172,7 @@ const Footer = () => {
   // const [image, setImage] = useState("");
 
   const projectImages = projectsData.reduce(
-    (acc, current) => ({...acc, [current.link]: current.imageData}),
+    (acc, current) => ({...acc, [current.link]: current.image}),
     {}
   );
   
@@ -215,13 +215,13 @@ const Footer = () => {
       <FooterSectionContainer>
         <PlayPauseWrapper>
           <SkipIconWrapper>
-            <BackYouTube color="white" width={30} height={30} />
+            <BackYouTube color="white" width={24} height={24} />
           </SkipIconWrapper>
           <PlayIconWrapper>
-            <PlayYouTube color="white" width={30} height={30} />
+            <PlayYouTube color="white" width={40} height={40} />
           </PlayIconWrapper>
           <SkipIconWrapper>
-            <ForwardYouTube color="white" width={30} height={30} />
+            <ForwardYouTube color="white" width={24} height={24} />
           </SkipIconWrapper>
         </PlayPauseWrapper>
 
@@ -250,13 +250,13 @@ const Footer = () => {
 
         <ShuffleRepeatSection>
           <IconWrapper>
-            <YouTubeShuffle color="white" width={30} height={30} />
-          </IconWrapper>
-          <IconWrapper>
-            <VolumeIcon color="white" width={30} height={30} />
+            <VolumeIcon color="rgb(144, 144, 144)" width={30} height={30} />
           </IconWrapper>
           <IconWrapper>
             <ReplayIcon color="white" width={30} height={30} />
+          </IconWrapper>
+          <IconWrapper>
+            <YouTubeShuffle color="white" width={30} height={30} />
           </IconWrapper>
           <ArrowWrapper>
             <UpArrow color="white" width={30} height={30} />

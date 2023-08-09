@@ -7,11 +7,7 @@ import styled from "styled-components";
 import mainImage from "./images/mainImage.jpg";
 import Footer from "./components/Footer";
 
-export const metadata = {
-  title: "Home",
-  description: "Home page",
-  keywords: "home, page",
-};
+
 
 const ContentWrapper = styled.div`
   display: flex;
