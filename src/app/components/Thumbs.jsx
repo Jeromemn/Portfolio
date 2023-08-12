@@ -1,43 +1,48 @@
-'use client'
-import React from 'react';
-import styled from 'styled-components';
-import { ThumbsDown, ThumbsUp, FilledThumbsDown, FilledThumbsUp } from '../images/Icons';
+"use client";
+import React from "react";
+import styled from "styled-components";
+import {
+  ThumbsDown,
+  ThumbsUp,
+  FilledThumbsDown,
+  FilledThumbsUp,
+} from "../images/icons";
 
 const ThumbsWrapper = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
-gap: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 `;
 
 const HollowThumbs = styled.div`
-display: inline-flex;
-justify-content: center;
-align-items: center;
-align-content: center;
-position: relative;
-/* pointer-events: none; */
-vertical-align: middle;
-/* background-color: transparent; */
-width: 35px;
-height: 35px;
-/* display: none; */
-
-&:hover {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  position: relative;
+  /* pointer-events: none; */
+  vertical-align: middle;
+  /* background-color: transparent; */
+  width: 35px;
+  height: 35px;
   /* display: none; */
-  /* ::shadow { */
 
-  /* background-color: rgba(255, 255, 255, 0.411); */
-  background-size: 30px 80px;
-  background: linear-gradient(
-    #bbbbbb53 0%,
-    #bbbbbb53 25%,
-    #bbbbbb53  75%,
-    #bbbbbb53  95%,
-    #bbbbbb53 100%,
-    #bbbbbb53 110%
+  &:hover {
+    /* display: none; */
+    /* ::shadow { */
+
+    /* background-color: rgba(255, 255, 255, 0.411); */
+    background-size: 30px 80px;
+    background: linear-gradient(
+      #bbbbbb53 0%,
+      #bbbbbb53 25%,
+      #bbbbbb53 75%,
+      #bbbbbb53 95%,
+      #bbbbbb53 100%,
+      #bbbbbb53 110%
     );
-    border-radius: 50%; 
+    border-radius: 50%;
     /* box-shadow: 0 0 0 0   */
     /* shadow: 'rgba(255, 255, 255, 0.16)'; */
     /* width: 30px; */
@@ -47,13 +52,12 @@ height: 35px;
     /* -webkit-box-shadow: rgba(255, 255, 255, 0.16) 0px 3px 6px 8px, rgba(255, 255, 255, 0.16) 0px 3px 6px 8px;
   -moz-box-shadow: rgba(255, 255, 255, 0.16) 0px 3px 6px 8px, rgba(255, 255, 255, 0.16) 0px 3px 6px 8px;
   box-shadow: rgba(255, 255, 255, 0.16) 0px 3px 6px 8px, rgba(255, 255, 255, 0.16) 0px 3px 6px 8px; */
-  /* } */
-}
+    /* } */
+  }
 
-/* ${ThumbsWrapper}:hover & {
+  /* ${ThumbsWrapper}:hover & {
   display: block;
 } */
-
 `;
 
 // const theme = {
@@ -65,26 +69,25 @@ const FilledThumbs = styled.div`
   justify-content: center;
   align-items: center;
   /* width: 30px; */
-
 `;
 
 const Thumbs = () => {
   return (
     <ThumbsWrapper>
       <HollowThumbs>
-        <ThumbsDown color='white' width={24} height={24}/>
-        </HollowThumbs>
-        <HollowThumbs>
-        <ThumbsUp color='white' width={24} height={24}/>
+        <ThumbsDown color="white" width={24} height={24} />
+      </HollowThumbs>
+      <HollowThumbs>
+        <ThumbsUp color="white" width={24} height={24} />
       </HollowThumbs>
       <FilledThumbs>
-        <FilledThumbsDown color='white' width={30} height={30}/>
+        <FilledThumbsDown color="white" width={30} height={30} />
       </FilledThumbs>
       <FilledThumbs>
-       <FilledThumbsUp color='white' width={30} height={30}/>
+        <FilledThumbsUp color="white" width={30} height={30} />
       </FilledThumbs>
     </ThumbsWrapper>
   );
-}
+};
 
 export default Thumbs;

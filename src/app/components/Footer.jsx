@@ -5,9 +5,20 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import projectsData from "../utils/projectsData";
-import  { PlayYouTube, YouTubeShuffle, ThumbsDown, ThumbsUp, FilledThumbsUp, FilledThumbsDown, BackYouTube, ForwardYouTube, UpArrow, VolumeIcon, ReplayIcon } from "../images/Icons";
+import {
+  PlayYouTube,
+  YouTubeShuffle,
+  ThumbsDown,
+  ThumbsUp,
+  FilledThumbsUp,
+  FilledThumbsDown,
+  BackYouTube,
+  ForwardYouTube,
+  UpArrow,
+  VolumeIcon,
+  ReplayIcon,
+} from "../images/icons";
 import AllLinks from "../utils/links";
-
 
 // const headerList = [
 //   { id: 1, name: "Home", path: "/", image: '/projects.png'},
@@ -175,7 +186,6 @@ const CurrentPageWrapper = styled.div`
   align-content: center;
   /* padding: 0 1rem; */
   width: 86px;
-
 `;
 
 const Footer = () => {
@@ -185,10 +195,9 @@ const Footer = () => {
   // const [currentPage, setCurrentPage] = useState(null);
   // const [image, setImage] = useState("");
 
-   // const [ThumbsUp , setThumbsUp] = useState(false);
+  // const [ThumbsUp , setThumbsUp] = useState(false);
   // const [ThumbsDown , setThumbsDown] = useState(false);
 
-  
   const randomLink = () => {
     // let newLink = null
     let updatedLinks = AllLinks.filter((item) => item !== pathname);
@@ -198,7 +207,7 @@ const Footer = () => {
     // return newLink = AllLinks[Math.floor(Math.random() * AllLinks.length)];
     console.log(newLink);
     return newLink;
-  } 
+  };
 
   // const Shuffle = () => {
   //   console.log('Shuffle');
@@ -244,7 +253,6 @@ const Footer = () => {
 
   const { url, alt, title } = images[pathname] || {};
   // console.log(images[pathname]);
- 
 
   return (
     <FooterWrapper>
@@ -267,7 +275,7 @@ const Footer = () => {
           {/* <Image src={image} alt={`${image}`} width={40} height={40} /> */}
           <CurrentPageWrapper>
             <CurrentPageText>{title}</CurrentPageText>
-            <StyledLink href='/'>Jerome </StyledLink>
+            <StyledLink href="/">Jerome </StyledLink>
           </CurrentPageWrapper>
           <ThumbsSection>
             <ThumbsContainer>
@@ -294,7 +302,7 @@ const Footer = () => {
           </IconWrapper>
           <IconWrapper>
             <Link as={Link} href={`${randomLink()}`}>
-            <YouTubeShuffle color="white" width={30} height={30} />
+              <YouTubeShuffle color="white" width={30} height={30} />
             </Link>
           </IconWrapper>
           <ArrowWrapper>

@@ -5,7 +5,7 @@ import projectsData from "@/app/utils/projectsData";
 import Styled from "styled-components";
 // import PlayButton from "@/app/components/PlayButton";
 import ButtonBase from "@/app/components/ButtonBase";
-import { PlayYouTube, GitHub } from "@/app/images/Icons";
+import { PlayYouTube, GitHub } from "@/app/images/icons";
 // import getCommits from "@/app/utils/getCommits";
 // import { commitCount } from "@/app/utils/getCommits";
 import Thumbs from "@/app/components/Thumbs";
@@ -255,7 +255,7 @@ const SingleProjectPage = ({ params, play, lineheight }) => {
       <TechStack>
         {project.techUsed.map((tech, index) => (
           <TechWrapper key={tech}>
-            <TechItem margin='16px'>{index + 1}</TechItem>
+            <TechItem margin="16px">{index + 1}</TechItem>
 
             <TechItem width="135px">{tech}</TechItem>
             <Thumbs />

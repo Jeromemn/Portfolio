@@ -12,7 +12,21 @@ import { styled } from "styled-components";
 // import YouTubeShuffle from "../images/Icons/YouTubeShuffle";
 // import PlayYouTube from "../images/Icons/PlayYouTube";
 import AllLinks from "../utils/links";
-import  {PlayYouTube, YouTubeShuffle, Verified, GitHub, LinkedIn, ThumbsDown, ThumbsUp, FilledThumbsUp, FilledThumbsDown, BackYouTube, ForwardYouTube, UpArrow, VolumeIcon} from "../images/Icons";
+import {
+  PlayYouTube,
+  YouTubeShuffle,
+  Verified,
+  GitHub,
+  LinkedIn,
+  ThumbsDown,
+  ThumbsUp,
+  FilledThumbsUp,
+  FilledThumbsDown,
+  BackYouTube,
+  ForwardYouTube,
+  UpArrow,
+  VolumeIcon,
+} from "../images/icons";
 
 const IntroContainer = styled.div`
   display: flex;
@@ -96,7 +110,6 @@ const PlayIconWrappper = styled.div`
 `;
 
 const Intro = () => {
-
   // console.log(AllLinks.length);
   const randomLink = () => {
     // let newLink = null
@@ -104,7 +117,7 @@ const Intro = () => {
     // return newLink = AllLinks[Math.floor(Math.random() * AllLinks.length)];
     console.log(newLink);
     return newLink;
-  } 
+  };
 
   // const Shuffle = () => {
   //   console.log('Shuffle');
@@ -128,9 +141,9 @@ const Intro = () => {
         assumenda iusto.
       </IntroText>
       <ButtonContainer>
-        <MusicButton as={Link} href={`${randomLink()}`} >
-            <YouTubeShuffle color="black" width={20} height={20} />
-                <ButtonName>Shuffle</ButtonName>
+        <MusicButton as={Link} href={`${randomLink()}`}>
+          <YouTubeShuffle color="black" width={20} height={20} />
+          <ButtonName>Shuffle</ButtonName>
         </MusicButton>
         <MusicButton>
           <PlayIconWrappper>

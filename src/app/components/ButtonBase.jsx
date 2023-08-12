@@ -1,28 +1,41 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-import  {PlayYouTube, YouTubeShuffle, Verified, GitHub, LinkedIn, ThumbsDown, ThumbsUp, FilledThumbsUp, FilledThumbsDown, BackYouTube, ForwardYouTube, UpArrow, VolumeIcon} from "../images/Icons";
+import {
+  PlayYouTube,
+  YouTubeShuffle,
+  Verified,
+  GitHub,
+  LinkedIn,
+  ThumbsDown,
+  ThumbsUp,
+  FilledThumbsUp,
+  FilledThumbsDown,
+  BackYouTube,
+  ForwardYouTube,
+  UpArrow,
+  VolumeIcon,
+} from "../images/icons";
 import Link from "next/link";
 import { styled } from "styled-components";
 // import BackYouTube from "../images/Icons/BackYouTube";
 // import FilledThumbsUp from "../images/Icons/FilledThumbsUp";
 // import ThumbsUp from "../images/Icons/ThumbsUp";
 
-const iconList = 
-  {
-    play: PlayYouTube,
-    shuffle: YouTubeShuffle,
-    verified: Verified,
-    gitHub: GitHub,
-    linkedIn: LinkedIn,
-    back: BackYouTube,
-    forward: ForwardYouTube,
-    FilledUp: FilledThumbsUp,
-    FilledDown: FilledThumbsDown,
-    ThumbsUp: ThumbsUp,
-    ThumbsDown: ThumbsDown,
-    upArrow: UpArrow,
-    volume: VolumeIcon,
-  };
+const iconList = {
+  play: PlayYouTube,
+  shuffle: YouTubeShuffle,
+  verified: Verified,
+  gitHub: GitHub,
+  linkedIn: LinkedIn,
+  back: BackYouTube,
+  forward: ForwardYouTube,
+  FilledUp: FilledThumbsUp,
+  FilledDown: FilledThumbsDown,
+  ThumbsUp: ThumbsUp,
+  ThumbsDown: ThumbsDown,
+  upArrow: UpArrow,
+  volume: VolumeIcon,
+};
 
 const MusicButton = styled.button`
   display: flex;
@@ -59,17 +72,15 @@ const ButtonName = styled.p`
   font-weight: 600;
 `;
 
-const Icon = styled.svg`
-
-`;
+const Icon = styled.svg``;
 
 const ButtonBase = ({ text, width, height, style }) => {
   // console.log(icon);
   return (
     <MusicButton width={width} height={height}>
       {/* <PlayIconWrappper $iconlist={iconList}> */}
-        {/* <PlayYouTube color="black" width={20} height={20} /> */}
-        {/* <Icon $iconlist={iconList} color="black" width={20} height={20}  /> */}
+      {/* <PlayYouTube color="black" width={20} height={20} /> */}
+      {/* <Icon $iconlist={iconList} color="black" width={20} height={20}  /> */}
       {/* </PlayIconWrappper> */}
       {/* <PlayCustom color='black' width={20} height={20}/> */}
       {/* {<Image src={PlayCustom} alt="play" width={20} height={20} margin-right='6px' />} */}
