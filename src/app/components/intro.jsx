@@ -18,15 +18,7 @@ import {
   Verified,
   GitHub,
   LinkedIn,
-  ThumbsDown,
-  ThumbsUp,
-  FilledThumbsUp,
-  FilledThumbsDown,
-  BackYouTube,
-  ForwardYouTube,
-  UpArrow,
-  VolumeIcon,
-} from "../images/icons";
+} from "../icons";
 
 const IntroContainer = styled.div`
   display: flex;

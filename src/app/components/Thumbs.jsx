@@ -6,7 +6,7 @@ import {
   ThumbsUp,
   FilledThumbsDown,
   FilledThumbsUp,
-} from "../images/icons";
+} from "../icons";
 
 const ThumbsWrapper = styled.div`
   display: flex;

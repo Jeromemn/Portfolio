@@ -5,7 +5,7 @@ import projectsData from "@/app/utils/projectsData";
 import Styled from "styled-components";
 // import PlayButton from "@/app/components/PlayButton";
 // import ButtonBase from "@/app/components/ButtonBase";
-import { PlayYouTube, GitHub } from "@/app/images/icons";
+import { PlayYouTube, GitHub } from "@/app/icons";
 // import getCommits from "@/app/utils/getCommits";
 // import { commitCount } from "@/app/utils/getCommits";
 import Thumbs from "@/app/components/Thumbs";
@@ -246,7 +246,7 @@ const SingleProjectPage = ({ params, play, lineheight }) => {
           </MoreDescription>
           <ButtonContainer>
             {/* <ButtonBase text="Play" width={200}> */}
-              {/* <PlayYouTube color="white" width={20} height={20}/> */}
+            {/* <PlayYouTube color="white" width={20} height={20}/> */}
             {/* </ButtonBase> */}
             {/* <ButtonBase text="Github" width={100} /> */}
           </ButtonContainer>

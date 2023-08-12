@@ -14,7 +14,7 @@ import {
   ForwardYouTube,
   UpArrow,
   VolumeIcon,
-} from "../images/icons";
+} from "../icons";
 import Link from "next/link";
 import { styled } from "styled-components";
 // import BackYouTube from "../images/Icons/BackYouTube";

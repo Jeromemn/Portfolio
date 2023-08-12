@@ -17,7 +17,7 @@ import {
   UpArrow,
   VolumeIcon,
   ReplayIcon,
-} from "../images/icons";
+} from "../icons";
 import AllLinks from "../utils/links";
 
 // const headerList = [
