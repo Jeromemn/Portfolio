@@ -2,16 +2,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import { styled } from "styled-components";
-import shuffle from "../images/shuffle.svg";
-import play from "../images/play.svg";
-import PlayCustom from "../images/playCustom";
-import LinkedIn from "../images/Icons/linkedIn";
-import GitHub from "../images/Icons/GitHub";
-import Verified from "../images/Icons/verified";
-import Shuffle from "../images/newShuffle";
-import YouTubeShuffle from "../images/Icons/YouTubeShuffle";
-import PlayYouTube from "../images/Icons/PlayYouTube";
+// import shuffle from "../images/shuffle.svg";
+// import play from "../images/play.svg";
+// import PlayCustom from "../images/playCustom";
+// import LinkedIn from "../images/Icons/linkedIn";
+// import GitHub from "../images/Icons";
+// import Verified from "../images/Icons/verified";
+// import Shuffle from "../images/newShuffle";
+// import YouTubeShuffle from "../images/Icons/YouTubeShuffle";
+// import PlayYouTube from "../images/Icons/PlayYouTube";
 import AllLinks from "../utils/links";
+import  {PlayYouTube, YouTubeShuffle, Verified, GitHub, LinkedIn, ThumbsDown, ThumbsUp, FilledThumbsUp, FilledThumbsDown, BackYouTube, ForwardYouTube, UpArrow, VolumeIcon} from "../images/Icons";
 
 const IntroContainer = styled.div`
   display: flex;
