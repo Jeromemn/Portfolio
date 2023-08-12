@@ -5,16 +5,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import projectsData from "../utils/projectsData";
-import  {PlayYouTube, YouTubeShuffle, Verified, GitHub, LinkedIn, ThumbsDown, ThumbsUp, FilledThumbsUp, FilledThumbsDown, BackYouTube, ForwardYouTube, UpArrow, VolumeIcon, ReplayIcon} from "../images/Icons";
+import  { PlayYouTube, YouTubeShuffle, ThumbsDown, ThumbsUp, FilledThumbsUp, FilledThumbsDown, BackYouTube, ForwardYouTube, UpArrow, VolumeIcon, ReplayIcon } from "../images/Icons";
 import AllLinks from "../utils/links";
 
 
-const headerList = [
-  { id: 1, name: "Home", path: "/", image: '/projects.png'},
-  { id: 2, name: "About", path: "/about", image: '/about.png'},
-  { id: 3, name: "Contact", path: "/contact", image: '/contactImage.png' },
-  { id: 4, name: "Projects", path: "/projects", image: '/projects.png' },
-];
+// const headerList = [
+//   { id: 1, name: "Home", path: "/", image: '/projects.png'},
+//   { id: 2, name: "About", path: "/about", image: '/about.png'},
+//   { id: 3, name: "Contact", path: "/contact", image: '/contactImage.png' },
+//   { id: 4, name: "Projects", path: "/projects", image: '/projects.png' },
+// ];
 
 const FooterWrapper = styled.div`
   display: flex;
