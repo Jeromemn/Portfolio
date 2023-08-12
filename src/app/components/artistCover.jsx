@@ -1,7 +1,7 @@
-'use client'
-import Image from "next/image";
-import mainImage from "../images/mainImage.jpg";
-import styled from "styled-components";
+// 'use client'
+// import Image from "next/image";
+// // import mainImage from "/mainImage.jpg";
+// import styled from "styled-components";
 
 // const ImageContainer = styled.div`
 //   display: flex;
@@ -16,22 +16,22 @@ import styled from "styled-components";
 //   overflow: hidden;
 // `;
 
-const ArtistCover = () => {
-  return (
-    // <ImageContainer>
-      <Image
-        src={mainImage}
-        alt="Picture of the artist"
-        // width={100}
-        // height={500}
-        placeholder="blur"
-        quality={100}
-        fill
-        sizes="100vw"
-        style={{ objectFit: "fill", position: "absolute", color: "transparent", inset: "0px"}}
-      />
-    // </ImageContainer>
-  );
-};
+// const ArtistCover = () => {
+//   return (
+//     // <ImageContainer>
+//       <Image
+//         src='/mainImage.jpg'
+//         alt="Picture of the artist"
+//         // width={100}
+//         // height={500}
+//         placeholder="blur"
+//         quality={100}
+//         fill
+//         sizes="100vw"
+//         style={{ objectFit: "fill", position: "absolute", color: "transparent", inset: "0px"}}
+//       />
+//     // </ImageContainer>
+//   );
+// };
 
-export default ArtistCover;
+// export default ArtistCover;

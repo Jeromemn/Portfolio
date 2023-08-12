@@ -116,7 +116,7 @@ const ProjectInfo = styled.p`
 
 const AllAlbums = () => {
   // const projectImage 
-  console.log(projectsData);
+  // console.log(projectsData);
   return (
 
       <ProjectContainer>

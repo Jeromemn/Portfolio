@@ -1,11 +1,9 @@
 "use client";
 import React from "react";
-import ArtistCover from "./components/artistCover";
 import Header from "./components/header";
 import Intro from "./components/intro";
 import styled from "styled-components";
 import mainImage from "./images/mainImage.jpg";
-import Footer from "./components/Footer";
 
 
 
