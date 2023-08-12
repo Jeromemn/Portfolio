@@ -3,6 +3,7 @@
 import React from "react";
 import StyledComponentsRegistry from "./styles/registry";
 import Footer from "./components/Footer";
+import Search from "./components/Search";
 
 export const metadata = {
   title: "Home",
@@ -15,6 +16,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <StyledComponentsRegistry>{children}
+        <Search />
         <Footer />
         </StyledComponentsRegistry>
       </body>

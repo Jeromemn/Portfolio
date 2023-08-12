@@ -5,12 +5,13 @@ import { styled } from "styled-components";
 import shuffle from "../images/shuffle.svg";
 import play from "../images/play.svg";
 import PlayCustom from "../images/playCustom";
-import LinkedIn from "../images/linkedIn";
-import GitHub from "../images/gitHub";
-import Verified from "../images/verified";
+import LinkedIn from "../images/Icons/linkedIn";
+import GitHub from "../images/Icons/GitHub";
+import Verified from "../images/Icons/verified";
 import Shuffle from "../images/newShuffle";
-import YouTubeShuffle from "../images/youTubeShuffle";
-import PlayYouTube from "../images/playYouTube";
+import YouTubeShuffle from "../images/Icons/YouTubeShuffle";
+import PlayYouTube from "../images/Icons/PlayYouTube";
+import AllLinks from "../utils/links";
 
 const IntroContainer = styled.div`
   display: flex;
@@ -57,6 +58,7 @@ const MusicButton = styled.button`
   height: 36px;
   padding: 0rem 32px;
   gap: 10px;
+  background-color: white;
 `;
 
 const ButtonName = styled.p`
@@ -82,7 +84,7 @@ const PlayIconWrappper = styled.div`
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  position: relative; 
+  position: relative;
   vertical-align: middle;
   /* padding: 8px; */
   outline: none;
@@ -93,13 +95,28 @@ const PlayIconWrappper = styled.div`
 `;
 
 const Intro = () => {
+
+  // console.log(AllLinks.length);
+  const randomLink = () => {
+    // let newLink = null
+    let newLink = AllLinks[Math.floor(Math.random() * AllLinks.length)];
+    // return newLink = AllLinks[Math.floor(Math.random() * AllLinks.length)];
+    console.log(newLink);
+    return newLink;
+  } 
+
+  // const Shuffle = () => {
+  //   console.log('Shuffle');
+  //   // console.log(randomLink);
+  //   randomLink();
+  //   // console.log(randomLink);
+  // }
+
   return (
     <IntroContainer>
       <VerifiedContainer>
-          <Verified />
-        <VerifiedHeader>
-          Verified Developer
-        </VerifiedHeader>
+        <Verified />
+        <VerifiedHeader>Verified Developer</VerifiedHeader>
       </VerifiedContainer>
 
       <NameIntro>Jerome</NameIntro>
@@ -110,34 +127,20 @@ const Intro = () => {
         assumenda iusto.
       </IntroText>
       <ButtonContainer>
-        <MusicButton>
-          <div>
-
-          <YouTubeShuffle color='black' width={20} height={20}/>
-          </div>
-          {/* <Shuffle color='black' width={20} height={20}/> */}
-          
-            {/* <Image
-              src={shuffle}
-              alt="shuffle"
-              width={20}
-              height={20}
-              margin-right="6px"
-            /> */}
-          
-          <ButtonName>Shuffle</ButtonName>
+        <MusicButton as={Link} href={`${randomLink()}`} >
+            <YouTubeShuffle color="black" width={20} height={20} />
+                <ButtonName>Shuffle</ButtonName>
         </MusicButton>
         <MusicButton>
           <PlayIconWrappper>
-
-          <PlayYouTube color='black' width={20} height={20}/>
+            <PlayYouTube color="black" width={20} height={20} />
           </PlayIconWrappper>
           {/* <PlayCustom color='black' width={20} height={20}/> */}
           {/* {<Image src={PlayCustom} alt="play" width={20} height={20} margin-right='6px' />} */}
           <ButtonName>Play</ButtonName>
         </MusicButton>
         <MusicButton>
-          <Link href="https://www.linkedin.com/in/jerome-mn/">
+          <Link href="www.linkedin.com/in/jeromenixon">
             <LinkedIn color="black" />
           </Link>
           <ButtonName>Subscribe</ButtonName>
