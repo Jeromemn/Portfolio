@@ -11,4 +11,4 @@ export { default as VolumeIcon } from './VolumeIcon';
 export { default as YouTubeShuffle } from './YouTubeShuffle';
 export { default as GitHub } from './GitHub';
 export { default as LinkedIn } from './linkedIn';
-export { default as Verified } from './verified';
+export { default as Verified } from './Verified';

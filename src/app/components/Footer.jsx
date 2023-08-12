@@ -4,29 +4,10 @@ import styled from "styled-components";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-// import play from "../images/play.svg";
-// import SkipForward from "../images/SkipForward";
-// import projectImage from "../images/projectImage.png";
-// import contactImage from "../images/contactImage.png";
-// import about from "../images/about.png";
-// import SkipBackwards from "../images/SkipBackwards";
-// import PlayCustom from "../images/playCustom";
-// import ForwardYouTube from "../images/Icons/ForwardYouTube";
-// import PlayYouTube from "../images/Icons/playYouTube";
-// import BackYouTube from "../images/Icons";
-// import VolumeIcon from "../images/Icons/VolumeIcon";
-// import ReplayIcon from "../images/Icons/ReplayIcon";
-// import YouTubeShuffle from "../images/Icons/youTubeShuffle";
-// import UpArrow from "../images/Icons/UpArrow";
-// import ThumbsUp from "../images/Icons/ThumbsUp";
-// import FilledThumbsUp from "../images/Icons/FilledThumbsUp";
-// import ThumbsDown from "../images/Icons/ThumbsDown";
-// import FilledThumbsDown from "../images/Icons/FilledThumbsDown";
 import projectsData from "../utils/projectsData";
-import  {PlayYouTube, YouTubeShuffle, Verified, GitHub, LinkedIn, ThumbsDown, ThumbsUp, FilledThumbsUp, FilledThumbsDown, BackYouTube, ForwardYouTube, UpArrow, VolumeIcon, ReplayIcon} from "../images/Icons";
+import  {PlayYouTube, YouTubeShuffle, Verified, GitHub, LinkedIn, ThumbsDown, ThumbsUp, FilledThumbsUp, FilledThumbsDown, BackYouTube, ForwardYouTube, UpArrow, VolumeIcon, ReplayIcon} from "./images/Icons";
 import AllLinks from "../utils/links";
 
-// import projectImage from "/projectImage.png";
 
 const headerList = [
   { id: 1, name: "Home", path: "/", image: '/projects.png'},
