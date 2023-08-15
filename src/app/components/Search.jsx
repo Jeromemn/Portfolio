@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useRef, useEffect, useMemo } from "react";
+import Link from "next/link";
 import useOnClickOutside from "../hooks/useOnOutsideClick";
 import Styled from "styled-components";
 import { SearchIcon } from "../icons";
@@ -66,6 +67,7 @@ const SearchInput = Styled.input`
   font-size: 16px;
   outline: none;
   height: 100%;
+  color: white;
 
   ${({ $editMode }) =>
     $editMode &&
@@ -115,13 +117,20 @@ const DropDownItem = Styled.div`
   cursor: pointer;
   user-select: none;
   overflow: hidden;
+  background-color: #030303;
+
+  &&:hover {
+    background-color: rgba(255,255,255,0.2);
+  }
 `;
 
 const DropDownText = Styled.p`
   display: flex;
   font-size: 16px;
   color:rgba(255,255,255,0.5);
-
+  /* color: rgba(255,255,255,0.7) */
+  width: 100%;
+  font-weight: 400;
 `;
 
 const dropDownSelection = [
@@ -210,10 +219,12 @@ const Search = () => {
         </SearchBox>
         {editMode && (
           <DropDownWrapper ref={dropdownRef}>
-            {filteredItems.map(({ title }) => (
-              <DropDownItem key={title}>
-                <DropDownText>{title}</DropDownText>
+            {filteredItems.map(({ title, link }) => (
+                <Link  key={title} href={link} onClick={toggling}>
+              <DropDownItem>
+                  <DropDownText>{title}</DropDownText>
               </DropDownItem>
+                </Link>
             ))}
           </DropDownWrapper>
         )}

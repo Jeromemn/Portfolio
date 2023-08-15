@@ -215,8 +215,8 @@ const SingleProjectPage = ({ params, play, lineheight }) => {
       <ProjectContent>
         <ProjectImage>
           <Image
-            src={project.image.url}
-            alt={project.image.alt}
+            src={project?.image?.url}
+            alt={project?.image?.alt}
             width={300}
             height={240}
             priority={true}
@@ -224,22 +224,22 @@ const SingleProjectPage = ({ params, play, lineheight }) => {
           />
         </ProjectImage>
         <ProjectDescriptionWrapper>
-          <ProjectTitle>{project.title}</ProjectTitle>
+          <ProjectTitle>{project?.title}</ProjectTitle>
           {/* <div> {params.singleProject}</div> */}
           <ProjectInfo>
             <Text color="#aaa">
-              {project.team} • {project.year}
+              {project?.team} • {project?.year}
             </Text>
             <CommitsAndTech>
-              <Text color="#aaa"> {project.techUsed.length} Techs </Text>
+              <Text color="#aaa"> {project?.techUsed.length} Techs </Text>
               <Text color="#aaa"> • </Text>
-              <Text color="#aaa"> {project.commits} Commits</Text>
+              <Text color="#aaa"> {project?.commits} Commits</Text>
             </CommitsAndTech>
           </ProjectInfo>
           <MoreDescription>
             <DescriptionWrapper overflow="visible">
               <Text color="#aaa" fontSize="14px" $lineHeight="1.4rem">
-                {project.description}
+                {project?.description}
               </Text>
             </DescriptionWrapper>
             <MoreButton onClick={handleClick}>More</MoreButton>
@@ -254,7 +254,7 @@ const SingleProjectPage = ({ params, play, lineheight }) => {
         </ProjectDescriptionWrapper>
       </ProjectContent>
       <TechStack>
-        {project.techUsed.map((tech, index) => (
+        {project?.techUsed.map((tech, index) => (
           <TechWrapper key={tech}>
             <TechItem margin="16px">{index + 1}</TechItem>
 
