@@ -51,52 +51,14 @@ const MusicButton = styled.button`
   gap: 10px;
 `;
 
-const PlayIconWrappper = styled.div`
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  vertical-align: middle;
-  /* padding: 8px; */
-  outline: none;
-  z-index: 0;
-  line-height: 1;
-  width: 20px;
-  height: 20px;
-`;
-
-const ButtonName = styled.p`
-  color: black;
-  /* padding-left: 10px; */
-  font-size: 14px;
-  font-weight: 600;
-`;
-
 const Icon = styled.svg``;
 
-const ButtonBase = ({ text, width, height, style }) => {
-  // console.log(icon);
+const ButtonBase = ({ children}) => {
   return (
-    <MusicButton width={width} height={height}>
-      {/* <PlayIconWrappper $iconlist={iconList}> */}
-      {/* <PlayYouTube color="black" width={20} height={20} /> */}
-      {/* <Icon $iconlist={iconList} color="black" width={20} height={20}  /> */}
-      {/* </PlayIconWrappper> */}
-      {/* <PlayCustom color='black' width={20} height={20}/> */}
-      {/* {<Image src={PlayCustom} alt="play" width={20} height={20} margin-right='6px' />} */}
-      <ButtonName>{text}</ButtonName>
+    <MusicButton>
+      {children}
     </MusicButton>
   );
 };
-
-// ButtonBase.defaultProps = {
-//   iconlist: 'play',
-//   text: "Play",
-// };
-
-// ButtonBase.propTypes = {
-//   iconlist: PropTypes.oneOf(Object.keys(iconList)),
-//   text: PropTypes.string,
-// };
 
 export default ButtonBase;

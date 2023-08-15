@@ -2,6 +2,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { styled } from "styled-components";
+import { usePathname, useSearchParams } from "next/navigation";
+import { useMemo } from "react";
 // import shuffle from "../images/shuffle.svg";
 // import play from "../images/play.svg";
 // import PlayCustom from "../images/playCustom";
@@ -103,13 +105,13 @@ const PlayIconWrappper = styled.div`
 
 const Intro = () => {
   // console.log(AllLinks.length);
-  const randomLink = () => {
-    // let newLink = null
-    let newLink = AllLinks[Math.floor(Math.random() * AllLinks.length)];
-    // return newLink = AllLinks[Math.floor(Math.random() * AllLinks.length)];
-    console.log(newLink);
-    return newLink;
-  };
+  // const randomLink = () => {
+  //   // let newLink = null
+  //   let newLink = AllLinks[Math.floor(Math.random() * AllLinks.length)];
+  //   // return newLink = AllLinks[Math.floor(Math.random() * AllLinks.length)];
+  //   console.log(newLink);
+  //   return newLink;
+  // };
 
   // const Shuffle = () => {
   //   console.log('Shuffle');
@@ -117,6 +119,15 @@ const Intro = () => {
   //   randomLink();
   //   // console.log(randomLink);
   // }
+
+  const pathname = usePathname();
+
+
+  const randomLink = useMemo(() => {
+    const updatedLinks = AllLinks.filter((item) => item !== pathname);
+    const newLink = updatedLinks[Math.floor(Math.random() * updatedLinks.length)];
+    return newLink || updatedLinks[0];
+  }, [pathname]);
 
   return (
     <IntroContainer>
@@ -133,7 +144,7 @@ const Intro = () => {
         assumenda iusto.
       </IntroText>
       <ButtonContainer>
-        <MusicButton as={Link} href={`${randomLink()}`}>
+        <MusicButton as={Link} href={randomLink}>
           <YouTubeShuffle color="black" width={20} height={20} />
           <ButtonName>Shuffle</ButtonName>
         </MusicButton>

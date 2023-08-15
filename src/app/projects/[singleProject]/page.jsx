@@ -4,7 +4,7 @@ import Image from "next/image";
 import projectsData from "@/app/utils/projectsData";
 import Styled from "styled-components";
 // import PlayButton from "@/app/components/PlayButton";
-// import ButtonBase from "@/app/components/ButtonBase";
+import ButtonBase from "@/app/components/ButtonBase";
 import { PlayYouTube, GitHub } from "@/app/icons";
 // import getCommits from "@/app/utils/getCommits";
 // import { commitCount } from "@/app/utils/getCommits";
@@ -245,10 +245,11 @@ const SingleProjectPage = ({ params, play, lineheight }) => {
             <MoreButton onClick={handleClick}>More</MoreButton>
           </MoreDescription>
           <ButtonContainer>
-            {/* <ButtonBase text="Play" width={200}> */}
-            {/* <PlayYouTube color="white" width={20} height={20}/> */}
-            {/* </ButtonBase> */}
-            {/* <ButtonBase text="Github" width={100} /> */}
+            <ButtonBase >
+             <PlayYouTube color="black" width={20} height={20}/>
+             Play
+            </ButtonBase>
+            {/* <ButtonBase text="Github" width={100}></ButtonBase> */}
           </ButtonContainer>
         </ProjectDescriptionWrapper>
       </ProjectContent>

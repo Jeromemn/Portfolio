@@ -1,5 +1,6 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect, useMemo } from "react";
+import useOnClickOutside from "../hooks/useOnOutsideClick";
 import Styled from "styled-components";
 import { SearchIcon } from "../icons";
 
@@ -42,25 +43,19 @@ const SearchBox = Styled.div`
   justify-content: flex-start;
   align-items: center;
   align-content: center;
-  /* width: 380px; */
-  /* max-width: 380px; */
   position: relative;
   padding-left:1rem;
   /*  maybe use box shadow */
   /* box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.4); */
 
-  /*  if dropdown is visible 
-  border-radius: 8px 8px 0 0;
-  background: #030303;
-  */
-`;
-
-const OpenSearchBox = Styled(SearchBox)`
-  border-radius: 8px 8px 0 0;
-  background: #030303;
-  /* border-top: 1px solid rgba(255, 255, 255, 0.15); */
+  ${({ $editMode }) =>
+    $editMode &&
+    `
   border-bottom: none;
-  /* max-width: 382px; */
+  border-radius: 8px 8px 0 0;
+  background: #030303;
+    
+    `}
 `;
 
 const SearchInput = Styled.input`
@@ -71,6 +66,12 @@ const SearchInput = Styled.input`
   font-size: 16px;
   outline: none;
   height: 100%;
+
+  ${({ $editMode }) =>
+    $editMode &&
+    `
+
+  `}
   
 
  &::placeholder {
@@ -123,67 +124,98 @@ const DropDownText = Styled.p`
 
 `;
 
-const DropDownSelection = [
+const dropDownSelection = [
   {
     id: 1,
-    name: "Home",
+    title: "Home",
     link: "/",
   },
   {
     id: 2,
-    name: "About",
+    title: "About",
     link: "/about",
   },
   {
     id: 3,
-    name: "Contact",
+    title: "Contact",
     link: "/contact",
+  },
+  {
+    id: 4,
+    title: "Projects",
+    link: "/projects",
+  },
+  {
+    id: 5,
+    title: " Tuff Skin",
+    link: "/projects/tuffSkin",
+  },
+  {
+    id: 6,
+    title: "Modern Pilgrim",
+    link: "/projects/modernPilgrim",
+  },
+  {
+    id: 7,
+    title: "Traders Journal",
+    link: "/projects/tradersJournal",
+  },
+  {
+    id: 8,
+    title: "Switch",
+    link: "/projects/switch",
+  },
+  {
+    id: 9,
+    title: "Card Battle",
+    link: "/projects/cardbattle",
+  },
+  {
+    id: 10,
+    title: "PWA Text Editor",
+    link: "/projects/pwaTextEditor",
   },
 ];
 
 const Search = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const toggling = () => setIsOpen(!isOpen);
+  const [searchValue, setSearchValue] = useState("");
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [editMode, setEditMode] = useState(false);
+  const toggling = () => setEditMode(!editMode);
+  const dropdownRef = useRef();
+  useOnClickOutside(dropdownRef, () => setEditMode(false));
+
+  const filteredItems = useMemo(() => {
+    if (!searchValue) {
+      return dropDownSelection;
+    }
+    return dropDownSelection.filter((selection) => {
+      return selection.title.toLowerCase().includes(searchValue?.toLowerCase());
+    });
+  }, [searchValue]);
+
+  console.log(filteredItems);
   return (
     <SearchWrapper>
       <SearchContainer>
-        {!isOpen && (
-          <SearchBox onClick={toggling}>
-            <SearchIcon
-              width={24}
-              height={24}
-              color="rgba(255, 255, 255, 0.5)"
-            />
-            <SearchInput
-              id="inputId"
-              type="text"
-              placeholder="Search Pages, Projects"
-              onClick={toggling}
-            />
-          </SearchBox>
-        )}
-        {isOpen && (
-          <>
-            <OpenSearchBox onClick={toggling}>
-              <SearchIcon
-                width={24}
-                height={24}
-                color="rgba(255, 255, 255, 0.5)"
-              />
-              <SearchInput
-                id="inputId"
-                type="text"
-                placeholder="Search Pages, Projects"
-              />
-            </OpenSearchBox>
-            <DropDownWrapper>
-              {DropDownSelection.map((item) => (
-                <DropDownItem key={item.id}>
-                  <DropDownText>{item.name}</DropDownText>
-                </DropDownItem>
-              ))}
-            </DropDownWrapper>
-          </>
+        <SearchBox onClick={toggling} $editMode={editMode}>
+          <SearchIcon width={24} height={24} color="rgba(255, 255, 255, 0.5)" />
+          <SearchInput
+            id="inputId"
+            type="text"
+            placeholder="Search Pages, Projects"
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
+          />
+        </SearchBox>
+        {editMode && (
+          <DropDownWrapper ref={dropdownRef}>
+            {filteredItems.map(({ title }) => (
+              <DropDownItem key={title}>
+                <DropDownText>{title}</DropDownText>
+              </DropDownItem>
+            ))}
+          </DropDownWrapper>
         )}
       </SearchContainer>
     </SearchWrapper>
