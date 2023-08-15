@@ -4,6 +4,7 @@ import React from "react";
 import StyledComponentsRegistry from "./styles/registry";
 import Footer from "./components/Footer";
 import Search from "./components/Search";
+// import globals from "./styles/globals";
 
 export const metadata = {
   title: "Home",

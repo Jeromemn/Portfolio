@@ -12,3 +12,4 @@ export { default as YouTubeShuffle } from './YouTubeShuffle';
 export { default as GitHub } from './GitHub';
 export { default as LinkedIn } from './linkedIn';
 export { default as Verified } from './Verified';
+export { default as SearchIcon } from './SearchIcon';

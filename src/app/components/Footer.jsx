@@ -3,7 +3,7 @@ import { usePathname, useSearchParams } from "next/navigation";
 import styled from "styled-components";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import projectsData from "../utils/projectsData";
 import {
   PlayYouTube,
@@ -190,32 +190,14 @@ const CurrentPageWrapper = styled.div`
 
 const Footer = () => {
   const pathname = usePathname();
-  // console.log(pathname);
-  // const searchParams = useSearchParams();
-  // const [currentPage, setCurrentPage] = useState(null);
-  // const [image, setImage] = useState("");
 
-  // const [ThumbsUp , setThumbsUp] = useState(false);
-  // const [ThumbsDown , setThumbsDown] = useState(false);
+  const randomLink = useMemo(() => {
+    const updatedLinks = AllLinks.filter((item) => item !== pathname);
+    const newLink = updatedLinks[Math.floor(Math.random() * updatedLinks.length)];
+    return newLink || updatedLinks[0];
+  }, [pathname]);
 
-  const randomLink = () => {
-    // let newLink = null
-    let updatedLinks = AllLinks.filter((item) => item !== pathname);
-    console.log(updatedLinks);
-
-    let newLink = updatedLinks[Math.floor(Math.random() * AllLinks.length)];
-    // return newLink = AllLinks[Math.floor(Math.random() * AllLinks.length)];
-    console.log(newLink);
-    return newLink;
-  };
-
-  // const Shuffle = () => {
-  //   console.log('Shuffle');
-  //   // console.log(randomLink);
-  //   randomLink();
-  //   // console.log(randomLink);
-  // }
-
+  
   const projectImages = projectsData.reduce(
     (acc, current) => ({ ...acc, [current.link]: current.image }),
     {}
@@ -301,7 +283,7 @@ const Footer = () => {
             <ReplayIcon color="white" width={30} height={30} />
           </IconWrapper>
           <IconWrapper>
-            <Link as={Link} href={`${randomLink()}`}>
+            <Link as={Link} href={randomLink}>
               <YouTubeShuffle color="white" width={30} height={30} />
             </Link>
           </IconWrapper>
