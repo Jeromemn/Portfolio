@@ -19,7 +19,7 @@ import {
   YouTubeShuffle,
   Verified,
   GitHub,
-  LinkedIn,
+  LinkedInIcon,
 } from "../icons";
 
 const IntroContainer = styled.div`
@@ -39,7 +39,8 @@ const NameIntro = styled.h1`
   padding: 0rem 0rem;
   font-size: 3rem;
   color: white;
-  font-family: YouTube Sans, Roboto, Noto Naskh Arabic UI, Arial, sans-serif;
+  font-family: 'YouTube Sans, Roboto, Noto Naskh Arabic UI, Arial, sans-serif';
+/* font-family: 'YouSans'; */
 `;
 
 const IntroText = styled.p`
@@ -158,7 +159,7 @@ const Intro = () => {
         </MusicButton>
         <MusicButton>
           <Link href="www.linkedin.com/in/jeromenixon">
-            <LinkedIn color="black" />
+            <LinkedInIcon color="black" />
           </Link>
           <ButtonName>Subscribe</ButtonName>
           <Link href="https://github.com/Jeromemn">
