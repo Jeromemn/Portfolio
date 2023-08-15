@@ -19,7 +19,7 @@ import {
   YouTubeShuffle,
   Verified,
   GitHub,
-  LinkedIn,
+  LinkedInIcon,
 } from "../icons";
 
 const IntroContainer = styled.div`
@@ -159,7 +159,7 @@ const Intro = () => {
         </MusicButton>
         <MusicButton>
           <Link href="www.linkedin.com/in/jeromenixon">
-            <LinkedIn color="black" />
+            <LinkedInIcon color="black" />
           </Link>
           <ButtonName>Subscribe</ButtonName>
           <Link href="https://github.com/Jeromemn">
