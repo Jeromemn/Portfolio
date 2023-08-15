@@ -2,9 +2,9 @@
 // 'use client';
 import React from "react";
 import StyledComponentsRegistry from "./styles/registry";
+import SideBar from "./components/SideBar";
 import Footer from "./components/Footer";
 import Search from "./components/Search";
-import SideBar from "./components/SideBar";
 // import globals from "./styles/globals";
 
 export const metadata = {

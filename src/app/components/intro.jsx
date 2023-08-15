@@ -39,7 +39,8 @@ const NameIntro = styled.h1`
   padding: 0rem 0rem;
   font-size: 3rem;
   color: white;
-  font-family: YouTube Sans, Roboto, Noto Naskh Arabic UI, Arial, sans-serif;
+  font-family: 'YouTube Sans, Roboto, Noto Naskh Arabic UI, Arial, sans-serif';
+/* font-family: 'YouSans'; */
 `;
 
 const IntroText = styled.p`
