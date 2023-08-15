@@ -10,6 +10,6 @@ export { default as UpArrow } from './UpArrow';
 export { default as VolumeIcon } from './VolumeIcon';
 export { default as YouTubeShuffle } from './YouTubeShuffle';
 export { default as GitHub } from './GitHub';
-export { default as LinkedIn } from './linkedIn';
+export { default as LinkedIn } from './LinkedIn';
 export { default as Verified } from './Verified';
 export { default as SearchIcon } from './SearchIcon';
