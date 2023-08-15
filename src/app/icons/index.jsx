@@ -13,3 +13,4 @@ export { default as GitHub } from './GitHub';
 export { default as LinkedIn } from './linkedIn';
 export { default as Verified } from './Verified';
 export { default as SearchIcon } from './SearchIcon';
+export { default as YouTubeHome } from './YouTubeHome';

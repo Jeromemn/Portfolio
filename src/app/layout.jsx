@@ -4,6 +4,7 @@ import React from "react";
 import StyledComponentsRegistry from "./styles/registry";
 import Footer from "./components/Footer";
 import Search from "./components/Search";
+import SideBar from "./components/SideBar";
 // import globals from "./styles/globals";
 
 export const metadata = {
@@ -17,6 +18,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <StyledComponentsRegistry>{children}
+        <SideBar />
         <Search />
         <Footer />
         </StyledComponentsRegistry>
