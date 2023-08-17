@@ -137,7 +137,7 @@ const AllAlbums = () => {
               </Link>
             </AlbumCover>
             <AlbumInfo>
-              <ProjectName>{project.name}</ProjectName>
+              <ProjectName>{project.title}</ProjectName>
               <ProjectInfo>{project.team} • {project.year}</ProjectInfo>
             </AlbumInfo>
           </Albums>

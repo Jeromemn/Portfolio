@@ -1,16 +1,20 @@
 import { createGlobalStyle } from 'styled-components';
+import { youTubeDark, youTubeSans } from "../styles/setFonts";
+
+
 
 const GlobalStyle = createGlobalStyle`
+
   html, body {
     margin: 0;
     padding: 0;
     background: #EFEFEF;
-    font-family: 'NimbusSans', sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6 {
     margin: 0;
     color: #222222;
+  
   }
 
   p {

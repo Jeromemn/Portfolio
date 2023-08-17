@@ -4,35 +4,20 @@ import Link from "next/link";
 import useOnClickOutside from "../hooks/useOnOutsideClick";
 import Styled from "styled-components";
 import { SearchIcon } from "../icons";
+import CenterContent from "./CenterContent";
 
 const SearchWrapper = Styled.div`
   display: flex;
-  position: absolute;
-  /* background-color: red; */
-  /* z-index: 1; */
+  position: fixed;
   top: 0;
-  max-width: 400px;
   width: 100%;
-  left: 10%;
-  padding: 1rem;
-  /* height: 100%; */
-  /* flex-direction: column; */
-
-
+  padding-top: 1rem;
+  justify-content: center;
 `;
 
 const SearchContainer = Styled.div`
   display: flex;
   flex-direction: column;
-  /* background-color: #030303; */
-  /* border: 1px solid rgba(255, 255, 255, 0.15); */
-  /* border-radius: 8px; */
-  /* width: fit-content; */
-  min-width: 100%;
-  /* max-width: 400px; */
-  /* position: absolute; */
-  /* padding-left:1rem; */
-  
 `;
 
 const SearchBox = Styled.div`
@@ -46,6 +31,7 @@ const SearchBox = Styled.div`
   align-content: center;
   position: relative;
   padding-left:1rem;
+  width: 400px;
   /*  maybe use box shadow */
   /* box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.4); */
 
@@ -72,10 +58,8 @@ const SearchInput = Styled.input`
   ${({ $editMode }) =>
     $editMode &&
     `
-
   `}
   
-
  &::placeholder {
     color: rgba(255, 255, 255, 0.5);
     padding-left: 0.5rem;
@@ -89,16 +73,12 @@ const DropDownWrapper = Styled.div`
   position: relative;
   background-color: #030303;
   width: 100%;
-  /* max-width: 382px; */
   justify-content: center;
-  /* z-index: 2; */
-  /* top: calc(--SearchBox.height); */
   border-radius: 0 0 8px 8px;
   overflow: hidden;
   box-sizing: border-box;
   border: 1px solid rgba(255, 255, 255, 0.15);
   padding: 8px 0;
-
 `;
 
 const DropDownItem = Styled.div`
@@ -106,7 +86,6 @@ const DropDownItem = Styled.div`
   justify-content: flex-start;
   align-items: center;
   padding-left:1rem;
-  font-family: Roboto,Noto Naskh Arabic UI,Arial,sans-serif;
   font-size: 16px;
   line-height: 1.2;
   font-weight: 400;
@@ -206,29 +185,35 @@ const Search = () => {
   console.log(filteredItems);
   return (
     <SearchWrapper>
-      <SearchContainer>
-        <SearchBox onClick={toggling} $editMode={editMode}>
-          <SearchIcon width={24} height={24} color="rgba(255, 255, 255, 0.5)" />
-          <SearchInput
-            id="inputId"
-            type="text"
-            placeholder="Search Pages, Projects"
-            value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
-          />
-        </SearchBox>
-        {editMode && (
-          <DropDownWrapper ref={dropdownRef}>
-            {filteredItems.map(({ title, link }) => (
-                <Link  key={title} href={link} onClick={toggling}>
-              <DropDownItem>
-                  <DropDownText>{title}</DropDownText>
-              </DropDownItem>
+      <CenterContent>
+        <SearchContainer>
+          <SearchBox onClick={toggling} $editMode={editMode}>
+            <SearchIcon
+              width={24}
+              height={24}
+              color="rgba(255, 255, 255, 0.5)"
+            />
+            <SearchInput
+              id="inputId"
+              type="text"
+              placeholder="Search Pages, Projects"
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
+            />
+          </SearchBox>
+          {editMode && (
+            <DropDownWrapper ref={dropdownRef}>
+              {filteredItems.map(({ title, link }) => (
+                <Link key={title} href={link} onClick={toggling}>
+                  <DropDownItem>
+                    <DropDownText>{title}</DropDownText>
+                  </DropDownItem>
                 </Link>
-            ))}
-          </DropDownWrapper>
-        )}
-      </SearchContainer>
+              ))}
+            </DropDownWrapper>
+          )}
+        </SearchContainer>
+      </CenterContent>
     </SearchWrapper>
   );
 };

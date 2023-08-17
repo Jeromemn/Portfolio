@@ -44,7 +44,7 @@ const SidebarButton = styled.button`
   align-items: center;
   justify-content: center;
   padding: 12px 0;
-  width: 65px;
+  width: 56px;
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0);
 

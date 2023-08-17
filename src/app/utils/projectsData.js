@@ -9,14 +9,14 @@ const projectsData = [
     image: {
       url: "/tuffSkint.png",
       alt: "Tuff Skin Website",
-      title: "Tuff Skin",
+      title: "Tuff Skin Website",
     },
-    Website: "https://tuff-skin-website-wkt284e86-webfluent.vercel.app/",
-    gitHub: "https://github.com/WebFluent/tuff-skin",
+    website: "https://tuff-skin-website-wkt284e86-webfluent.vercel.app/",
+    github: "https://github.com/WebFluent/tuff-skin",
     link: "/projects/tuffSkin",
     about: "Tuff Skin Website",
     year: "2023",
-    commits: "75",  
+    commits: "75",
     techUsed: [
       "React",
       "Next.js",
@@ -29,8 +29,7 @@ const projectsData = [
       "Tanstack/react-table",
       "prop-types",
       "React-responsive-carousel",
-
-    ]
+    ],
   },
   {
     id: 2,
@@ -38,16 +37,17 @@ const projectsData = [
     name: "modernpilgrim",
     title: "Modern Pilgrim Website",
     team: "School Project",
-    description: "This app is used as social media platform. At Modern Pilgrims we like to share with you other peoples recent trips and a little bit about how it went. For instance, in each post you can determine whether or not you rate the trip out of five stars. As well as leave a summary of the trip, location of the trip, and even comment on your trip or others that you find comment worthy.",
+    description:
+      "This app is used as social media platform. At Modern Pilgrims we like to share with you other peoples recent trips and a little bit about how it went. For instance, in each post you can determine whether or not you rate the trip out of five stars. As well as leave a summary of the trip, location of the trip, and even comment on your trip or others that you find comment worthy.",
     repo: "Modern-Pilgrim",
     // image: "/modernPilgrims.png",
     image: {
       url: "/modernPilgrims.png",
-      alt: "Traders Journal",
-      title: "Traders Journal",
+      alt: "Modern Pilgrim Website",
+      title: "Modern Pilgrim Website",
     },
-    webSite: "https://modern-pilgrims.vercel.app/",
-    gitHub: "https://github.com/Jeromemn/Modern-Pilgrim",
+    website: "https://modernpilgrims.herokuapp.com/",
+    github: "https://github.com/Jeromemn/Modern-Pilgrim",
     link: "/projects/modernpilgrim",
     about: "Modern Pilgrim Website",
     year: "2022",
@@ -64,8 +64,7 @@ const projectsData = [
       "Material UI",
       "bootstrap",
       "styled-components",
-    ]
-
+    ],
   },
   {
     id: 3,
@@ -78,13 +77,13 @@ const projectsData = [
       alt: "Traders Journal",
       title: "Traders Journal",
     },
-    webSite: "https://traders-journal-ivgdojk5d-jeromemn.vercel.app/",
-    gitHub: "https://github.com/Jeromemn/Traders-Journal",
+    website: "https://traders-journal-ivgdojk5d-jeromemn.vercel.app/",
+    github: "https://github.com/Jeromemn/Traders-Journal",
     link: "/projects/tradersJournal",
     about: "A trading journal application",
     year: "2023",
-    commits: "75",  
-    techUsed: [    
+    commits: "75",
+    techUsed: [
       "React",
       "Next",
       "Tanstack",
@@ -95,8 +94,7 @@ const projectsData = [
       "Mongoose",
       "MongoDB",
       "API Requests",
-    ]
-
+    ],
   },
   {
     id: 4,
@@ -107,14 +105,14 @@ const projectsData = [
     image: {
       url: "/switchAlbum.jpg",
       alt: "swicth webpage",
-      title: "Switch application",
+      title: "Switch Application",
     },
-    webSite: "https://ft-emd51pitl-webfluent.vercel.app/",
-    gitHub: "https://github.com/WebFluent/switch",
+    website: "https://ft-emd51pitl-webfluent.vercel.app/",
+    github: "https://github.com/WebFluent/switch",
     link: "/projects/switch",
     about: "Switch a feature flag management application",
     year: "2023",
-    commits: "75",  
+    commits: "75",
     techUsed: [
       "React",
       "TypeScript",
@@ -127,26 +125,27 @@ const projectsData = [
       "next-auth",
       "stitches/react",
       "nodemon",
-    ]
-
+    ],
   },
   {
     id: 5,
     name: "cardbattle",
     team: "School Project",
-    description: "A JavaScript implementation of a custom card game. Card battle is both a fun solitaire and multiplayer game since you can play against the A.I.(novice).",
+    description:
+      "A JavaScript implementation of a custom card game. Card battle is both a fun solitaire and multiplayer game since you can play against the A.I.(novice).",
     // image: "/images/Card-Battle-gif.gif",
     image: {
       url: "/Card-Battle-gif.gif",
       alt: "card battle page",
       title: "CardBattle",
     },
-    webSite: "https://card-battle.herokuapp.com/",
-    gitHub: "https://github.com/Jeromemn/card-battle",
+    website: "https://card-battle.herokuapp.com/",
+    github: "https://github.com/Jeromemn/card-battle",
     link: "/projects/cardbattle",
-    about:"The goal of the game is eliminate your opponent by lowering their hitpoints to 0 first. All 10 cards have the same option to attack, defend, or skip. Click a card to call it to action. The game checks the attributes of the selected card: attack and defend. If the selected card attacks, the opponent will have their hitpoints deducted by the attack subtracted by the defending cards defense. You can regain hitpoints by selecting a card and using defense. The first player to 0 hitpoints loses.",
+    about:
+      "The goal of the game is eliminate your opponent by lowering their hitpoints to 0 first. All 10 cards have the same option to attack, defend, or skip. Click a card to call it to action. The game checks the attributes of the selected card: attack and defend. If the selected card attacks, the opponent will have their hitpoints deducted by the attack subtracted by the defending cards defense. You can regain hitpoints by selecting a card and using defense. The first player to 0 hitpoints loses.",
     year: "2022",
-    commits: "75",  
+    commits: "75",
     techUsed: [
       "JavaScript",
       "bCrypt",
@@ -156,26 +155,26 @@ const projectsData = [
       "mysql2",
       "sequelize",
       "tailwindcss",
-    ]
-
+    ],
   },
   {
     id: 6,
     name: "pwaTextEditor",
     team: "School Project",
-    description: "a Progressive Web Application that recognized JavaScript and can be typed in and saved both via a live web application and a local application that is off line. The online and offline versions will sync together to ensure nothing is lost",
+    description:
+      "a Progressive Web Application that recognized JavaScript and can be typed in and saved both via a live web application and a local application that is off line. The online and offline versions will sync together to ensure nothing is lost",
     // image: "/images/textedit.jpg",
     image: {
       url: "/textedit.jpg",
       alt: "text editor page",
       title: "text editor",
     },
-    webSite: "https://pwathejateway.herokuapp.com/",
-    gitHub: "https://github.com/Jeromemn/Progressive-Web-App-TextEditor",
+    website: "https://pwathejateway.herokuapp.com/",
+    github: "https://github.com/Jeromemn/Progressive-Web-App-TextEditor",
     link: "/projects/pwaTextEditor",
     about: "Online offline text editor",
     year: "2022",
-    commits: "75",  
+    commits: "75",
     techUsed: [
       "JavaScript",
       "CSS",
@@ -188,9 +187,7 @@ const projectsData = [
       "express",
       "idb",
       "concurrently",
-
-    ]
-
+    ],
   },
 ];
 

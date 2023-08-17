@@ -116,7 +116,6 @@ const PlayIconWrapper = styled.div`
 
 const CurrentPageText = styled.p`
   color: white;
-  font-family: Roboto, Noto Naskh Arabic UI, Arial, sans-serif;
   font-weight: 500;
   line-height: 19.2px;
   font-size: 16px;
@@ -185,7 +184,7 @@ const CurrentPageWrapper = styled.div`
   /* align-items: center; */
   align-content: center;
   /* padding: 0 1rem; */
-  width: 86px;
+  width: fit-content;
 `;
 
 const Footer = () => {
