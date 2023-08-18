@@ -13,6 +13,8 @@ import { PlayYouTube, GitHub, OptionsDots } from "@/app/icons";
 import Thumbs from "@/app/components/Thumbs";
 import CenterContent from "../../components/CenterContent";
 import { youTubeDark, youTubeSans } from "../../styles/setFonts";
+import OptionsDropDown from "@/app/components/OptionsDropDown";
+import { DropDownItem, GoToDev } from "@/app/components/DropDownItem";
 
 const SingleProjectPageWrapper = styled.div`
   display: flex;
@@ -196,8 +198,10 @@ const TechStart = styled.div`
 
 const SingleProjectPage = ({ params, play, lineheight }) => {
   const [showMore, setShowMore] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const moreRef = useRef();
   useOnClickOutside(moreRef, () => setShowMore(false));
+  console.log(isOpen);
 
   const project = projectsData.find(
     (project) => project.name === params.singleProject
@@ -205,13 +209,23 @@ const SingleProjectPage = ({ params, play, lineheight }) => {
 
   const handleClick = () => {
     setShowMore(true);
-    console.log("clicked");
   };
 
   const handleClose = () => {
     setShowMore(false);
   };
-  console.log(project.website)
+
+  const openDropDown = () => {
+    console.log(isOpen);
+    (!isOpen) ? setIsOpen(true) : setIsOpen(false);
+    console.log(isOpen);
+
+  };
+
+  // const openDropDown = () => {
+  //   setIsOpen(true);
+  //   console.log(isOpen);
+  // };
 
   return (
     <SingleProjectPageWrapper>
@@ -262,10 +276,18 @@ const SingleProjectPage = ({ params, play, lineheight }) => {
               <GitHub color="white" width={20} height={20} />
               Go to Repo
             </ButtonBase>
-            <ButtonBase variant="icon">
+            {/* <ButtonBase variant="icon" onClick={openDropDown}>
               <OptionsDots color="white" size={24} />
-            </ButtonBase>
+            {isOpen && <OptionsDropDown />}
+            </ButtonBase> */}
+            {/* <OptionsDropDown isopen={isOpen} /> */}
             {/* <ButtonBase text="Github" width={100}></ButtonBase> */}
+
+            <OptionsDropDown>
+              <DropDownItem/>
+              <GoToDev/>
+
+              </OptionsDropDown>
           </ButtonContainer>
         </ProjectDescriptionWrapper>
       </ProjectContent>

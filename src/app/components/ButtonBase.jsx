@@ -50,14 +50,27 @@ const IconButton = styled.button`
   background: none;
   width: fit-content;
   min-width: auto;
-  padding: 0 6px
+  padding: 0 6px;
 
+  &:hover {
+    background-size: 30px 80px;
+    background: linear-gradient(
+      #bbbbbb53 0%,
+      #bbbbbb53 25%,
+      #bbbbbb53 75%,
+      #bbbbbb53 95%,
+      #bbbbbb53 100%,
+      #bbbbbb53 110%
+    );
+    border-radius: 50%;
+    display: inline-flex;
+  }
 `;
 
 const variants = {
   primary: PrimaryButton,
   secondary: SecondaryButton,
-  icon: IconButton
+  icon: IconButton,
 };
 
 const ButtonBase = ({ variant, onClick, children, ...props }) => {
