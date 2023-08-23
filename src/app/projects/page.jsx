@@ -2,6 +2,9 @@
 import React from "react";
 import AllAlbums from "../components/albums/allAlbums";
 import styled from "styled-components";
+import CenterContent from "../components/CenterContent";
+import { youTubeDark, youTubeSans } from "../styles/setFonts";
+
 
 const ProjectsPageWrapper = styled.div`
   display: flex;
@@ -18,7 +21,7 @@ const ProjectsPageWrapper = styled.div`
 
 const ArtistHeaderWapper = styled.div`
   display: flex;
-  padding: 0 0 1.5rem 0;
+  padding: 6px 0 1.5rem 0;
   /* justify-content: space-between; */
   flex-direction: column;
   gap: 1.5rem;
@@ -26,7 +29,6 @@ const ArtistHeaderWapper = styled.div`
 `;
 
 const ArtistHeader = styled.h1`
-  font-family: Roboto, Noto Naskh Arabic UI, Arial, sans-serif;
   font-size: 3rem;
   color: white;
 `;
@@ -42,19 +44,21 @@ const ProjectsContentWrapper = styled.div`
 
 const ProjectsTitle = styled.h2`
   color: white;
-  font-family: Roboto, Noto Naskh Arabic UI, Arial, sans-serif;
 `;
 
 const ProjectsPage = () => {
   return (
     <ProjectsPageWrapper>
+      <CenterContent>
+
       <ProjectsContentWrapper>
         <ArtistHeaderWapper>
-          <ArtistHeader>Jerome</ArtistHeader>
-          <ProjectsTitle>Projects</ProjectsTitle>
+          <ArtistHeader className={youTubeSans.className}>Jerome</ArtistHeader>
+          <ProjectsTitle className={youTubeSans.className}>Projects</ProjectsTitle>
         </ArtistHeaderWapper>
         <AllAlbums />
       </ProjectsContentWrapper>
+      </CenterContent>
     </ProjectsPageWrapper>
   );
 };

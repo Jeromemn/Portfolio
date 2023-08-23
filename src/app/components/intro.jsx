@@ -20,7 +20,13 @@ import {
   Verified,
   GitHub,
   LinkedInIcon,
+  ExploreYouTube,
+  LibraryYT,
+  SubscriptionsYT,
+  RadioPlay, OptionsDots
 } from "../icons";
+import ButtonBase from "./ButtonBase";
+import { youTubeDark, youTubeSans } from "../styles/setFonts";
 
 const IntroContainer = styled.div`
   display: flex;
@@ -31,7 +37,7 @@ const IntroContainer = styled.div`
   align-self: flex-end;
   justify-self: flex-start;
   /* position: relative; */
-  padding-left: 4rem;
+  /* padding-left: 4rem; */
   padding-bottom: 2rem;
 `;
 
@@ -39,21 +45,22 @@ const NameIntro = styled.h1`
   padding: 0rem 0rem;
   font-size: 3rem;
   color: white;
-  font-family: 'YouTube Sans, Roboto, Noto Naskh Arabic UI, Arial, sans-serif';
-/* font-family: 'YouSans'; */
+  line-height: 1.2;
 `;
 
 const IntroText = styled.p`
   color: white;
   padding: 1rem 0rem;
+  
 `;
 
 const ButtonContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   padding-left: 0rem;
   align-items: flex-start;
-  width: 80%;
+  gap: 8px;
+  width: 100%;
 `;
 
 const MusicButton = styled.button`
@@ -123,10 +130,10 @@ const Intro = () => {
 
   const pathname = usePathname();
 
-
   const randomLink = useMemo(() => {
     const updatedLinks = AllLinks.filter((item) => item !== pathname);
-    const newLink = updatedLinks[Math.floor(Math.random() * updatedLinks.length)];
+    const newLink =
+      updatedLinks[Math.floor(Math.random() * updatedLinks.length)];
     return newLink || updatedLinks[0];
   }, [pathname]);
 
@@ -137,7 +144,8 @@ const Intro = () => {
         <VerifiedHeader>Verified Developer</VerifiedHeader>
       </VerifiedContainer>
 
-      <NameIntro>Jerome</NameIntro>
+      <NameIntro className={youTubeSans.className}>Jerome</NameIntro>
+      {/* <NameIntro className={youTubeSans.className}>Dirty Heads</NameIntro> */}
       <IntroText>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia, ipsa
         totam laudantium cupiditate nam, accusantium eum nobis vel perferendis
@@ -145,18 +153,29 @@ const Intro = () => {
         assumenda iusto.
       </IntroText>
       <ButtonContainer>
-        <MusicButton as={Link} href={randomLink}>
-          <YouTubeShuffle color="black" width={20} height={20} />
-          <ButtonName>Shuffle</ButtonName>
-        </MusicButton>
-        <MusicButton>
-          <PlayIconWrappper>
-            <PlayYouTube color="black" width={20} height={20} />
-          </PlayIconWrappper>
+        <ButtonBase variant='primary'>
+          <YouTubeShuffle color="black" width={24} height={24} />
+          Shuffle
+        </ButtonBase>
+      
+
+        <ButtonBase variant='primary'>
+          {/* <PlayIconWrappper> */}
+          <PlayYouTube color="black" width={24} height={24} />
+          {/* </PlayIconWrappper> */}
           {/* <PlayCustom color='black' width={20} height={20}/> */}
           {/* {<Image src={PlayCustom} alt="play" width={20} height={20} margin-right='6px' />} */}
           <ButtonName>Play</ButtonName>
-        </MusicButton>
+        </ButtonBase>
+        <ButtonBase variant='secondary'>
+          <RadioPlay color="white" size={24} />
+          Subscribe
+          </ButtonBase>
+        {/* </MusicButton> */}
+        <ButtonBase variant='icon'>
+          <OptionsDots color="white" size={24} />
+          </ButtonBase>
+{/* 
         <MusicButton>
           <Link href="www.linkedin.com/in/jeromenixon">
             <LinkedInIcon color="black" />
@@ -165,7 +184,7 @@ const Intro = () => {
           <Link href="https://github.com/Jeromemn">
             <GitHub color="black" fill />
           </Link>
-        </MusicButton>
+        </MusicButton> */}
       </ButtonContainer>
     </IntroContainer>
   );

@@ -1,13 +1,18 @@
-// import Home from "./page";
-// 'use client';
 import React from "react";
 import StyledComponentsRegistry from "./styles/registry";
 import SideBar from "./components/SideBar";
 import Footer from "./components/Footer";
 import Search from "./components/Search";
-// import globals from "./styles/globals";
+import { youTubeDark, youTubeSans } from "./styles/setFonts";
+import { Roboto } from "next/font/google"
 
-export const metadata = {
+export const roboto = Roboto({
+  subsets: ['latin-ext'],
+  weight: ['400', '500', '700'],
+  variable: '--font-roboto-mono',
+})
+
+const metadata = {
   title: "Home",
   description: "Home page",
   keywords: "home, page",
@@ -15,9 +20,9 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body>
-        <StyledComponentsRegistry>{children}
+    <html lang="en" className={roboto.className}>
+      <body className={roboto.className}>
+        <StyledComponentsRegistry className={roboto.className}>{children}
         <SideBar />
         <Search />
         <Footer />

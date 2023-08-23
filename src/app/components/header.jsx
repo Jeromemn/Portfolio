@@ -3,6 +3,8 @@ import styled from "styled-components";
 import Image from "next/image";
 import Link from "next/link";
 import play from "../images/play.svg";
+import { youTubeDark, youTubeSans } from "../styles/setFonts";
+
 // import projects from "/projects.png";
 // import contactImage from "../images/contactImage.png";
 // import about from "../images/about.png";
@@ -21,7 +23,7 @@ const HeaderContainer = styled.div`
   /* align-items: center; */
   width: 100%;
   /* height: 100%; */
-  padding-left: 4rem;
+  /* padding-left: 4rem; */
   padding-right: 4rem;
 `;
 
@@ -117,11 +119,24 @@ const ItemSection = styled.div`
 
 `;
 
+const ArtistName = styled.p`
+color: rgba(255, 255, 255, 0.7);
+font-size: 16px;
+font-weight: 400;
+line-height: 19.2px;
+
+`;
+
+// font color for p tag jerome
+
+// rgba(255, 255, 255, 0.7)
+
+// 
 
 const Header = () => {
   return (
     <HeaderContainer>
-      <HeaderTitle>Popular</HeaderTitle>
+      <HeaderTitle className={youTubeSans.className}>Popular</HeaderTitle>
       <NavigationContainer>
         {headerList.map(({ id, name, path, image }) => (
           <HeaderItemWrapper key={id}>
@@ -143,7 +158,7 @@ const Header = () => {
             <Link href={`${path}`}>
               <HeaderItems>{name}</HeaderItems>
             </Link>
-            <p> Jerome </p>
+            <ArtistName> Jerome </ArtistName>
             </ItemSection>
           </HeaderItemWrapper>
         ))}

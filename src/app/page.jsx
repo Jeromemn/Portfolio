@@ -4,7 +4,7 @@ import Header from "./components/header";
 import Intro from "./components/intro";
 import styled from "styled-components";
 import mainImage from "./images/mainImage.jpg";
-
+import CenterContent from "./components/CenterContent";
 
 
 const ContentWrapper = styled.div`
@@ -19,7 +19,7 @@ const ContentWrapper = styled.div`
 const ArtistInfo = styled.div`
   display: flex;
   /* flex-direction: column; */
-  /* justify-content: center; */
+  justify-content: center;
   background-color: black;
   /* border: 1px solid black; */
   /* position: inherit; */
@@ -62,13 +62,19 @@ const Home = () => {
       <ContentWrapper>
         <ArtistCoverWrapper image={mainImage}>
           {/* <ArtistCover /> */}
+          <CenterContent>
+
           <IntroWrapper>
             <Intro></Intro>
           </IntroWrapper>
+          </CenterContent>
         </ArtistCoverWrapper>
         {/* <BottomSection>  */}
+
         <ArtistInfo> 
+        <CenterContent>
           <Header />
+        </CenterContent>
         </ArtistInfo>
         {/* </BottomSection> */}
         {/* <h1 color="black"> Home </h1> */}
