@@ -1,6 +1,4 @@
-// import Home from "./page";
 import React from "react";
-// import localFont from 'next/font/local'
 import StyledComponentsRegistry from "./styles/registry";
 import SideBar from "./components/SideBar";
 import Footer from "./components/Footer";
@@ -14,7 +12,7 @@ export const roboto = Roboto({
   variable: '--font-roboto-mono',
 })
 
-export const metadata = {
+const metadata = {
   title: "Home",
   description: "Home page",
   keywords: "home, page",
