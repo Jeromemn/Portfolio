@@ -144,7 +144,7 @@ const Intro = () => {
         <VerifiedHeader>Verified Developer</VerifiedHeader>
       </VerifiedContainer>
 
-      <NameIntro className={youTubeSans.className}>Dirty Heads</NameIntro>
+      <NameIntro className={youTubeSans.className}>Jerome</NameIntro>
       {/* <NameIntro className={youTubeSans.className}>Dirty Heads</NameIntro> */}
       <IntroText>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia, ipsa

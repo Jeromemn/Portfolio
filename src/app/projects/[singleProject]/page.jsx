@@ -60,7 +60,7 @@ const ProjectDescriptionWrapper = styled.div`
   gap: 0.5rem;
   width: fit-content;
   justify-content: space-between;
-  height: 240px;
+  height: 100%;
 `;
 
 const ProjectTitle = styled.h2`
@@ -69,6 +69,7 @@ const ProjectTitle = styled.h2`
   font-weight: 700;
   color: rgb(255, 255, 255);
   width: fit-content;
+  /* margin-bottom: 1rem; */
   /* letter-spacing: normal; */
 `;
 
