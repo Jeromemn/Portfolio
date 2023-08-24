@@ -5,13 +5,9 @@ import Link from "next/link";
 import useOnClickOutside from "../../hooks/useOnOutsideClick";
 import projectsData from "@/app/utils/projectsData";
 import styled from "styled-components";
-// import PlayButton from "@/app/components/PlayButton";
 import ButtonBase from "@/app/components/ButtonBase";
 import { PlayYouTube, GitHub, OptionsDots } from "@/app/icons";
-// import getCommits from "@/app/utils/getCommits";
-// import { commitCount } from "@/app/utils/getCommits";
 import Thumbs from "@/app/components/Thumbs";
-import CenterContent from "../../components/CenterContent";
 import { youTubeDark, youTubeSans } from "../../styles/setFonts";
 import OptionsDropDown from "@/app/components/OptionsDropDown";
 import { DropDownItem, GoToDev } from "@/app/components/DropDownItem";
@@ -22,19 +18,14 @@ const SingleProjectPageWrapper = styled.div`
   align-items: center;
   flex-direction: column;
   background-color: black;
-  /* height: calc(100vh - 50px); */
   height: auto;
   width: 100%;
-  /* overflow-y: scroll; */
-  /* padding-top: 2rem; */
   padding-bottom: 8rem;
-  /* margin-bottom: 8rem; */
 `;
 
 const ProjectContent = styled.div`
   display: flex;
   flex-direction: row;
-  /* justify-content: space-between; */
   align-items: flex-start;
   width: 75%;
   padding: 8rem 0rem 3rem 0rem;
@@ -45,13 +36,9 @@ const ProjectImage = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  /* width: 300px; */
-  /* height: 240px; */
   border: 1px solid grey;
   border-radius: 4px;
   overflow: hidden;
-  /* position: relative; */
-  /* object-fit: cover; */
 `;
 
 const ProjectDescriptionWrapper = styled.div`
@@ -69,8 +56,6 @@ const ProjectTitle = styled.h2`
   font-weight: 700;
   color: rgb(255, 255, 255);
   width: fit-content;
-  /* margin-bottom: 1rem; */
-  /* letter-spacing: normal; */
 `;
 
 const Text = styled.p`
@@ -84,7 +69,6 @@ const Text = styled.p`
 const CommitsAndTech = styled.div`
   display: flex;
   flex-direction: row;
-  /* justify-content: space-evenly; */
   align-items: flex-start;
   gap: 0.5rem;
   width: fit-content;
@@ -98,15 +82,12 @@ const ButtonContainer = styled.div`
 `;
 
 const DescriptionWrapper = styled.div`
-  /* display: flex; */
   width: 60%;
   max-height: calc(2 * 14px * 1.4);
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  /* -webkit-line-clamp: 2; */
-  /* height: max-content; */
 
   ${({ $showMore }) =>
     $showMore &&
@@ -129,18 +110,14 @@ const TechStack = styled.div`
   flex-direction: column;
   gap: 0.5rem;
   width: 75%;
-  /* padding-bottom: 10px; */
-  /* margin-bottom: 50px; */
 `;
 
 const MoreButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  /* color: white; */
   background-color: transparent;
   border: none;
-
   padding: 0;
   width: fit-content;
   cursor: pointer;
@@ -158,9 +135,9 @@ const MoreButton = styled.button`
 `;
 
 const LessButton = styled(MoreButton)`
-display: none;
+  display: none;
 
-${({ $showMore }) =>
+  ${({ $showMore }) =>
     $showMore &&
     `
     display: flex
@@ -175,7 +152,6 @@ const MoreDescription = styled.div`
 const TechWrapper = styled.div`
   display: flex;
   width: 100%;
-  /* padding: 0 .5rem; */
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   overflow: hidden;
   height: 40px;
@@ -218,19 +194,12 @@ const SingleProjectPage = ({ params, play, lineheight }) => {
 
   const openDropDown = () => {
     console.log(isOpen);
-    (!isOpen) ? setIsOpen(true) : setIsOpen(false);
+    !isOpen ? setIsOpen(true) : setIsOpen(false);
     console.log(isOpen);
-
   };
-
-  // const openDropDown = () => {
-  //   setIsOpen(true);
-  //   console.log(isOpen);
-  // };
 
   return (
     <SingleProjectPageWrapper>
-
       <ProjectContent>
         <ProjectImage>
           <Image
@@ -243,8 +212,9 @@ const SingleProjectPage = ({ params, play, lineheight }) => {
           />
         </ProjectImage>
         <ProjectDescriptionWrapper>
-          <ProjectTitle>{project?.title}</ProjectTitle>
-          {/* <div> {params.singleProject}</div> */}
+          <ProjectTitle className={youTubeSans.className}>
+            {project?.title}
+          </ProjectTitle>
           <ProjectInfo>
             <Text color="#aaa">
               {project?.team} • {project?.year}
@@ -269,26 +239,28 @@ const SingleProjectPage = ({ params, play, lineheight }) => {
             </LessButton>
           </MoreDescription>
           <ButtonContainer>
-            <ButtonBase variant="primary" as={Link} href={`${project?.website}`} passHref={true}>
+            <ButtonBase
+              variant="primary"
+              as={Link}
+              href={`${project?.website}`}
+              passHref={true}
+            >
               <PlayYouTube color="black" width={24} height={24} />
               Live Site
             </ButtonBase>
-            <ButtonBase variant="secondary" as={Link} href={`${project?.github}`} passHref={true}>
+            <ButtonBase
+              variant="secondary"
+              as={Link}
+              href={`${project?.github}`}
+              passHref={true}
+            >
               <GitHub color="white" width={20} height={20} />
               Go to Repo
             </ButtonBase>
-            {/* <ButtonBase variant="icon" onClick={openDropDown}>
-              <OptionsDots color="white" size={24} />
-            {isOpen && <OptionsDropDown />}
-            </ButtonBase> */}
-            {/* <OptionsDropDown isopen={isOpen} /> */}
-            {/* <ButtonBase text="Github" width={100}></ButtonBase> */}
-
             <OptionsDropDown>
-              <DropDownItem/>
-              <GoToDev/>
-
-              </OptionsDropDown>
+              <DropDownItem />
+              <GoToDev />
+            </OptionsDropDown>
           </ButtonContainer>
         </ProjectDescriptionWrapper>
       </ProjectContent>
@@ -300,42 +272,11 @@ const SingleProjectPage = ({ params, play, lineheight }) => {
               <TechItem width="135px">{tech}</TechItem>
             </TechStart>
             <Thumbs />
-            {/* <Divider></Divider> */}
           </TechWrapper>
         ))}
       </TechStack>
-      {/* </StyledCenter> */}
     </SingleProjectPageWrapper>
   );
 };
 
 export default SingleProjectPage;
-
-// "use client";
-// import React from "react";
-
-// const TuffSkin = () => {
-//   return (
-//     <div>
-//       <div>
-//         <h2>TuffSkin</h2>
-//         <p> Project </p>
-//         <p> Webfluent</p>
-//         <p> 2021</p>
-//         <p> 3 languages</p>
-//         <p> 6 Packages </p>
-//       </div>
-//       <div>
-//         <p> text 1</p>
-//         <p> text 1</p>
-//         <p> text 1</p>
-//         <p> text 1</p>
-//         <p> text 1</p>
-//         <p> text 1</p>
-//         <p> text 1</p>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default TuffSkin;
