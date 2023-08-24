@@ -1,14 +1,8 @@
-import PropTypes from "prop-types";
-
-const GitHub = ({ color, width, height, }) => (
+const GitHub = ({ color, width, height }) => (
   <svg
-    // width="16"
-    // height="20"
     width={width}
     height={height}
     viewBox="0 0 512 512"
-    // fill="white"
-    // color={color}
     xmlns="http://www.w3.org/2000/svg"
   >
     <g clipPath="url(#clip0_1_1050)">
@@ -19,7 +13,7 @@ const GitHub = ({ color, width, height, }) => (
         fill={color}
       />
     </g>
-</svg>
+  </svg>
 );
 
 export default GitHub;

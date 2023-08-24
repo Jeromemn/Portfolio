@@ -19,7 +19,7 @@ const defaultStyles = css`
   font-family: inherit;
   font-weight: 500;
   font-size: 14px;
-  /* font-family: 'roboto'; */
+  max-width: 400px;
 `;
 
 const PrimaryButton = styled.button`
@@ -68,10 +68,38 @@ const IconButton = styled.button`
   }
 `;
 
+const PlainButton = styled.button`
+  background: none;
+  width: fit-content;
+  min-width: auto;
+  padding: 0;
+  text-align: right;
+  align-items: center;
+  display: flex;
+  color: white;
+  border: none;
+  line-height: 36px;
+  height: 30px;
+  cursor: pointer;
+
+  &:hover {
+    background: linear-gradient(
+      #bbbbbb53 0%,
+      #bbbbbb53 25%,
+      #bbbbbb53 75%,
+      #bbbbbb53 95%,
+      #bbbbbb53 100%,
+      #bbbbbb53 110%
+    );
+    display: inline-flex;
+  }
+`;
+
 const variants = {
   primary: PrimaryButton,
   secondary: SecondaryButton,
   icon: IconButton,
+  plain: PlainButton,
 };
 
 const ButtonBase = ({ variant, onClick, children, ...props }) => {
@@ -96,7 +124,7 @@ ButtonBase.defaultProps = {
 };
 
 ButtonBase.propTypes = {
-  variant: PropTypes.oneOf(["primary", "secondary", "icon"]),
+  variant: PropTypes.oneOf(["primary", "secondary", "icon", "plain"]),
   onClick: PropTypes.func,
   children: PropTypes.node,
 };

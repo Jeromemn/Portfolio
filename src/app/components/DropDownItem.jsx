@@ -24,7 +24,6 @@ const ItemText = Styled.p`
   color: rgb(255, 255, 255);
 `;
 
-// const StyledLink as Styled(Link)``;
 
 const DropDownItem = () => {
   return (

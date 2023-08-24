@@ -25,3 +25,6 @@ export { default as SubscriptionsYT } from './SubscriptionsYT';
 export { default as Recent } from './Recent';
 export { default as LinkedInIcon } from './LinkedInIcon';
 export { default as RadioPlay } from './RadioPlay';
+export { default as WhiteLinked } from './WhiteLinked';
+export { default as GitHubName } from './GitHubName';
+export { default as NewGitHub } from './NewGitHub';

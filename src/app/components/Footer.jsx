@@ -20,13 +20,6 @@ import {
 } from "../icons";
 import AllLinks from "../utils/links";
 
-// const headerList = [
-//   { id: 1, name: "Home", path: "/", image: '/projects.png'},
-//   { id: 2, name: "About", path: "/about", image: '/about.png'},
-//   { id: 3, name: "Contact", path: "/contact", image: '/contactImage.png' },
-//   { id: 4, name: "Projects", path: "/projects", image: '/projects.png' },
-// ];
-
 const FooterWrapper = styled.div`
   display: flex;
   background-color: rgb(33, 33, 33);
@@ -36,7 +29,6 @@ const FooterWrapper = styled.div`
   width: 100%;
   height: 72px;
   flex-direction: column;
-  /* justify-content: space-between; */
 `;
 
 const PlayPauseWrapper = styled.div`
@@ -44,7 +36,6 @@ const PlayPauseWrapper = styled.div`
   justify-content: center;
   align-items: center;
   padding: 0 1rem;
-  /* margin-left: 1rem; */
   gap: 1rem;
 `;
 
@@ -66,7 +57,6 @@ const ShuffleRepeatSection = styled.div`
 
 const FooterSectionContainer = styled.div`
   display: flex;
-  /* width: 100%; */
   justify-content: space-between;
   align-items: center;
   height: inherit;
@@ -181,9 +171,7 @@ const CurrentPageWrapper = styled.div`
   flex-direction: column;
   width: 100%;
   justify-content: center;
-  /* align-items: center; */
   align-content: center;
-  /* padding: 0 1rem; */
   width: fit-content;
 `;
 
@@ -192,11 +180,11 @@ const Footer = () => {
 
   const randomLink = useMemo(() => {
     const updatedLinks = AllLinks.filter((item) => item !== pathname);
-    const newLink = updatedLinks[Math.floor(Math.random() * updatedLinks.length)];
+    const newLink =
+      updatedLinks[Math.floor(Math.random() * updatedLinks.length)];
     return newLink || updatedLinks[0];
   }, [pathname]);
 
-  
   const projectImages = projectsData.reduce(
     (acc, current) => ({ ...acc, [current.link]: current.image }),
     {}
@@ -224,16 +212,9 @@ const Footer = () => {
       title: "Projects",
     },
     ...projectImages,
-    // "/projects/tuffSkin": {
-    //   url: "/projects.png",
-    //   alt: "some alt text",
-    //   title: "Projects",
-    // },
   };
-  // console.log(images);
 
   const { url, alt, title } = images[pathname] || {};
-  // console.log(images[pathname]);
 
   return (
     <FooterWrapper>
@@ -253,7 +234,6 @@ const Footer = () => {
 
         <NowPlayingSection>
           <Image src={`${url}`} alt={alt} width={40} height={40} />
-          {/* <Image src={image} alt={`${image}`} width={40} height={40} /> */}
           <CurrentPageWrapper>
             <CurrentPageText>{title}</CurrentPageText>
             <StyledLink href="/">Jerome </StyledLink>
@@ -273,7 +253,6 @@ const Footer = () => {
             </FilledThumbsContainer>
           </ThumbsSection>
         </NowPlayingSection>
-
         <ShuffleRepeatSection>
           <IconWrapper>
             <VolumeIcon color="rgb(144, 144, 144)" width={30} height={30} />
