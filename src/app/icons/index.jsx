@@ -28,3 +28,4 @@ export { default as RadioPlay } from './RadioPlay';
 export { default as WhiteLinked } from './WhiteLinked';
 export { default as GitHubName } from './GitHubName';
 export { default as NewGitHub } from './NewGitHub';
+export { default as PauseButton } from './PauseButton';

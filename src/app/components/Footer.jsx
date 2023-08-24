@@ -1,5 +1,5 @@
 "use client";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import styled from "styled-components";
 import Image from "next/image";
 import Link from "next/link";
@@ -17,8 +17,10 @@ import {
   UpArrow,
   VolumeIcon,
   ReplayIcon,
+  PauseButton,
 } from "../icons";
 import AllLinks from "../utils/links";
+import useTimer from "../hooks/useTimer";
 
 const FooterWrapper = styled.div`
   display: flex;
@@ -70,6 +72,12 @@ const ProgressSlider = styled.div`
   height: 4px;
   top: 0;
   position: relative;
+`;
+
+const ProgressSliderBar = styled.div`
+  display: flex;
+  background-color: #f44336;
+  width: ${(props) => props.percentage}%;
 `;
 
 const SkipIconWrapper = styled.div`
@@ -175,8 +183,56 @@ const CurrentPageWrapper = styled.div`
   width: fit-content;
 `;
 
+const TimerWrapper = styled.div`
+  display: flex;
+`;
+
 const Footer = () => {
   const pathname = usePathname();
+  // const [count, setCount] = useState(0);
+  // //  update delay dynamically
+  // const [delay, setDelay] = useState();
+  // //  toggle play pause counter 
+  // const [isPlaying, setIsPlaying] = useState(false);
+  // useInterval(
+  //   () => {
+  //     setCount(count + 1);
+  //   },
+  //   isPlaying ? delay : null
+
+  // )
+  // const handleChange = (e) => {
+  //   setDelay(e.target.value);
+  // }
+  const { currentTime, startTimer, pauseTimer, stopTimer, isTimerRunning } = useTimer();
+
+  const onPlay = () => {
+    startTimer();
+  };
+  const onPause = () => {
+    pauseTimer();
+  };
+  
+  const router = useRouter();
+  useEffect(() => {
+    console.log("currentTime", currentTime);
+    console.log("isTimerRunning", isTimerRunning);
+    if (isTimerRunning && currentTime >= 60) {
+      stopTimer();
+      // logic to redirect to next page
+      const updatedLinks = AllLinks.filter((item) => item !== pathname);
+      router.push(updatedLinks[Math.floor(Math.random() * updatedLinks.length)]);
+    }
+  }, [currentTime, isTimerRunning, stopTimer]);
+
+  const timeRemaining = 60 - currentTime;
+  const percentage = Math.min((currentTime / 60) * 100);
+  console.log(timeRemaining);
+  console.log(percentage);
+
+  // console.log(currentTime);
+  // console.log(isTimerRunning);
+  // console.log(endTime);
 
   const randomLink = useMemo(() => {
     const updatedLinks = AllLinks.filter((item) => item !== pathname);
@@ -218,19 +274,29 @@ const Footer = () => {
 
   return (
     <FooterWrapper>
-      <ProgressSlider></ProgressSlider>
+      <ProgressSlider>
+        <ProgressSliderBar percentage={percentage} />
+      </ProgressSlider>
       <FooterSectionContainer>
         <PlayPauseWrapper>
           <SkipIconWrapper>
             <BackYouTube color="white" width={24} height={24} />
           </SkipIconWrapper>
-          <PlayIconWrapper>
-            <PlayYouTube color="white" width={40} height={40} />
+          <PlayIconWrapper onClick={isTimerRunning ? onPause : onPlay}>
+            {isTimerRunning ? (
+              <PauseButton color="white" width={40} height={40}/>
+            ) : (
+            <PlayYouTube color="white" width={40} height={40}  />
+            )}
           </PlayIconWrapper>
           <SkipIconWrapper>
             <ForwardYouTube color="white" width={24} height={24} />
           </SkipIconWrapper>
         </PlayPauseWrapper>
+        <TimerWrapper>
+          <p>{currentTime}</p>
+
+        </TimerWrapper>
 
         <NowPlayingSection>
           <Image src={`${url}`} alt={alt} width={40} height={40} />
