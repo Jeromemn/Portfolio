@@ -173,7 +173,7 @@ const TechStart = styled.div`
   display: flex;
 `;
 
-const SingleProjectPage = ({ params, play, lineheight }) => {
+const SingleProjectPage = ({ params }) => {
   const [showMore, setShowMore] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const moreRef = useRef();
@@ -183,6 +183,7 @@ const SingleProjectPage = ({ params, play, lineheight }) => {
   const project = projectsData.find(
     (project) => project.name === params.singleProject
   );
+  console.log(project);
 
   const handleClick = () => {
     setShowMore(true);

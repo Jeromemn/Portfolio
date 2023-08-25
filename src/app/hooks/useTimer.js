@@ -28,12 +28,16 @@ const useTimer = () => {
     setIsTimerRunning(false);
   };
 
+  const updateTimer = (value) => {
+    setCurrentTime(value);
+  };
+
   const stopTimer = () => {
     setIsTimerRunning(false);
     setCurrentTime(0);
   };
 
-  return { currentTime, startTimer, pauseTimer, stopTimer, isTimerRunning };
+  return { currentTime, startTimer, pauseTimer, stopTimer,updateTimer,isTimerRunning };
 };
 
 export default useTimer;

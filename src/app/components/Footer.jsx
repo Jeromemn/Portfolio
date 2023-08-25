@@ -21,10 +21,12 @@ import {
 } from "../icons";
 import AllLinks from "../utils/links";
 import useTimer from "../hooks/useTimer";
+import Slider from 'rc-slider';
+import 'rc-slider/assets/index.css';
 
 const FooterWrapper = styled.div`
   display: flex;
-  background-color: rgb(33, 33, 33);
+  background-color: #212121;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -52,9 +54,10 @@ const NowPlayingSection = styled.div`
 
 const ShuffleRepeatSection = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
   padding: 0 1rem;
+  width: 257.14px;
 `;
 
 const FooterSectionContainer = styled.div`
@@ -76,8 +79,25 @@ const ProgressSlider = styled.div`
 
 const ProgressSliderBar = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: end;
   background-color: #f44336;
-  width: ${(props) => props.percentage}%;
+  width: ${(props) => props.$percentage}%;
+`;
+
+const ProgressSliderBall = styled.div`
+  display: none;
+  background-color: #f44336;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  /* position: absolute; */
+
+  ${FooterWrapper}:hover & {
+    display: flex;
+    cursor: pointer;
+    position: absolute;
+  }
 `;
 
 const SkipIconWrapper = styled.div`
@@ -187,24 +207,60 @@ const TimerWrapper = styled.div`
   display: flex;
 `;
 
-const Footer = () => {
-  const pathname = usePathname();
-  // const [count, setCount] = useState(0);
-  // //  update delay dynamically
-  // const [delay, setDelay] = useState();
-  // //  toggle play pause counter 
-  // const [isPlaying, setIsPlaying] = useState(false);
-  // useInterval(
-  //   () => {
-  //     setCount(count + 1);
-  //   },
-  //   isPlaying ? delay : null
+const DisplayTimer = styled.p`
+  color: #aaa;
+  font-size: 12px;
+  line-height: 1.2;
+  font-weight: 400;
+`;
 
-  // )
-  // const handleChange = (e) => {
-  //   setDelay(e.target.value);
-  // }
-  const { currentTime, startTimer, pauseTimer, stopTimer, isTimerRunning } = useTimer();
+const TimerPlayContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const SliderProgress = styled(Slider)`
+  padding: 15px;
+  margin: -15px;
+  & .rc-slider-rail {
+    background-color: #bdbdbd;
+    height: 4px;
+    /* top: 0; */
+  }
+
+  & .rc-slider-track {
+   height: 4px;
+    background-color: #f44336;
+    border: none;
+    /* top: 0; */
+
+  }
+
+  & .rc-slider-handle {
+    /* display: none;
+     */
+    background-color: #f44336;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border-color: #f44336;
+    border: none;
+
+    &onChange {
+      border: none;
+    }
+  }
+`;
+
+const Footer = ({ params }) => {
+  const pathname = usePathname();
+  const { currentTime, startTimer, pauseTimer, stopTimer, updateTimer,isTimerRunning } =
+    useTimer();
+  const [progress , setProgress] = useState(0);
+
+  const onSliderChange = (value) => {
+  };
 
   const onPlay = () => {
     startTimer();
@@ -212,27 +268,32 @@ const Footer = () => {
   const onPause = () => {
     pauseTimer();
   };
-  
+
+
+
+  const playTime = 90;
+
   const router = useRouter();
   useEffect(() => {
-    console.log("currentTime", currentTime);
-    console.log("isTimerRunning", isTimerRunning);
-    if (isTimerRunning && currentTime >= 60) {
+    if (isTimerRunning && currentTime >= playTime) {
       stopTimer();
       // logic to redirect to next page
       const updatedLinks = AllLinks.filter((item) => item !== pathname);
-      router.push(updatedLinks[Math.floor(Math.random() * updatedLinks.length)]);
+      router.push(
+        updatedLinks[Math.floor(Math.random() * updatedLinks.length)]
+      );
     }
   }, [currentTime, isTimerRunning, stopTimer]);
 
-  const timeRemaining = 60 - currentTime;
-  const percentage = Math.min((currentTime / 60) * 100);
-  console.log(timeRemaining);
-  console.log(percentage);
-
-  // console.log(currentTime);
-  // console.log(isTimerRunning);
-  // console.log(endTime);
+  const percentage = Math.min((currentTime / playTime) * 100);
+  console.log(currentTime % 60);
+  const currentPlay =
+    (currentTime >= 59 ? Math.floor(currentTime / 60) : 0) +
+    ":" +
+    (currentTime <= 10 ? Math.floor(currentTime / 60) : 0 +
+    Math.floor(currentTime % 60));
+  const playMinutes =
+    (playTime >= 60 ? Math.floor(playTime / 60) : 0) + ":" + (playTime % 60);
 
   const randomLink = useMemo(() => {
     const updatedLinks = AllLinks.filter((item) => item !== pathname);
@@ -241,10 +302,15 @@ const Footer = () => {
     return newLink || updatedLinks[0];
   }, [pathname]);
 
+  const project = projectsData.find((item) => item.link === pathname);
+  console.log(project);
+
   const projectImages = projectsData.reduce(
     (acc, current) => ({ ...acc, [current.link]: current.image }),
     {}
   );
+
+  console.log(projectImages);
 
   const images = {
     "/": {
@@ -274,29 +340,37 @@ const Footer = () => {
 
   return (
     <FooterWrapper>
-      <ProgressSlider>
-        <ProgressSliderBar percentage={percentage} />
-      </ProgressSlider>
+      {/* <ProgressSlider> */}
+        {/* <ProgressSliderBar $percentage={percentage}>
+          <ProgressSliderBall />
+        </ProgressSliderBar> */}
+        <SliderProgress value={currentTime} min={0} max={playTime} step={0.1}onChange={(nextValue) => {
+          updateTimer(nextValue);
+        }} />
+      {/* </ProgressSlider> */}
       <FooterSectionContainer>
-        <PlayPauseWrapper>
-          <SkipIconWrapper>
-            <BackYouTube color="white" width={24} height={24} />
-          </SkipIconWrapper>
-          <PlayIconWrapper onClick={isTimerRunning ? onPause : onPlay}>
-            {isTimerRunning ? (
-              <PauseButton color="white" width={40} height={40}/>
-            ) : (
-            <PlayYouTube color="white" width={40} height={40}  />
-            )}
-          </PlayIconWrapper>
-          <SkipIconWrapper>
-            <ForwardYouTube color="white" width={24} height={24} />
-          </SkipIconWrapper>
-        </PlayPauseWrapper>
-        <TimerWrapper>
-          <p>{currentTime}</p>
-
-        </TimerWrapper>
+        <TimerPlayContainer>
+          <PlayPauseWrapper>
+            <SkipIconWrapper>
+              <BackYouTube color="white" width={24} height={24} />
+            </SkipIconWrapper>
+            <PlayIconWrapper onClick={isTimerRunning ? onPause : onPlay}>
+              {isTimerRunning ? (
+                <PauseButton color="white" width={40} height={40} />
+              ) : (
+                <PlayYouTube color="white" width={40} height={40} />
+              )}
+            </PlayIconWrapper>
+            <SkipIconWrapper>
+              <ForwardYouTube color="white" width={24} height={24} />
+            </SkipIconWrapper>
+          </PlayPauseWrapper>
+          <TimerWrapper>
+            <DisplayTimer>
+              {currentPlay} / {playMinutes}
+            </DisplayTimer>
+          </TimerWrapper>
+        </TimerPlayContainer>
 
         <NowPlayingSection>
           <Image src={`${url}`} alt={alt} width={40} height={40} />
