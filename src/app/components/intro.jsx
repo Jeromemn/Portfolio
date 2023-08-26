@@ -153,7 +153,7 @@ const Intro = () => {
         assumenda iusto.
       </IntroText>
       <ButtonContainer>
-        <ButtonBase variant='primary'>
+        <ButtonBase variant='primary' as={Link} href={randomLink}>
           <YouTubeShuffle color="black" width={24} height={24} />
           Shuffle
         </ButtonBase>
