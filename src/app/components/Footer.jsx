@@ -1,9 +1,9 @@
 "use client";
-import { usePathname, useSearchParams, useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import styled from "styled-components";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo } from "react";
 import projectsData from "../utils/projectsData";
 import {
   PlayYouTube,
@@ -21,8 +21,8 @@ import {
 } from "../icons";
 import AllLinks from "../utils/links";
 import useTimer from "../hooks/useTimer";
-import Slider from 'rc-slider';
-import 'rc-slider/assets/index.css';
+import Slider from "rc-slider";
+import "rc-slider/assets/index.css";
 
 const FooterWrapper = styled.div`
   display: flex;
@@ -66,38 +66,6 @@ const FooterSectionContainer = styled.div`
   align-items: center;
   height: inherit;
   padding: 0 1rem;
-`;
-
-const ProgressSlider = styled.div`
-  display: flex;
-  background-color: #bdbdbd;
-  width: 100%;
-  height: 4px;
-  top: 0;
-  position: relative;
-`;
-
-const ProgressSliderBar = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: end;
-  background-color: #f44336;
-  width: ${(props) => props.$percentage}%;
-`;
-
-const ProgressSliderBall = styled.div`
-  display: none;
-  background-color: #f44336;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  /* position: absolute; */
-
-  ${FooterWrapper}:hover & {
-    display: flex;
-    cursor: pointer;
-    position: absolute;
-  }
 `;
 
 const SkipIconWrapper = styled.div`
@@ -226,41 +194,53 @@ const SliderProgress = styled(Slider)`
   & .rc-slider-rail {
     background-color: #bdbdbd;
     height: 4px;
-    /* top: 0; */
   }
 
   & .rc-slider-track {
-   height: 4px;
-    background-color: #f44336;
+    height: 4px;
+    background-color: rgb(255, 0, 0);
     border: none;
-    /* top: 0; */
-
   }
 
   & .rc-slider-handle {
-    /* display: none;
-     */
-    background-color: #f44336;
+    display: none;
+    
+    margin-left: 5px;
+    background-color: rgb(255, 0, 0);
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    border-color: #f44336;
-    border: none;
+    opacity: 1;
+    border: 1px solid rgb(255, 0, 0);
+    cursor: pointer;
 
-    &onChange {
-      border: none;
+    &:hover {
+      width: 16px;
+      height: 16px;
     }
+    &:active {
+      width: 16px;
+      height: 16px;
+    }
+
+    ${FooterWrapper}:hover & {
+    display: flex;
+    cursor: pointer;
   }
+  }
+
 `;
 
 const Footer = ({ params }) => {
   const pathname = usePathname();
-  const { currentTime, startTimer, pauseTimer, stopTimer, updateTimer,isTimerRunning } =
-    useTimer();
-  const [progress , setProgress] = useState(0);
-
-  const onSliderChange = (value) => {
-  };
+  const {
+    currentTime,
+    startTimer,
+    pauseTimer,
+    stopTimer,
+    updateTimer,
+    isTimerRunning,
+  } = useTimer();
 
   const onPlay = () => {
     startTimer();
@@ -268,8 +248,6 @@ const Footer = ({ params }) => {
   const onPause = () => {
     pauseTimer();
   };
-
-
 
   const playTime = 90;
 
@@ -285,13 +263,14 @@ const Footer = ({ params }) => {
     }
   }, [currentTime, isTimerRunning, stopTimer]);
 
-  const percentage = Math.min((currentTime / playTime) * 100);
+  // const percentage = Math.min((currentTime / playTime) * 100);
   console.log(currentTime % 60);
   const currentPlay =
     (currentTime >= 59 ? Math.floor(currentTime / 60) : 0) +
     ":" +
-    (currentTime <= 10 ? Math.floor(currentTime / 60) : 0 +
-    Math.floor(currentTime % 60));
+    (currentTime <= 10
+      ? Math.floor(currentTime / 60)
+      : 0 + Math.floor(currentTime % 60));
   const playMinutes =
     (playTime >= 60 ? Math.floor(playTime / 60) : 0) + ":" + (playTime % 60);
 
@@ -340,14 +319,21 @@ const Footer = ({ params }) => {
 
   return (
     <FooterWrapper>
-      {/* <ProgressSlider> */}
-        {/* <ProgressSliderBar $percentage={percentage}>
-          <ProgressSliderBall />
-        </ProgressSliderBar> */}
-        <SliderProgress value={currentTime} min={0} max={playTime} step={0.1}onChange={(nextValue) => {
+      <SliderProgress
+        value={currentTime}
+        min={0}
+        max={playTime}
+        step={0.1}
+        handleStyle={{
+          borderColor: "rgb(255, 0, 0)",
+          backgroundColor: "rgb(255, 0, 0)",
+
+          boxShadow: 'none',
+        }}
+        onChange={(nextValue) => {
           updateTimer(nextValue);
-        }} />
-      {/* </ProgressSlider> */}
+        }}
+      />
       <FooterSectionContainer>
         <TimerPlayContainer>
           <PlayPauseWrapper>
@@ -371,7 +357,6 @@ const Footer = ({ params }) => {
             </DisplayTimer>
           </TimerWrapper>
         </TimerPlayContainer>
-
         <NowPlayingSection>
           <Image src={`${url}`} alt={alt} width={40} height={40} />
           <CurrentPageWrapper>
