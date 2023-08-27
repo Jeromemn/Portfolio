@@ -1,9 +1,9 @@
 "use client";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import styled from "styled-components";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo } from "react";
 import projectsData from "../utils/projectsData";
 import {
   PlayYouTube,
@@ -17,12 +17,16 @@ import {
   UpArrow,
   VolumeIcon,
   ReplayIcon,
+  PauseButton,
 } from "../icons";
 import AllLinks from "../utils/links";
+import useTimer from "../hooks/useTimer";
+import Slider from "rc-slider";
+import "rc-slider/assets/index.css";
 
 const FooterWrapper = styled.div`
   display: flex;
-  background-color: rgb(33, 33, 33);
+  background-color: #212121;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -50,9 +54,10 @@ const NowPlayingSection = styled.div`
 
 const ShuffleRepeatSection = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
   padding: 0 1rem;
+  width: 257.14px;
 `;
 
 const FooterSectionContainer = styled.div`
@@ -61,15 +66,6 @@ const FooterSectionContainer = styled.div`
   align-items: center;
   height: inherit;
   padding: 0 1rem;
-`;
-
-const ProgressSlider = styled.div`
-  display: flex;
-  background-color: #bdbdbd;
-  width: 100%;
-  height: 4px;
-  top: 0;
-  position: relative;
 `;
 
 const SkipIconWrapper = styled.div`
@@ -175,8 +171,108 @@ const CurrentPageWrapper = styled.div`
   width: fit-content;
 `;
 
-const Footer = () => {
+const TimerWrapper = styled.div`
+  display: flex;
+`;
+
+const DisplayTimer = styled.p`
+  color: #aaa;
+  font-size: 12px;
+  line-height: 1.2;
+  font-weight: 400;
+`;
+
+const TimerPlayContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const SliderProgress = styled(Slider)`
+  padding: 15px;
+  margin: -15px;
+  & .rc-slider-rail {
+    background-color: #bdbdbd;
+    height: 4px;
+  }
+
+  & .rc-slider-track {
+    height: 4px;
+    background-color: rgb(255, 0, 0);
+    border: none;
+  }
+
+  & .rc-slider-handle {
+    display: none;
+    
+    margin-left: 5px;
+    background-color: rgb(255, 0, 0);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    opacity: 1;
+    border: 1px solid rgb(255, 0, 0);
+    cursor: pointer;
+
+    &:hover {
+      width: 16px;
+      height: 16px;
+    }
+    &:active {
+      width: 16px;
+      height: 16px;
+    }
+
+    ${FooterWrapper}:hover & {
+    display: flex;
+    cursor: pointer;
+  }
+  }
+
+`;
+
+const Footer = ({ params }) => {
   const pathname = usePathname();
+  const {
+    currentTime,
+    startTimer,
+    pauseTimer,
+    stopTimer,
+    updateTimer,
+    isTimerRunning,
+  } = useTimer();
+
+  const onPlay = () => {
+    startTimer();
+  };
+  const onPause = () => {
+    pauseTimer();
+  };
+
+  const playTime = 90;
+
+  const router = useRouter();
+  useEffect(() => {
+    if (isTimerRunning && currentTime >= playTime) {
+      stopTimer();
+      // logic to redirect to next page
+      const updatedLinks = AllLinks.filter((item) => item !== pathname);
+      router.push(
+        updatedLinks[Math.floor(Math.random() * updatedLinks.length)]
+      );
+    }
+  }, [currentTime, isTimerRunning, stopTimer]);
+
+  // const percentage = Math.min((currentTime / playTime) * 100);
+  console.log(currentTime % 60);
+  const currentPlay =
+    (currentTime >= 59 ? Math.floor(currentTime / 60) : 0) +
+    ":" +
+    (currentTime <= 10
+      ? Math.floor(currentTime / 60)
+      : 0 + Math.floor(currentTime % 60));
+  const playMinutes =
+    (playTime >= 60 ? Math.floor(playTime / 60) : 0) + ":" + (playTime % 60);
 
   const randomLink = useMemo(() => {
     const updatedLinks = AllLinks.filter((item) => item !== pathname);
@@ -185,10 +281,15 @@ const Footer = () => {
     return newLink || updatedLinks[0];
   }, [pathname]);
 
+  const project = projectsData.find((item) => item.link === pathname);
+  console.log(project);
+
   const projectImages = projectsData.reduce(
     (acc, current) => ({ ...acc, [current.link]: current.image }),
     {}
   );
+
+  console.log(projectImages);
 
   const images = {
     "/": {
@@ -218,20 +319,44 @@ const Footer = () => {
 
   return (
     <FooterWrapper>
-      <ProgressSlider></ProgressSlider>
-      <FooterSectionContainer>
-        <PlayPauseWrapper>
-          <SkipIconWrapper>
-            <BackYouTube color="white" width={24} height={24} />
-          </SkipIconWrapper>
-          <PlayIconWrapper>
-            <PlayYouTube color="white" width={40} height={40} />
-          </PlayIconWrapper>
-          <SkipIconWrapper>
-            <ForwardYouTube color="white" width={24} height={24} />
-          </SkipIconWrapper>
-        </PlayPauseWrapper>
+      <SliderProgress
+        value={currentTime}
+        min={0}
+        max={playTime}
+        step={0.1}
+        handleStyle={{
+          borderColor: "rgb(255, 0, 0)",
+          backgroundColor: "rgb(255, 0, 0)",
 
+          boxShadow: 'none',
+        }}
+        onChange={(nextValue) => {
+          updateTimer(nextValue);
+        }}
+      />
+      <FooterSectionContainer>
+        <TimerPlayContainer>
+          <PlayPauseWrapper>
+            <SkipIconWrapper>
+              <BackYouTube color="white" width={24} height={24} />
+            </SkipIconWrapper>
+            <PlayIconWrapper onClick={isTimerRunning ? onPause : onPlay}>
+              {isTimerRunning ? (
+                <PauseButton color="white" width={40} height={40} />
+              ) : (
+                <PlayYouTube color="white" width={40} height={40} />
+              )}
+            </PlayIconWrapper>
+            <SkipIconWrapper>
+              <ForwardYouTube color="white" width={24} height={24} />
+            </SkipIconWrapper>
+          </PlayPauseWrapper>
+          <TimerWrapper>
+            <DisplayTimer>
+              {currentPlay} / {playMinutes}
+            </DisplayTimer>
+          </TimerWrapper>
+        </TimerPlayContainer>
         <NowPlayingSection>
           <Image src={`${url}`} alt={alt} width={40} height={40} />
           <CurrentPageWrapper>
