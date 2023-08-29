@@ -162,6 +162,7 @@ const TechWrapper = styled.div`
   justify-content: space-between;
   align-content: space-between;
 `;
+
 const TechItem = styled.p`
   color: rgba(255, 255, 255, 0.7);
   width: ${(props) => props.width || "fit-content"};

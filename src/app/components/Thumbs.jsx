@@ -18,7 +18,9 @@ const ThumbsWrapper = styled.div`
 `;
 
 const styles = css`
-  display: inline-flex;
+  display: flex;
+  /* can i make display none and display when hovering parent container */
+  /* display: none; */
   justify-content: center;
   align-items: center;
   align-content: center;
@@ -37,7 +39,19 @@ const styles = css`
       #bbbbbb53 110%
     );
     border-radius: 50%;
+    /* display: flex; */
   }
+/* for display on hover? */
+  /* ${({ $dislike }) =>
+    $dislike &&
+    `
+  display: flex;
+`}
+${({ $like }) =>
+    $like &&
+    `
+  display: flex;
+`} */
 `;
 
 const HollowThumbsUp = styled.div`

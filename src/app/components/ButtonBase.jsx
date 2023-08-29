@@ -14,7 +14,7 @@ const defaultStyles = css`
   height: 36px;
   padding: 0 16px;
   gap: 10px;
-  min-width: 136px;
+  min-width: 102px;
   cursor: pointer;
   font-family: inherit;
   font-weight: 500;
@@ -36,7 +36,7 @@ const PrimaryButton = styled.button`
 const SecondaryButton = styled.button`
   ${defaultStyles}
   border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #fff;
+  color: rgba(255, 255, 255, 0.7);
   background: none;
   padding: 0rem 15px;
 
