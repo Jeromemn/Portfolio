@@ -63,8 +63,7 @@ const SidebarButton = styled.button`
 const SideBar = () => {
   const pathname = usePathname();
 
-  const isPathActive = (href) => (pathname === href ? "active" : '');
-  console.log(isPathActive);
+  const isPathActive = (href) => (pathname === href ? "active" : "");
 
   return (
     <SidePanel>

@@ -4,13 +4,6 @@ import Link from "next/link";
 import styled from "styled-components";
 import projectsData from "src/app/utils/projectsData";
 
-const ProjectsPageWrapper = styled.div`
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 80%; */
-`;
-
 const ProjectContainer = styled.div`
   display: flex;
   flex-wrap: wrap;

@@ -32,8 +32,6 @@ const SearchBox = Styled.div`
   position: relative;
   padding-left:1rem;
   width: 400px;
-  /*  maybe use box shadow */
-  /* box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.4); */
 
   ${({ $editMode }) =>
     $editMode &&
@@ -107,7 +105,6 @@ const DropDownText = Styled.p`
   display: flex;
   font-size: 16px;
   color:rgba(255,255,255,0.5);
-  /* color: rgba(255,255,255,0.7) */
   width: 100%;
   font-weight: 400;
 `;
@@ -167,7 +164,6 @@ const dropDownSelection = [
 
 const Search = () => {
   const [searchValue, setSearchValue] = useState("");
-  const [selectedItem, setSelectedItem] = useState(null);
   const [editMode, setEditMode] = useState(false);
   const toggling = () => setEditMode(!editMode);
   const dropdownRef = useRef();
@@ -182,7 +178,6 @@ const Search = () => {
     });
   }, [searchValue]);
 
-  console.log(filteredItems);
   return (
     <SearchWrapper>
       <CenterContent>
