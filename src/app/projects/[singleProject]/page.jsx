@@ -1,12 +1,12 @@
 "use client";
-import React, { useContext, useEffect, useMemo, useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import useOnClickOutside from "../../hooks/useOnOutsideClick";
 import projectsData from "@/app/utils/projectsData";
 import styled from "styled-components";
 import ButtonBase from "@/app/components/ButtonBase";
-import { PlayYouTube, GitHub, OptionsDots } from "@/app/icons";
+import { PlayYouTube, GitHub } from "@/app/icons";
 import Thumbs from "@/app/components/Thumbs";
 import { youTubeDark, youTubeSans } from "../../styles/setFonts";
 import OptionsDropDown from "@/app/components/OptionsDropDown";
@@ -178,12 +178,10 @@ const SingleProjectPage = ({ params }) => {
   const [isOpen, setIsOpen] = useState(false);
   const moreRef = useRef();
   useOnClickOutside(moreRef, () => setShowMore(false));
-  console.log(isOpen);
 
   const project = projectsData.find(
     (project) => project.name === params.singleProject
   );
-  console.log(project);
 
   const handleClick = () => {
     setShowMore(true);
@@ -194,9 +192,7 @@ const SingleProjectPage = ({ params }) => {
   };
 
   const openDropDown = () => {
-    console.log(isOpen);
     !isOpen ? setIsOpen(true) : setIsOpen(false);
-    console.log(isOpen);
   };
 
   return (
@@ -270,9 +266,9 @@ const SingleProjectPage = ({ params }) => {
           <TechWrapper key={tech}>
             <TechStart>
               <TechItem margin="16px">{index + 1}</TechItem>
-              <TechItem width="135px">{tech}</TechItem>
+              <TechItem width="150px">{tech}</TechItem>
             </TechStart>
-            <Thumbs />
+            <Thumbs id={`${project.name}-${tech}`} />
           </TechWrapper>
         ))}
       </TechStack>

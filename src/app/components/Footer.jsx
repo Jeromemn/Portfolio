@@ -8,10 +8,6 @@ import projectsData from "../utils/projectsData";
 import {
   PlayYouTube,
   YouTubeShuffle,
-  ThumbsDown,
-  ThumbsUp,
-  FilledThumbsUp,
-  FilledThumbsDown,
   BackYouTube,
   ForwardYouTube,
   UpArrow,
@@ -23,6 +19,7 @@ import AllLinks from "../utils/links";
 import useTimer from "../hooks/useTimer";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
+import Thumbs from "./Thumbs";
 
 const FooterWrapper = styled.div`
   display: flex;
@@ -130,27 +127,6 @@ const ArrowWrapper = styled.div`
   padding: 8px;
 `;
 
-const ThumbsContainer = styled.div`
-  display: inline-flex;
-  position: relative;
-  align-items: center;
-  justify-content: center;
-  vertical-align: middle;
-  width: 24px;
-  height: 24px;
-`;
-
-const FilledThumbsContainer = styled(ThumbsContainer)`
-  display: none;
-`;
-
-const ThumbsSection = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-`;
-
 const StyledLink = styled(Link)`
   color: rgba(255, 255, 255, 0.7);
   font-weight: 400;
@@ -204,7 +180,7 @@ const SliderProgress = styled(Slider)`
 
   & .rc-slider-handle {
     display: none;
-    
+
     margin-left: 5px;
     background-color: rgb(255, 0, 0);
     width: 12px;
@@ -221,17 +197,17 @@ const SliderProgress = styled(Slider)`
     &:active {
       width: 16px;
       height: 16px;
+      display: flex;
     }
 
     ${FooterWrapper}:hover & {
-    display: flex;
-    cursor: pointer;
+      display: flex;
+      cursor: pointer;
+    }
   }
-  }
-
 `;
 
-const Footer = ({ params }) => {
+const Footer = () => {
   const pathname = usePathname();
   const {
     currentTime,
@@ -261,10 +237,9 @@ const Footer = ({ params }) => {
         updatedLinks[Math.floor(Math.random() * updatedLinks.length)]
       );
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentTime, isTimerRunning, stopTimer]);
 
-  // const percentage = Math.min((currentTime / playTime) * 100);
-  console.log(currentTime % 60);
   const currentPlay =
     (currentTime >= 59 ? Math.floor(currentTime / 60) : 0) +
     ":" +
@@ -281,15 +256,10 @@ const Footer = ({ params }) => {
     return newLink || updatedLinks[0];
   }, [pathname]);
 
-  const project = projectsData.find((item) => item.link === pathname);
-  console.log(project);
-
   const projectImages = projectsData.reduce(
     (acc, current) => ({ ...acc, [current.link]: current.image }),
     {}
   );
-
-  console.log(projectImages);
 
   const images = {
     "/": {
@@ -327,8 +297,7 @@ const Footer = ({ params }) => {
         handleStyle={{
           borderColor: "rgb(255, 0, 0)",
           backgroundColor: "rgb(255, 0, 0)",
-
-          boxShadow: 'none',
+          boxShadow: "none",
         }}
         onChange={(nextValue) => {
           updateTimer(nextValue);
@@ -363,20 +332,7 @@ const Footer = ({ params }) => {
             <CurrentPageText>{title}</CurrentPageText>
             <StyledLink href="/">Jerome </StyledLink>
           </CurrentPageWrapper>
-          <ThumbsSection>
-            <ThumbsContainer>
-              <ThumbsDown color="white" width={30} height={30} />
-            </ThumbsContainer>
-            <ThumbsContainer>
-              <ThumbsUp color="white" width={30} height={30} />
-            </ThumbsContainer>
-            <FilledThumbsContainer>
-              <FilledThumbsDown color="white" width={30} height={30} />
-            </FilledThumbsContainer>
-            <FilledThumbsContainer>
-              <FilledThumbsUp color="white" width={30} height={30} />
-            </FilledThumbsContainer>
-          </ThumbsSection>
+          <Thumbs id={pathname} />
         </NowPlayingSection>
         <ShuffleRepeatSection>
           <IconWrapper>
