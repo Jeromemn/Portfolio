@@ -16,7 +16,7 @@ const HeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding-right: 4rem;
+  /* padding-right: 4rem; */
 `;
 
 const NavigationContainer = styled.div`
