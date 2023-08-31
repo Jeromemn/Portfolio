@@ -6,25 +6,17 @@ import styled from "styled-components";
 import mainImage from "./images/mainImage.jpg";
 import CenterContent from "./components/CenterContent";
 
-
 const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   height: calc(100vh - 72px);
   overflow: hidden;
-  /* justify-content: center; */
-  /* align-items: center; */
 `;
 
 const ArtistInfo = styled.div`
   display: flex;
-  /* flex-direction: column; */
   justify-content: center;
   background-color: black;
-  /* border: 1px solid black; */
-  /* position: inherit; */
-  /* box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75); */
-
   height: 40%;
   width: 100%;
 `;
@@ -35,21 +27,32 @@ const ArtistCoverWrapper = styled.div`
   height: 65%;
   width: 100%;
   background-image: linear-gradient(
-      rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 0) 75%,
-      rgba(0, 0.8, 0.8, 0.8) 95%,
-      rgba(0, 1, 1, 1) 100%
+      rgba(0, 1, 1, 0.2) 0%,
+      rgba(0, 1, 1, 0.3) 50%,
+      rgba(0, 1, 1, 0.5) 75%,
+      rgba(0, 1, 1, 0.75) 85%,
+      rgba(0, 0, 0, 0.8) 89%,
+      rgba(0, 0, 0, 0.93) 92%,
+      rgba(0, 0, 0, 0.95) 95%,
+      rgba(0, 0, 0, 0.99) 98%,
+      #000000 100%
     ),
-    url(${(props) => props.image.src});
+    url(${(props) => props.$image.src});
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  /* linear-gradient(360deg,
+      rgba(0, 1, 1, 1) 8.98%,
+      rgba(0, 0, 0, 0) 100%
+    ), */
 `;
 
-const BottomSection = styled.div`
+const CoverBackground = styled.div`
   display: flex;
-  bottom: 0;
-  /* position: fixed; */
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.4);
 `;
 
 const IntroWrapper = styled.div`
@@ -59,28 +62,23 @@ const IntroWrapper = styled.div`
 
 const Home = () => {
   return (
-      <ContentWrapper>
-        <ArtistCoverWrapper image={mainImage}>
-          {/* <ArtistCover /> */}
+    <ContentWrapper>
+      <ArtistCoverWrapper $image={mainImage}>
+        <CoverBackground>
           <CenterContent>
-
-          <IntroWrapper>
-            <Intro></Intro>
-          </IntroWrapper>
+            <IntroWrapper>
+              <Intro></Intro>
+            </IntroWrapper>
           </CenterContent>
-        </ArtistCoverWrapper>
-        {/* <BottomSection>  */}
-
-        <ArtistInfo> 
+        </CoverBackground>
+      </ArtistCoverWrapper>
+      <ArtistInfo>
         <CenterContent>
           <Header />
         </CenterContent>
-        </ArtistInfo>
-        {/* </BottomSection> */}
-        {/* <h1 color="black"> Home </h1> */}
-        {/* <Footer /> */}
-      </ContentWrapper>
+      </ArtistInfo>
+    </ContentWrapper>
   );
-}
+};
 
 export default Home;
