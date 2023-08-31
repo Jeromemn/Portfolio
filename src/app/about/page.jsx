@@ -15,9 +15,11 @@ import {
 } from "../icons";
 import { youTubeDark, youTubeSans } from "../styles/setFonts";
 import { roboto } from "../layout";
+import CanvasTesting from "../components/CanvasTesting";
 
 const AboutPageWrapper = styled.div`
   justify-content: center;
+  align-items: center;
   display: flex;
   width: 100%;
   height: calc(100vh - 72px);
@@ -27,18 +29,17 @@ const AboutPageWrapper = styled.div`
 
 const AboutSection = styled.div`
   display: flex;
-  /* justify-content: center; */
   flex-direction: column;
   width: 40%;
   gap: 2rem;
-  margin-top: 5rem;
   padding-bottom: 1rem;
-  z-index: 1;
+  z-index: 100;
 `;
 
 const AboutHeader = styled.h2`
   font-size: 3rem;
   color: white;
+  line-height: 1;
 `;
 
 const AboutSubHeader = styled.h3`
@@ -57,24 +58,32 @@ const AboutParagraph = styled.p`
   color: white;
 `;
 
+const MediumContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
 const Box = styled.div`
   display: flex;
-  width: 500px;
-  height: 700px;
-  margin-top: 5rem;
-  z-index: 1;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  width: 582px;
+  height: 582px;
 `;
 
 const AboutPage = () => {
   return (
     <AboutPageWrapper>
       <CenterContent>
+        <MediumContainer>
         <AboutSection>
           <AboutHeader className={youTubeSans.className}>
-            Jerome Nixon{" "}
+            Jerome Nixon
           </AboutHeader>
           <AboutSubHeader className={youTubeSans.className}>
-            {" "}
             Full Stack Developer
           </AboutSubHeader>
           <AboutParagraph>
@@ -92,9 +101,11 @@ const AboutPage = () => {
             </ButtonBase>
           </ButtonContainer>
         </AboutSection>
-      {/* <Box> */}
-        <Drawing />
-      {/* </Box> */}
+        <Box>
+        {/* <Drawing /> */}
+        <CanvasTesting />
+        </Box>
+        </MediumContainer>
       </CenterContent>
     </AboutPageWrapper>
   );

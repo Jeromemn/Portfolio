@@ -2,7 +2,22 @@
 import React, { useRef, useEffect } from "react";
 import resizeCanvas from "../utils/resizeCanvas";
 
-const Drawing = (props) => {
+const fitImageToCanvas = (image,canvas) => {
+  const canvasContext = canvas.getContext("2d");
+  const ratio = image.width / image.height;
+  let newWidth = canvas.width;
+  let newHeight = newWidth / ratio;
+  if (newHeight < canvas.height) {
+    newHeight = canvas.height;
+    newWidth = newHeight * ratio;
+  }
+  const xOffset = newWidth > canvas.width ? (canvas.width - newWidth) / 2 : 0;
+  const yOffset =
+    newHeight > canvas.height ? (canvas.height - newHeight) / 2 : 0;
+  canvasContext.drawImage(image, xOffset, yOffset, newWidth, newHeight);
+};
+
+const CanvasTesting = (props) => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -14,16 +29,19 @@ const Drawing = (props) => {
     } else {
       console.log("CanvasRenderingContext2D.getContextAttributes() is not supported");
     }
-    canvas.width = 500;
-    canvas.height = 700;
-    // resizeCanvas(canvas);
-    const myImage = new Image();
-    myImage.src = "smallAbout-EDIT.jpg";
+    // canvas.width = 719;
+    // canvas.height = 862;
+    // canvas.style.width = '100%';
+    // canvas.style.height = '100%';
+    const myImage = new Image(582, 582);
+    myImage.src = "smallCropped.jpg";
     myImage.onload = () => {
+      resizeCanvas(canvas);
+      fitImageToCanvas(myImage, canvas);
       ctx.imageSmoothQuality = "high";
       ctx.drawImage(myImage, 0, 0, canvas.width, canvas.height);
       // ctx.drawImage(myImage, 0, 0, ctx.canvas.width, ctx.canvas.height);
-      const scannedImage = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const scannedImage = ctx.getImageData(50, 0, canvas.width, canvas.height);
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       let particlesArray = [];
       const numberOfParticles = 7000;
@@ -99,20 +117,27 @@ const Drawing = (props) => {
         requestAnimationFrame(animate);
       }
       animate();
+
+      // ctx.beginPath();
+      // ctx.arc(100, 75, 50, 0, 2 * Math.PI);
+      // ctx.clip();
     };
   }, []);
   return (
     <canvas
+    id="testing"
       ref={canvasRef}
       {...props}
       style={{
-        position: "absolute",
-        zIndex: "1",
-        bottom: "72px",
-        right: "0px",
+        // position: "absolute",
+        flexShrink: "0",
+        position: 'relative',
+        // borderRadius: "50%",
+        // bottom: "72px",
+        // right: "0px",
       }}
     />
   );
 };
 
-export default Drawing;
+export default CanvasTesting;
