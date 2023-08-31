@@ -1,27 +1,4 @@
-const canvas = document.getElementById("testing");
 const resizeCanvas = (canvas) => {
-  //   const {width, height} = canvas.getBoundingClientRect();
-  //   if (canvas.width !== width || canvas.height !== height) {
-  //     canvas.width = width;
-  //     canvas.height = height;
-  //     return true;
-  //   }
-  //   return false;
-  // };
-
-  // look up the size the canvas is being displayed
-  //  const width = canvas.clientWidth;
-  //  const height = canvas.clientHeight;
-
-  //  // If it's resolution does not match change it
-  //  if (canvas.width !== width || canvas.height !== height) {
-  //    canvas.width = width;
-  //    canvas.height = height;
-  //    return true;
-  //  }
-
-  //  return false;
-
   // const drawXLarge = () => {
   //   canvas.width = 719;
   //   canvas.height = 862;
