@@ -149,6 +149,7 @@ const MoreDescription = styled.div`
   flex-direction: column;
   gap: 0.4rem;
 `;
+
 const TechWrapper = styled.div`
   display: flex;
   width: 100%;

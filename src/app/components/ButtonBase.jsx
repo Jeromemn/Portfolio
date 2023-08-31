@@ -18,8 +18,8 @@ const defaultStyles = css`
   cursor: pointer;
   font-family: inherit;
   font-weight: 500;
-  font-size: 14px;
-  max-width: 400px;
+  font-size: ${(props) => props.fontSize || "14px"};
+  max-width: 200px;
 `;
 
 const PrimaryButton = styled.button`
@@ -39,13 +39,14 @@ const SecondaryButton = styled.button`
   color: rgba(255, 255, 255, 0.7);
   background: none;
   padding: 0rem 15px;
+  
 
   &:hover {
     background: rgba(255, 255, 255, 0.2);
     height: 36px;
   }
 `;
-
+//  compare icon and plain button might be able to consolidate
 const IconButton = styled.button`
   ${defaultStyles}
   background: none;
