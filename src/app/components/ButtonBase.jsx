@@ -20,6 +20,10 @@ const defaultStyles = css`
   font-weight: 500;
   font-size: ${(props) => props.fontSize || "14px"};
   max-width: 200px;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 `;
 
 const PrimaryButton = styled.button`
@@ -30,6 +34,9 @@ const PrimaryButton = styled.button`
 
   &:hover {
     background: #dbdbdb;
+  }
+  &:disabled {
+    background: rgba(255, 255, 255, 0.055);
   }
 `;
 

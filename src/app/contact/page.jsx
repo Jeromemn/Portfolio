@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import styled, { css } from "styled-components";
@@ -14,6 +14,7 @@ import {
 } from "../icons";
 import { youTubeDark, youTubeSans } from "../styles/setFonts";
 import { roboto } from "../layout";
+import { sendEmail } from "../utils/actions";
 
 const ContactPageWrapper = styled.div`
   display: flex;
@@ -146,7 +147,44 @@ const FormHeader = styled.h2`
   color: white;
 `;
 
-const ContactPage = () => {
+const ContactPage = ({ values, errors, touched, onChange, handleBlur }) => {
+  // const [emailContent, setEmailContent] = useState("");
+  const [contactName, setContactName] = useState("");
+  console.log(contactName);
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
+  const [email, setEmail] = useState("");
+  // console.log(emailContent)
+
+  const validateText = (value) => {
+    if (!value || !value.length) return "Please enter a valid name";
+    console.log(value.length);
+    return undefined;
+    return false;
+  };
+
+  // const onInputChange = (e, title) => {
+  //   if (title === "contactName") setContactName(e.target.value);
+  // };
+
+  // this works to connect to emailsening need to get info from form
+  const onSend = async () => {
+    try {
+      const emailContent = { contactName, subject, message, email };
+      // console.log(formData.get("contactName"));
+      // await sendEmail(emailContent);
+      console.log(emailContent);
+      // formRef.current.reset();
+      console.log("email sent successfully", emailContent);
+      // additional actions after success sending email
+    } catch (error) {
+      console.log("error sending email", error);
+      // handle error
+    }
+  };
+
+  // get values, form validation/ disable button if !valid, disable if sending, recapcha to avoid bots,
+
   return (
     <ContactPageWrapper>
       <CenterContent>
@@ -157,7 +195,10 @@ const ContactPage = () => {
                 src="/MeContact.jpg"
                 alt="picture of dev"
                 fill={true}
-                objectFit="cover"
+                sizes="(max-width: 768px) 100vw, 768px"
+                style={{
+                  objectFit: "cover",
+                }}
               />
             </HeaderImageWrapper>
             <HeaderInfoWrapper>
@@ -190,14 +231,35 @@ const ContactPage = () => {
                 className={roboto.className}
                 type="text"
                 placeholder="Name"
+                name="contactName"
+                title="ContactName"
+                required
+                value={contactName}
+                touched={touched}
+                // onChange={(e) => {onInputChange(e.target.title)}}
+
+                onChange={(e) => {
+                  setContactName(e.target.value);
+                }}
+
+                // value={values.contactName}
               />
             </InputBox>
 
             <InputBox>
               <ContactInput
                 className={roboto.className}
-                type="text"
+                type="email"
                 placeholder="Email"
+                name="email"
+                required
+                value={email}
+                touched={touched}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+
+                // value={value}
               />
             </InputBox>
             <InputBox>
@@ -205,6 +267,13 @@ const ContactPage = () => {
                 className={roboto.className}
                 type="text"
                 placeholder="Subject"
+                name="subject"
+                required
+                value={subject}
+                touched={touched}
+                onChange={(e) => {
+                  setSubject(e.target.value);
+                }}
               />
             </InputBox>
             <InputBox height="fit-content">
@@ -214,9 +283,22 @@ const ContactPage = () => {
                 type="text"
                 placeholder="Message"
                 rows={6}
+                name="message"
+                required
+                value={message}
+                touched={touched}
+                onChange={(e) => {
+                  setMessage(e.target.value);
+                }}
               />
             </InputBox>
-            <ButtonBase variant="primary">Send</ButtonBase>
+            <ButtonBase
+              // variant="primary"
+              disabled={validateText(contactName)}
+              onClick={onSend}
+            >
+              Send
+            </ButtonBase>
           </FormWrapper>
         </Column>
       </CenterContent>
