@@ -71,7 +71,6 @@ const styles = css`
   background-color: transparent;
 
   /* background: rgba(255,255,255,0.15); */
-  /* font-family: "Roboto", ${roboto}; */
   border: none;
   padding: 0 1rem 0 1rem;
   font-size: 16px;
@@ -89,7 +88,6 @@ const styles = css`
 const InputBox = styled.div`
   display: flex;
   min-height: 2.5rem;
-  /* height: ${(props) => props.height || "2.5rem"}; */
   border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.15);
   background: rgba(255, 255, 255, 0.15);
