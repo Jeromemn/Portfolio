@@ -7,16 +7,15 @@ import { PlayYouTube } from "../icons";
 import { youTubeDark, youTubeSans } from "../styles/setFonts";
 
 const headerList = [
-  { id: 2, name: "About", path: "/about", image: "/about.png" },
-  { id: 3, name: "Contact", path: "/contact", image: "/contactImage.png" },
-  { id: 4, name: "Projects", path: "/projects", image: "/projects.png" },
+  { id: 2, name: "All About Me", path: "/about", image: "/about.png" },
+  { id: 3, name: "Get In Contact", path: "/contact", image: "/contactImage.png" },
+  { id: 4, name: "Projects Playlist", path: "/projects", image: "/projects.png" },
 ];
 
 const HeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  /* padding-right: 4rem; */
 `;
 
 const NavigationContainer = styled.div`
@@ -51,7 +50,7 @@ const HeaderItems = styled.p`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  width: 60px;
+  width: 120px;
 `;
 
 const AlbumCover = styled.div`
@@ -75,6 +74,7 @@ const ItemSection = styled.div`
   justify-content: space-between;
   align-items: center;
   height: 100%;
+  width: 90%;
   gap: 10rem;
 `;
 

@@ -4,10 +4,10 @@ import Link from "next/link";
 import Image from "next/image";
 import styled, { css } from "styled-components";
 import CenterContent from "../components/CenterContent";
+import { mq } from "../styles/mixins";
 import ButtonBase from "../components/ButtonBase";
 import {
   LinkedInIcon,
-  GitHub,
   WhiteLinked,
   GitHubName,
   NewGitHub,
@@ -24,6 +24,10 @@ const ContactPageWrapper = styled.div`
   padding-top: 64px;
   background-color: black;
   overflow: hidden;
+/* 
+  ${mq.mobile(`
+    width: 100%;
+  `)}  */
 `;
 
 const HeaderImageWrapper = styled.div`
@@ -46,6 +50,10 @@ const ContactHeaderSection = styled.div`
   margin-top: 2rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+
+  ${mq.mobile(`
+    
+    `)} 
 `;
 
 const HeaderInfoWrapper = styled.div`
@@ -348,7 +356,7 @@ const ContactPage = () => {
               />
             </HeaderImageWrapper>
             <HeaderInfoWrapper>
-              <HeaderTitle className={youTubeSans.className}>
+              <HeaderTitle className={youTubeDark.className}>
                 Jerome Nixon
               </HeaderTitle>
               <ButtonWrapper>

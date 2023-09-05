@@ -8,13 +8,16 @@ import {
   PlayYouTube,
   YouTubeShuffle,
   Verified,
-  GitHub,
   LinkedInIcon,
   RadioPlay,
   OptionsDots,
 } from "../icons";
 import ButtonBase from "./ButtonBase";
-import { youTubeDark, youTubeSans } from "../styles/setFonts";
+import {
+  youTubeDark,
+  youTubeSans,
+  youTubeSansDarkBold,
+} from "../styles/setFonts";
 
 const IntroContainer = styled.div`
   display: flex;
@@ -81,7 +84,7 @@ const Intro = () => {
         <Verified />
         <VerifiedHeader>Verified Developer</VerifiedHeader>
       </VerifiedContainer>
-      <NameIntro className={youTubeSans.className}>Jerome</NameIntro>
+      <NameIntro className={youTubeSansDarkBold.className}>Jerome</NameIntro>
       <IntroText>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia, ipsa
         totam laudantium cupiditate nam, accusantium eum nobis vel perferendis
@@ -97,7 +100,13 @@ const Intro = () => {
           <PlayYouTube color="black" width={24} height={24} />
           <ButtonName>Play</ButtonName>
         </ButtonBase>
-        <ButtonBase variant="secondary">
+        <ButtonBase
+          variant="secondary"
+          as={Link}
+          target="_blank"
+          href="https://github.com/Jeromemn"
+          passHref={true}
+        >
           <RadioPlay color="white" size={24} />
           Subscribe
         </ButtonBase>

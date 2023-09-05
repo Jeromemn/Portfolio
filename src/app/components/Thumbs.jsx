@@ -15,6 +15,7 @@ const ThumbsWrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 15px;
+  width: ${( props ) => props.width || null};
 `;
 
 const styles = css`
@@ -67,7 +68,7 @@ const DislikedThumb = styled.div`
 
 const LikedThumb = styled(DislikedThumb)``;
 
-const Thumbs = ({ id }) => {
+const Thumbs = ({ id, width, ...props }) => {
   const [thumbs, setThumbs] = useLocalStorage("thumbs", {});
   const isLiked = thumbs[id] === "like";
   const isDisliked = thumbs[id] === "dislike";
@@ -89,7 +90,7 @@ const Thumbs = ({ id }) => {
   };
 
   return (
-    <ThumbsWrapper>
+    <ThumbsWrapper width={width}>
       {!isLiked && !isDisliked && (
         <>
           <HollowThumbsDown

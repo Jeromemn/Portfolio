@@ -256,6 +256,18 @@ const Footer = () => {
     return newLink || updatedLinks[0];
   }, [pathname]);
 
+  const ForwardLink = useMemo(() => {
+    const curIndex = AllLinks.findIndex((item) => item === pathname);
+    const getNextLink = AllLinks[curIndex + 1];
+    return getNextLink || AllLinks[0];
+  }, [pathname]);
+
+  const PreviousLink = useMemo(() => {
+    const curIndex = AllLinks.findIndex((item) => item === pathname);
+    const getNextLink = AllLinks[curIndex - 1];
+    return getNextLink || AllLinks[0];
+  }, [pathname]);
+
   const projectImages = projectsData.reduce(
     (acc, current) => ({ ...acc, [current.link]: current.image }),
     {}
@@ -306,7 +318,7 @@ const Footer = () => {
       <FooterSectionContainer>
         <TimerPlayContainer>
           <PlayPauseWrapper>
-            <SkipIconWrapper>
+            <SkipIconWrapper as={Link} href={PreviousLink}>
               <BackYouTube color="white" width={24} height={24} />
             </SkipIconWrapper>
             <PlayIconWrapper onClick={isTimerRunning ? onPause : onPlay}>
@@ -316,7 +328,7 @@ const Footer = () => {
                 <PlayYouTube color="white" width={40} height={40} />
               )}
             </PlayIconWrapper>
-            <SkipIconWrapper>
+            <SkipIconWrapper as={Link} href={ForwardLink}>
               <ForwardYouTube color="white" width={24} height={24} />
             </SkipIconWrapper>
           </PlayPauseWrapper>

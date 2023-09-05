@@ -9,7 +9,6 @@ export { default as ThumbsUp } from './ThumbsUp';
 export { default as UpArrow } from './UpArrow';
 export { default as VolumeIcon } from './VolumeIcon';
 export { default as YouTubeShuffle } from './YouTubeShuffle';
-export { default as GitHub } from './GitHub';
 export { default as Verified } from './Verified';
 export { default as SearchIcon } from './SearchIcon';
 export { default as YouTubeHome } from './YouTubeHome';

@@ -5,9 +5,8 @@ const projectsData = [
     title: "Tuff Skin Website",
     team: "WebFluent",
     description: "Tuff Skin Website and content management system",
-    // image: "/tuffSkint.png",
     image: {
-      url: "/tuffSkint.png",
+      url: "/tuffSkin.png",
       alt: "Tuff Skin Website",
       title: "Tuff Skin Website",
     },
@@ -33,14 +32,11 @@ const projectsData = [
   },
   {
     id: 2,
-    project: "modernpilgrim",
     name: "modernpilgrim",
     title: "Modern Pilgrim Website",
     team: "School Project",
     description:
       "This app is used as social media platform. At Modern Pilgrims we like to share with you other peoples recent trips and a little bit about how it went. For instance, in each post you can determine whether or not you rate the trip out of five stars. As well as leave a summary of the trip, location of the trip, and even comment on your trip or others that you find comment worthy.",
-    repo: "Modern-Pilgrim",
-    // image: "/modernPilgrims.png",
     image: {
       url: "/modernPilgrims.png",
       alt: "Modern Pilgrim Website",
@@ -69,9 +65,9 @@ const projectsData = [
   {
     id: 3,
     name: "tradersJournal",
+    title: "Traders Journal",
     team: "Personal Project",
     description: "A trading journal application",
-    // image: "/images/TJAlbum.jpg",
     image: {
       url: "/TJAlbum.jpg",
       alt: "Traders Journal",
@@ -99,9 +95,9 @@ const projectsData = [
   {
     id: 4,
     name: "switch",
+    title: "Switch Application",
     team: "WebFluent",
     description: "Switch a feature flag management application",
-    // image: "/images/switchAlbum.jpg",
     image: {
       url: "/switchAlbum.jpg",
       alt: "swicth webpage",
@@ -130,10 +126,10 @@ const projectsData = [
   {
     id: 5,
     name: "cardbattle",
+    title: "Card Battle",
     team: "School Project",
     description:
       "A JavaScript implementation of a custom card game. Card battle is both a fun solitaire and multiplayer game since you can play against the A.I.(novice).",
-    // image: "/images/Card-Battle-gif.gif",
     image: {
       url: "/Card-Battle-gif.gif",
       alt: "card battle page",
@@ -148,6 +144,8 @@ const projectsData = [
     commits: "75",
     techUsed: [
       "JavaScript",
+      "HTML",
+      "CSS",
       "bCrypt",
       "connect Session Sequelize",
       "Express",
@@ -160,10 +158,10 @@ const projectsData = [
   {
     id: 6,
     name: "pwaTextEditor",
+    title: "PWA Text Editor",
     team: "School Project",
     description:
       "a Progressive Web Application that recognized JavaScript and can be typed in and saved both via a live web application and a local application that is off line. The online and offline versions will sync together to ensure nothing is lost",
-    // image: "/images/textedit.jpg",
     image: {
       url: "/textedit.jpg",
       alt: "text editor page",
@@ -180,7 +178,7 @@ const projectsData = [
       "CSS",
       "HTML",
       "Webpack",
-      "HTML Webpack Plugin",
+      "Webpack Plugin",
       "Inject Manifest",
       "Webpack PWA Mainfest",
       "nodemon",

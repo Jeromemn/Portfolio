@@ -1,7 +1,6 @@
 "use server";
-import { SendEmailCommand, SendEmailCommandInput } from "@aws-sdk/client-ses";
+import { SendEmailCommand } from "@aws-sdk/client-ses";
 import getSESClient from "../lib/ses";
-import { revalidatePath } from "next/cache";
 
 export const sendEmail = async (emailContent) => {
   try {
