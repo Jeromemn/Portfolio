@@ -71,13 +71,14 @@ const styles = css`
   background-color: transparent;
 
   /* background: rgba(255,255,255,0.15); */
-  font-family: "Roboto", ${roboto};
+  /* font-family: "Roboto", ${roboto}; */
   border: none;
-  padding: 0 2rem 0 1rem;
+  padding: 0 1rem 0 1rem;
   font-size: 16px;
   outline: none;
   height: 100%;
   color: white;
+  width: 100%;
 
   &::placeholder {
     color: rgba(255, 255, 255, 0.5);
@@ -151,6 +152,13 @@ const FormHeader = styled.h2`
 const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
+  min-height: 56px;
+`;
+
+const ErrorMessage = styled.p`
+  font-size: 12px;
+  padding-left: 1rem;
+
 `;
 
 const fields = [
@@ -407,7 +415,7 @@ const ContactPage = () => {
                       />
                     </InputBox>
                     {touched[name] && errors[name] && (
-                      <p style={{ color: "red" }}>{errors[name]}</p>
+                      <ErrorMessage style={{ color: "red" }}>{errors[name]}</ErrorMessage>
                     )}
                   </InputContainer>
                 );
