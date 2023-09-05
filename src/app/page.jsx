@@ -3,7 +3,7 @@ import React from "react";
 import Header from "./components/header";
 import Intro from "./components/intro";
 import styled from "styled-components";
-import mainImage from "./images/mainImage.jpg";
+import mainImage from "../../public/mainImage.jpg";
 import CenterContent from "./components/CenterContent";
 
 const ContentWrapper = styled.div`
@@ -27,8 +27,8 @@ const ArtistCoverWrapper = styled.div`
   height: 65%;
   width: 100%;
   background-image: linear-gradient(
-      rgba(0, 1, 1, 0.2) 0%,
-      rgba(0, 1, 1, 0.3) 50%,
+      rgba(0, 1, 1, 0.1) 0%,
+      rgba(0, 1, 1, 0.2) 50%,
       rgba(0, 1, 1, 0.5) 75%,
       rgba(0, 1, 1, 0.75) 85%,
       rgba(0, 0, 0, 0.8) 89%,

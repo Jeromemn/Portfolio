@@ -6,7 +6,7 @@ import useOnClickOutside from "../../hooks/useOnOutsideClick";
 import projectsData from "@/app/utils/projectsData";
 import styled from "styled-components";
 import ButtonBase from "@/app/components/ButtonBase";
-import { PlayYouTube, GitHub } from "@/app/icons";
+import { PlayYouTube, NewGitHub } from "@/app/icons";
 import Thumbs from "@/app/components/Thumbs";
 import { youTubeDark, youTubeSans } from "../../styles/setFonts";
 import OptionsDropDown from "@/app/components/OptionsDropDown";
@@ -167,7 +167,7 @@ const TechWrapper = styled.div`
 const TechItem = styled.p`
   color: rgba(255, 255, 255, 0.7);
   width: ${(props) => props.width || "fit-content"};
-  margin-right: ${(props) => props.margin || "0"};
+  margin-right: ${(props) => props.marginRight || "0"};
   padding-left: 0.5rem;
 `;
 
@@ -175,7 +175,7 @@ const TechStart = styled.div`
   display: flex;
 `;
 
-const SingleProjectPage = ({ params }) => {
+const SingleProjectPage = ({ params, ...props }) => {
   const [showMore, setShowMore] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const moreRef = useRef();
@@ -253,7 +253,7 @@ const SingleProjectPage = ({ params }) => {
               href={`${project?.github}`}
               passHref={true}
             >
-              <GitHub color="white" width={20} height={20} />
+              <NewGitHub color="white" size={20} />
               Go to Repo
             </ButtonBase>
             <OptionsDropDown>
@@ -267,10 +267,11 @@ const SingleProjectPage = ({ params }) => {
         {project?.techUsed.map((tech, index) => (
           <TechWrapper key={tech}>
             <TechStart>
-              <TechItem margin="16px">{index + 1}</TechItem>
+              <TechItem marginRight="16px">{index + 1}</TechItem>
               <TechItem width="150px">{tech}</TechItem>
             </TechStart>
-            <Thumbs id={`${project.name}-${tech}`} />
+              <TechItem>{project.title}</TechItem>
+            <Thumbs id={`${project.name}-${tech}`} width='150px' />
           </TechWrapper>
         ))}
       </TechStack>

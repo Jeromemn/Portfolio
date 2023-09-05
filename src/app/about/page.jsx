@@ -8,13 +8,11 @@ import CenterContent from "../components/CenterContent";
 import ButtonBase from "../components/ButtonBase";
 import {
   LinkedInIcon,
-  GitHub,
   WhiteLinked,
   GitHubName,
   NewGitHub,
 } from "../icons";
 import { youTubeDark, youTubeSans } from "../styles/setFonts";
-import { roboto } from "../layout";
 import CanvasTesting from "../components/CanvasTesting";
 
 const AboutPageWrapper = styled.div`
@@ -79,32 +77,45 @@ const AboutPage = () => {
     <AboutPageWrapper>
       <CenterContent>
         <MediumContainer>
-        <AboutSection>
-          <AboutHeader className={youTubeSans.className}>
-            Jerome Nixon
-          </AboutHeader>
-          <AboutSubHeader className={youTubeSans.className}>
-            Full Stack Developer
-          </AboutSubHeader>
-          <AboutParagraph>
-            This is a website that I made to showcase my skills as a web
-            developer. I made it using Next.js, a React framework, and
-            styled-components, a CSS-in-JS library. I also used Figma to design
-            the layout and components.
-          </AboutParagraph>
-          <ButtonContainer>
-            <ButtonBase variant="primary" fontSize="16px">
-              Contact
-            </ButtonBase>
-            <ButtonBase variant="secondary" fontSize="16px">
-              Resume
-            </ButtonBase>
-          </ButtonContainer>
-        </AboutSection>
-        <Box>
-        {/* <Drawing /> */}
-        <CanvasTesting />
-        </Box>
+          <AboutSection>
+            <AboutHeader className={youTubeSans.className}>
+              Jerome Nixon
+            </AboutHeader>
+            <AboutSubHeader className={youTubeSans.className}>
+              Full Stack Developer
+            </AboutSubHeader>
+            <AboutParagraph>
+              This is a website that I made to showcase my skills as a web
+              developer. I made it using Next.js, a React framework, and
+              styled-components, a CSS-in-JS library. I also used Figma to
+              design the layout and components.
+            </AboutParagraph>
+            <ButtonContainer>
+              <ButtonBase
+                as={Link}
+                href="/contact"
+                variant="primary"
+                fontSize="16px"
+              >
+                Contact
+              </ButtonBase>
+              <ButtonBase
+                as={Link}
+                href={"JeromeNixon-Resume.pdf"}
+                target="_blank"
+                rel="noopener noreferrer"
+                download
+                variant="secondary"
+                fontSize="16px"
+              >
+                Resume
+              </ButtonBase>
+            </ButtonContainer>
+          </AboutSection>
+          <Box>
+            {/* <Drawing /> */}
+            <CanvasTesting />
+          </Box>
         </MediumContainer>
       </CenterContent>
     </AboutPageWrapper>

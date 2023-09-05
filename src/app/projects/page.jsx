@@ -30,7 +30,7 @@ const ArtistHeader = styled.h1`
 const ProjectsContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 90%;
+  width: 100%;
   height: calc(100vh - 72px);
 `;
 
