@@ -87,7 +87,8 @@ const styles = css`
 
 const InputBox = styled.div`
   display: flex;
-  height: ${(props) => props.height || "2.5rem"};
+  min-height: 2.5rem;
+  /* height: ${(props) => props.height || "2.5rem"}; */
   border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.15);
   background: rgba(255, 255, 255, 0.15);
@@ -147,43 +148,182 @@ const FormHeader = styled.h2`
   color: white;
 `;
 
-const ContactPage = ({ values, errors, touched, onChange, handleBlur }) => {
-  // const [emailContent, setEmailContent] = useState("");
-  const [contactName, setContactName] = useState("");
-  console.log(contactName);
-  const [subject, setSubject] = useState("");
-  const [message, setMessage] = useState("");
-  const [email, setEmail] = useState("");
-  // console.log(emailContent)
+const InputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
-  const validateText = (value) => {
-    if (!value || !value.length) return "Please enter a valid name";
-    console.log(value.length);
-    return undefined;
-    return false;
+const fields = [
+  {
+    name: "contactName",
+    title: "Contact Name",
+    type: "text",
+    placeholder: "Name",
+    required: true,
+    validate: (value) => {
+      if (!value || !value.length) return "Name is required";
+      if (value.length < 2) return "Name must be at least 2 characters long";
+      return true;
+    },
+  },
+  {
+    name: "subject",
+    title: "Subject",
+    type: "text",
+    placeholder: "Subject",
+  },
+  {
+    name: "email",
+    title: "Email",
+    type: "email",
+    placeholder: "Email",
+    required: true,
+    validate: (value) => {
+      if (!value || !value.length) return "Email is required";
+      const emailRegex = new RegExp(
+        /^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+\.[A-Za-z0-9.-]+$/gm
+      );
+      const isValidEmail = emailRegex.test(value);
+      console.log(isValidEmail); //true
+      if (isValidEmail) {
+        return true;
+      } else if (!isValidEmail) {
+        return "Email must be valid regex";
+      }
+    },
+  },
+  {
+    name: "message",
+    title: "Message",
+    type: "text",
+    placeholder: "Message",
+    required: true,
+    rows: 6,
+    autoCorrect: "on",
+    isMultiLine: true,
+    validate: (value) => {
+      if (!value || !value.length) return "Message is required";
+      if (value.length < 2) return "Message must be at least 2 characters long";
+      return true;
+    },
+  },
+];
+
+const ContactPage = () => {
+  const [values, setValues] = useState(
+    fields.reduce((acc, field) => {
+      acc[field.name] = "";
+      return acc;
+    }, {})
+  );
+  console.log(values);
+
+  const [errors, setErrors] = useState(
+    fields.reduce((acc, field) => {
+      acc[field.name] = "";
+      return acc;
+    }, {})
+  );
+  const [touched, setTouched] = useState(
+    fields.reduce((acc, field) => {
+      acc[field.name] = false;
+      return acc;
+    }, {})
+  );
+
+  const [isSending, setIsSending] = useState(false);
+
+  const resetForm = () => {
+    setValues(
+      fields.reduce((acc, field) => {
+        acc[field.name] = "";
+        return acc;
+      }, {})
+    );
+    setErrors(
+      fields.reduce((acc, field) => {
+        acc[field.name] = "";
+        return acc;
+      }, {})
+    );
+    setTouched(
+      fields.reduce((acc, field) => {
+        acc[field.name] = false;
+        return acc;
+      }, {})
+    );
+    // any other resets
   };
 
-  // const onInputChange = (e, title) => {
-  //   if (title === "contactName") setContactName(e.target.value);
-  // };
+  const handleInputFocus = (name) => {
+    if (touched[name]) {
+      return;
+    } else setTouched((prevTouched) => ({ ...prevTouched, [name]: false }));
+  };
+
+  const handleInputBlur = (name) => {
+    if (!values[name] || errors[name]) {
+      setTouched((prevTouched) => ({ ...prevTouched, [name]: true }));
+    }
+    //  check if name field is empty and display error
+    if (name === "contactName" && !values[name]) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        [name]: "Name is required",
+      }));
+    }
+    if (name === "email" && !values[name]) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        [name]: "Email is required",
+      }));
+    }
+    if (name === "message" && !values[name]) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        [name]: "Message is required",
+      }));
+    }
+  };
+
+  const onChange = (e, validate) => {
+    const { name, value } = e.target;
+    setValues((prevValues) => ({ ...prevValues, [name]: value }));
+    const valid = validate ? validate(e.target.value) : true;
+
+    if (typeof valid === "string") {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        [name]: valid,
+      }));
+    } else if (typeof valid === "boolean") {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        [name]: "",
+      }));
+    }
+  };
 
   // this works to connect to emailsening need to get info from form
   const onSend = async () => {
     try {
-      const emailContent = { contactName, subject, message, email };
-      // console.log(formData.get("contactName"));
+      setIsSending(true);
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+      const emailContent = { ...values };
       // await sendEmail(emailContent);
-      console.log(emailContent);
-      // formRef.current.reset();
       console.log("email sent successfully", emailContent);
+      resetForm();
       // additional actions after success sending email
     } catch (error) {
       console.log("error sending email", error);
       // handle error
+    } finally {
+      setIsSending(false);
     }
   };
 
-  // get values, form validation/ disable button if !valid, disable if sending, recapcha to avoid bots,
+  // gets values, form validation/ disable button if !valid, disable if sending,
+  //  needs recapcha to avoid bots,
 
   return (
     <ContactPageWrapper>
@@ -226,78 +366,62 @@ const ContactPage = ({ values, errors, touched, onChange, handleBlur }) => {
             <FormHeader className={youTubeSans.className}>
               Get in touch
             </FormHeader>
-            <InputBox>
-              <ContactInput
-                className={roboto.className}
-                type="text"
-                placeholder="Name"
-                name="contactName"
-                title="ContactName"
-                required
-                value={contactName}
-                touched={touched}
-                // onChange={(e) => {onInputChange(e.target.title)}}
-
-                onChange={(e) => {
-                  setContactName(e.target.value);
-                }}
-
-                // value={values.contactName}
-              />
-            </InputBox>
-
-            <InputBox>
-              <ContactInput
-                className={roboto.className}
-                type="email"
-                placeholder="Email"
-                name="email"
-                required
-                value={email}
-                touched={touched}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-
-                // value={value}
-              />
-            </InputBox>
-            <InputBox>
-              <ContactInput
-                className={roboto.className}
-                type="text"
-                placeholder="Subject"
-                name="subject"
-                required
-                value={subject}
-                touched={touched}
-                onChange={(e) => {
-                  setSubject(e.target.value);
-                }}
-              />
-            </InputBox>
-            <InputBox height="fit-content">
-              <StyledTextArea
-                className={roboto.className}
-                autoCorrect="on"
-                type="text"
-                placeholder="Message"
-                rows={6}
-                name="message"
-                required
-                value={message}
-                touched={touched}
-                onChange={(e) => {
-                  setMessage(e.target.value);
-                }}
-              />
-            </InputBox>
+            {fields.map(
+              ({
+                name,
+                title,
+                type,
+                required,
+                placeholder,
+                isMultiLine,
+                autoCorrect,
+                rows,
+                validate,
+                ...rest
+              }) => {
+                const Input = isMultiLine ? StyledTextArea : ContactInput;
+                return (
+                  <InputContainer key={name}>
+                    <InputBox>
+                      <Input
+                        className={roboto.className}
+                        value={values[name]}
+                        onChange={(e) => {
+                          onChange(e, validate);
+                        }}
+                        name={name}
+                        title={title}
+                        type={type}
+                        placeholder={placeholder}
+                        required={required}
+                        autoCorrect={autoCorrect}
+                        rows={rows}
+                        onFocus={() => handleInputFocus(name)}
+                        onBlur={() => handleInputBlur(name)}
+                        onKeyDown={(e) => {
+                          if (e.key === "Tab") {
+                            handleInputBlur(name);
+                          }
+                        }}
+                        {...rest}
+                      />
+                    </InputBox>
+                    {touched[name] && errors[name] && (
+                      <p style={{ color: "red" }}>{errors[name]}</p>
+                    )}
+                  </InputContainer>
+                );
+              }
+            )}
             <ButtonBase
-              // variant="primary"
-              disabled={validateText(contactName)}
+              disabled={
+                isSending ||
+                Object.values(errors).some((error) => !!error) ||
+                Object.values(values).some((value) => !value)
+              }
               onClick={onSend}
             >
-              Send
+              {isSending ? "Sending..." : "Send"}
             </ButtonBase>
           </FormWrapper>
         </Column>
