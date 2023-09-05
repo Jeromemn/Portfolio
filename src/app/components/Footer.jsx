@@ -342,7 +342,7 @@ const Footer = () => {
             <ReplayIcon color="white" width={30} height={30} />
           </IconWrapper>
           <IconWrapper>
-            <Link as={Link} href={randomLink}>
+            <Link href={randomLink}>
               <YouTubeShuffle color="white" width={30} height={30} />
             </Link>
           </IconWrapper>
