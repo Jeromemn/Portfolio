@@ -28,3 +28,6 @@ export { default as WhiteLinked } from './WhiteLinked';
 export { default as GitHubName } from './GitHubName';
 export { default as NewGitHub } from './NewGitHub';
 export { default as PauseButton } from './PauseButton';
+export { default as MobileMenuBurger } from './MobileMenuBurger';
+export { default as CloseIcon } from './CloseIcon';
+export { default as GoBackIcon } from './GoBackIcon';

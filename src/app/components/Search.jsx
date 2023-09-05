@@ -3,8 +3,9 @@ import React, { useState, useRef, useEffect, useMemo } from "react";
 import Link from "next/link";
 import useOnClickOutside from "../hooks/useOnOutsideClick";
 import Styled from "styled-components";
-import { SearchIcon } from "../icons";
+import { SearchIcon, BackArrow, GoBackIcon } from "../icons";
 import CenterContent from "./CenterContent";
+import { mq } from "../styles/mixins";
 
 const SearchWrapper = Styled.div`
   display: flex;
@@ -13,11 +14,22 @@ const SearchWrapper = Styled.div`
   width: 100%;
   padding-top: 1rem;
   justify-content: center;
+
+  ${mq.mobile(`
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    
+  `)}
 `;
 
 const SearchContainer = Styled.div`
   display: flex;
   flex-direction: column;
+
+  ${mq.mobile(`
+    display: none;
+  `)}
 `;
 
 const SearchBox = Styled.div`
@@ -41,6 +53,20 @@ const SearchBox = Styled.div`
   background: #030303;
     
     `}
+
+${({ $isOpen }) =>
+    $isOpen &&
+    `
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  background: #030303;
+    
+    `}
+
+    ${mq.mobile(`
+    max-width: 100%;
+    padding: 0;
+    `)}
 `;
 
 const SearchInput = Styled.input`
@@ -63,6 +89,12 @@ const SearchInput = Styled.input`
     padding-left: 0.5rem;
   }
 
+  /* ${mq.mobile(`
+    width: 100%;
+    padding: 0;
+    display: flex;
+    `)} */
+
 `;
 
 const DropDownWrapper = Styled.div`
@@ -77,6 +109,10 @@ const DropDownWrapper = Styled.div`
   box-sizing: border-box;
   border: 1px solid rgba(255, 255, 255, 0.15);
   padding: 8px 0;
+
+  ${mq.mobile(`
+   max-width: 100%;
+    `)}
 `;
 
 const DropDownItem = Styled.div`
@@ -107,6 +143,24 @@ const DropDownText = Styled.p`
   color:rgba(255,255,255,0.5);
   width: 100%;
   font-weight: 400;
+`;
+
+const MobileSearchButton = Styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* left: 90%; */
+  position: relative;
+`;
+
+const MobileSearchWrapper = Styled.div`
+ display: flex;
+  flex-direction: column;
+  position: fixed;
+  width: 90%;
+  padding: 5px;
+
+  /* z-index: 1000; */
 `;
 
 const dropDownSelection = [
@@ -165,9 +219,13 @@ const dropDownSelection = [
 const Search = () => {
   const [searchValue, setSearchValue] = useState("");
   const [editMode, setEditMode] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  console.log(isOpen);
   const toggling = () => setEditMode(!editMode);
   const dropdownRef = useRef();
   useOnClickOutside(dropdownRef, () => setEditMode(false));
+  const mobileDropdownRef = useRef();
+  useOnClickOutside(mobileDropdownRef, () => setIsOpen(false));
 
   const filteredItems = useMemo(() => {
     if (!searchValue) {
@@ -178,37 +236,76 @@ const Search = () => {
     });
   }, [searchValue]);
 
+  const openSearch = () => {
+    console.log("open search");
+    setIsOpen(!isOpen);
+    setEditMode(!editMode);
+  };
+
   return (
     <SearchWrapper>
       <CenterContent>
-        <SearchContainer>
-          <SearchBox onClick={toggling} $editMode={editMode}>
-            <SearchIcon
-              width={24}
-              height={24}
-              color="rgba(255, 255, 255, 0.5)"
-            />
-            <SearchInput
-              id="inputId"
-              type="text"
-              placeholder="Search Pages, Projects"
-              value={searchValue}
-              onChange={(e) => setSearchValue(e.target.value)}
-            />
-          </SearchBox>
-          {editMode && (
-            <DropDownWrapper ref={dropdownRef}>
-              {filteredItems.map(({ title, link }) => (
-                <Link key={title} href={link} onClick={toggling}>
-                  <DropDownItem>
-                    <DropDownText>{title}</DropDownText>
-                  </DropDownItem>
-                </Link>
-              ))}
-            </DropDownWrapper>
-          )}
-        </SearchContainer>
+          <SearchContainer>
+            <SearchBox onClick={toggling} $editMode={editMode}>
+              <SearchIcon
+                width={24}
+                height={24}
+                color="rgba(255, 255, 255, 0.5)"
+              />
+              <SearchInput
+                id="inputId"
+                type="text"
+                placeholder="Search Pages, Projects"
+                value={searchValue}
+                onChange={(e) => setSearchValue(e.target.value)}
+              />
+            </SearchBox>
+            {editMode && (
+              <DropDownWrapper ref={dropdownRef}>
+                {filteredItems.map(({ title, link }) => (
+                  <Link key={title} href={link} onClick={toggling}>
+                    <DropDownItem>
+                      <DropDownText>{title}</DropDownText>
+                    </DropDownItem>
+                  </Link>
+                ))}
+              </DropDownWrapper>
+            )}
+          </SearchContainer>
       </CenterContent>
+
+
+        <MobileSearchButton onClick={openSearch}>
+          <SearchIcon width={30} height={30} color="rgba(255, 255, 255, 0.5)" />
+        </MobileSearchButton>
+        {isOpen && (
+
+          <MobileSearchWrapper>
+            <SearchBox onClick={openSearch} $isOpen={isOpen}>
+              <GoBackIcon
+                width={24}
+                height={24}
+                color="rgba(255, 255, 255, 0.5)"
+                />
+              <SearchInput
+                id="inputId"
+                type="text"
+                placeholder="Search Pages, Projects"
+                value={searchValue}
+                onChange={(e) => setSearchValue(e.target.value)}
+                />
+            </SearchBox>
+              <DropDownWrapper ref={mobileDropdownRef}>
+                {filteredItems.map(({ title, link }) => (
+                  <Link key={title} href={link} onClick={openSearch}>
+                    <DropDownItem>
+                      <DropDownText>{title}</DropDownText>
+                    </DropDownItem>
+                  </Link>
+                ))}
+              </DropDownWrapper>
+        </MobileSearchWrapper>
+      )}
     </SearchWrapper>
   );
 };
