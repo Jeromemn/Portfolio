@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo } from "react";
 import projectsData from "../utils/projectsData";
+import { mq } from "../styles/mixins";
 import {
   PlayYouTube,
   YouTubeShuffle,
@@ -38,6 +39,11 @@ const PlayPauseWrapper = styled.div`
   align-items: center;
   padding: 0 1rem;
   gap: 1rem;
+
+  ${mq.mobile(`
+    padding: 0;
+    gap: 0;
+  `)};
 `;
 
 const NowPlayingSection = styled.div`
@@ -55,6 +61,10 @@ const ShuffleRepeatSection = styled.div`
   align-items: center;
   padding: 0 1rem;
   width: 257.14px;
+
+  ${mq.mobile(`
+    display: none;
+  `)};
 `;
 
 const FooterSectionContainer = styled.div`
@@ -113,6 +123,10 @@ const IconWrapper = styled.div`
   width: 24px;
   height: 24px;
   padding: 8px;
+
+  ${mq.mobile(`
+    display: none;
+  `)};
 `;
 
 const ArrowWrapper = styled.div`
@@ -125,6 +139,10 @@ const ArrowWrapper = styled.div`
   justify-content: center;
   vertical-align: middle;
   padding: 8px;
+
+  ${mq.mobile(`
+    display: none;
+  `)};
 `;
 
 const StyledLink = styled(Link)`
@@ -138,6 +156,12 @@ const StyledLink = styled(Link)`
   }
 `;
 
+const HideThumbsMobile = styled.div`
+  ${mq.mobile(`
+    display: none;
+  `)};
+`;
+
 const CurrentPageWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -149,6 +173,10 @@ const CurrentPageWrapper = styled.div`
 
 const TimerWrapper = styled.div`
   display: flex;
+
+  ${mq.mobile(`
+    display: none;
+  `)};
 `;
 
 const DisplayTimer = styled.p`
@@ -344,7 +372,9 @@ const Footer = () => {
             <CurrentPageText>{title}</CurrentPageText>
             <StyledLink href="/">Jerome </StyledLink>
           </CurrentPageWrapper>
+          <HideThumbsMobile>
           <Thumbs id={pathname} />
+          </HideThumbsMobile>
         </NowPlayingSection>
         <ShuffleRepeatSection>
           <IconWrapper>

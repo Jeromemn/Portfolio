@@ -18,7 +18,7 @@ const SearchWrapper = Styled.div`
   ${mq.mobile(`
     display: flex;
     justify-content: center;
-    width: 100vw;
+    width: fit-content;
     
   `)}
 `;
@@ -55,18 +55,18 @@ const SearchBox = Styled.div`
     `}
 
 ${({ $isOpen }) =>
-    $isOpen &&
-    `
+  $isOpen &&
+  `
   border-bottom: none;
   border-radius: 8px 8px 0 0;
   background: #030303;
     
     `}
 
-    ${mq.mobile(`
+    /* ${mq.mobile(`
     max-width: 100%;
     padding: 0;
-    `)}
+    `)} */
 `;
 
 const SearchInput = Styled.input`
@@ -110,9 +110,9 @@ const DropDownWrapper = Styled.div`
   border: 1px solid rgba(255, 255, 255, 0.15);
   padding: 8px 0;
 
-  ${mq.mobile(`
+  /* ${mq.mobile(`
    max-width: 100%;
-    `)}
+    `)} */
 `;
 
 const DropDownItem = Styled.div`
@@ -149,6 +149,7 @@ const MobileSearchButton = Styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  right: 1rem;
   /* left: 90%; */
   position: relative;
 `;
@@ -245,65 +246,63 @@ const Search = () => {
   return (
     <SearchWrapper>
       <CenterContent>
-          <SearchContainer>
-            <SearchBox onClick={toggling} $editMode={editMode}>
-              <SearchIcon
-                width={24}
-                height={24}
-                color="rgba(255, 255, 255, 0.5)"
-              />
-              <SearchInput
-                id="inputId"
-                type="text"
-                placeholder="Search Pages, Projects"
-                value={searchValue}
-                onChange={(e) => setSearchValue(e.target.value)}
-              />
-            </SearchBox>
-            {editMode && (
-              <DropDownWrapper ref={dropdownRef}>
-                {filteredItems.map(({ title, link }) => (
-                  <Link key={title} href={link} onClick={toggling}>
-                    <DropDownItem>
-                      <DropDownText>{title}</DropDownText>
-                    </DropDownItem>
-                  </Link>
-                ))}
-              </DropDownWrapper>
-            )}
-          </SearchContainer>
+        <SearchContainer>
+          <SearchBox onClick={toggling} $editMode={editMode}>
+            <SearchIcon
+              width={24}
+              height={24}
+              color="rgba(255, 255, 255, 0.5)"
+            />
+            <SearchInput
+              id="inputId"
+              type="text"
+              placeholder="Search Pages, Projects"
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
+            />
+          </SearchBox>
+          {editMode && (
+            <DropDownWrapper ref={dropdownRef}>
+              {filteredItems.map(({ title, link }) => (
+                <Link key={title} href={link} onClick={toggling}>
+                  <DropDownItem>
+                    <DropDownText>{title}</DropDownText>
+                  </DropDownItem>
+                </Link>
+              ))}
+            </DropDownWrapper>
+          )}
+        </SearchContainer>
       </CenterContent>
 
-
-        <MobileSearchButton onClick={openSearch}>
-          <SearchIcon width={30} height={30} color="rgba(255, 255, 255, 0.5)" />
-        </MobileSearchButton>
-        {isOpen && (
-
-          <MobileSearchWrapper>
-            <SearchBox onClick={openSearch} $isOpen={isOpen}>
-              <GoBackIcon
-                width={24}
-                height={24}
-                color="rgba(255, 255, 255, 0.5)"
-                />
-              <SearchInput
-                id="inputId"
-                type="text"
-                placeholder="Search Pages, Projects"
-                value={searchValue}
-                onChange={(e) => setSearchValue(e.target.value)}
-                />
-            </SearchBox>
-              <DropDownWrapper ref={mobileDropdownRef}>
-                {filteredItems.map(({ title, link }) => (
-                  <Link key={title} href={link} onClick={openSearch}>
-                    <DropDownItem>
-                      <DropDownText>{title}</DropDownText>
-                    </DropDownItem>
-                  </Link>
-                ))}
-              </DropDownWrapper>
+      <MobileSearchButton onClick={openSearch}>
+        <SearchIcon width={30} height={30} color="rgba(255, 255, 255, 0.5)" />
+      </MobileSearchButton>
+      {isOpen && (
+        <MobileSearchWrapper>
+          <SearchBox onClick={openSearch} $isOpen={isOpen}>
+            <GoBackIcon
+              width={24}
+              height={24}
+              color="rgba(255, 255, 255, 0.5)"
+            />
+            <SearchInput
+              id="inputId"
+              type="text"
+              placeholder="Search Pages, Projects"
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
+            />
+          </SearchBox>
+          <DropDownWrapper ref={mobileDropdownRef}>
+            {filteredItems.map(({ title, link }) => (
+              <Link key={title} href={link} onClick={openSearch}>
+                <DropDownItem>
+                  <DropDownText>{title}</DropDownText>
+                </DropDownItem>
+              </Link>
+            ))}
+          </DropDownWrapper>
         </MobileSearchWrapper>
       )}
     </SearchWrapper>

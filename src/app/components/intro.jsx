@@ -4,6 +4,7 @@ import { styled } from "styled-components";
 import { usePathname } from "next/navigation";
 import { useMemo } from "react";
 import AllLinks from "../utils/links";
+import { mq } from "../styles/mixins";
 import {
   PlayYouTube,
   YouTubeShuffle,
@@ -28,6 +29,14 @@ const IntroContainer = styled.div`
   align-self: flex-end;
   justify-self: flex-start;
   padding-bottom: 2rem;
+
+  ${mq.mobile(`
+    width: 100%;
+    padding: 0rem 1rem;
+    align-items: center;
+    gap: .5rem;
+    max-width: 100%;
+  `)}
 `;
 
 const NameIntro = styled.h1`
@@ -40,6 +49,10 @@ const NameIntro = styled.h1`
 const IntroText = styled.p`
   color: white;
   padding: 1rem 0rem;
+
+  ${mq.mobile(`
+    display: none;
+  `)}
 `;
 
 const ButtonContainer = styled.div`
@@ -48,6 +61,12 @@ const ButtonContainer = styled.div`
   align-items: flex-start;
   gap: 8px;
   width: 100%;
+
+  ${mq.mobile(`
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+  `)}
 `;
 
 const ButtonName = styled.p`
@@ -68,6 +87,14 @@ const VerifiedContainer = styled.div`
   gap: 10px;
 `;
 
+const PlayButton = styled(ButtonBase)`
+
+
+  ${mq.mobile(`
+    display: none;
+  `)}
+`;
+
 const Intro = () => {
   const pathname = usePathname();
 
@@ -80,11 +107,11 @@ const Intro = () => {
 
   return (
     <IntroContainer>
+      <NameIntro className={youTubeSansDarkBold.className}>Jerome</NameIntro>
       <VerifiedContainer>
         <Verified />
         <VerifiedHeader>Verified Developer</VerifiedHeader>
       </VerifiedContainer>
-      <NameIntro className={youTubeSansDarkBold.className}>Jerome</NameIntro>
       <IntroText>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia, ipsa
         totam laudantium cupiditate nam, accusantium eum nobis vel perferendis
@@ -96,10 +123,10 @@ const Intro = () => {
           <YouTubeShuffle color="black" width={24} height={24} />
           Shuffle
         </ButtonBase>
-        <ButtonBase variant="primary">
+        <PlayButton variant="primary">
           <PlayYouTube color="black" width={24} height={24} />
           <ButtonName>Play</ButtonName>
-        </ButtonBase>
+        </PlayButton>
         <ButtonBase
           variant="secondary"
           as={Link}

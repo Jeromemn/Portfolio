@@ -82,10 +82,12 @@ const MobileMenuWrapper = styled.div`
   position: relative;
   align-items: center;
   justify-content: center;
+  /* z-index: 100; */
   ${mq.mobile(`
     display: flex;
     padding: 1rem;
-    z-index: 100;
+    position: absolute;
+  
     
     `)}
     
@@ -108,7 +110,7 @@ const MobileSideBarWrapper = styled.div`
   align-items: center;
   background-color: rgb(0, 0, 0);
   position: relative;
-  z-index: 100;
+  /* z-index: 100; */
   border-right: 1px solid rgba(255,255,255,0.15);
   box-sizing: border-box;
 `;
@@ -128,10 +130,11 @@ const SideBar = () => {
     <SidePanel>
       <MobileMenuWrapper $open={open}>
         {!open && (
+
           <ButtonBase variant="icon" onClick={toggleOpen}>
             <MobileMenuBurger color="white" width={30} height={30} />
           </ButtonBase>
-        )}
+            )}
         {open && (
           <MobileSideBarWrapper>
             <ButtonBase variant="icon" onClick={toggleOpen}>

@@ -5,6 +5,7 @@ import Link from "next/link";
 import Thumbs from "@/app/components/Thumbs";
 import { PlayYouTube } from "../icons";
 import { youTubeDark, youTubeSans } from "../styles/setFonts";
+import { mq } from "../styles/mixins";
 
 const headerList = [
   { id: 2, name: "All About Me", path: "/about", image: "/about.png" },
@@ -39,6 +40,10 @@ const HeaderItemWrapper = styled.div`
   width: 100%;
   justify-content: flex-start;
   align-items: center;
+
+  ${mq.mobile(`
+    gap: 1rem;
+  `)}
 `;
 
 const HeaderItems = styled.p`
@@ -60,12 +65,22 @@ const AlbumCover = styled.div`
   width: 40px;
   border-radius: 25%;
   overflow: hidden;
+
+   ${mq.mobile(`
+    width: 50px;
+    height: 50px;
+  `)}
 `;
 
 const AlbumImage = styled(Image)`
   ${HeaderItemWrapper}:hover & {
     display: none;
   }
+
+  ${mq.mobile(`
+    width: 50px;
+    height: 50px;
+  `)}
 `;
 
 const ItemSection = styled.div`
@@ -76,6 +91,15 @@ const ItemSection = styled.div`
   height: 100%;
   width: 90%;
   gap: 10rem;
+
+  ${mq.mobile(`
+    flex-direction: column;
+    height: 100%;
+    width: 70%;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0rem;
+  `)}
 `;
 
 const ArtistName = styled.p`
@@ -85,9 +109,31 @@ const ArtistName = styled.p`
   line-height: 19.2px;
 `;
 
+const HideThumbsMobile = styled.div`
+
+  ${mq.mobile(`
+    display: none;
+  `)}
+`;
+
+// const Latest = styled.div`
+//   display: none;
+//   background-color: #21212152;
+//   height: 4rem;
+//   width: 100%;
+//   margin-top: 1rem;
+
+//   ${mq.mobile(`
+//     display: flex;
+
+//   `)}
+// `;
+
 const Header = () => {
   return (
     <HeaderContainer>
+      {/* <Latest /> */}
+
       <HeaderTitle className={youTubeSans.className}>Popular</HeaderTitle>
       <NavigationContainer>
         {headerList.map(({ id, name, path, image }) => (
@@ -107,7 +153,9 @@ const Header = () => {
                 <HeaderItems>{name}</HeaderItems>
               </Link>
               <ArtistName> Jerome </ArtistName>
+              <HideThumbsMobile>
               <Thumbs id={name}/>
+              </HideThumbsMobile>
             </ItemSection>
           </HeaderItemWrapper>
         ))}
