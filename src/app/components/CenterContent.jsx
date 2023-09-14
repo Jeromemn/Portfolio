@@ -8,9 +8,9 @@ const CenterContentWrapper = styled.div`
   flex-direction: row;
   width: 75%;
 
-  /* ${mq.mobile(`
+  ${mq.mobile(`
     width: 95%;
-  `)} */
+  `)}
 `;
 
 const CenterContent = ({ children }) => {
