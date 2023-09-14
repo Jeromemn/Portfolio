@@ -15,11 +15,16 @@ const ProjectsPageWrapper = styled.div`
   background-color: black;
   overflow: hidden;
 
+  ${mq.largeMobile(`
+      padding-bottom: 5rem;
+      overflow: scroll;
+  `)}
+
   ${mq.mobile(`
     overflow: auto;
-    // margin-bottom: 5rem;
-    // padding-bottom: 8rem;
-  `)}
+ 
+  `)};
+
 `;
 
 const ArtistHeaderWapper = styled.div`
@@ -45,6 +50,11 @@ const ProjectsContentWrapper = styled.div`
   flex-direction: column;
   width: 100%;
   height: calc(100vh - 72px);
+
+  ${mq.largeMobile(`
+    padding-bottom: 5rem;
+    overflow: auto;
+  `)}
 `;
 
 const ProjectsTitle = styled.h2`

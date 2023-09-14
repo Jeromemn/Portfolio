@@ -19,6 +19,13 @@ const ProjectContainer = styled.div`
     overflow: auto;
     justify-content: space-evenly;
   `)}
+
+  ${mq.largeMobile(`
+    // margin-bottom: 5rem;
+    // padding-bottom: 5rem;
+    // overflow: auto;
+
+  `)}
 `;
 
 const Albums = styled.div`
@@ -30,6 +37,10 @@ const Albums = styled.div`
 
   ${mq.mobile(`
     padding-bottom:1rem;
+  `)}
+
+  ${mq.smallMobile(`
+    padding-bottom: 0;
   `)}
 `;
 
@@ -43,13 +54,18 @@ const AlbumCover = styled.div`
   object-fit: cover;
 
   /* for two columns */
-  /* ${mq.mobile(`
-    width: 150px;
-    height: 150px;
-  `)} */
-
   ${mq.mobile(`
+    width: 183px;
+    height: 150px;
+  `)}
+
+  ${mq.smallMobile(`
     width: 300px;
+    height: 200px;
+  `)}
+
+  ${mq.largeMobile(`
+    width: 200px;
     height: 200px;
   `)}
 `;
@@ -65,11 +81,11 @@ const ProjectName = styled.h3`
   color: white;
 
   /* for two column */
-  /* ${mq.mobile(`
+  ${mq.mobile(`
     font-size: 14px;
     font-weight: 500;
     line-height: 1.2;
-  `)} */
+  `)}
 `;
 
 const ProjectInfo = styled.p`
@@ -77,11 +93,11 @@ const ProjectInfo = styled.p`
   padding-top: 5px;
 
   /* for two column */
-  /* ${mq.mobile(`
+  ${mq.mobile(`
     font-size: 14px;
     font-weight: 500;
     line-height: 1.2;
-  `)} */
+  `)}
 `;
 
 const HoverPlay = styled.div`
@@ -120,9 +136,20 @@ const HoverPlay = styled.div`
 
 const AlbumImage = styled(Image)`
   ${mq.mobile(`
-    width: 300px;
+    width: 183px;
+    height: 150px;
     object-fit: cover;
     object-position: top;
+  `)}
+
+  ${mq.smallMobile(`
+    width: 300px;
+    height: 200px;
+  `)}
+
+  ${mq.largeMobile(`
+    width: 200px;
+    height: 200px;
   `)}
 `;
 

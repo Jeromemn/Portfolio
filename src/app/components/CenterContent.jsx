@@ -11,6 +11,10 @@ const CenterContentWrapper = styled.div`
   ${mq.mobile(`
     width: 95%;
   `)}
+
+  ${mq.largeMobile(`
+    width: 90%;
+  `)}
 `;
 
 const CenterContent = ({ children }) => {
