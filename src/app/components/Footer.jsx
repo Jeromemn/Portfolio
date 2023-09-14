@@ -53,6 +53,10 @@ const NowPlayingSection = styled.div`
   grid-area: middle;
   align-items: center;
   overflow: hidden;
+
+  ${mq.mobile(`
+  padding: 0 1rem;
+  `)};
 `;
 
 const ShuffleRepeatSection = styled.div`
@@ -73,6 +77,10 @@ const FooterSectionContainer = styled.div`
   align-items: center;
   height: inherit;
   padding: 0 1rem;
+
+  ${mq.mobile(`
+  justify-content: space-around;
+  `)}
 `;
 
 const SkipIconWrapper = styled.div`
@@ -169,6 +177,8 @@ const CurrentPageWrapper = styled.div`
   justify-content: center;
   align-content: center;
   width: fit-content;
+
+ 
 `;
 
 const TimerWrapper = styled.div`
@@ -195,6 +205,12 @@ const TimerPlayContainer = styled.div`
 const SliderProgress = styled(Slider)`
   padding: 15px;
   margin: -15px;
+
+  ${mq.mobile(`
+    padding: 15px 0 15px 0;
+    margin: -15px 0 -15px 0;
+  `)}
+
   & .rc-slider-rail {
     background-color: #bdbdbd;
     height: 4px;
