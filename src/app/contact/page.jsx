@@ -6,12 +6,7 @@ import styled, { css } from "styled-components";
 import CenterContent from "../components/CenterContent";
 import { mq } from "../styles/mixins";
 import ButtonBase from "../components/ButtonBase";
-import {
-  LinkedInIcon,
-  WhiteLinked,
-  GitHubName,
-  NewGitHub,
-} from "../icons";
+import { LinkedInIcon, WhiteLinked, GitHubName, NewGitHub } from "../icons";
 import { youTubeDark, youTubeSans } from "../styles/setFonts";
 import { roboto } from "../layout";
 import { sendEmail } from "../utils/actions";
@@ -24,7 +19,7 @@ const ContactPageWrapper = styled.div`
   padding-top: 64px;
   background-color: black;
   overflow: hidden;
-/* 
+  /* 
   ${mq.mobile(`
     width: 100%;
   `)}  */
@@ -40,6 +35,11 @@ const HeaderImageWrapper = styled.div`
   background-color: white;
   position: relative;
   overflow: hidden;
+
+  ${mq.mobile(`
+    width: 120px;
+    height: 120px;
+  `)}
 `;
 
 const ContactHeaderSection = styled.div`
@@ -52,8 +52,9 @@ const ContactHeaderSection = styled.div`
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 
   ${mq.mobile(`
-    
-    `)} 
+    justify-content: center;
+    margin-top: 1rem;
+    `)}
 `;
 
 const HeaderInfoWrapper = styled.div`
@@ -62,6 +63,11 @@ const HeaderInfoWrapper = styled.div`
   height: 100%;
   justify-content: space-between;
   align-items: flex-start;
+
+  ${mq.mobile(`
+    gap: 1rem;
+    justify-content: center;
+  `)}
 `;
 
 const FormWrapper = styled.div`
@@ -72,6 +78,12 @@ const FormWrapper = styled.div`
   padding-top: 2rem;
   align-items: center;
   flex-wrap: wrap;
+
+  ${mq.mobile(`
+    padding-top: 1rem;
+  gap: .5rem;
+
+  `)}
 `;
 
 const styles = css`
@@ -104,6 +116,10 @@ const InputBox = styled.div`
   align-content: center;
   position: relative;
   width: 400px;
+
+  ${mq.mobile(`
+    max-width: 100%;
+  `)}
 `;
 
 const ContactInput = styled.input`
@@ -127,6 +143,10 @@ const HeaderTitle = styled.h1`
   font-size: 3rem;
   color: white;
   line-height: 1.2;
+
+  ${mq.mobile(`
+    font-size: 2rem;
+  `)}
 `;
 
 const ButtonWrapper = styled.div`
@@ -153,18 +173,39 @@ const StyledLink = styled(Link)`
 
 const FormHeader = styled.h2`
   color: white;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 `;
 
 const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
+  /* min-height: 75px; */
   min-height: 56px;
+
+  ${({ $isMultiLine }) =>
+    $isMultiLine &&
+    `
+    minHeight: 167px;
+  `}
+
+  ${mq.mobile(`
+    max-width: 90%;
+  min-height: 77px;
+  
+
+  `)}
 `;
 
 const ErrorMessage = styled.p`
   font-size: 12px;
-  padding-left: 1rem;
+  padding-left: .5rem;
+`;
 
+const FieldLabel = styled.label`
+  color: rgba(255, 255, 255, 0.7);
+  padding-bottom: 0.25rem;
+  font-size: 14px;
+  padding-left: .5rem;
 `;
 
 const fields = [
@@ -396,6 +437,7 @@ const ContactPage = () => {
                 const Input = isMultiLine ? StyledTextArea : ContactInput;
                 return (
                   <InputContainer key={name}>
+                    <FieldLabel>{title}</FieldLabel>
                     <InputBox>
                       <Input
                         className={roboto.className}
@@ -421,7 +463,9 @@ const ContactPage = () => {
                       />
                     </InputBox>
                     {touched[name] && errors[name] && (
-                      <ErrorMessage style={{ color: "red" }}>{errors[name]}</ErrorMessage>
+                      <ErrorMessage style={{ color: "red" }}>
+                        {errors[name]}
+                      </ErrorMessage>
                     )}
                   </InputContainer>
                 );
