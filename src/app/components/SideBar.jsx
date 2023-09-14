@@ -1,7 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import useOnClickOutside from "../hooks/useOnOutsideClick";
 import { mq } from "../styles/mixins";
 import styled from "styled-components";
 import {
@@ -62,7 +63,7 @@ const SidebarButton = styled.button`
   padding: 12px 0;
   width: 56px;
   cursor: pointer;
-  background-color: rgba(0, 0, 0, 0);
+  /* background-color: rgba(0, 0, 0, 0); */
 
   &:hover {
     background-color: rgba(255, 255, 255, 0.3);
@@ -119,6 +120,8 @@ const SideBar = () => {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   console.log(open);
+  const MobileMenuRef = useRef();
+  useOnClickOutside(MobileMenuRef, () => setOpen(false));
 
   const isPathActive = (href) => (pathname === href ? "active" : null);
 
@@ -128,7 +131,7 @@ const SideBar = () => {
 
   return (
     <SidePanel>
-      <MobileMenuWrapper $open={open}>
+      <MobileMenuWrapper $open={open} ref={MobileMenuRef}>
         {!open && (
 
           <ButtonBase variant="icon" onClick={toggleOpen}>
@@ -141,30 +144,30 @@ const SideBar = () => {
               <CloseIcon color="white" width={30} height={30} />
             </ButtonBase>
             <Link href="/">
-              <SidebarButton className={isPathActive("/")}>
+              <SidebarButton className={isPathActive("/")} onClick={toggleOpen}>
                 <YouTubeHome color="white" width={24} height={24} /> Home
               </SidebarButton>
             </Link>
             <Link href="/about">
-              <SidebarButton className={isPathActive("/about")}>
+              <SidebarButton className={isPathActive("/about")} onClick={toggleOpen}>
                 <ProfileIcon color="white" width={24} height={24} /> About
               </SidebarButton>
             </Link>
             <Link href="/projects">
-              <SidebarButton className={isPathActive("/projects")}>
+              <SidebarButton className={isPathActive("/projects")} onClick={toggleOpen}>
                 <SubscriptionsYT color="white" width={24} height={24} />{" "}
                 Projects
               </SidebarButton>
             </Link>
             <Link href="/contact">
-              <SidebarButton className={isPathActive("/contact")}>
+              <SidebarButton className={isPathActive("/contact")} onClick={toggleOpen}>
                 <ContactIcon color="white" width={24} height={24} /> Contact
               </SidebarButton>
             </Link>
           </MobileSideBarWrapper>
         )}
       </MobileMenuWrapper>
-      <SideBarWrapper>
+      <SideBarWrapper >
         <Link href="/">
           <SidebarButton className={isPathActive("/")}>
             <YouTubeHome color="white" width={24} height={24} /> Home
