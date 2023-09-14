@@ -5,6 +5,7 @@ import Link from "next/link";
 import useOnClickOutside from "../../hooks/useOnOutsideClick";
 import projectsData from "@/app/utils/projectsData";
 import styled from "styled-components";
+import { mq } from "@/app/styles/mixins";
 import ButtonBase from "@/app/components/ButtonBase";
 import { PlayYouTube, NewGitHub } from "@/app/icons";
 import Thumbs from "@/app/components/Thumbs";
@@ -30,6 +31,12 @@ const ProjectContent = styled.div`
   width: 75%;
   padding: 8rem 0rem 3rem 0rem;
   gap: 3rem;
+
+  ${mq.mobile(`
+  display: none;
+    width: 95%;
+    padding: 6rem 0rem 3rem 0rem;
+  `)}
 `;
 
 const ProjectImage = styled.div`
@@ -39,6 +46,11 @@ const ProjectImage = styled.div`
   border: 1px solid grey;
   border-radius: 4px;
   overflow: hidden;
+
+  ${mq.mobile(`
+    height: 160px;
+  `)}
+
 `;
 
 const ProjectDescriptionWrapper = styled.div`
@@ -56,6 +68,10 @@ const ProjectTitle = styled.h2`
   font-weight: 700;
   color: rgb(255, 255, 255);
   width: fit-content;
+
+  ${mq.mobile(`
+    font-size: 24px;
+  `)}
 `;
 
 const Text = styled.p`
@@ -79,6 +95,10 @@ const ButtonContainer = styled.div`
   flex-direction: row;
   gap: 1rem;
   width: fit-content;
+
+  ${mq.mobile(`
+    padding-left: .8rem;
+  `)}
 `;
 
 const DescriptionWrapper = styled.div`
@@ -97,6 +117,10 @@ const DescriptionWrapper = styled.div`
       height: auto;
       padding-bottom: 2rem;
     `}
+
+  ${mq.mobile(`
+    width: 100%;
+  `)}
 `;
 
 const ProjectInfo = styled.div`
@@ -110,6 +134,11 @@ const TechStack = styled.div`
   flex-direction: column;
   gap: 0.5rem;
   width: 75%;
+
+  ${mq.mobile(`
+    width: 90%;
+    padding-top: 2rem;
+  `)}
 `;
 
 const MoreButton = styled.button`
@@ -175,6 +204,36 @@ const TechStart = styled.div`
   display: flex;
 `;
 
+const MobileProjectContent = styled.div`
+display: none;
+
+${mq.mobile(`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`)}
+`;
+
+const ImageAndDescription = styled.div`
+display: none;
+
+${mq.mobile(`
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 8rem 0 1rem .8rem;
+  gap: .5rem;
+`)}
+`;
+
+const StyledImage = styled(Image)`
+  ${mq.mobile(`
+    height: 160px;
+    object-fit: cover;
+    object-position: center; 
+  `)}
+`;
+
 const SingleProjectPage = ({ params, ...props }) => {
   const [showMore, setShowMore] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -207,6 +266,7 @@ const SingleProjectPage = ({ params, ...props }) => {
             width={300}
             height={240}
             priority={true}
+            // style={{ objectFit: "cover", objectPosition: "center" }}
             // placeholder="blur"
           />
         </ProjectImage>
@@ -263,6 +323,74 @@ const SingleProjectPage = ({ params, ...props }) => {
           </ButtonContainer>
         </ProjectDescriptionWrapper>
       </ProjectContent>
+
+      <MobileProjectContent>
+        <ImageAndDescription>
+      <ProjectImage>
+          <StyledImage
+            src={project?.image?.url}
+            alt={project?.image?.alt}
+            width={300}
+            height={240}
+            priority={true}
+            // placeholder="blur"
+          />
+        </ProjectImage>
+        <ProjectDescriptionWrapper>
+          <ProjectTitle className={youTubeSans.className}>
+            {project?.title}
+          </ProjectTitle>
+          <ProjectInfo>
+            <Text color="#aaa">
+              {project?.team} • {project?.year}
+            </Text>
+            <CommitsAndTech>
+              <Text color="#aaa"> {project?.techUsed.length} Techs </Text>
+              <Text color="#aaa"> • </Text>
+              <Text color="#aaa"> {project?.commits} Commits</Text>
+            </CommitsAndTech>
+          </ProjectInfo>
+          <MoreDescription>
+            <DescriptionWrapper $showMore={showMore} ref={moreRef}>
+              <Text color="#aaa" fontSize="14px" $lineHeight="1.4rem">
+                {project?.description}
+              </Text>
+            </DescriptionWrapper>
+            <MoreButton onClick={handleClick} $showMore={showMore}>
+              More
+            </MoreButton>
+            <LessButton onClick={handleClose} $showMore={showMore}>
+              Less
+            </LessButton>
+          </MoreDescription>
+            </ProjectDescriptionWrapper>
+            </ImageAndDescription>
+          <ButtonContainer>
+            <ButtonBase
+              variant="primary"
+              as={Link}
+              href={`${project?.website}`}
+              passHref={true}
+            >
+              <PlayYouTube color="black" width={24} height={24} />
+              Live Site
+            </ButtonBase>
+            <ButtonBase
+              variant="secondary"
+              as={Link}
+              href={`${project?.github}`}
+              passHref={true}
+            >
+              <NewGitHub color="white" size={20} />
+              Go to Repo
+            </ButtonBase>
+            <OptionsDropDown>
+              <DropDownItem />
+              <GoToDev />
+            </OptionsDropDown>
+          </ButtonContainer>
+        </MobileProjectContent>
+
       <TechStack>
         {project?.techUsed.map((tech, index) => (
           <TechWrapper key={tech}>
