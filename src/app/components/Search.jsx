@@ -24,6 +24,12 @@ const SearchContainer = Styled.div`
   display: flex;
   flex-direction: column;
 
+  ${mq.largeMobile(`
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  `)}
+
 `;
 
 const SearchBox = Styled.div`
@@ -46,7 +52,7 @@ const SearchBox = Styled.div`
   border-radius: 8px 8px 0 0;
   background: #030303;
     
-    `}
+  `}
 
 ${({ $isOpen }) =>
   $isOpen &&
@@ -55,8 +61,14 @@ ${({ $isOpen }) =>
   border-radius: 8px 8px 0 0;
   background: #030303;
     
-    `}
+  `}
 
+
+    ${mq.largeMobile(`
+    width: 400px;
+    padding-left: 1rem;
+    box-sizing: content-box;
+    `)}
     ${mq.mobile(`
     max-width: 100%;
     padding-left: 0;
@@ -72,6 +84,7 @@ const SearchInput = Styled.input`
   outline: none;
   height: 100%;
   color: white;
+  width: 100%;
 
   ${({ $editMode }) =>
     $editMode &&
@@ -99,10 +112,18 @@ const DropDownWrapper = Styled.div`
   border: 1px solid rgba(255, 255, 255, 0.15);
   padding: 8px 0;
 
+  ${mq.largeMobile(`
+    width: 400px;
+    padding-left: 1rem;
+    box-sizing: content-box;
+  `)}
+
   ${mq.mobile(`
     max-width: 100%;
     box-sizing: content-box;
+    padding: 0;
   `)}
+
 
 `;
 
@@ -124,7 +145,8 @@ const DropDownItem = Styled.div`
   background-color: #030303;
 
   &&:hover {
-    background-color: rgba(255,255,255,0.2);
+    /* background-color: rgba(255,255,255,0.2); */
+   background-color: rgba(255, 255, 255, 0.15);
   }
 `;
 
@@ -137,6 +159,8 @@ const DropDownText = Styled.p`
 `;
 
 const MobileSearchButton = Styled.div`
+  display: none;
+${mq.mobile(`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -144,6 +168,7 @@ const MobileSearchButton = Styled.div`
   /* left: 90%; */
   position: absolute;
   padding: 1rem;
+  `)}
 `;
 
 const MobileSearchWrapper = Styled.div`
