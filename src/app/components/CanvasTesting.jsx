@@ -37,11 +37,11 @@ const CanvasTesting = (props) => {
     myImage.src = "smallCropped.jpg";
     myImage.onload = () => {
       resizeCanvas(canvas);
-      fitImageToCanvas(myImage, canvas);
+      // fitImageToCanvas(myImage, canvas);
       ctx.imageSmoothQuality = "high";
       ctx.drawImage(myImage, 0, 0, canvas.width, canvas.height);
       // ctx.drawImage(myImage, 0, 0, ctx.canvas.width, ctx.canvas.height);
-      const scannedImage = ctx.getImageData(50, 0, canvas.width, canvas.height);
+      const scannedImage = ctx.getImageData(canvas.xOffset, canvas.yOffset, canvas.width, canvas.height);
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       let particlesArray = [];
       const numberOfParticles = 7000;
@@ -75,7 +75,7 @@ const CanvasTesting = (props) => {
           this.y = Math.random() * canvas.height;
           this.speed = 0;
           this.velocity = Math.random() * 3.5;
-          this.size = Math.random() * 2 + 1;
+          this.size = Math.random() * canvas.size + 1;
           this.position1 = Math.floor(this.y);
           this.position2 = Math.floor(this.x);
         }
@@ -134,7 +134,6 @@ const CanvasTesting = (props) => {
         position: 'relative',
         // borderRadius: "50%",
         // bottom: "72px",
-        // right: "0px",
       }}
     />
   );

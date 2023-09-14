@@ -7,21 +7,35 @@ const resizeCanvas = (canvas) => {
   const drawXLarge = () => {
     canvas.width = 582;
     canvas.height = 582;
+    canvas.xOffset = 50;
+    canvas.yOffset = 0;
+    canvas.size = 2;
+
   };
 
   const drawLarge = () => {
     canvas.width = 539;
     canvas.height = 647;
+    canvas.xOffset = 50;
+    canvas.yOffset = 0;
+    canvas.size = 2;
+
   };
 
   const drawMedium = () => {
     canvas.width = 359;
     canvas.height = 431;
+    canvas.xOffset = 50;
+    canvas.yOffset = 0;
+    canvas.size = 2;
   };
 
   const drawSmall = () => {
-    canvas.width = 179;
-    canvas.height = 215;
+    canvas.width = 250;
+    canvas.height = 250;
+    canvas.xOffset = 15;
+    canvas.yOffset = -5;
+    canvas.size = .5;
   };
 
   if (window.innerWidth < 600) {
