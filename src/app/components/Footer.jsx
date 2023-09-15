@@ -40,6 +40,11 @@ const PlayPauseWrapper = styled.div`
   padding: 0 1rem;
   gap: 1rem;
 
+  ${mq.largeMobile(`
+    padding: 0;
+    gap: 0;
+  `)};
+
   ${mq.mobile(`
     padding: 0;
     gap: 0;
@@ -65,6 +70,11 @@ const ShuffleRepeatSection = styled.div`
   align-items: center;
   padding: 0 1rem;
   width: 257.14px;
+
+  ${mq.largeMobile(`
+    width: fit-content;
+    padding: 0;
+  `)};
 
   ${mq.mobile(`
     display: none;
@@ -175,10 +185,7 @@ const CurrentPageWrapper = styled.div`
   flex-direction: column;
   width: 100%;
   justify-content: center;
-  align-content: center;
   width: fit-content;
-
- 
 `;
 
 const TimerWrapper = styled.div`
@@ -207,6 +214,11 @@ const SliderProgress = styled(Slider)`
   margin: -15px;
 
   ${mq.mobile(`
+    padding: 15px 0 15px 0;
+    margin: -15px 0 -15px 0;
+  `)}
+
+  ${mq.largeMobile(`
     padding: 15px 0 15px 0;
     margin: -15px 0 -15px 0;
   `)}
@@ -389,7 +401,7 @@ const Footer = () => {
             <StyledLink href="/">Jerome </StyledLink>
           </CurrentPageWrapper>
           <HideThumbsMobile>
-          <Thumbs id={pathname} />
+            <Thumbs id={pathname} />
           </HideThumbsMobile>
         </NowPlayingSection>
         <ShuffleRepeatSection>
