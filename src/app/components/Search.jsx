@@ -18,6 +18,11 @@ const SearchWrapper = Styled.div`
   ${mq.mobile(`
    display: none;
   `)}
+
+  ${mq.largeMobile(`
+  z-index: 1;
+  position: relative;
+  `)}
 `;
 
 const SearchContainer = Styled.div`
@@ -29,7 +34,6 @@ const SearchContainer = Styled.div`
     justify-content: center;
     align-items: center;
   `)}
-
 `;
 
 const SearchBox = Styled.div`
@@ -54,15 +58,13 @@ const SearchBox = Styled.div`
     
   `}
 
-${({ $isOpen }) =>
-  $isOpen &&
-  `
-  border-bottom: none;
-  border-radius: 8px 8px 0 0;
-  background: #030303;
-    
-  `}
-
+    ${({ $isOpen }) =>
+      $isOpen &&
+      `
+      border-bottom: none;
+      border-radius: 8px 8px 0 0;
+      background: #030303;
+    `}
 
     ${mq.largeMobile(`
     width: 400px;
@@ -95,8 +97,6 @@ const SearchInput = Styled.input`
     color: rgba(255, 255, 255, 0.5);
     padding-left: 0.5rem;
   }
-
-
 `;
 
 const DropDownWrapper = Styled.div`
@@ -123,8 +123,6 @@ const DropDownWrapper = Styled.div`
     box-sizing: content-box;
     padding: 0;
   `)}
-
-
 `;
 
 const DropDownItem = Styled.div`
@@ -177,8 +175,6 @@ const MobileSearchWrapper = Styled.div`
   position: fixed;
   width: 90%;
   padding-top: 1rem;
-
-  /* z-index: 1000; */
 `;
 
 const MobileSearchContainer = Styled.div`
@@ -187,7 +183,6 @@ const MobileSearchContainer = Styled.div`
     width: 100vw;
     height: 100vh;
     justify-content: center;
-    
   `)}
 `;
 
@@ -196,6 +191,11 @@ display: flex;
 position: fixed;
 top: 0;
 width: 100%;
+
+${mq.largeMobile(`
+  z-index: 1;
+  width: 100%;
+`)}
 `;
 
 const dropDownSelection = [

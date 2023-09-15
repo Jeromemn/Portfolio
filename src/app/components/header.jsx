@@ -9,14 +9,28 @@ import { mq } from "../styles/mixins";
 
 const headerList = [
   { id: 2, name: "All About Me", path: "/about", image: "/about.png" },
-  { id: 3, name: "Get In Contact", path: "/contact", image: "/contactImage.png" },
-  { id: 4, name: "Projects Playlist", path: "/projects", image: "/projects.png" },
+  {
+    id: 3,
+    name: "Get In Contact",
+    path: "/contact",
+    image: "/contactImage.png",
+  },
+  {
+    id: 4,
+    name: "Projects Playlist",
+    path: "/projects",
+    image: "/projects.png",
+  },
 ];
 
 const HeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+
+  ${mq.largeMobile(` 
+    padding: 0rem 2rem;
+  `)}
 `;
 
 const NavigationContainer = styled.div`
@@ -33,13 +47,16 @@ const HeaderTitle = styled.h2`
 
 const HeaderItemWrapper = styled.div`
   display: flex;
-  align-content: center;
-  border-bottom: 1px grey solid;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding: 1rem 0rem;
   gap: 1.5rem;
   width: 100%;
   justify-content: flex-start;
   align-items: center;
+
+  ${mq.largeMobile(`
+    gap: 1rem;
+  `)}
 
   ${mq.mobile(`
     gap: 1rem;
@@ -66,7 +83,12 @@ const AlbumCover = styled.div`
   border-radius: 25%;
   overflow: hidden;
 
-   ${mq.mobile(`
+  ${mq.largeMobile(`
+    width: 40px;
+    height: 40px;
+  `)}
+
+  ${mq.mobile(`
     width: 50px;
     height: 50px;
   `)}
@@ -76,6 +98,11 @@ const AlbumImage = styled(Image)`
   ${HeaderItemWrapper}:hover & {
     display: none;
   }
+
+  ${mq.largeMobile(`
+    width: 40px;
+    height: 40px;
+  `)}
 
   ${mq.mobile(`
     width: 50px;
@@ -100,6 +127,15 @@ const ItemSection = styled.div`
     align-items: flex-start;
     gap: 0rem;
   `)}
+
+  ${mq.largeMobile(`
+    flex-direction: column;
+    height: 100%;
+    width: 70%;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0rem;
+  `)}
 `;
 
 const ArtistName = styled.p`
@@ -110,30 +146,26 @@ const ArtistName = styled.p`
 `;
 
 const HideThumbsMobile = styled.div`
+  ${mq.largeMobile(`
+    display: none;
+  `)}
 
   ${mq.mobile(`
     display: none;
   `)}
 `;
 
-// const Latest = styled.div`
-//   display: none;
-//   background-color: #21212152;
-//   height: 4rem;
-//   width: 100%;
-//   margin-top: 1rem;
+const ShowThumbsTablet = styled.div`
+  display: none;
 
-//   ${mq.mobile(`
-//     display: flex;
-
-//   `)}
-// `;
+  ${mq.largeMobile(`
+    display: flex;
+  `)}
+`;
 
 const Header = () => {
   return (
     <HeaderContainer>
-      {/* <Latest /> */}
-
       <HeaderTitle className={youTubeSans.className}>Popular</HeaderTitle>
       <NavigationContainer>
         {headerList.map(({ id, name, path, image }) => (
@@ -154,9 +186,12 @@ const Header = () => {
               </Link>
               <ArtistName> Jerome </ArtistName>
               <HideThumbsMobile>
-              <Thumbs id={name}/>
+                <Thumbs id={name} />
               </HideThumbsMobile>
             </ItemSection>
+            <ShowThumbsTablet>
+              <Thumbs id={name} />
+            </ShowThumbsTablet>
           </HeaderItemWrapper>
         ))}
       </NavigationContainer>

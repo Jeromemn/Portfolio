@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import useOnClickOutside from "../hooks/useOnOutsideClick";
 import { mq } from "../styles/mixins";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import {
   YouTubeHome,
   ProfileIcon,
@@ -24,6 +24,9 @@ const SidePanel = styled.div`
   justify-content: center;
   width: 72px;
 
+  ${mq.largeMobile(`
+    z-index: 250;
+  `)}
   /* ${mq.mobile(`
   height: 50%;
   display: flex;
@@ -43,6 +46,10 @@ const SideBarWrapper = styled.div`
   top: 72px;
 
   ${mq.mobile(`
+    display: none;
+  `)}
+
+  ${mq.largeMobile(`
     display: none;
   `)}
 `;
@@ -84,26 +91,39 @@ const MobileMenuWrapper = styled.div`
   position: relative;
   align-items: center;
   justify-content: center;
-  /* z-index: 100; */
+  z-index: 100;
   ${mq.mobile(`
     display: flex;
     padding: 1rem;
     position: absolute;
-    z-index: 100;
-  
-    
-    `)}
-    
-    
+  `)}
+
+  ${mq.largeMobile(`
+    display: flex;
+    padding: 1rem;
+    position: absolute;
+    margin-right: 1rem;
+  `)}
     
       ${({ $open }) =>
-      $open &&
-     `
+    $open &&
+    `
      width: 80px;
       position: absolute;
       justify-content: flex-start;
     
      `}
+`;
+
+const slideInLeft = keyframes`
+  from {
+    transform: translateX(-50%);
+    
+  }
+  to {
+    transform: translateX(0%);
+    visibility: visible;
+  }
 `;
 
 const MobileSideBarWrapper = styled.div`
@@ -114,8 +134,9 @@ const MobileSideBarWrapper = styled.div`
   background-color: rgb(0, 0, 0);
   position: relative;
   z-index: 100;
-  border-right: 1px solid rgba(255,255,255,0.15);
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
   box-sizing: border-box;
+  animation: ${slideInLeft} 0.3s ease-in;
 `;
 
 const SideBar = () => {
@@ -123,7 +144,7 @@ const SideBar = () => {
   const [open, setOpen] = useState(false);
   console.log(open);
   const MobileMenuRef = useRef();
-  // useOnClickOutside(MobileMenuRef, () => setOpen(false));
+  useOnClickOutside(MobileMenuRef, () => setOpen(false));
 
   const isPathActive = (href) => (pathname === href ? "active" : null);
 
@@ -133,13 +154,12 @@ const SideBar = () => {
 
   return (
     <SidePanel>
-      <MobileMenuWrapper $open={open} >
+      <MobileMenuWrapper $open={open}>
         {!open && (
-
           <ButtonBase variant="icon" onClick={toggleOpen}>
             <MobileMenuBurger color="white" width={30} height={30} />
           </ButtonBase>
-            )}
+        )}
         {open && (
           <MobileSideBarWrapper ref={MobileMenuRef}>
             <ButtonBase variant="icon" onClick={toggleOpen}>
@@ -151,25 +171,34 @@ const SideBar = () => {
               </SidebarButton>
             </Link>
             <Link href="/about">
-              <SidebarButton className={isPathActive("/about")} onClick={toggleOpen}>
+              <SidebarButton
+                className={isPathActive("/about")}
+                onClick={toggleOpen}
+              >
                 <ProfileIcon color="white" width={24} height={24} /> About
               </SidebarButton>
             </Link>
             <Link href="/projects">
-              <SidebarButton className={isPathActive("/projects")} onClick={toggleOpen}>
+              <SidebarButton
+                className={isPathActive("/projects")}
+                onClick={toggleOpen}
+              >
                 <SubscriptionsYT color="white" width={24} height={24} />{" "}
                 Projects
               </SidebarButton>
             </Link>
             <Link href="/contact">
-              <SidebarButton className={isPathActive("/contact")} onClick={toggleOpen}>
+              <SidebarButton
+                className={isPathActive("/contact")}
+                onClick={toggleOpen}
+              >
                 <ContactIcon color="white" width={24} height={24} /> Contact
               </SidebarButton>
             </Link>
           </MobileSideBarWrapper>
         )}
       </MobileMenuWrapper>
-      <SideBarWrapper >
+      <SideBarWrapper>
         <Link href="/">
           <SidebarButton className={isPathActive("/")}>
             <YouTubeHome color="white" width={24} height={24} /> Home

@@ -37,6 +37,11 @@ const IntroContainer = styled.div`
     gap: .5rem;
     max-width: 100%;
   `)}
+
+  ${mq.largeMobile(`
+    max-width: 60%;
+    padding-left: 2rem
+  `)}
 `;
 
 const NameIntro = styled.h1`
@@ -52,6 +57,12 @@ const IntroText = styled.p`
 
   ${mq.mobile(`
     display: none;
+  `)}
+
+  ${mq.largeMobile(`
+    width: 100%;
+    font-size: 14px;
+    font-weight: 400;
   `)}
 `;
 
@@ -85,11 +96,13 @@ const VerifiedContainer = styled.div`
   justify-content: center;
   align-items: center;
   gap: 10px;
+
+  ${mq.largeMobile(`
+    align-items: flex-start;
+  `)}
 `;
 
 const PlayButton = styled(ButtonBase)`
-
-
   ${mq.mobile(`
     display: none;
   `)}
