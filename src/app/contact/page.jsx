@@ -6,7 +6,7 @@ import styled, { css } from "styled-components";
 import CenterContent from "../components/CenterContent";
 import { mq } from "../styles/mixins";
 import ButtonBase from "../components/ButtonBase";
-import { LinkedInIcon, WhiteLinked, GitHubName, NewGitHub } from "../icons";
+import { WhiteLinked, GitHubName, NewGitHub } from "../icons";
 import { youTubeDark, youTubeSans } from "../styles/setFonts";
 import { roboto } from "../layout";
 import { sendEmail } from "../utils/actions";
@@ -19,10 +19,6 @@ const ContactPageWrapper = styled.div`
   padding-top: 64px;
   background-color: black;
   overflow: hidden;
-  /* 
-  ${mq.mobile(`
-    width: 100%;
-  `)}  */
 `;
 
 const HeaderImageWrapper = styled.div`
@@ -35,6 +31,11 @@ const HeaderImageWrapper = styled.div`
   background-color: white;
   position: relative;
   overflow: hidden;
+
+  ${mq.largeMobile(`
+    width: 120px;
+    height: 120px;
+  `)}
 
   ${mq.mobile(`
     width: 120px;
@@ -51,9 +52,17 @@ const ContactHeaderSection = styled.div`
   padding-bottom: 1rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 
+  ${mq.largeMobile(`
+    justify-content: center;
+    margin-top: 1rem;
+    width: 80%;
+    `)}
+
   ${mq.mobile(`
     justify-content: center;
     margin-top: 1rem;
+    gap: 1rem;
+    width: 90%;
     `)}
 `;
 
@@ -64,6 +73,11 @@ const HeaderInfoWrapper = styled.div`
   justify-content: space-between;
   align-items: flex-start;
 
+  ${mq.largeMobile(`
+    gap: 1rem;
+    justify-content: center;
+  `)}
+
   ${mq.mobile(`
     gap: 1rem;
     justify-content: center;
@@ -73,15 +87,21 @@ const HeaderInfoWrapper = styled.div`
 const FormWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.5rem;
   width: 100%;
   padding-top: 2rem;
   align-items: center;
   flex-wrap: wrap;
 
+  ${mq.largeMobile(`
+    padding-top: 1rem;
+    gap: 0;
+
+  `)}
+
   ${mq.mobile(`
     padding-top: 1rem;
-  gap: .5rem;
+    gap: 0;
 
   `)}
 `;
@@ -89,8 +109,6 @@ const FormWrapper = styled.div`
 const styles = css`
   display: inline-block;
   background-color: transparent;
-
-  /* background: rgba(255,255,255,0.15); */
   border: none;
   padding: 0 1rem 0 1rem;
   font-size: 16px;
@@ -101,7 +119,6 @@ const styles = css`
 
   &::placeholder {
     color: rgba(255, 255, 255, 0.5);
-    /* padding-left: 0.5rem; */
   }
 `;
 
@@ -136,7 +153,10 @@ const Column = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  align-content: center;
+
+  ${mq.largeMobile(`
+    align-items: center;
+  `)}
 `;
 
 const HeaderTitle = styled.h1`
@@ -144,8 +164,12 @@ const HeaderTitle = styled.h1`
   color: white;
   line-height: 1.2;
 
-  ${mq.mobile(`
+  ${mq.largeMobile(`
     font-size: 2rem;
+  `)}
+
+  ${mq.mobile(`
+    font-size: 1.5rem;
   `)}
 `;
 
@@ -179,33 +203,32 @@ const FormHeader = styled.h2`
 const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
-  /* min-height: 75px; */
-  min-height: 56px;
 
-  ${({ $isMultiLine }) =>
-    $isMultiLine &&
-    `
-    minHeight: 167px;
-  `}
+  ${mq.largeMobile(`
+    max-width: 90%;
+    padding-top: .5rem;
+  `)}
 
   ${mq.mobile(`
     max-width: 90%;
-  min-height: 77px;
-  
-
   `)}
 `;
 
 const ErrorMessage = styled.p`
   font-size: 12px;
-  padding-left: .5rem;
+  padding-left: 0.5rem;
 `;
 
 const FieldLabel = styled.label`
   color: rgba(255, 255, 255, 0.7);
   padding-bottom: 0.25rem;
   font-size: 14px;
-  padding-left: .5rem;
+  padding-left: 0.5rem;
+`;
+
+const ErrorBox = styled.div`
+  display: flex;
+  height: 14px;
 `;
 
 const fields = [
@@ -365,7 +388,7 @@ const ContactPage = () => {
       setIsSending(true);
       await new Promise((resolve) => setTimeout(resolve, 2000));
       const emailContent = { ...values };
-      // await sendEmail(emailContent);
+      await sendEmail(emailContent);
       console.log("email sent successfully", emailContent);
       resetForm();
       // additional actions after success sending email
@@ -462,11 +485,13 @@ const ContactPage = () => {
                         {...rest}
                       />
                     </InputBox>
-                    {touched[name] && errors[name] && (
-                      <ErrorMessage style={{ color: "red" }}>
-                        {errors[name]}
-                      </ErrorMessage>
-                    )}
+                    <ErrorBox>
+                      {touched[name] && errors[name] && (
+                        <ErrorMessage style={{ color: "red" }}>
+                          {errors[name]}
+                        </ErrorMessage>
+                      )}
+                    </ErrorBox>
                   </InputContainer>
                 );
               }
