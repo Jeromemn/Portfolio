@@ -14,16 +14,28 @@ const ProjectsPageWrapper = styled.div`
   padding-top: 64px;
   background-color: black;
   overflow: hidden;
+  scrollbar-width: none;
+  scroll-margin: 0;
+  scrollbar-width: none;
 
   ${mq.largeMobile(`
-      padding-bottom: 5rem;
-      overflow: scroll;
+    padding-bottom: 5rem;
+    overflow: auto;
+  scrollbar-width: none;
+
+
   `)}
 
   ${mq.mobile(`
     overflow: auto;
  
   `)};
+
+  ${mq.smallMobile(`
+    padding-bottom: 5rem;
+    overflow: auto;
+
+  `)}
 
 `;
 
@@ -51,10 +63,7 @@ const ProjectsContentWrapper = styled.div`
   width: 100%;
   height: calc(100vh - 72px);
 
-  ${mq.largeMobile(`
-    padding-bottom: 5rem;
-    overflow: auto;
-  `)}
+
 `;
 
 const ProjectsTitle = styled.h2`

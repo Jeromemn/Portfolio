@@ -27,11 +27,13 @@ const SidePanel = styled.div`
   ${mq.largeMobile(`
     z-index: 250;
   `)}
-  /* ${mq.mobile(`
+  ${mq.mobile(`
   height: 50%;
   display: flex;
+  z-index: auto;
+  justify-content: flex-start;
 
-  `)} */
+  `)}
 `;
 
 const SideBarWrapper = styled.div`
@@ -73,6 +75,10 @@ const SidebarButton = styled.button`
   z-index: 100;
   /* background-color: rgba(0, 0, 0, 0); */
 
+  ${mq.mobile(`
+    width: 100%;
+  `)}
+
   &:hover {
     background-color: rgba(255, 255, 255, 0.3);
     border-radius: 8px;
@@ -91,12 +97,7 @@ const MobileMenuWrapper = styled.div`
   position: relative;
   align-items: center;
   justify-content: center;
-  z-index: 100;
-  ${mq.mobile(`
-    display: flex;
-    padding: 1rem;
-    position: absolute;
-  `)}
+  z-index: 80;
 
   ${mq.largeMobile(`
     display: flex;
@@ -104,11 +105,24 @@ const MobileMenuWrapper = styled.div`
     position: absolute;
     margin-right: 1rem;
   `)}
+
+  ${mq.mobile(`
+    display: flex;
+    padding: 1rem;
+    position: absolute;
+    margin-right: 0;
+    max-width: 70px;
+
+  `)}
+
     
       ${({ $open }) =>
     $open &&
     `
-     width: 80px;
+    ${mq.mobile(`
+    padding: 1rem 0 0 1rem;
+    `)}
+      width: 80px;
       position: absolute;
       justify-content: flex-start;
     
@@ -133,10 +147,15 @@ const MobileSideBarWrapper = styled.div`
   align-items: center;
   background-color: rgb(0, 0, 0);
   position: relative;
-  z-index: 100;
+  z-index: 90;
   border-right: 1px solid rgba(255, 255, 255, 0.15);
   box-sizing: border-box;
   animation: ${slideInLeft} 0.3s ease-in;
+
+  ${mq.mobile(`
+    padding: 0 1rem 1rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  `)}
 `;
 
 const SideBar = () => {

@@ -13,18 +13,22 @@ const ProjectContainer = styled.div`
   align-items: flex-start;
   gap: 2rem;
 
-  ${mq.mobile(`
-    margin-bottom: 5rem;
-    padding-bottom: 5rem;
-    overflow: auto;
-    justify-content: space-evenly;
+  ${mq.largeMobile(`
+    
   `)}
 
-  ${mq.largeMobile(`
-    // margin-bottom: 5rem;
-    // padding-bottom: 5rem;
-    // overflow: auto;
+  ${mq.mobile(`
+    padding-bottom: 5rem;
+    justify-content: space-evenly;
+    height: max-content;
+    gap: 1rem;
+  `)}
 
+${mq.smallMobile(`
+    padding-bottom: 7rem;
+    justify-content: space-evenly;
+    height: max-content;
+    gap: 1rem;
   `)}
 `;
 
@@ -53,6 +57,11 @@ const AlbumCover = styled.div`
   position: relative;
   object-fit: cover;
 
+  ${mq.largeMobile(`
+    width: 200px;
+    height: 200px;
+  `)}
+
   /* for two columns */
   ${mq.mobile(`
     width: 183px;
@@ -64,10 +73,6 @@ const AlbumCover = styled.div`
     height: 200px;
   `)}
 
-  ${mq.largeMobile(`
-    width: 200px;
-    height: 200px;
-  `)}
 `;
 
 const AlbumInfo = styled.div`
@@ -131,10 +136,17 @@ const HoverPlay = styled.div`
     display: none;
   `)}
 
-
+  ${mq.largeMobile(`
+    display: none;
+  `)}
 `;
 
 const AlbumImage = styled(Image)`
+  ${mq.largeMobile(`
+      width: 200px;
+      height: 200px;
+    `)}
+
   ${mq.mobile(`
     width: 183px;
     height: 150px;
@@ -144,11 +156,6 @@ const AlbumImage = styled(Image)`
 
   ${mq.smallMobile(`
     width: 300px;
-    height: 200px;
-  `)}
-
-  ${mq.largeMobile(`
-    width: 200px;
     height: 200px;
   `)}
 `;
@@ -169,7 +176,7 @@ const AllAlbums = () => {
                 width={250}
                 height={200}
                 // fill={true}
-                style={{ objectFit: "cover", objectPosition: "center" }}
+                // style={{ objectFit: "cover", objectPosition: "center" }}
                 // object-position="center"
               />
             </Link>

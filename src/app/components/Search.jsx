@@ -20,7 +20,7 @@ const SearchWrapper = Styled.div`
   `)}
 
   ${mq.largeMobile(`
-  z-index: 1;
+  z-index: 300;
   position: relative;
   `)}
 `;
@@ -172,9 +172,10 @@ ${mq.mobile(`
 const MobileSearchWrapper = Styled.div`
  display: flex;
   flex-direction: column;
-  position: fixed;
+  position: absolute;
   width: 90%;
   padding-top: 1rem;
+  z-index: 400;
 `;
 
 const MobileSearchContainer = Styled.div`
@@ -193,7 +194,12 @@ top: 0;
 width: 100%;
 
 ${mq.largeMobile(`
-  z-index: 1;
+  z-index: 50;
+  width: 100%;
+`)}
+
+${mq.mobile(`
+  z-index: 500;
   width: 100%;
 `)}
 `;
