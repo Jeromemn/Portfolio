@@ -4,6 +4,9 @@ import Link from "next/link";
 import styled, { css } from "styled-components";
 import roboto from "../layout";
 
+
+//  check all buttons for border issues/ sizing issues
+
 const defaultStyles = css`
   display: flex;
   justify-content: center;
@@ -12,7 +15,7 @@ const defaultStyles = css`
   border: none;
   line-height: 36px;
   height: 36px;
-  padding: 0 16px;
+  padding: 0 15px;
   gap: 10px;
   min-width: 102px;
   cursor: pointer;
@@ -27,10 +30,12 @@ const defaultStyles = css`
 `;
 
 const PrimaryButton = styled.button`
-  ${defaultStyles}
+  ${defaultStyles};
   color: black;
-  border: none;
+  //border: none;
   background-color: #fff;
+  //this border could be issue
+  border: 1px solid #fff;
 
   &:hover {
     background: #dbdbdb;
@@ -41,11 +46,11 @@ const PrimaryButton = styled.button`
 `;
 
 const SecondaryButton = styled.button`
-  ${defaultStyles}
+  ${defaultStyles};
   border: 1px solid rgba(255, 255, 255, 0.2);
-  color: rgba(255, 255, 255, 0.7);
+  color: ${(props) => props.color ||  'rgba(255, 255, 255, 0.7)'}; 
+  //color: rgba(255, 255, 255, 0.7);
   background: none;
-  padding: 0rem 15px;
   
 
   &:hover {
@@ -55,7 +60,7 @@ const SecondaryButton = styled.button`
 `;
 //  compare icon and plain button might be able to consolidate
 const IconButton = styled.button`
-  ${defaultStyles}
+  ${defaultStyles};
   background: none;
   width: fit-content;
   min-width: auto;
@@ -103,11 +108,37 @@ const PlainButton = styled.button`
   }
 `;
 
+const MobilePrimary = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  border: none;
+  background-color: #fff;
+  width: 60px;
+    height: 60px;
+`;
+
+const MobileSecondary = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  border: none;
+  //background-color: #fff;
+  width: 50px;
+    height: 50px;
+  //color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.1);
+`;
+
 const variants = {
   primary: PrimaryButton,
   secondary: SecondaryButton,
   icon: IconButton,
   plain: PlainButton,
+  mobilePrimary: MobilePrimary,
+  mobileSecondary: MobileSecondary,
 };
 
 const ButtonBase = ({ variant, onClick, children, ...props }) => {
@@ -132,7 +163,7 @@ ButtonBase.defaultProps = {
 };
 
 ButtonBase.propTypes = {
-  variant: PropTypes.oneOf(["primary", "secondary", "icon", "plain"]),
+  variant: PropTypes.oneOf(["primary", "secondary", "icon", "plain", "mobilePrimary", "mobileSecondary"]),
   onClick: PropTypes.func,
   children: PropTypes.node,
 };

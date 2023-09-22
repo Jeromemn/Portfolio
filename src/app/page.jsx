@@ -87,21 +87,21 @@ const IntroWrapper = styled.div`
 
 const Home = () => {
   return (
-    <ContentWrapper>
-      <ArtistCoverWrapper $image={mainImage}>
-        <CoverBackground>
-          <CenterContent>
-            <IntroWrapper>
-              <Intro></Intro>
-            </IntroWrapper>
-          </CenterContent>
-        </CoverBackground>
-      </ArtistCoverWrapper>
-      <ArtistInfo>
-        <CenterContent>
-          <Header />
-        </CenterContent>
-      </ArtistInfo>
+      <ContentWrapper>
+          <ArtistCoverWrapper $image={mainImage}>
+             <CoverBackground>
+               <CenterContent>
+                   <IntroWrapper>
+                       <Intro></Intro>
+                   </IntroWrapper>
+               </CenterContent>
+             </CoverBackground>
+          </ArtistCoverWrapper>
+          <ArtistInfo>
+            <CenterContent>
+               <Header />
+            </CenterContent>
+          </ArtistInfo>
     </ContentWrapper>
   );
 };

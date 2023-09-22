@@ -7,12 +7,13 @@ import projectsData from "@/app/utils/projectsData";
 import styled from "styled-components";
 import { mq } from "@/app/styles/mixins";
 import ButtonBase from "@/app/components/ButtonBase";
-import { PlayYouTube, NewGitHub } from "@/app/icons";
+import {PlayYouTube, NewGitHub, ShareIcon, SearchIcon} from "@/app/icons";
 import Thumbs from "@/app/components/Thumbs";
 import CenterContent from "@/app/components/CenterContent";
 import { youTubeDark, youTubeSans } from "../../styles/setFonts";
 import OptionsDropDown from "@/app/components/OptionsDropDown";
 import { DropDownItem, GoToDev } from "@/app/components/DropDownItem";
+import {ReactChartsIcon, ReactIcon, ReactSpringIcon} from "@/app/techIcons";
 
 const SingleProjectPageWrapper = styled.div`
   display: flex;
@@ -69,10 +70,12 @@ const ProjectDescriptionWrapper = styled.div`
   display: flex;
   flex-direction: column;
   /* gap: 0.5rem; */
-  width: fit-content;
+  // might need fitcontent for mobile
+  //width: fit-content;
   /* justify-content: space-between; */
   justify-content: flex-start;
   gap: 1rem;
+    width: 100%;
 
   min-height: 264px;
   max-height: 264px;
@@ -89,9 +92,9 @@ const ProjectDescriptionWrapper = styled.div`
   `)}
 
   ${mq.mobile(`
-    min-height: 160px;
+    max-height: 160px;
     align-items: center;
-    min-height: 160p;
+    min-height: auto;
   `)}
 `;
 
@@ -152,8 +155,8 @@ const ButtonContainer = styled.div`
   `)}
 
   ${mq.mobile(`
-    padding-left: .8rem;
-
+    padding-left: 0;
+    align-items: center;
   `)}
 `;
 
@@ -228,7 +231,7 @@ const MoreButton = styled.button`
   font-weight: 600;
   font-size: 14px;
   align-self: start;
-  z-index: 250;
+  //z-index: 250;
   position: relative;
   padding-top: 0.5rem;
 
@@ -260,7 +263,7 @@ const MoreDescription = styled.div`
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   background-color: black;
-  z-index: 250;
+  //z-index: 250;
 
   ${mq.largeMobile(`
     max-width: 90%;
@@ -287,7 +290,10 @@ const DropDownDescription = styled.div`
   position: relative;
   background-color: #000000;
   border-radius: 10px;
-  z-index: 250;
+  `)}
+  
+  ${mq.mobile(`
+    z-index: 50;
   `)}
 
   ${({ $showMore }) =>
@@ -324,17 +330,63 @@ const TechWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   align-content: space-between;
+  padding: 1rem 0;
 `;
 
 const TechItem = styled.p`
-  color: rgba(255, 255, 255, 0.7);
+  //color: rgba(255, 255, 255, 0.7);
   width: ${(props) => props.width || "fit-content"};
   margin-right: ${(props) => props.marginRight || "0"};
   padding-left: 0.5rem;
+  font-weight: ${(props) => props.fontWeight || "400"};
+  font-size: 16px;
+  color: ${(props) => props.color || "#fff"};
+  
+  ${mq.mobile(`
+    font-size: 16px;
+    width: fit-content;
+    padding-left: 0;
+    
+  `)}
+`;
+
+const TechIconBox = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
 `;
 
 const TechStart = styled.div`
   display: flex;
+  align-items: center;
+  gap: 24px;
+  
+    ${mq.mobile(`
+    display: none;
+    `)}
+`;
+
+const MobileTechStart = styled.div`
+  display: none;
+  
+  ${mq.mobile(`
+  display: flex;
+  
+  align-items: center;
+  gap: 24px;
+  `)}
+`;
+
+const TechLink = styled(Link)`
+  color: rgba(255, 255, 255, 0.7);
+  
+    ${mq.mobile(`
+    display: none;
+    `)}
 `;
 
 const MobileProjectContent = styled.div`
@@ -353,6 +405,8 @@ const MobileProjectContent = styled.div`
   flex-direction: column;
   width: 100%;
   padding: 0;
+  align-items: center;
+  
   `)}
 `;
 
@@ -365,13 +419,14 @@ const ImageAndDescription = styled.div`
   align-items: flex-start;
   padding: 6rem 0 1rem .8rem;
   gap: 3rem;
+  
 `)}
 
   ${mq.mobile(`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 4rem 0 1rem .8rem;
+  padding: 4rem 1rem 1rem 1rem;
   gap: .5rem;
 `)}
 `;
@@ -392,6 +447,15 @@ const StyledImage = styled(Image)`
     height: 160px;
     object-fit: cover;
     object-position: center; 
+  `)}
+`;
+
+const StackText = styled.div`
+display: none;
+  
+  ${mq.mobile(`
+    display: flex;
+    flex-direction: column;
   `)}
 `;
 
@@ -431,8 +495,6 @@ const SingleProjectPage = ({ params, ...props }) => {
               width={300}
               height={240}
               priority={true}
-              // style={{ objectFit: "cover", objectPosition: "center" }}
-              // placeholder="blur"
             />
           </ProjectImage>
           <ProjectDescriptionWrapper>
@@ -484,6 +546,7 @@ const SingleProjectPage = ({ params, ...props }) => {
                 as={Link}
                 href={`${project?.github}`}
                 passHref={true}
+                color='#fff'
               >
                 <NewGitHub color="white" size={20} />
                 Go to Repo
@@ -548,40 +611,63 @@ const SingleProjectPage = ({ params, ...props }) => {
           </ImageAndDescription>
           <ButtonContainer>
             <ButtonBase
-              variant="primary"
-              as={Link}
-              href={`${project?.website}`}
-              passHref={true}
-            >
-              <PlayYouTube color="black" width={24} height={24} />
-              Live Site
-            </ButtonBase>
-            <ButtonBase
-              variant="secondary"
+              variant="mobileSecondary"
               as={Link}
               href={`${project?.github}`}
               passHref={true}
             >
-              <NewGitHub color="white" size={20} />
-              Go to Repo
+              <NewGitHub color="white" size={25} />
+
             </ButtonBase>
-            <OptionsDropDown>
-              <DropDownItem />
-              <GoToDev />
-            </OptionsDropDown>
+            <ButtonBase
+              variant="mobilePrimary"
+              as={Link}
+              href={`${project?.website}`}
+              passHref={true}
+            >
+              <PlayYouTube color="black" width={30} height={30} />
+            </ButtonBase>
+            <ButtonBase
+                variant="mobileSecondary"
+                as={Link}
+                href={`${project?.github}`}
+                passHref={true}
+            >
+              <ShareIcon color="#fff" size={25} />
+
+            </ButtonBase>
+            {/*<OptionsDropDown>*/}
+            {/*  <DropDownItem />*/}
+            {/*  <GoToDev />*/}
+            {/*</OptionsDropDown>*/}
           </ButtonContainer>
         </MobileProjectContent>
       </CenterContent>
       <CenterContent>
         <TechStack>
           {project?.techUsed.map((tech, index) => (
-            <TechWrapper key={tech}>
+            <TechWrapper key={tech.label}>
               <TechStart>
-                <TechItem marginRight="16px">{index + 1}</TechItem>
-                <TechItem width="150px">{tech}</TechItem>
+                <TechIconBox>
+                  {/*<ReactIcon></ReactIcon>*/}
+                  {tech.icon}
+                </TechIconBox>
+                {/*<TechItem marginRight="16px">{index + 1}</TechItem>*/}
+                <TechItem width="150px" fontWeight='500' >{tech.label}</TechItem>
               </TechStart>
-              <TechItem>{project.title}</TechItem>
-              <Thumbs id={`${project.name}-${tech}`} width="fit-content" />
+                <MobileTechStart>
+                  <TechIconBox>
+                    {/*<ReactIcon></ReactIcon>*/}
+                    {tech.icon}
+                  </TechIconBox>
+                  {/*<TechItem marginRight="16px">{index + 1}</TechItem>*/}
+                  <StackText>
+                    <TechItem width="150px" fontWeight='500' >{tech.label}</TechItem>
+                    <TechItem color='rgba(255, 255, 255, 0.7)'>{project.title}</TechItem>
+                  </StackText>
+                </MobileTechStart>
+              <TechLink href={`${project?.website}`} >{project.title}</TechLink>
+              <Thumbs id={`${project.name}-${tech.label}`} width="fit-content" />
             </TechWrapper>
           ))}
         </TechStack>

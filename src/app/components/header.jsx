@@ -119,15 +119,6 @@ const ItemSection = styled.div`
   width: 90%;
   gap: 10rem;
 
-  ${mq.mobile(`
-    flex-direction: column;
-    height: 100%;
-    width: 70%;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 0rem;
-  `)}
-
   ${mq.largeMobile(`
     flex-direction: column;
     height: 100%;
@@ -136,6 +127,15 @@ const ItemSection = styled.div`
     align-items: flex-start;
     gap: 0rem;
   `)}
+  ${mq.mobile(`
+    flex-direction: column;
+    height: 100%;
+    width: 50%;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0rem;
+  `)}
+
 `;
 
 const ArtistName = styled.p`

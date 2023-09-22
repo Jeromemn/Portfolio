@@ -75,8 +75,10 @@ const SidebarButton = styled.button`
   z-index: 100;
   /* background-color: rgba(0, 0, 0, 0); */
 
-  ${mq.mobile(`
-    width: 100%;
+  ${mq.largeMobile(`
+    width: 42px;
+    height: 42px;
+    padding: 0;
   `)}
 
   &:hover {
@@ -97,13 +99,14 @@ const MobileMenuWrapper = styled.div`
   position: relative;
   align-items: center;
   justify-content: center;
-  z-index: 80;
+  z-index: 580;
 
   ${mq.largeMobile(`
     display: flex;
     padding: 1rem;
     position: absolute;
     margin-right: 1rem;
+    max-width: 70px;
   `)}
 
   ${mq.mobile(`
@@ -125,6 +128,7 @@ const MobileMenuWrapper = styled.div`
       width: 80px;
       position: absolute;
       justify-content: flex-start;
+      z-index: 900;
     
      `}
 `;
@@ -147,15 +151,29 @@ const MobileSideBarWrapper = styled.div`
   align-items: center;
   background-color: rgb(0, 0, 0);
   position: relative;
-  z-index: 90;
+  z-index: 590;
   border-right: 1px solid rgba(255, 255, 255, 0.15);
   box-sizing: border-box;
   animation: ${slideInLeft} 0.3s ease-in;
+  
+  ${mq.largeMobile(`
+    padding: 1rem 1rem 1rem 1rem;
+     margin-left: -1rem;
+     margin-top: -1rem;
+     gap: 1rem;
+  `)}
 
   ${mq.mobile(`
-    padding: 0 1rem 1rem 0;
+    padding: 0 1rem 1rem 1rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    margin-left: -1rem;
+     margin-top: 0;
   `)}
+  ${mq.smallMobile(`
+  padding: 0 1rem 1rem 1rem;
+  margin-left: -1rem;
+  `)}
+  
 `;
 
 const SideBar = () => {
