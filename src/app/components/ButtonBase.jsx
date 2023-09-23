@@ -115,8 +115,12 @@ const MobilePrimary = styled.button`
   border-radius: 50px;
   border: none;
   background-color: #fff;
-  width: 60px;
-    height: 60px;
+  //width: 60px;
+  width: ${({width}) => width || '60px'};
+  height: ${({height}) => height || '60px'};
+    //height: 60px;
+  padding: 6px;
+//   check padding didnt caue style issues
 `;
 
 const MobileSecondary = styled.button`

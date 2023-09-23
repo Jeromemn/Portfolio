@@ -19,7 +19,7 @@ const SidePanel = styled.div`
   display: inline-block;
   height: calc(100vh - 72px);
   position: fixed;
-  top: 0px;
+  top: 0;
   left: 1px;
   justify-content: center;
   width: 72px;
@@ -28,7 +28,7 @@ const SidePanel = styled.div`
     z-index: 250;
   `)}
   ${mq.mobile(`
-  height: 50%;
+  height: fit-content;
   display: flex;
   z-index: auto;
   justify-content: flex-start;
@@ -73,7 +73,6 @@ const SidebarButton = styled.button`
   width: 56px;
   cursor: pointer;
   z-index: 100;
-  /* background-color: rgba(0, 0, 0, 0); */
 
   ${mq.largeMobile(`
     width: 42px;
@@ -88,7 +87,6 @@ const SidebarButton = styled.button`
 
   &.active {
     background-color: rgba(255, 255, 255, 0.2);
-
     border-radius: 8px;
   }
 `;
@@ -115,9 +113,7 @@ const MobileMenuWrapper = styled.div`
     position: absolute;
     margin-right: 0;
     max-width: 70px;
-
   `)}
-
     
       ${({ $open }) =>
     $open &&
@@ -129,14 +125,12 @@ const MobileMenuWrapper = styled.div`
       position: absolute;
       justify-content: flex-start;
       z-index: 900;
-    
      `}
 `;
 
 const slideInLeft = keyframes`
   from {
     transform: translateX(-50%);
-    
   }
   to {
     transform: translateX(0%);
@@ -173,7 +167,6 @@ const MobileSideBarWrapper = styled.div`
   padding: 0 1rem 1rem 1rem;
   margin-left: -1rem;
   `)}
-  
 `;
 
 const SideBar = () => {

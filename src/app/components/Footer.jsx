@@ -60,7 +60,7 @@ const NowPlayingSection = styled.div`
   overflow: hidden;
 
   ${mq.mobile(`
-  padding: 0 1rem;
+  display: none;
   `)};
 `;
 
@@ -77,7 +77,6 @@ const ShuffleRepeatSection = styled.div`
   `)};
 
   ${mq.mobile(`
-    display: none;
   `)};
 `;
 
@@ -143,7 +142,6 @@ const IconWrapper = styled.div`
   padding: 8px;
 
   ${mq.mobile(`
-    display: none;
   `)};
 `;
 
@@ -183,7 +181,7 @@ const HideThumbsMobile = styled.div`
 const CurrentPageWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
+  //width: 100%;
   justify-content: center;
   width: fit-content;
 `;

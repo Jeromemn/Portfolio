@@ -3,6 +3,7 @@ import StyledComponentsRegistry from "./styles/registry";
 import SideBar from "./components/SideBar";
 import Footer from "./components/Footer";
 import Search from "./components/Search";
+import TopBar from "@/app/components/TopBar";
 import { youTubeDark, youTubeSans } from "./styles/setFonts";
 import { Roboto } from "next/font/google"
 
@@ -23,6 +24,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className={roboto.className}>
       <body className={roboto.className}>
         <StyledComponentsRegistry className={roboto.className}>{children}
+          <TopBar />
         <SideBar />
         <Search />
         <Footer />

@@ -31,7 +31,7 @@ const ProjectContent = styled.div`
   flex-direction: row;
   align-items: flex-start;
   width: 100%;
-  padding: 8rem 0rem 3rem 0rem;
+  padding: 8rem 0 3rem 0;
   gap: 3rem;
 
   ${mq.largeMobile(`
@@ -150,13 +150,15 @@ const ButtonContainer = styled.div`
   /* position: relative; */
 
   ${mq.largeMobile(`
-    padding-left: .8rem;
-    position: relative;
+    display: none;
   `)}
 
   ${mq.mobile(`
+    display: flex;
     padding-left: 0;
     align-items: center;
+    position: relative;
+    
   `)}
 `;
 
@@ -214,6 +216,10 @@ const TechStack = styled.div`
   ${mq.mobile(`
     width: 90%;
     padding-top: 2rem;
+  `)}
+  ${mq.smallMobile(`
+    width: 90%;
+    padding: 1rem 1rem 0 1rem;
   `)}
 `;
 
@@ -279,7 +285,7 @@ const DropDownDescription = styled.div`
   /* position: fixed; */
   background-color: #000000;
   border-radius: 10px;
-  z-index: 350;
+  //z-index: 350;
   /* position: relative; */
 
   ${mq.largeMobile(`
@@ -293,7 +299,6 @@ const DropDownDescription = styled.div`
   `)}
   
   ${mq.mobile(`
-    z-index: 50;
   `)}
 
   ${({ $showMore }) =>
@@ -377,7 +382,7 @@ const MobileTechStart = styled.div`
   display: flex;
   
   align-items: center;
-  gap: 24px;
+  gap: 14px;
   `)}
 `;
 
@@ -395,8 +400,8 @@ const MobileProjectContent = styled.div`
   ${mq.largeMobile(`
   display: flex;
   flex-direction: column;
-  width: 90%;
-  padding-left: 2rem;
+  width: 100%;
+  padding: 0 2rem 0 2rem;
 
 `)}
 
@@ -406,6 +411,7 @@ const MobileProjectContent = styled.div`
   width: 100%;
   padding: 0;
   align-items: center;
+  padding-top: 1rem;
   
   `)}
 `;
@@ -417,7 +423,7 @@ const ImageAndDescription = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  padding: 6rem 0 1rem .8rem;
+  padding: 6rem 0 1rem 0;
   gap: 3rem;
   
 `)}
@@ -457,6 +463,22 @@ display: none;
     display: flex;
     flex-direction: column;
   `)}
+`;
+
+const TabletButtonsContainer = styled.div`
+    display: none;
+    ${mq.largeMobile(`
+    display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  width: fit-content;
+  position: relative;
+  bottom: 0;
+    `)}
+  
+    ${mq.mobile(`
+    display: none;
+    `)}
 `;
 
 const SingleProjectPage = ({ params, ...props }) => {
@@ -511,7 +533,6 @@ const SingleProjectPage = ({ params, ...props }) => {
                 <Text color="#aaa"> {project?.commits} Commits</Text>
               </CommitsAndTech>
             </ProjectInfo>
-            {/* <MoreDescription> */}
             <DropDownDescription $showMore={showMore}>
               <DescriptionWrapper $showMore={showMore}>
                 <Text
@@ -530,7 +551,6 @@ const SingleProjectPage = ({ params, ...props }) => {
                 Less
               </LessButton>
             </DropDownDescription>
-            {/* </MoreDescription> */}
             <ButtonContainer>
               <ButtonBase
                 variant="primary"
@@ -587,7 +607,6 @@ const SingleProjectPage = ({ params, ...props }) => {
                   <Text color="#aaa"> {project?.commits} Commits</Text>
                 </CommitsAndTech>
               </ProjectInfo>
-              {/* <MoreDescription> */}
               <DropDownDescription $showMore={showMore}>
                 <DescriptionWrapper $showMore={showMore}>
                   <Text
@@ -606,7 +625,6 @@ const SingleProjectPage = ({ params, ...props }) => {
                   Less
                 </LessButton>
               </DropDownDescription>
-              {/* </MoreDescription> */}
             </ProjectDescriptionWrapper>
           </ImageAndDescription>
           <ButtonContainer>
@@ -636,11 +654,32 @@ const SingleProjectPage = ({ params, ...props }) => {
               <ShareIcon color="#fff" size={25} />
 
             </ButtonBase>
-            {/*<OptionsDropDown>*/}
-            {/*  <DropDownItem />*/}
-            {/*  <GoToDev />*/}
-            {/*</OptionsDropDown>*/}
           </ButtonContainer>
+          <TabletButtonsContainer>
+            <ButtonBase
+                variant="primary"
+                as={Link}
+                href={`${project?.website}`}
+                passHref={true}
+            >
+              <PlayYouTube color="black" width={24} height={24} />
+              Live Site
+            </ButtonBase>
+            <ButtonBase
+                variant="secondary"
+                as={Link}
+                href={`${project?.github}`}
+                passHref={true}
+                color='#fff'
+            >
+              <NewGitHub color="white" size={20} />
+              Go to Repo
+            </ButtonBase>
+            <OptionsDropDown>
+              <DropDownItem />
+              <GoToDev />
+            </OptionsDropDown>
+          </TabletButtonsContainer>
         </MobileProjectContent>
       </CenterContent>
       <CenterContent>
@@ -649,18 +688,14 @@ const SingleProjectPage = ({ params, ...props }) => {
             <TechWrapper key={tech.label}>
               <TechStart>
                 <TechIconBox>
-                  {/*<ReactIcon></ReactIcon>*/}
                   {tech.icon}
                 </TechIconBox>
-                {/*<TechItem marginRight="16px">{index + 1}</TechItem>*/}
                 <TechItem width="150px" fontWeight='500' >{tech.label}</TechItem>
               </TechStart>
                 <MobileTechStart>
                   <TechIconBox>
-                    {/*<ReactIcon></ReactIcon>*/}
                     {tech.icon}
                   </TechIconBox>
-                  {/*<TechItem marginRight="16px">{index + 1}</TechItem>*/}
                   <StackText>
                     <TechItem width="150px" fontWeight='500' >{tech.label}</TechItem>
                     <TechItem color='rgba(255, 255, 255, 0.7)'>{project.title}</TechItem>
