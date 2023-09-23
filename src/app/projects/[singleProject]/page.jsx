@@ -496,7 +496,6 @@ const SingleProjectPage = ({ params, ...props }) => {
   const handleClick = () => {
     setShowMore(true);
   };
-  console.log(showMore);
 
   const handleClose = () => {
     setShowMore(false);
