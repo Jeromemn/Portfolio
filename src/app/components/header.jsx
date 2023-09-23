@@ -5,17 +5,32 @@ import Link from "next/link";
 import Thumbs from "@/app/components/Thumbs";
 import { PlayYouTube } from "../icons";
 import { youTubeDark, youTubeSans } from "../styles/setFonts";
+import { mq } from "../styles/mixins";
 
 const headerList = [
   { id: 2, name: "All About Me", path: "/about", image: "/about.png" },
-  { id: 3, name: "Get In Contact", path: "/contact", image: "/contactImage.png" },
-  { id: 4, name: "Projects Playlist", path: "/projects", image: "/projects.png" },
+  {
+    id: 3,
+    name: "Get In Contact",
+    path: "/contact",
+    image: "/contactImage.png",
+  },
+  {
+    id: 4,
+    name: "Projects Playlist",
+    path: "/projects",
+    image: "/projects.png",
+  },
 ];
 
 const HeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+
+  ${mq.largeMobile(` 
+    padding: 0rem 2rem;
+  `)}
 `;
 
 const NavigationContainer = styled.div`
@@ -32,13 +47,20 @@ const HeaderTitle = styled.h2`
 
 const HeaderItemWrapper = styled.div`
   display: flex;
-  align-content: center;
-  border-bottom: 1px grey solid;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding: 1rem 0rem;
   gap: 1.5rem;
   width: 100%;
   justify-content: flex-start;
   align-items: center;
+
+  ${mq.largeMobile(`
+    gap: 1rem;
+  `)}
+
+  ${mq.mobile(`
+    gap: 1rem;
+  `)}
 `;
 
 const HeaderItems = styled.p`
@@ -60,12 +82,32 @@ const AlbumCover = styled.div`
   width: 40px;
   border-radius: 25%;
   overflow: hidden;
+
+  ${mq.largeMobile(`
+    width: 40px;
+    height: 40px;
+  `)}
+
+  ${mq.mobile(`
+    width: 50px;
+    height: 50px;
+  `)}
 `;
 
 const AlbumImage = styled(Image)`
   ${HeaderItemWrapper}:hover & {
     display: none;
   }
+
+  ${mq.largeMobile(`
+    width: 40px;
+    height: 40px;
+  `)}
+
+  ${mq.mobile(`
+    width: 50px;
+    height: 50px;
+  `)}
 `;
 
 const ItemSection = styled.div`
@@ -76,6 +118,24 @@ const ItemSection = styled.div`
   height: 100%;
   width: 90%;
   gap: 10rem;
+
+  ${mq.largeMobile(`
+    flex-direction: column;
+    height: 100%;
+    width: 70%;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0rem;
+  `)}
+  ${mq.mobile(`
+    flex-direction: column;
+    height: 100%;
+    width: 50%;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0rem;
+  `)}
+
 `;
 
 const ArtistName = styled.p`
@@ -83,6 +143,24 @@ const ArtistName = styled.p`
   font-size: 16px;
   font-weight: 400;
   line-height: 19.2px;
+`;
+
+const HideThumbsMobile = styled.div`
+  ${mq.largeMobile(`
+    display: none;
+  `)}
+
+  ${mq.mobile(`
+    display: none;
+  `)}
+`;
+
+const ShowThumbsTablet = styled.div`
+  display: none;
+
+  ${mq.largeMobile(`
+    display: flex;
+  `)}
 `;
 
 const Header = () => {
@@ -107,8 +185,13 @@ const Header = () => {
                 <HeaderItems>{name}</HeaderItems>
               </Link>
               <ArtistName> Jerome </ArtistName>
-              <Thumbs id={name}/>
+              <HideThumbsMobile>
+                <Thumbs id={name} />
+              </HideThumbsMobile>
             </ItemSection>
+            <ShowThumbsTablet>
+              <Thumbs id={name} />
+            </ShowThumbsTablet>
           </HeaderItemWrapper>
         ))}
       </NavigationContainer>

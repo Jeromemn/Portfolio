@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
+import { mq } from "src/app/styles/mixins";
 import projectsData from "src/app/utils/projectsData";
 import { PlayYouTube } from "@/app/icons";
 
@@ -11,6 +12,24 @@ const ProjectContainer = styled.div`
   justify-content: space-between;
   align-items: flex-start;
   gap: 2rem;
+
+  ${mq.largeMobile(`
+    
+  `)}
+
+  ${mq.mobile(`
+    padding-bottom: 5rem;
+    justify-content: space-evenly;
+    height: max-content;
+    gap: 1rem;
+  `)}
+
+${mq.smallMobile(`
+    padding-bottom: 7rem;
+    justify-content: space-evenly;
+    height: max-content;
+    gap: 1rem;
+  `)}
 `;
 
 const Albums = styled.div`
@@ -19,6 +38,14 @@ const Albums = styled.div`
   gap: 1rem;
   overflow: hidden;
   flex-wrap: wrap;
+
+  ${mq.mobile(`
+    padding-bottom:1rem;
+  `)}
+
+  ${mq.smallMobile(`
+    padding-bottom: 0;
+  `)}
 `;
 
 const AlbumCover = styled.div`
@@ -29,6 +56,23 @@ const AlbumCover = styled.div`
   overflow: hidden;
   position: relative;
   object-fit: cover;
+
+  ${mq.largeMobile(`
+    width: 200px;
+    height: 200px;
+  `)}
+
+  /* for two columns */
+  ${mq.mobile(`
+    width: 183px;
+    height: 150px;
+  `)}
+
+  ${mq.smallMobile(`
+    width: 300px;
+    height: 200px;
+  `)}
+
 `;
 
 const AlbumInfo = styled.div`
@@ -40,11 +84,25 @@ const AlbumInfo = styled.div`
 
 const ProjectName = styled.h3`
   color: white;
+
+  /* for two column */
+  ${mq.mobile(`
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.2;
+  `)}
 `;
 
 const ProjectInfo = styled.p`
   color: rgba(255, 255, 255, 0.7);
   padding-top: 5px;
+
+  /* for two column */
+  ${mq.mobile(`
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.2;
+  `)}
 `;
 
 const HoverPlay = styled.div`
@@ -73,6 +131,33 @@ const HoverPlay = styled.div`
     transition: 200ms background 200ms cubic-bezier(0.2, 0, 0.6, 1);
     /* transition: transform 200ms cubic-bezier(0.2,0,0.6,1),background 200ms cubic-bezier(0.2,0,0.6,1); */
   }
+
+  ${mq.mobile(`
+    display: none;
+  `)}
+
+  ${mq.largeMobile(`
+    display: none;
+  `)}
+`;
+
+const AlbumImage = styled(Image)`
+  ${mq.largeMobile(`
+      width: 200px;
+      height: 200px;
+    `)}
+
+  ${mq.mobile(`
+    width: 183px;
+    height: 150px;
+    object-fit: cover;
+    object-position: top;
+  `)}
+
+  ${mq.smallMobile(`
+    width: 300px;
+    height: 200px;
+  `)}
 `;
 
 const AllAlbums = () => {
@@ -85,13 +170,13 @@ const AllAlbums = () => {
               <HoverPlay>
                 <PlayYouTube width={24} height={24} color="white" />
               </HoverPlay>
-              <Image
+              <AlbumImage
                 src={project.image.url}
                 alt={project.image.alt}
                 width={250}
                 height={200}
                 // fill={true}
-                style={{ objectFit: "cover", objectPosition: "center" }}
+                // style={{ objectFit: "cover", objectPosition: "center" }}
                 // object-position="center"
               />
             </Link>

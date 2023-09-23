@@ -1,3 +1,16 @@
+import {
+  AuthZeroIcon, BcryptIcon,
+  BootstrapIcon, CloudinaryIcon, CssIcon,
+  EsLintIcon, ExpressIcon,
+  FormikIcon, GraphQlIcon, HandlebarsIcon, HtmlIcon, JavaScriptIcon, JestIcon, LoadingSkeletonIcon, MaterialIcon,
+  MongoDbIcon, MongooseIcon, MySqlIcon,
+  NextAuthIcon, FlowBiteIcon,
+  NextJsIcon, NodeJsIcon, NodemonIcon, PrismaIcon, RadixIcon, ReactChartsIcon,
+  ReactIcon, ReactSpringIcon, SequelizeIcon, StitchesIcon,
+  StyledCompIcon, TailwindIcon, TanStackIcon,
+  ToastIcon, TSNodeIcon, TypeScriptIcon, WebPackIcon, ReactMapsIcon,
+} from "@/app/techIcons";
+
 const projectsData = [
   {
     id: 1,
@@ -9,6 +22,7 @@ const projectsData = [
       url: "/tuffSkin.png",
       alt: "Tuff Skin Website",
       title: "Tuff Skin Website",
+      year: "2023",
     },
     website: "https://tuff-skin-website-wkt284e86-webfluent.vercel.app/",
     github: "https://github.com/WebFluent/tuff-skin",
@@ -17,17 +31,46 @@ const projectsData = [
     year: "2023",
     commits: "75",
     techUsed: [
-      "React",
-      "Next.js",
-      "esLint",
-      "Formik",
-      "mongoDB",
-      "NextAuth",
-      "React-toastify",
-      "styled-components",
-      "Tanstack/react-table",
-      "prop-types",
-      "React-responsive-carousel",
+      {
+        label: "React",
+        icon: <ReactIcon />,
+      },
+      {
+        label: "Next.js",
+        icon: <NextJsIcon/>,
+      },
+      {
+        label: "esLint",
+        icon: <EsLintIcon/>,
+      },
+      {
+        label: "Formik",
+        icon: <FormikIcon/>,
+      },
+      {
+        label: "MongoDB",
+        icon: <MongoDbIcon/>,
+      },
+      {
+        label: "Next Auth",
+        icon: <NextAuthIcon/>,
+      },
+      {
+        label: " React Maps",
+        icon: <ReactMapsIcon/>,
+      },
+      {
+        label: "React Toastify",
+        icon: <ToastIcon/>,
+      },
+      {
+        label: "Styled Components",
+        icon: <StyledCompIcon/>,
+      },
+      {
+        label: "Tanstack -React Table",
+        icon: <TanStackIcon/>,
+      },
     ],
   },
   {
@@ -41,6 +84,7 @@ const projectsData = [
       url: "/modernPilgrims.png",
       alt: "Modern Pilgrim Website",
       title: "Modern Pilgrim Website",
+      year: "2022",
     },
     website: "https://modernpilgrims.herokuapp.com/",
     github: "https://github.com/Jeromemn/Modern-Pilgrim",
@@ -49,17 +93,50 @@ const projectsData = [
     year: "2022",
     commits: "30",
     techUsed: [
-      "React.js",
-      "Node.js",
-      "graphQL",
-      "Mongoose",
-      "MongoDB",
-      "Cloudinary",
-      "auth0",
-      "express",
-      "Material UI",
-      "bootstrap",
-      "styled-components",
+      {
+        label: "React",
+        icon: <ReactIcon />,
+      },
+      {
+        label: "Node.js",
+        icon: <NodeJsIcon />,
+      },
+      {
+        label: "GraphQl",
+        icon: <GraphQlIcon />,
+      },
+      {
+        label: "Mongoose",
+        icon: < MongooseIcon />,
+      },
+      {
+        label: "MongoDB",
+        icon: <MongoDbIcon />,
+      },
+      {
+        label: "Cloudinary",
+        icon: <CloudinaryIcon />,
+      },
+      {
+        label: "Auth0",
+        icon: <AuthZeroIcon />,
+      },
+      {
+        label: "Express",
+        icon: <ExpressIcon />,
+      },
+      {
+       label: "Material UI",
+        icon: <MaterialIcon />,
+      },
+      {
+        label: "Bootstrap",
+        icon: <BootstrapIcon />,
+      },
+      {
+        label: "Styled Components",
+        icon: <StyledCompIcon />,
+      },
     ],
   },
   {
@@ -72,6 +149,7 @@ const projectsData = [
       url: "/TJAlbum.jpg",
       alt: "Traders Journal",
       title: "Traders Journal",
+      year: "2023",
     },
     website: "https://traders-journal-ivgdojk5d-jeromemn.vercel.app/",
     github: "https://github.com/Jeromemn/Traders-Journal",
@@ -80,16 +158,49 @@ const projectsData = [
     year: "2023",
     commits: "75",
     techUsed: [
-      "React",
-      "Next",
-      "Tanstack",
-      "React Charts",
-      "Styled Components",
-      "Formik",
-      "luxon",
-      "Mongoose",
-      "MongoDB",
-      "API Requests",
+      {
+        label: "React",
+        icon: <ReactIcon />,
+      },
+      {
+        label: "Next.js",
+        icon: <NextJsIcon/>,
+      },
+      {
+        label: "Tanstack -React Table",
+        icon: <TanStackIcon/>,
+      },
+      {
+        label: "React Charts.js",
+        icon: <ReactChartsIcon/>,
+      },
+      {
+        label: "React Spring",
+        icon: <ReactSpringIcon/>,
+      },
+      {
+        label: "Styled Components",
+        icon: <StyledCompIcon/>,
+      },
+      {
+        label: "Formik",
+        icon: <FormikIcon/>,
+      },
+      // "luxon",
+      {
+        label: "MongoDB",
+        icon: <MongoDbIcon/>,
+      },
+      {
+        label: "Mongoose",
+        icon: < MongooseIcon />,
+      },
+      {
+        label: "esLint",
+        icon: <EsLintIcon/>,
+      },
+
+      // "API Requests",
     ],
   },
   {
@@ -100,8 +211,9 @@ const projectsData = [
     description: "Switch a feature flag management application",
     image: {
       url: "/switchAlbum.jpg",
-      alt: "swicth webpage",
+      alt: "Switch webpage",
       title: "Switch Application",
+      year: "2023",
     },
     website: "https://ft-emd51pitl-webfluent.vercel.app/",
     github: "https://github.com/WebFluent/switch",
@@ -110,17 +222,54 @@ const projectsData = [
     year: "2023",
     commits: "75",
     techUsed: [
-      "React",
-      "TypeScript",
-      "Jest",
-      "esLint",
-      "Next",
-      "ts-node",
-      "prisma",
-      "radix-ui",
-      "next-auth",
-      "stitches/react",
-      "nodemon",
+      {
+        label: "React",
+        icon: <ReactIcon />,
+      },
+      {
+        label: "TypeScript",
+        icon: <TypeScriptIcon />,
+      },
+      {
+        label: "Jest",
+        icon: <JestIcon />,
+      },
+      {
+        label: "esLint",
+        icon: <EsLintIcon/>,
+      },
+      {
+        label: "Next.ts",
+        icon: <NextJsIcon/>,
+      },
+      {
+        label: "Ts-Node",
+        icon: <TSNodeIcon/>,
+      },
+      {
+        label: "Prisma",
+        icon: <PrismaIcon/>,
+      },
+      {
+        label: "Radix-ui",
+        icon: <RadixIcon/>,
+      },
+      {
+        label: "Next Auth",
+        icon: <NextAuthIcon/>,
+      },
+      {
+        label: "Stitches",
+        icon: <StitchesIcon/>,
+      },
+      {
+        label: "React Loading Skeleton",
+        icon: <LoadingSkeletonIcon/>,
+      },
+      {
+        label: "Nodemon",
+        icon: <NodemonIcon/>,
+      }
     ],
   },
   {
@@ -134,6 +283,7 @@ const projectsData = [
       url: "/Card-Battle-gif.gif",
       alt: "card battle page",
       title: "CardBattle",
+      year: "2022",
     },
     website: "https://card-battle.herokuapp.com/",
     github: "https://github.com/Jeromemn/card-battle",
@@ -143,16 +293,49 @@ const projectsData = [
     year: "2022",
     commits: "75",
     techUsed: [
-      "JavaScript",
-      "HTML",
-      "CSS",
-      "bCrypt",
-      "connect Session Sequelize",
-      "Express",
-      "Express Handlebars",
-      "mysql2",
-      "sequelize",
-      "tailwindcss",
+      {
+        label: "JavaScript",
+        icon: <JavaScriptIcon />,
+      },
+      {
+        label: "HTML",
+        icon: <HtmlIcon />,
+      },
+      {
+        label: "CSS",
+        icon: <CssIcon/>,
+      },
+      {
+        label: "bCrypt",
+        icon: <BcryptIcon/>,
+      },
+      // "connect Session Sequelize",
+      {
+        label: "Express",
+        icon: <ExpressIcon />,
+      },
+      // "Express Handlebars",
+      {
+        label: "HandleBars",
+        icon: <HandlebarsIcon />,
+      },
+      {
+        label: "MYSQL2",
+        icon: <MySqlIcon />,
+      },
+      {
+        label: "Sequelize",
+        icon: <SequelizeIcon />,
+
+      },
+      {
+        label: "Tailwindcss",
+        icon: <TailwindIcon />,
+      },
+      {
+        label: "Flowbite",
+        icon: <FlowBiteIcon />,
+      }
     ],
   },
   {
@@ -166,6 +349,7 @@ const projectsData = [
       url: "/textedit.jpg",
       alt: "text editor page",
       title: "text editor",
+      year: "2022",
     },
     website: "https://pwathejateway.herokuapp.com/",
     github: "https://github.com/Jeromemn/Progressive-Web-App-TextEditor",
@@ -174,17 +358,36 @@ const projectsData = [
     year: "2022",
     commits: "75",
     techUsed: [
-      "JavaScript",
-      "CSS",
-      "HTML",
-      "Webpack",
-      "Webpack Plugin",
-      "Inject Manifest",
-      "Webpack PWA Mainfest",
-      "nodemon",
-      "express",
-      "idb",
-      "concurrently",
+      {
+        label: "JavaScript",
+        icon: <JavaScriptIcon />,
+      },
+      {
+        label: "HTML",
+        icon: <HtmlIcon />,
+      },
+      {
+        label: "CSS",
+        icon: <CssIcon/>,
+      },
+      {
+        label: "Webpack",
+        icon: <WebPackIcon/>,
+      },
+      {
+        label: "Express",
+        icon: <ExpressIcon />,
+      },
+      {
+        label: "Nodemon",
+        icon: <NodemonIcon/>,
+      }
+
+      // "Webpack Plugin",
+      // "Inject Manifest",
+      // "Webpack PWA Mainfest",
+      // "idb",
+      // "concurrently",
     ],
   },
 ];

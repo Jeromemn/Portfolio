@@ -43,7 +43,7 @@ const styles = css`
     /* display: flex; */
   }
 /* for display on hover? */
-  /* ${({ $dislike }) =>
+   /* ${({ $dislike }) =>
     $dislike &&
     `
   display: flex;
@@ -52,7 +52,7 @@ ${({ $like }) =>
     $like &&
     `
   display: flex;
-`} */
+`}  */
 `;
 
 const HollowThumbsUp = styled.div`

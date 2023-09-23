@@ -3,7 +3,7 @@ const BackArrow = ({ color, width, height }) => (
     viewBox="0 0 24 24"
     preserveAspectRatio="xMidYMid meet"
     focusable="false"
-    color={color}
+    fill={color}
     width={width}
     height={height}  
   >

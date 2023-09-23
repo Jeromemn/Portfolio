@@ -5,6 +5,7 @@ import Intro from "./components/intro";
 import styled from "styled-components";
 import mainImage from "../../public/mainImage.jpg";
 import CenterContent from "./components/CenterContent";
+import { mq } from "./styles/mixins";
 
 const ContentWrapper = styled.div`
   display: flex;
@@ -19,13 +20,19 @@ const ArtistInfo = styled.div`
   background-color: black;
   height: 40%;
   width: 100%;
+
+  ${mq.mobile(`
+    height: 45%;
+  `)}
 `;
+
+
 
 const ArtistCoverWrapper = styled.div`
   display: flex;
   justify-content: center;
   height: 65%;
-  width: 100%;
+  width: 100vw;
   background-image: linear-gradient(
       rgba(0, 1, 1, 0.1) 0%,
       rgba(0, 1, 1, 0.2) 50%,
@@ -45,6 +52,18 @@ const ArtistCoverWrapper = styled.div`
       rgba(0, 1, 1, 1) 8.98%,
       rgba(0, 0, 0, 0) 100%
     ), */
+
+  ${mq.mobile(`
+  height: 55%;
+  background-position: right;
+  background-image: linear-gradient(
+      rgba(0, 1, 1, 0.1) 0%,
+      rgba(0, 1, 1, 0.2) 50%,
+      rgba(0, 1, 1, 0.7) 75%,
+      #000000 100%
+    ),
+    url(${(props) => props.$image.src});
+  `)}
 `;
 
 const CoverBackground = styled.div`
@@ -58,25 +77,31 @@ const CoverBackground = styled.div`
 const IntroWrapper = styled.div`
   display: flex;
   width: 100%;
+
+  ${mq.mobile(`
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  `)}
 `;
 
 const Home = () => {
   return (
-    <ContentWrapper>
-      <ArtistCoverWrapper $image={mainImage}>
-        <CoverBackground>
-          <CenterContent>
-            <IntroWrapper>
-              <Intro></Intro>
-            </IntroWrapper>
-          </CenterContent>
-        </CoverBackground>
-      </ArtistCoverWrapper>
-      <ArtistInfo>
-        <CenterContent>
-          <Header />
-        </CenterContent>
-      </ArtistInfo>
+      <ContentWrapper>
+          <ArtistCoverWrapper $image={mainImage}>
+             <CoverBackground>
+               <CenterContent>
+                   <IntroWrapper>
+                       <Intro></Intro>
+                   </IntroWrapper>
+               </CenterContent>
+             </CoverBackground>
+          </ArtistCoverWrapper>
+          <ArtistInfo>
+            <CenterContent>
+               <Header />
+            </CenterContent>
+          </ArtistInfo>
     </ContentWrapper>
   );
 };

@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo } from "react";
 import projectsData from "../utils/projectsData";
+import { mq } from "../styles/mixins";
 import {
   PlayYouTube,
   YouTubeShuffle,
@@ -38,6 +39,16 @@ const PlayPauseWrapper = styled.div`
   align-items: center;
   padding: 0 1rem;
   gap: 1rem;
+
+  ${mq.largeMobile(`
+    padding: 0;
+    gap: 0;
+  `)};
+
+  ${mq.mobile(`
+    padding: 0;
+    gap: 0;
+  `)};
 `;
 
 const NowPlayingSection = styled.div`
@@ -47,6 +58,10 @@ const NowPlayingSection = styled.div`
   grid-area: middle;
   align-items: center;
   overflow: hidden;
+
+  ${mq.mobile(`
+  display: none;
+  `)};
 `;
 
 const ShuffleRepeatSection = styled.div`
@@ -55,6 +70,14 @@ const ShuffleRepeatSection = styled.div`
   align-items: center;
   padding: 0 1rem;
   width: 257.14px;
+
+  ${mq.largeMobile(`
+    width: fit-content;
+    padding: 0;
+  `)};
+
+  ${mq.mobile(`
+  `)};
 `;
 
 const FooterSectionContainer = styled.div`
@@ -63,6 +86,10 @@ const FooterSectionContainer = styled.div`
   align-items: center;
   height: inherit;
   padding: 0 1rem;
+
+  ${mq.mobile(`
+  justify-content: space-around;
+  `)}
 `;
 
 const SkipIconWrapper = styled.div`
@@ -113,6 +140,9 @@ const IconWrapper = styled.div`
   width: 24px;
   height: 24px;
   padding: 8px;
+
+  ${mq.mobile(`
+  `)};
 `;
 
 const ArrowWrapper = styled.div`
@@ -125,6 +155,10 @@ const ArrowWrapper = styled.div`
   justify-content: center;
   vertical-align: middle;
   padding: 8px;
+
+  ${mq.mobile(`
+    display: none;
+  `)};
 `;
 
 const StyledLink = styled(Link)`
@@ -138,17 +172,26 @@ const StyledLink = styled(Link)`
   }
 `;
 
+const HideThumbsMobile = styled.div`
+  ${mq.mobile(`
+    display: none;
+  `)};
+`;
+
 const CurrentPageWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
+  //width: 100%;
   justify-content: center;
-  align-content: center;
   width: fit-content;
 `;
 
 const TimerWrapper = styled.div`
   display: flex;
+
+  ${mq.mobile(`
+    display: none;
+  `)};
 `;
 
 const DisplayTimer = styled.p`
@@ -167,6 +210,17 @@ const TimerPlayContainer = styled.div`
 const SliderProgress = styled(Slider)`
   padding: 15px;
   margin: -15px;
+
+  ${mq.mobile(`
+    padding: 15px 0 15px 0;
+    margin: -15px 0 -15px 0;
+  `)}
+
+  ${mq.largeMobile(`
+    padding: 15px 0 15px 0;
+    margin: -15px 0 -15px 0;
+  `)}
+
   & .rc-slider-rail {
     background-color: #bdbdbd;
     height: 4px;
@@ -344,7 +398,9 @@ const Footer = () => {
             <CurrentPageText>{title}</CurrentPageText>
             <StyledLink href="/">Jerome </StyledLink>
           </CurrentPageWrapper>
-          <Thumbs id={pathname} />
+          <HideThumbsMobile>
+            <Thumbs id={pathname} />
+          </HideThumbsMobile>
         </NowPlayingSection>
         <ShuffleRepeatSection>
           <IconWrapper>

@@ -3,8 +3,11 @@ const ShareIcon = ({ color, size }) => (
     viewBox="0 0 24 24"
     preserveAspectRatio="xMidYMid meet"
     focusable="false"
-    size={size}
+    width={size}
+    height={size}
     fill={color}
+    stroke={color}
+    strokeWidth=".5"
   >
     <g >
       <path
