@@ -262,7 +262,6 @@ const fields = [
         /^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+\.[A-Za-z0-9.-]+$/gm
       );
       const isValidEmail = emailRegex.test(value);
-      console.log(isValidEmail); //true
       if (isValidEmail) {
         return true;
       } else if (!isValidEmail) {
@@ -294,7 +293,6 @@ const ContactPage = () => {
       return acc;
     }, {})
   );
-  console.log(values);
 
   const [errors, setErrors] = useState(
     fields.reduce((acc, field) => {
@@ -414,6 +412,7 @@ const ContactPage = () => {
                 alt="picture of dev"
                 fill={true}
                 sizes="(max-width: 768px) 100vw, 768px"
+                priority={true}
                 style={{
                   objectFit: "cover",
                 }}

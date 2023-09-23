@@ -36,9 +36,7 @@ const OptionsDropDown = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const openDropDown = () => {
-    console.log(isOpen);
     !isOpen ? setIsOpen(true) : setIsOpen(false);
-    console.log(isOpen);
   };
 
   return (

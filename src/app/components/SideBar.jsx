@@ -172,7 +172,6 @@ const MobileSideBarWrapper = styled.div`
 const SideBar = () => {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  console.log(open);
   const MobileMenuRef = useRef();
   useOnClickOutside(MobileMenuRef, () => setOpen(false));
 

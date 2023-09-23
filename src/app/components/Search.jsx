@@ -261,7 +261,6 @@ const Search = () => {
   const [searchValue, setSearchValue] = useState("");
   const [editMode, setEditMode] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  console.log(isOpen);
   const toggling = () => setEditMode(!editMode);
   const dropdownRef = useRef();
   useOnClickOutside(dropdownRef, () => setEditMode(false));
@@ -278,7 +277,6 @@ const Search = () => {
   }, [searchValue]);
 
   const openSearch = () => {
-    console.log("open search");
     setIsOpen(!isOpen);
     setEditMode(!editMode);
   };
