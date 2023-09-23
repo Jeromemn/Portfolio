@@ -212,7 +212,6 @@ const AssistHeaders = styled.h2`
 `;
 
 const AboutPage = () => {
-    console.log(window.innerWidth)
     return (
         <AboutPageWrapper>
             <CenterContent>
