@@ -1,36 +1,32 @@
-"use client";
-import styled from "styled-components";
-import Image from "next/image";
-import Link from "next/link";
-import Thumbs from "@/app/components/Thumbs";
-import { PlayYouTube } from "../icons";
-import { youTubeDark, youTubeSans } from "../styles/setFonts";
-import { mq } from "../styles/mixins";
+'use client';
+import styled from 'styled-components';
+import Image from 'next/image';
+import Link from 'next/link';
+import Thumbs from '@/app/components/Thumbs';
+import { PlayYouTube } from '../icons';
+import { youTubeDark, youTubeSans } from '../styles/setFonts';
+import { mq } from '../styles/mixins';
 
 const headerList = [
-  { id: 2, name: "All About Me", path: "/about", image: "/about.png" },
+  { id: 2, name: 'All About Me', path: '/about', image: '/about.png' },
   {
     id: 3,
-    name: "Get In Contact",
-    path: "/contact",
-    image: "/contactImage.png",
+    name: 'Get In Contact',
+    path: '/contact',
+    image: '/contactImage.png',
   },
   {
     id: 4,
-    name: "Projects Playlist",
-    path: "/projects",
-    image: "/projects.png",
+    name: 'Projects Playlist',
+    path: '/projects',
+    image: '/projects.png',
   },
 ];
 
 const HeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
-
-  ${mq.largeMobile(` 
-    padding: 0rem 2rem;
-  `)}
+  padding-bottom: 1rem;
 `;
 
 const NavigationContainer = styled.div`
@@ -135,7 +131,6 @@ const ItemSection = styled.div`
     align-items: flex-start;
     gap: 0rem;
   `)}
-
 `;
 
 const ArtistName = styled.p`
@@ -171,13 +166,7 @@ const Header = () => {
         {headerList.map(({ id, name, path, image }) => (
           <HeaderItemWrapper key={id}>
             <AlbumCover>
-              <AlbumImage
-                src={`${image}`}
-                alt={name}
-                quality={100}
-                width={40}
-                height={40}
-              />
+              <AlbumImage src={`${image}`} alt={name} quality={100} width={40} height={40} />
               <PlayYouTube color="white" width={40} height={40} />
             </AlbumCover>
             <ItemSection>

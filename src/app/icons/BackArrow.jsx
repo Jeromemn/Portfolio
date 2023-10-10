@@ -5,12 +5,10 @@ const BackArrow = ({ color, width, height }) => (
     focusable="false"
     fill={color}
     width={width}
-    height={height}  
+    height={height}
   >
-    <g >
-      <path
-        d="M14.6,18.4L8.3,12l6.4-6.4l0.7,0.7L9.7,12l5.6,5.6L14.6,18.4z"
-      ></path>
+    <g>
+      <path d="M14.6,18.4L8.3,12l6.4-6.4l0.7,0.7L9.7,12l5.6,5.6L14.6,18.4z"></path>
     </g>
   </svg>
 );

@@ -7,12 +7,10 @@ const UpArrow = ({ color, width, height }) => (
     height={height}
     // style={{pointerEvents: "none", display: "block", width: "100%", height:" 100%"}}
   >
-    <g >
-      <path d="M18,9l-6,6L6,9H18z"  fill={color}></path>
+    <g>
+      <path d="M18,9l-6,6L6,9H18z" fill={color}></path>
     </g>
   </svg>
 );
 
 export default UpArrow;
-
-

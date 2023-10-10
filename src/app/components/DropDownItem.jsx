@@ -1,10 +1,10 @@
-"use client";
-import React, { useState, useRef, useEffect, useMemo } from "react";
-import Link from "next/link";
-import useOnClickOutside from "../hooks/useOnOutsideClick";
-import Styled from "styled-components";
-import ButtonBase from "./ButtonBase";
-import { OptionsDots } from "../icons";
+'use client';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
+import Link from 'next/link';
+import useOnClickOutside from '../hooks/useOnOutsideClick';
+import Styled from 'styled-components';
+import ButtonBase from './ButtonBase';
+import { OptionsDots } from '../icons';
 
 const ItemWrapper = Styled.div`
   display: flex;
@@ -24,22 +24,22 @@ const ItemText = Styled.p`
   color: rgb(255, 255, 255);
 `;
 
-
 const DropDownItem = () => {
   return (
     <ItemWrapper>
       <ItemText>DropDownItem</ItemText>
     </ItemWrapper>
-  )
-}
+  );
+};
 
 const GoToDev = () => {
   return (
     <ItemWrapper>
-      <ItemText as={Link} href='/'>Go to Dev.to</ItemText>
+      <ItemText as={Link} href="/">
+        Go to Dev.to
+      </ItemText>
     </ItemWrapper>
-  )
-}
+  );
+};
 
 export { DropDownItem, GoToDev };
-

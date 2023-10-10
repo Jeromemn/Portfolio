@@ -1,9 +1,8 @@
-"use client";
-import PropTypes from "prop-types";
-import Link from "next/link";
-import styled, { css } from "styled-components";
-import roboto from "../layout";
-
+'use client';
+import PropTypes from 'prop-types';
+import Link from 'next/link';
+import styled, { css } from 'styled-components';
+import roboto from '../layout';
 
 //  check all buttons for border issues/ sizing issues
 
@@ -21,7 +20,7 @@ const defaultStyles = css`
   cursor: pointer;
   font-family: inherit;
   font-weight: 500;
-  font-size: ${(props) => props.fontSize || "14px"};
+  font-size: ${(props) => props.fontSize || '14px'};
   max-width: 200px;
 
   &:disabled {
@@ -48,10 +47,9 @@ const PrimaryButton = styled.button`
 const SecondaryButton = styled.button`
   ${defaultStyles};
   border: 1px solid rgba(255, 255, 255, 0.2);
-  color: ${(props) => props.color ||  'rgba(255, 255, 255, 0.7)'}; 
+  color: ${(props) => props.color || 'rgba(255, 255, 255, 0.7)'};
   //color: rgba(255, 255, 255, 0.7);
   background: none;
-  
 
   &:hover {
     background: rgba(255, 255, 255, 0.2);
@@ -116,11 +114,11 @@ const MobilePrimary = styled.button`
   border: none;
   background-color: #fff;
   //width: 60px;
-  width: ${({width}) => width || '60px'};
-  height: ${({height}) => height || '60px'};
-    //height: 60px;
+  width: ${({ width }) => width || '60px'};
+  height: ${({ height }) => height || '60px'};
+  //height: 60px;
   padding: 6px;
-//   check padding didnt caue style issues
+  //   check padding didnt caue style issues
 `;
 
 const MobileSecondary = styled.button`
@@ -131,7 +129,7 @@ const MobileSecondary = styled.button`
   border: none;
   //background-color: #fff;
   width: 50px;
-    height: 50px;
+  height: 50px;
   //color: rgba(255, 255, 255, 0.7);
   background: rgba(255, 255, 255, 0.1);
 `;
@@ -161,13 +159,13 @@ const ButtonBase = ({ variant, onClick, children, ...props }) => {
 };
 
 ButtonBase.defaultProps = {
-  variant: "primary",
+  variant: 'primary',
   onClick: () => {},
   children: null,
 };
 
 ButtonBase.propTypes = {
-  variant: PropTypes.oneOf(["primary", "secondary", "icon", "plain", "mobilePrimary", "mobileSecondary"]),
+  variant: PropTypes.oneOf(['primary', 'secondary', 'icon', 'plain', 'mobilePrimary', 'mobileSecondary']),
   onClick: PropTypes.func,
   children: PropTypes.node,
 };

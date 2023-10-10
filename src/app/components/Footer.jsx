@@ -1,11 +1,11 @@
-"use client";
-import { usePathname, useRouter } from "next/navigation";
-import styled from "styled-components";
-import Image from "next/image";
-import Link from "next/link";
-import { useEffect, useMemo } from "react";
-import projectsData from "../utils/projectsData";
-import { mq } from "../styles/mixins";
+'use client';
+import { usePathname, useRouter } from 'next/navigation';
+import styled from 'styled-components';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useEffect, useMemo } from 'react';
+import projectsData from '../utils/projectsData';
+import { mq } from '../styles/mixins';
 import {
   PlayYouTube,
   YouTubeShuffle,
@@ -15,12 +15,12 @@ import {
   VolumeIcon,
   ReplayIcon,
   PauseButton,
-} from "../icons";
-import AllLinks from "../utils/links";
-import useTimer from "../hooks/useTimer";
-import Slider from "rc-slider";
-import "rc-slider/assets/index.css";
-import Thumbs from "./Thumbs";
+} from '../icons';
+import AllLinks from '../utils/links';
+import useTimer from '../hooks/useTimer';
+import Slider from 'rc-slider';
+import 'rc-slider/assets/index.css';
+import Thumbs from './Thumbs';
 
 const FooterWrapper = styled.div`
   display: flex;
@@ -263,14 +263,7 @@ const SliderProgress = styled(Slider)`
 
 const Footer = () => {
   const pathname = usePathname();
-  const {
-    currentTime,
-    startTimer,
-    pauseTimer,
-    stopTimer,
-    updateTimer,
-    isTimerRunning,
-  } = useTimer();
+  const { currentTime, startTimer, pauseTimer, stopTimer, updateTimer, isTimerRunning } = useTimer();
 
   const onPlay = () => {
     startTimer();
@@ -287,26 +280,20 @@ const Footer = () => {
       stopTimer();
       // logic to redirect to next page
       const updatedLinks = AllLinks.filter((item) => item !== pathname);
-      router.push(
-        updatedLinks[Math.floor(Math.random() * updatedLinks.length)]
-      );
+      router.push(updatedLinks[Math.floor(Math.random() * updatedLinks.length)]);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentTime, isTimerRunning, stopTimer]);
 
   const currentPlay =
     (currentTime >= 59 ? Math.floor(currentTime / 60) : 0) +
-    ":" +
-    (currentTime <= 10
-      ? Math.floor(currentTime / 60)
-      : 0 + Math.floor(currentTime % 60));
-  const playMinutes =
-    (playTime >= 60 ? Math.floor(playTime / 60) : 0) + ":" + (playTime % 60);
+    ':' +
+    (currentTime < 10 ? '0' + Math.floor(currentTime) : Math.floor(currentTime % 60));
+  const playMinutes = (playTime >= 60 ? Math.floor(playTime / 60) : 0) + ':' + (playTime % 60);
 
   const randomLink = useMemo(() => {
     const updatedLinks = AllLinks.filter((item) => item !== pathname);
-    const newLink =
-      updatedLinks[Math.floor(Math.random() * updatedLinks.length)];
+    const newLink = updatedLinks[Math.floor(Math.random() * updatedLinks.length)];
     return newLink || updatedLinks[0];
   }, [pathname]);
 
@@ -322,31 +309,28 @@ const Footer = () => {
     return getNextLink || AllLinks[0];
   }, [pathname]);
 
-  const projectImages = projectsData.reduce(
-    (acc, current) => ({ ...acc, [current.link]: current.image }),
-    {}
-  );
+  const projectImages = projectsData.reduce((acc, current) => ({ ...acc, [current.link]: current.image }), {});
 
   const images = {
-    "/": {
-      url: "/home.png",
-      alt: "some alt",
-      title: "Home Page",
+    '/': {
+      url: '/home.png',
+      alt: 'some alt',
+      title: 'Home Page',
     },
-    "/about": {
-      url: "/about.png",
-      alt: "some alt",
-      title: "About",
+    '/about': {
+      url: '/about.png',
+      alt: 'some alt',
+      title: 'About',
     },
-    "/contact": {
-      url: "/contactImage.png",
-      alt: "some alt text",
-      title: "Contact",
+    '/contact': {
+      url: '/contactImage.png',
+      alt: 'some alt text',
+      title: 'Contact',
     },
-    "/projects": {
-      url: "/projects.png",
-      alt: "some alt text",
-      title: "Projects",
+    '/projects': {
+      url: '/projects.png',
+      alt: 'some alt text',
+      title: 'Projects',
     },
     ...projectImages,
   };
@@ -361,9 +345,9 @@ const Footer = () => {
         max={playTime}
         step={0.1}
         handleStyle={{
-          borderColor: "rgb(255, 0, 0)",
-          backgroundColor: "rgb(255, 0, 0)",
-          boxShadow: "none",
+          borderColor: 'rgb(255, 0, 0)',
+          backgroundColor: 'rgb(255, 0, 0)',
+          boxShadow: 'none',
         }}
         onChange={(nextValue) => {
           updateTimer(nextValue);

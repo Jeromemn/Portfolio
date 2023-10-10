@@ -1,33 +1,30 @@
-"use client";
-import React, { useState, useRef, useEffect, useMemo } from "react";
-import Link from "next/link";
-import useOnClickOutside from "../hooks/useOnOutsideClick";
-import Styled from "styled-components";
-import { SearchIcon, BackArrow, GoBackIcon } from "../icons";
-import CenterContent from "./CenterContent";
-import { mq } from "../styles/mixins";
-
-const SearchWrapper = Styled.div`
-  display: flex;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  padding-top: 1rem;
-  justify-content: center;
-
-  ${mq.mobile(`
-   display: none;
-  `)}
-
-  ${mq.largeMobile(`
-  z-index: 300;
-  position: relative;
-  `)}
-`;
+'use client';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import useOnClickOutside from '../hooks/useOnOutsideClick';
+import Styled from 'styled-components';
+import { SearchIcon, BackArrow, GoBackIcon } from '../icons';
+import CenterContent from './CenterContent';
+import { mq } from '../styles/mixins';
+import ButtonBase from '@/app/components/ButtonBase';
 
 const SearchContainer = Styled.div`
   display: flex;
   flex-direction: column;
+  z-index: 300;
+  background-color: #030303;
+  border-radius: 8px;
+  
+    ${({ $isHomePage }) =>
+      $isHomePage &&
+      `
+      background-color: transparent;
+    `}
+  
+  ${mq.mobile(`
+    display: none;
+  `)}
 
   ${mq.largeMobile(`
     width: 100%;
@@ -143,7 +140,6 @@ const DropDownItem = Styled.div`
   background-color: #030303;
 
   &&:hover {
-    /* background-color: rgba(255,255,255,0.2); */
    background-color: rgba(255, 255, 255, 0.15);
   }
 `;
@@ -162,29 +158,26 @@ ${mq.mobile(`
   display: flex;
   justify-content: center;
   align-items: center;
-  right: 1rem;
-  /* left: 90%; */
-  position: absolute;
   padding: 1rem;
+  position: relative;
   `)}
 `;
 
 const MobileSearchWrapper = Styled.div`
  display: flex;
   flex-direction: column;
-  position: absolute;
   width: 90%;
   padding-top: 1rem;
   z-index: 400;
 `;
 
 const MobileSearchContainer = Styled.div`
-  ${mq.mobile(`
     display: flex;
     width: 100vw;
     height: 100vh;
     justify-content: center;
-  `)}
+    position: absolute;
+    z-index: 9999;
 `;
 
 const SearchSection = Styled.div`
@@ -192,78 +185,128 @@ display: flex;
 position: fixed;
 top: 0;
 width: 100%;
+z-index: 50;
+padding-top: 1rem;
+// background-color: #030303;
 
-${mq.largeMobile(`
-  z-index: 50;
-  width: 100%;
-`)}
+${({ $editMode }) =>
+  $editMode &&
+  `
+    background-color: transparent;
+    `}
 
 ${mq.mobile(`
-  z-index: 500;
-  width: 100%;
+display: none;
 `)}
 `;
 
 const dropDownSelection = [
   {
     id: 1,
-    title: "Home",
-    link: "/",
+    title: 'Home',
+    link: '/',
   },
   {
     id: 2,
-    title: "About",
-    link: "/about",
+    title: 'About',
+    link: '/about',
   },
   {
     id: 3,
-    title: "Contact",
-    link: "/contact",
+    title: 'Contact',
+    link: '/contact',
   },
   {
     id: 4,
-    title: "Projects",
-    link: "/projects",
+    title: 'Projects',
+    link: '/projects',
   },
   {
     id: 5,
-    title: " Tuff Skin",
-    link: "/projects/tuffSkin",
+    title: ' Tuff Skin',
+    link: '/projects/tuffSkin',
   },
   {
     id: 6,
-    title: "Modern Pilgrim",
-    link: "/projects/modernPilgrim",
+    title: 'Modern Pilgrim',
+    link: '/projects/modernPilgrim',
   },
   {
     id: 7,
-    title: "Traders Journal",
-    link: "/projects/tradersJournal",
+    title: 'Traders Journal',
+    link: '/projects/tradersJournal',
   },
   {
     id: 8,
-    title: "Switch",
-    link: "/projects/switch",
+    title: 'Switch',
+    link: '/projects/switch',
   },
   {
     id: 9,
-    title: "Card Battle",
-    link: "/projects/cardbattle",
+    title: 'Card Battle',
+    link: '/projects/cardbattle',
   },
   {
     id: 10,
-    title: "PWA Text Editor",
-    link: "/projects/pwaTextEditor",
+    title: 'PWA Text Editor',
+    link: '/projects/pwaTextEditor',
   },
 ];
 
 const Search = () => {
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState('');
   const [editMode, setEditMode] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
-  const toggling = () => setEditMode(!editMode);
+  const path = usePathname();
+  const isHomePage = path === '/';
+  const toggling = () => setEditMode(true);
   const dropdownRef = useRef();
   useOnClickOutside(dropdownRef, () => setEditMode(false));
+
+  const filteredItems = useMemo(() => {
+    if (!searchValue) {
+      return dropDownSelection;
+    }
+    return dropDownSelection.filter((selection) => {
+      return selection.title.toLowerCase().includes(searchValue?.toLowerCase());
+    });
+  }, [searchValue]);
+
+  return (
+    <SearchSection $editMode={editMode}>
+      <SearchContainer $isHomePage={isHomePage} ref={dropdownRef}>
+        <SearchBox $editMode={editMode}>
+          <SearchIcon width={24} height={24} color="rgba(255, 255, 255, 0.5)" />
+          <SearchInput
+            onFocus={toggling}
+            id="inputId"
+            type="text"
+            placeholder="Search Pages, Projects"
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
+          />
+        </SearchBox>
+        {editMode && (
+          <DropDownWrapper>
+            {filteredItems.map(({ title, link }) => (
+              <Link key={title} href={link} onClick={toggling}>
+                <DropDownItem>
+                  <DropDownText>{title}</DropDownText>
+                </DropDownItem>
+              </Link>
+            ))}
+          </DropDownWrapper>
+        )}
+      </SearchContainer>
+    </SearchSection>
+  );
+};
+
+export default Search;
+
+export const MobileSearch = () => {
+  const [searchValue, setSearchValue] = useState('');
+  const [editMode, setEditMode] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const mobileDropdownRef = useRef();
   useOnClickOutside(mobileDropdownRef, () => setIsOpen(false));
 
@@ -280,53 +323,20 @@ const Search = () => {
     setIsOpen(!isOpen);
     setEditMode(!editMode);
   };
-
   return (
-    <SearchSection>
-      <SearchWrapper>
-        <CenterContent>
-          <SearchContainer>
-            <SearchBox onClick={toggling} $editMode={editMode}>
-              <SearchIcon
-                width={24}
-                height={24}
-                color="rgba(255, 255, 255, 0.5)"
-              />
-              <SearchInput
-                id="inputId"
-                type="text"
-                placeholder="Search Pages, Projects"
-                value={searchValue}
-                onChange={(e) => setSearchValue(e.target.value)}
-              />
-            </SearchBox>
-            {editMode && (
-              <DropDownWrapper ref={dropdownRef}>
-                {filteredItems.map(({ title, link }) => (
-                  <Link key={title} href={link} onClick={toggling}>
-                    <DropDownItem>
-                      <DropDownText>{title}</DropDownText>
-                    </DropDownItem>
-                  </Link>
-                ))}
-              </DropDownWrapper>
-            )}
-          </SearchContainer>
-        </CenterContent>
-      </SearchWrapper>
-
-      <MobileSearchButton onClick={openSearch}>
-        <SearchIcon width={30} height={30} color="rgba(255, 255, 255, 0.5)" />
+    <>
+      <MobileSearchButton>
+        <ButtonBase variant="icon" onClick={openSearch}>
+          <SearchIcon width={30} height={30} color="rgba(255, 255, 255, 0.5)" />
+        </ButtonBase>
       </MobileSearchButton>
       {isOpen && (
-        <MobileSearchContainer>
+        <MobileSearchContainer ref={mobileDropdownRef}>
           <MobileSearchWrapper>
-            <SearchBox onClick={openSearch} $isOpen={isOpen}>
-              <GoBackIcon
-                width={24}
-                height={24}
-                color="rgba(255, 255, 255, 0.5)"
-              />
+            <SearchBox $isOpen={isOpen}>
+              <ButtonBase variant="icon" onClick={openSearch}>
+                <GoBackIcon width={24} height={24} color="rgba(255, 255, 255, 0.5)" />
+              </ButtonBase>
               <SearchInput
                 id="inputId"
                 type="text"
@@ -335,7 +345,7 @@ const Search = () => {
                 onChange={(e) => setSearchValue(e.target.value)}
               />
             </SearchBox>
-            <DropDownWrapper ref={mobileDropdownRef}>
+            <DropDownWrapper>
               {filteredItems.map(({ title, link }) => (
                 <Link key={title} href={link} onClick={openSearch}>
                   <DropDownItem>
@@ -347,8 +357,6 @@ const Search = () => {
           </MobileSearchWrapper>
         </MobileSearchContainer>
       )}
-    </SearchSection>
+    </>
   );
 };
-
-export default Search;

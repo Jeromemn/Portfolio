@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from 'react';
 
 const useTimer = () => {
   const [currentTime, setCurrentTime] = useState(0);
@@ -9,7 +9,7 @@ const useTimer = () => {
 
     if (isTimerRunning) {
       timerId = setInterval(() => {
-        setCurrentTime((prevTime) => prevTime + .1);
+        setCurrentTime((prevTime) => prevTime + 0.1);
       }, 100);
     } else {
       clearInterval(timerId);
@@ -37,7 +37,7 @@ const useTimer = () => {
     setCurrentTime(0);
   };
 
-  return { currentTime, startTimer, pauseTimer, stopTimer,updateTimer,isTimerRunning };
+  return { currentTime, startTimer, pauseTimer, stopTimer, updateTimer, isTimerRunning };
 };
 
 export default useTimer;

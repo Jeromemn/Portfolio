@@ -18,7 +18,7 @@ export { default as ExploreYouTube } from './ExploreYouTube';
 export { default as ContactIcon } from './ContactIcon';
 export { default as LibraryYT } from './LibraryYT';
 export { default as OptionsDots } from './OptionsDots';
-export { default  as ProfileIcon } from './ProfileIcon';
+export { default as ProfileIcon } from './ProfileIcon';
 export { default as ShareIcon } from './ShareIcon';
 export { default as SubscriptionsYT } from './SubscriptionsYT';
 export { default as Recent } from './Recent';
