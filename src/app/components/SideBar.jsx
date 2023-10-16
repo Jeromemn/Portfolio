@@ -26,7 +26,10 @@ const SideBarWrapper = styled.div`
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  //
+  // changes made from relative to fixed to allow overflow scroll on home page
   position: relative;
+  //position: fixed;
   top: 72px;
 
   ${mq.mobile(`

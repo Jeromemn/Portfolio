@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
-import { mq } from 'src/app/styles/mixins';
+import { mq } from '@/app/styles/mixins';
 import projectsData from '@/app/utils/projectsData';
 import { PlayYouTube } from '@/app/icons';
 

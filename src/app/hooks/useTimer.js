@@ -1,22 +1,23 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const useTimer = () => {
   const [currentTime, setCurrentTime] = useState(0);
   const [isTimerRunning, setIsTimerRunning] = useState(false);
+  const timerId = useRef(null);
 
   useEffect(() => {
-    let timerId;
-
     if (isTimerRunning) {
-      timerId = setInterval(() => {
+      timerId.current = setInterval(() => {
         setCurrentTime((prevTime) => prevTime + 0.1);
       }, 100);
-    } else {
-      clearInterval(timerId);
+    } else if (timerId.current) {
+      clearInterval(timerId.current);
     }
 
     return () => {
-      clearInterval(timerId);
+      if (timerId.current) {
+        clearInterval(timerId.current);
+      }
     };
   }, [isTimerRunning]);
 

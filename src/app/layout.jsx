@@ -41,6 +41,7 @@ const ContentWrapper = styled.div`
 
   ${mq.smallDesktop(`
     max-width: 1000px;
+    padding: 0 4rem 0 2rem;
  `)}
   ${mq.largeMobile(`
     padding: 0 4rem;
@@ -52,7 +53,6 @@ const ContentWrapper = styled.div`
   ${mq.smallMobile(`
     padding: 0 2rem;
   `)}
-  
 `;
 
 const LayoutRoot = styled.div`
@@ -60,7 +60,9 @@ const LayoutRoot = styled.div`
   background: #030303;
   //overflow: auto;
   height: 100%;
-  ${({ $isHome, $image }) =>
+  //height: calc(100vh + 72px);
+
+  ${({ $isHome }) =>
     $isHome &&
     `
   background-repeat: no-repeat;
@@ -80,7 +82,7 @@ const LayoutMain = styled.div`
 const Backdrop = styled.div`
   position: absolute;
   width: 100%;
-  height: 55%;
+  height: 50%;
   max-height: 55%;
 `;
 
@@ -113,9 +115,13 @@ export default function RootLayout({ children }) {
             {isHome && (
               <Backdrop>
                 <Image
-                  src="/mainImage.jpg"
+                  // src="/mainImage.jpg"
+                  src={mainImage}
                   alt="main Image"
+                  priority
+                  quality={100}
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1500px) 100vw"
                   style={{
                     objectFit: 'cover',
                   }}

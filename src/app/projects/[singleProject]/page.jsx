@@ -255,7 +255,7 @@ const DropDownDescription = styled.div`
   position: relative;
   border-radius: 10px;
   `)}
-  
+
   ${({ $showMore }) =>
     $showMore &&
     `
@@ -477,11 +477,11 @@ const SingleProjectPage = ({ params, ...props }) => {
             </LessButton>
           </DropDownDescription>
           <ButtonContainer>
-            <ButtonBase variant="primary" as={Link} href={`${project?.website}`} passHref={true}>
+            <ButtonBase variant="primary" as="a" target="_blank" href={`${project?.website}`} passHref={true}>
               <PlayYouTube color="black" width={24} height={24} />
               Live Site
             </ButtonBase>
-            <ButtonBase variant="secondary" as={Link} href={`${project?.github}`} passHref={true} color="#fff">
+            <ButtonBase variant="secondary" as="a" href={`${project?.github}`} passHref={true} color="#fff">
               <NewGitHub color="white" size={20} />
               Go to Repo
             </ButtonBase>
@@ -534,10 +534,10 @@ const SingleProjectPage = ({ params, ...props }) => {
           </ProjectDescriptionWrapper>
         </ImageAndDescription>
         <ButtonContainer>
-          <ButtonBase variant="mobileSecondary" as={Link} href={`${project?.github}`} passHref={true}>
+          <ButtonBase variant="mobileSecondary" as="a" href={`${project?.github}`} passHref={true}>
             <NewGitHub color="white" size={25} />
           </ButtonBase>
-          <ButtonBase variant="mobilePrimary" as={Link} href={`${project?.website}`} passHref={true}>
+          <ButtonBase variant="mobilePrimary" as="a" href={`${project?.website}`} passHref={true}>
             <PlayYouTube color="black" width={30} height={30} />
           </ButtonBase>
           <ButtonBase variant="mobileSecondary" as={Link} href={`${project?.github}`} passHref={true}>

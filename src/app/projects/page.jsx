@@ -1,10 +1,9 @@
 'use client';
 import React from 'react';
-import AllAlbums from '../components/albums/allAlbums';
+import AllAlbums from '../components/allAlbums';
 import styled from 'styled-components';
-import CenterContent from '../components/CenterContent';
 import { mq } from '../styles/mixins';
-import { youTubeDark, youTubeSans } from '../styles/setFonts';
+import { youTubeSans } from '../styles/setFonts';
 
 const ArtistHeaderWrapper = styled.div`
   display: flex;
@@ -28,7 +27,7 @@ const ProjectsContentWrapper = styled.div`
   padding-top: 4rem;
   gap: 2rem;
   padding-bottom: 3rem;
-  
+
   ${mq.largeMobile(`
         padding-top: 0;
     `)}

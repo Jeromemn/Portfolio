@@ -181,7 +181,6 @@ const HideThumbsMobile = styled.div`
 const CurrentPageWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  //width: 100%;
   justify-content: center;
   width: fit-content;
 `;
@@ -343,7 +342,7 @@ const Footer = () => {
         value={currentTime}
         min={0}
         max={playTime}
-        step={0.1}
+        step={0.05}
         handleStyle={{
           borderColor: 'rgb(255, 0, 0)',
           backgroundColor: 'rgb(255, 0, 0)',
