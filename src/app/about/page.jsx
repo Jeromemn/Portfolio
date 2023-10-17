@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import ButtonBase from '../components/ButtonBase';
 import { mq } from '../styles/mixins';
 import { LinkedInIcon, NewGitHub } from '../icons';
-import { youTubeDark, youTubeSans } from '../styles/setFonts';
+import { youTubeSans } from '../styles/setFonts';
 import CanvasTesting from '../components/CanvasTesting';
 
 const AboutPageWrapper = styled.div`

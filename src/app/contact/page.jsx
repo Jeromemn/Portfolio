@@ -258,7 +258,7 @@ const fields = [
     required: true,
     validate: (value) => {
       if (!value || !value.length) return 'Email is required';
-      const emailRegex = new RegExp(/^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+\.[A-Za-z0-9.-]+$/gm);
+      const emailRegex = new RegExp(/^[A-Za-z0-9_!#$%&'*+/=?`{|}~^.-]+@[A-Za-z0-9.-]+\.[A-Za-z0-9.-]+$/gm);
       const isValidEmail = emailRegex.test(value);
       if (isValidEmail) {
         return true;
@@ -382,6 +382,7 @@ const ContactPage = () => {
   const onSend = async () => {
     try {
       setIsSending(true);
+      // eslint-disable-next-line no-undef
       await new Promise((resolve) => setTimeout(resolve, 2000));
       const emailContent = { ...values };
       await sendEmail(emailContent);

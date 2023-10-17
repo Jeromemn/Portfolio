@@ -38,13 +38,6 @@ const ImageWrapper = styled.div`
   overflow: hidden;
 `;
 
-const NowPlayingSection = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-`;
-
 const NowPlayingOne = styled.div`
   display: flex;
   justify-content: center;
@@ -95,7 +88,6 @@ const TopBar = () => {
   const { url, alt, title, year } = images[pathname] || {};
   return (
     <TopBarContainer $isScrolling={isScrolling}>
-      {/*<NowPlayingSection>*/}
       <NowPlayingOne>
         <ImageWrapper>
           <Image src={`${url}`} alt={alt} width={20} height={20} />
@@ -110,7 +102,6 @@ const TopBar = () => {
           {title} • {year}
         </CurrentPageText>
       </NowPlayingTwo>
-      {/*</NowPlayingSection>*/}
     </TopBarContainer>
   );
 };

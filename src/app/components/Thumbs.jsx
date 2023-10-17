@@ -68,6 +68,7 @@ const DislikedThumb = styled.div`
 
 const LikedThumb = styled(DislikedThumb)``;
 
+// eslint-disable-next-line no-unused-vars
 const Thumbs = ({ id, width, ...props }) => {
   const [thumbs, setThumbs] = useLocalStorage('thumbs', {});
   const isLiked = thumbs[id] === 'like';

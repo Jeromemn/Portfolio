@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components';
-import { youTubeDark, youTubeSans } from '../styles/setFonts';
 
 const GlobalStyle = createGlobalStyle`
 

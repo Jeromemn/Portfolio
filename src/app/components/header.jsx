@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Thumbs from '@/app/components/Thumbs';
 import { PlayYouTube } from '../icons';
-import { youTubeDark, youTubeSans } from '../styles/setFonts';
+import { youTubeSans } from '../styles/setFonts';
 import { mq } from '../styles/mixins';
 
 const headerList = [

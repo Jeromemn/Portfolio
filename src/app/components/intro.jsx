@@ -6,9 +6,9 @@ import { usePathname } from 'next/navigation';
 import { useMemo } from 'react';
 import AllLinks from '../utils/links';
 import { mq } from '../styles/mixins';
-import { PlayYouTube, YouTubeShuffle, Verified, LinkedInIcon, RadioPlay, OptionsDots } from '../icons';
+import { PlayYouTube, YouTubeShuffle, Verified, RadioPlay, OptionsDots } from '../icons';
 import ButtonBase from './ButtonBase';
-import { youTubeDark, youTubeSans, youTubeSansDarkBold } from '../styles/setFonts';
+import { youTubeSansDarkBold } from '../styles/setFonts';
 
 const IntroContainer = styled.div`
   display: flex;

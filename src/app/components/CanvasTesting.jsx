@@ -2,20 +2,6 @@
 import React, { useRef, useEffect } from 'react';
 import resizeCanvas from '../utils/resizeCanvas';
 
-const fitImageToCanvas = (image, canvas) => {
-  const canvasContext = canvas.getContext('2d');
-  const ratio = image.width / image.height;
-  let newWidth = canvas.width;
-  let newHeight = newWidth / ratio;
-  if (newHeight < canvas.height) {
-    newHeight = canvas.height;
-    newWidth = newHeight * ratio;
-  }
-  const xOffset = newWidth > canvas.width ? (canvas.width - newWidth) / 2 : 0;
-  const yOffset = newHeight > canvas.height ? (canvas.height - newHeight) / 2 : 0;
-  canvasContext.drawImage(image, xOffset, yOffset, newWidth, newHeight);
-};
-
 const CanvasTesting = (props) => {
   const canvasRef = useRef(null);
 
@@ -36,7 +22,6 @@ const CanvasTesting = (props) => {
     myImage.src = 'smallCropped.jpg';
     myImage.onload = () => {
       resizeCanvas(canvas);
-      // fitImageToCanvas(myImage, canvas);
       ctx.imageSmoothQuality = 'high';
       ctx.drawImage(myImage, 0, 0, canvas.width, canvas.height);
       // ctx.drawImage(myImage, 0, 0, ctx.canvas.width, ctx.canvas.height);

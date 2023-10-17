@@ -7,7 +7,6 @@ import SideBar from './components/SideBar';
 import Footer from './components/Footer';
 import Search from './components/Search';
 import MobileHeader from '@/app/components/MobileHeader';
-import { youTubeDark, youTubeSans } from './styles/setFonts';
 import { Roboto } from 'next/font/google';
 import mainImage from '../../public/mainImage.jpg';
 import styled from 'styled-components';
@@ -19,6 +18,7 @@ export const roboto = Roboto({
   variable: '--font-roboto-mono',
 });
 
+// eslint-disable-next-line no-unused-vars
 const metadata = {
   title: 'Home',
   description: 'Home page',

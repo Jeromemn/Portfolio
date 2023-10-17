@@ -1,6 +1,5 @@
 'use client';
 import React, { useRef, useEffect } from 'react';
-import resizeCanvas from '../utils/resizeCanvas';
 
 const Drawing = (props) => {
   const canvasRef = useRef(null);
@@ -16,7 +15,6 @@ const Drawing = (props) => {
     }
     canvas.width = 500;
     canvas.height = 700;
-    // resizeCanvas(canvas);
     const myImage = new Image();
     myImage.src = 'smallAbout-EDIT.jpg';
     myImage.onload = () => {

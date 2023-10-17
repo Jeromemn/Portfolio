@@ -1,6 +1,4 @@
-import PropTypes from 'prop-types';
-
-const LinkedInIcon = ({ color, size }) => (
+const LinkedInIcon = ({ color }) => (
   <svg width="20" height="25" viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
     <path
       d="M474.069 0.0381776H37.781C17.1612 -0.194523 0.251654 16.3228 0 36.9429V475.05C0.243038 495.68 17.1512 512.214 37.781 511.997H474.069C494.739 512.253 511.714 495.721 512 475.05V36.9113C511.705 16.2504 494.729 -0.265924 474.069 0.00324376"

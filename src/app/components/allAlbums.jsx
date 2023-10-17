@@ -24,8 +24,6 @@ const ProjectContainer = styled.div`
     ${mq.smallMobile(`
     gap: 2rem;
     `)}
-
-
 `;
 
 const Albums = styled.div`
@@ -54,6 +52,7 @@ const AlbumCover = styled.div`
   width: 100%;
   height: 200px;
 
+  //check if can be deleted
   // ${mq.largeMobile(`
   //   width: 200px;
   //   height: 200px;
@@ -104,16 +103,12 @@ const ProjectInfo = styled.p`
 const HoverPlay = styled.div`
   display: flex;
   position: absolute;
-  /* width: 100%; */
   width: 40px;
   height: 40px;
-  /* top: auto; */
   z-index: 100;
   justify-content: center;
   align-items: center;
-  /* left: 0; */
   bottom: 20px;
-  /* margin: 30px; */
   right: 20px;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 50%;

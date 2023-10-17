@@ -1,11 +1,10 @@
 'use client';
-import React, { useState, useRef, useEffect, useMemo } from 'react';
+import React, { useState, useRef, useMemo } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import useOnClickOutside from '../hooks/useOnOutsideClick';
 import Styled from 'styled-components';
-import { SearchIcon, BackArrow, GoBackIcon } from '../icons';
-import CenterContent from './CenterContent';
+import { SearchIcon, GoBackIcon } from '../icons';
 import { mq } from '../styles/mixins';
 import ButtonBase from '@/app/components/ButtonBase';
 

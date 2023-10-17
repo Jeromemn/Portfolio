@@ -7,9 +7,9 @@ import projectsData from '@/app/utils/projectsData';
 import styled from 'styled-components';
 import { mq } from '@/app/styles/mixins';
 import ButtonBase from '@/app/components/ButtonBase';
-import { PlayYouTube, NewGitHub, ShareIcon, SearchIcon } from '@/app/icons';
+import { PlayYouTube, NewGitHub, ShareIcon } from '@/app/icons';
 import Thumbs from '@/app/components/Thumbs';
-import { youTubeDark, youTubeSans } from '../../styles/setFonts';
+import { youTubeSans } from '../../styles/setFonts';
 import OptionsDropDown from '@/app/components/OptionsDropDown';
 import { DropDownItem, GoToDev } from '@/app/components/DropDownItem';
 
@@ -273,17 +273,16 @@ const TechWrapper = styled.div`
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   overflow: hidden;
   height: 40px;
-  //flex-direction: row;
   flex-wrap: wrap;
   //gap: 1rem;
   align-items: center;
   justify-content: space-between;
-  //align-content: space-between;
   padding: 1rem 0;
 `;
 
 const TechItem = styled.p`
   //color: rgba(255, 255, 255, 0.7);
+  //fix width
   width: ${(props) => props.width || 'fit-content'};
   margin-right: ${(props) => props.marginRight || '0'};
   padding-left: 0.5rem;
@@ -423,9 +422,10 @@ const TabletButtonsContainer = styled.div`
     `)}
 `;
 
+// eslint-disable-next-line no-unused-vars
 const SingleProjectPage = ({ params, ...props }) => {
   const [showMore, setShowMore] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
   const moreRef = useRef();
   const mobileMoreRef = useRef();
   useOnClickOutside(moreRef, () => setShowMore(false));
@@ -559,9 +559,8 @@ const SingleProjectPage = ({ params, ...props }) => {
           </OptionsDropDown>
         </TabletButtonsContainer>
       </MobileProjectContent>
-      {/*</CenterContent>*/}
       <TechStack>
-        {project?.techUsed.map((tech, index) => (
+        {project?.techUsed.map((tech) => (
           <TechWrapper key={tech.label}>
             <TechStart>
               <TechIconBox>{tech.icon}</TechIconBox>
@@ -583,7 +582,6 @@ const SingleProjectPage = ({ params, ...props }) => {
           </TechWrapper>
         ))}
       </TechStack>
-      {/*</CenterContent>*/}
     </SingleProjectPageWrapper>
   );
 };

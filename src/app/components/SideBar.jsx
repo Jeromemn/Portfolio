@@ -117,15 +117,10 @@ const MobileSideBarWrapper = styled.div`
 
 const SideBar = () => {
   const pathname = usePathname();
-  const [open, setOpen] = useState(false);
-  const MobileMenuRef = useRef();
-  useOnClickOutside(MobileMenuRef, () => setOpen(false));
+  // const MobileMenuRef = useRef();
+  // useOnClickOutside(MobileMenuRef, () => setOpen(false));
 
   const isPathActive = (href) => (pathname === href ? 'active' : null);
-
-  const toggleOpen = () => {
-    !open ? setOpen(true) : setOpen(false);
-  };
 
   return (
     <SidePanel>

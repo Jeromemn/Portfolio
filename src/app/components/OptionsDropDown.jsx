@@ -1,7 +1,7 @@
 'use client';
-import React, { useState, useRef, useEffect, useMemo } from 'react';
-import Link from 'next/link';
-import useOnClickOutside from '../hooks/useOnOutsideClick';
+import React, { useState } from 'react';
+// import Link from 'next/link';
+// import useOnClickOutside from '../hooks/useOnOutsideClick';
 import Styled from 'styled-components';
 import ButtonBase from './ButtonBase';
 import { OptionsDots } from '../icons';
