@@ -185,7 +185,7 @@ const TabletHeaderText = styled.div`
   ${mq.largeMobile(`
         display: flex;
         flex-direction: column;
-        justify-content: flew-start;
+        justify-content: flex-start;
         gap: 1rem;
         padding-top: 1rem;
     `)}

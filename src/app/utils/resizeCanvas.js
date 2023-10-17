@@ -43,3 +43,4 @@ const resizeCanvas = (canvas) => {
 };
 
 export default resizeCanvas;
+
