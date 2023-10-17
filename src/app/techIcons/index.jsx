@@ -24,7 +24,7 @@ export { default as HerokuIcon } from './HerokuIcon';
 export { default as MongooseIcon } from './MongooseIcon';
 export { default as CloudinaryIcon } from './CloudinaryIcon';
 export { default as AuthZeroIcon } from './AuthZeroIcon';
-export { default as ReactChartsIcon} from './ReactChartsIcon';
+export { default as ReactChartsIcon } from './ReactChartsIcon';
 export { default as ReactSpringIcon } from './ReactSpringIcon';
 export { default as TSNodeIcon } from './TSNodeIcon';
 export { default as PrismaIcon } from './PrismaIcon';

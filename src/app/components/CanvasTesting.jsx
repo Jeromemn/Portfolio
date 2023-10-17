@@ -1,44 +1,28 @@
-"use client";
-import React, { useRef, useEffect } from "react";
-import resizeCanvas from "../utils/resizeCanvas";
-
-const fitImageToCanvas = (image,canvas) => {
-  const canvasContext = canvas.getContext("2d");
-  const ratio = image.width / image.height;
-  let newWidth = canvas.width;
-  let newHeight = newWidth / ratio;
-  if (newHeight < canvas.height) {
-    newHeight = canvas.height;
-    newWidth = newHeight * ratio;
-  }
-  const xOffset = newWidth > canvas.width ? (canvas.width - newWidth) / 2 : 0;
-  const yOffset =
-    newHeight > canvas.height ? (canvas.height - newHeight) / 2 : 0;
-  canvasContext.drawImage(image, xOffset, yOffset, newWidth, newHeight);
-};
+'use client';
+import React, { useRef, useEffect } from 'react';
+import resizeCanvas from '../utils/resizeCanvas';
 
 const CanvasTesting = (props) => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    const ctx = canvas.getContext("2d", { willReadFrequently: true});
+    const ctx = canvas.getContext('2d', { willReadFrequently: true });
     if (ctx.getContextAttributes) {
       const attributes = ctx.getContextAttributes();
       console.log(JSON.stringify(attributes));
     } else {
-      console.log("CanvasRenderingContext2D.getContextAttributes() is not supported");
+      console.log('CanvasRenderingContext2D.getContextAttributes() is not supported');
     }
     // canvas.width = 719;
     // canvas.height = 862;
     // canvas.style.width = '100%';
     // canvas.style.height = '100%';
     const myImage = new Image(582, 582);
-    myImage.src = "smallCropped.jpg";
+    myImage.src = 'smallCropped.jpg';
     myImage.onload = () => {
       resizeCanvas(canvas);
-      // fitImageToCanvas(myImage, canvas);
-      ctx.imageSmoothQuality = "high";
+      ctx.imageSmoothQuality = 'high';
       ctx.drawImage(myImage, 0, 0, canvas.width, canvas.height);
       // ctx.drawImage(myImage, 0, 0, ctx.canvas.width, ctx.canvas.height);
       const scannedImage = ctx.getImageData(canvas.xOffset, canvas.yOffset, canvas.width, canvas.height);
@@ -50,10 +34,8 @@ const CanvasTesting = (props) => {
         let row = [];
         for (let x = 0; x < canvas.width; x++) {
           const red = scannedImage.data[y * 4 * scannedImage.width + x * 4];
-          const green =
-            scannedImage.data[y * 4 * scannedImage.width + (x * 4 + 1)];
-          const blue =
-            scannedImage.data[y * 4 * scannedImage.width + (x * 4 + 2)];
+          const green = scannedImage.data[y * 4 * scannedImage.width + (x * 4 + 1)];
+          const blue = scannedImage.data[y * 4 * scannedImage.width + (x * 4 + 2)];
           const brightness = calculateRelativeBrightness(red, green, blue);
           const cell = [brightness, `rgb(${red}, ${green}, ${blue})`];
           row.push(cell);
@@ -62,11 +44,7 @@ const CanvasTesting = (props) => {
       }
 
       function calculateRelativeBrightness(red, green, blue) {
-        return (
-          Math.sqrt(
-            red * red * 0.05 + green * green * 0.587 + blue * blue * 0.814
-          ) / 100
-        );
+        return Math.sqrt(red * red * 0.05 + green * green * 0.587 + blue * blue * 0.814) / 100;
       }
 
       class Particle {
@@ -106,7 +84,7 @@ const CanvasTesting = (props) => {
       init();
       function animate() {
         ctx.globalAlpha = 0.02;
-        ctx.fillStyle = "rgba(0,0,0)";
+        ctx.fillStyle = 'rgba(0,0,0)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.globalAlpha = 0.01;
         for (let i = 0; i < particlesArray.length; i++) {
@@ -125,12 +103,12 @@ const CanvasTesting = (props) => {
   }, []);
   return (
     <canvas
-    id="testing"
+      id="testing"
       ref={canvasRef}
       {...props}
       style={{
         // position: "absolute",
-        flexShrink: "0",
+        flexShrink: '0',
         position: 'relative',
         // borderRadius: "50%",
         // bottom: "72px",

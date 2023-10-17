@@ -1,42 +1,35 @@
-"use client";
-import Image from "next/image";
-import Link from "next/link";
-import styled from "styled-components";
-import { mq } from "src/app/styles/mixins";
-import projectsData from "src/app/utils/projectsData";
-import { PlayYouTube } from "@/app/icons";
+'use client';
+import Image from 'next/image';
+import Link from 'next/link';
+import styled from 'styled-components';
+import { mq } from '@/app/styles/mixins';
+import projectsData from '@/app/utils/projectsData';
+import { PlayYouTube } from '@/app/icons';
 
 const ProjectContainer = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: flex-start;
   gap: 2rem;
-
   ${mq.largeMobile(`
     
   `)}
 
   ${mq.mobile(`
-    padding-bottom: 5rem;
-    justify-content: space-evenly;
-    height: max-content;
     gap: 1rem;
   `)}
-
-${mq.smallMobile(`
-    padding-bottom: 7rem;
-    justify-content: space-evenly;
-    height: max-content;
-    gap: 1rem;
-  `)}
+  
+    ${mq.smallMobile(`
+    gap: 2rem;
+    `)}
 `;
 
 const Albums = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  overflow: hidden;
   flex-wrap: wrap;
 
   ${mq.mobile(`
@@ -56,23 +49,25 @@ const AlbumCover = styled.div`
   overflow: hidden;
   position: relative;
   object-fit: cover;
+  width: 100%;
+  height: 200px;
 
-  ${mq.largeMobile(`
-    width: 200px;
-    height: 200px;
-  `)}
-
-  /* for two columns */
-  ${mq.mobile(`
-    width: 183px;
-    height: 150px;
-  `)}
-
-  ${mq.smallMobile(`
-    width: 300px;
-    height: 200px;
-  `)}
-
+  //check if can be deleted
+  // ${mq.largeMobile(`
+  //   width: 200px;
+  //   height: 200px;
+  // `)}
+  //
+  // /* for two columns */
+  // ${mq.mobile(`
+  //   width: 183px;
+  //   height: 150px;
+  // `)}
+  //
+  // ${mq.smallMobile(`
+  //   width: 300px;
+  //   height: 200px;
+  // `)}
 `;
 
 const AlbumInfo = styled.div`
@@ -108,16 +103,12 @@ const ProjectInfo = styled.p`
 const HoverPlay = styled.div`
   display: flex;
   position: absolute;
-  /* width: 100%; */
   width: 40px;
   height: 40px;
-  /* top: auto; */
   z-index: 100;
   justify-content: center;
   align-items: center;
-  /* left: 0; */
   bottom: 20px;
-  /* margin: 30px; */
   right: 20px;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 50%;
@@ -173,10 +164,11 @@ const AllAlbums = () => {
               <AlbumImage
                 src={project.image.url}
                 alt={project.image.alt}
-                width={250}
-                height={200}
-                // fill={true}
-                // style={{ objectFit: "cover", objectPosition: "center" }}
+                // width={250}
+                // height={200}
+                fill
+                priority
+                style={{ objectFit: 'cover', objectPosition: 'center' }}
                 // object-position="center"
               />
             </Link>

@@ -1,21 +1,21 @@
-"use client";
-import React from "react";
-import styled, { css } from "styled-components";
-import { useLocalStorage } from "../hooks/useLocalStorage";
+'use client';
+import React from 'react';
+import styled, { css } from 'styled-components';
+import { useLocalStorage } from '../hooks/useLocalStorage';
+import { mq } from '../styles/mixins';
 
-import {
-  ThumbsDown,
-  ThumbsUp,
-  FilledThumbsDown,
-  FilledThumbsUp,
-} from "../icons";
+import { ThumbsDown, ThumbsUp, FilledThumbsDown, FilledThumbsUp } from '../icons';
 
 const ThumbsWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 15px;
-  width: ${( props ) => props.width || null};
+  width: ${(props) => props.width || null};
+
+  ${mq.mobile(`
+      gap: 10px;
+    `)}
 `;
 
 const styles = css`
@@ -42,8 +42,8 @@ const styles = css`
     border-radius: 50%;
     /* display: flex; */
   }
-/* for display on hover? */
-   /* ${({ $dislike }) =>
+  /* for display on hover? */
+  /* ${({ $dislike }) =>
     $dislike &&
     `
   display: flex;
@@ -68,16 +68,17 @@ const DislikedThumb = styled.div`
 
 const LikedThumb = styled(DislikedThumb)``;
 
+// eslint-disable-next-line no-unused-vars
 const Thumbs = ({ id, width, ...props }) => {
-  const [thumbs, setThumbs] = useLocalStorage("thumbs", {});
-  const isLiked = thumbs[id] === "like";
-  const isDisliked = thumbs[id] === "dislike";
+  const [thumbs, setThumbs] = useLocalStorage('thumbs', {});
+  const isLiked = thumbs[id] === 'like';
+  const isDisliked = thumbs[id] === 'dislike';
 
   const onToggleDislike = () => {
     if (isDisliked) {
       setThumbs({ ...thumbs, [id]: null });
     } else {
-      setThumbs({ ...thumbs, [id]: "dislike" });
+      setThumbs({ ...thumbs, [id]: 'dislike' });
     }
   };
 
@@ -85,7 +86,7 @@ const Thumbs = ({ id, width, ...props }) => {
     if (isLiked) {
       setThumbs({ ...thumbs, [id]: null });
     } else {
-      setThumbs({ ...thumbs, [id]: "like" });
+      setThumbs({ ...thumbs, [id]: 'like' });
     }
   };
 
@@ -93,54 +94,30 @@ const Thumbs = ({ id, width, ...props }) => {
     <ThumbsWrapper width={width}>
       {!isLiked && !isDisliked && (
         <>
-          <HollowThumbsDown
-            $dislike={isDisliked}
-            $like={isLiked}
-            onClick={onToggleDislike}
-          >
+          <HollowThumbsDown $dislike={isDisliked} $like={isLiked} onClick={onToggleDislike}>
             <ThumbsDown color="white" width={24} height={24} />
           </HollowThumbsDown>
-          <HollowThumbsUp
-            $like={isLiked}
-            $dislike={isDisliked}
-            onClick={onToggleLike}
-          >
+          <HollowThumbsUp $like={isLiked} $dislike={isDisliked} onClick={onToggleLike}>
             <ThumbsUp color="white" width={24} height={24} />
           </HollowThumbsUp>
         </>
       )}
       {isLiked && (
         <>
-          <HollowThumbsDown
-            $dislike={isDisliked}
-            $like={isLiked}
-            onClick={onToggleDislike}
-          >
+          <HollowThumbsDown $dislike={isDisliked} $like={isLiked} onClick={onToggleDislike}>
             <ThumbsDown color="white" width={24} height={24} />
           </HollowThumbsDown>
-          <LikedThumb
-            $like={isLiked}
-            $dislike={isDisliked}
-            onClick={onToggleLike}
-          >
+          <LikedThumb $like={isLiked} $dislike={isDisliked} onClick={onToggleLike}>
             <FilledThumbsUp color="white" width={24} height={24} />
           </LikedThumb>
         </>
       )}
       {isDisliked && (
         <>
-          <DislikedThumb
-            $dislike={isDisliked}
-            $like={isLiked}
-            onClick={onToggleDislike}
-          >
+          <DislikedThumb $dislike={isDisliked} $like={isLiked} onClick={onToggleDislike}>
             <FilledThumbsDown color="white" width={24} height={24} />
           </DislikedThumb>
-          <HollowThumbsUp
-            $like={isLiked}
-            $dislike={isDisliked}
-            onClick={onToggleLike}
-          >
+          <HollowThumbsUp $like={isLiked} $dislike={isDisliked} onClick={onToggleLike}>
             <ThumbsUp color="white" width={24} height={24} />
           </HollowThumbsUp>
         </>

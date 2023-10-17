@@ -1,48 +1,31 @@
-"use client";
-import React from "react";
-import Link from "next/link";
-import {styled} from "styled-components";
-import {usePathname} from "next/navigation";
-import {useMemo} from "react";
-import AllLinks from "../utils/links";
-import {mq} from "../styles/mixins";
-import {
-    PlayYouTube,
-    YouTubeShuffle,
-    Verified,
-    LinkedInIcon,
-    RadioPlay,
-    OptionsDots,
-} from "../icons";
-import ButtonBase from "./ButtonBase";
-import {
-    youTubeDark,
-    youTubeSans,
-    youTubeSansDarkBold,
-} from "../styles/setFonts";
+'use client';
+import React from 'react';
+import Link from 'next/link';
+import { styled } from 'styled-components';
+import { usePathname } from 'next/navigation';
+import { useMemo } from 'react';
+import AllLinks from '../utils/links';
+import { mq } from '../styles/mixins';
+import { PlayYouTube, YouTubeShuffle, Verified, RadioPlay, OptionsDots } from '../icons';
+import ButtonBase from './ButtonBase';
+import { youTubeSansDarkBold } from '../styles/setFonts';
 
 const IntroContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: flex-start;
-  max-width: 40%;
-  align-self: flex-end;
-  justify-self: flex-start;
-  padding-bottom: 2rem;
+  max-width: 640px;
+  //position: relative;
+  //bottom: -10%;
 
-
-  ${mq.largeMobile(`
+  ${mq.smallDesktop(`
     max-width: 60%;
-    padding-left: 2rem
   `)}
 
   ${mq.mobile(`
-    width: 100%;
-    padding: 0rem 1rem;
     align-items: center;
     gap: .5rem;
-    max-width: 100%;
+    max-width: none;
   `)}
 `;
 
@@ -125,69 +108,55 @@ const MobileButtonContainer = styled.div`
 `;
 
 const Intro = () => {
-    const pathname = usePathname();
+  const pathname = usePathname();
 
-    const randomLink = useMemo(() => {
-        const updatedLinks = AllLinks.filter((item) => item !== pathname);
-        const newLink =
-            updatedLinks[Math.floor(Math.random() * updatedLinks.length)];
-        return newLink || updatedLinks[0];
-    }, [pathname]);
+  const randomLink = useMemo(() => {
+    const updatedLinks = AllLinks.filter((item) => item !== pathname);
+    const newLink = updatedLinks[Math.floor(Math.random() * updatedLinks.length)];
+    return newLink || updatedLinks[0];
+  }, [pathname]);
 
-    return (
-        <IntroContainer>
-            <NameIntro className={youTubeSansDarkBold.className}>Jerome</NameIntro>
-            <VerifiedContainer>
-                <Verified/>
-                <VerifiedHeader>Verified Developer</VerifiedHeader>
-            </VerifiedContainer>
-            <IntroText>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia, ipsa
-                totam laudantium cupiditate nam, accusantium eum nobis vel perferendis
-                libero nisi sapiente nulla, illo exercitationem impedit eos harum
-                assumenda iusto.
-            </IntroText>
-            <ButtonContainer>
-                <ButtonBase variant="primary" as={Link} href={randomLink}>
-                    <YouTubeShuffle color="black" width={24} height={24}/>
-                    Shuffle
-                </ButtonBase>
-                <PlayButton variant="primary">
-                    <PlayYouTube color="black" width={24} height={24}/>
-                    <ButtonName>Play</ButtonName>
-                </PlayButton>
-                <ButtonBase
-                    variant="secondary"
-                    as={Link}
-                    target="_blank"
-                    href="https://github.com/Jeromemn"
-                    passHref={true}
-                >
-                    <RadioPlay color="white" size={24}/>
-                    Subscribe
-                </ButtonBase>
-                <ButtonBase variant="icon">
-                    <OptionsDots color="white" size={24}/>
-                </ButtonBase>
-            </ButtonContainer>
-            <MobileButtonContainer>
-                <ButtonBase variant="primary" as={Link} href={randomLink}>
-                    <YouTubeShuffle color="black" width={24} height={24}/>
-                    Shuffle
-                </ButtonBase>
-                <ButtonBase
-                    variant="secondary"
-                    as={Link}
-                    target="_blank"
-                    href="https://github.com/Jeromemn"
-                    passHref={true}
-                >
-                    <RadioPlay color="white" size={24}/>
-                    Subscribe
-                </ButtonBase>
-            </MobileButtonContainer>
-        </IntroContainer>
-    );
+  return (
+    <IntroContainer>
+      <NameIntro className={youTubeSansDarkBold.className}>Jerome</NameIntro>
+      <VerifiedContainer>
+        <Verified />
+        <VerifiedHeader>Verified Developer</VerifiedHeader>
+      </VerifiedContainer>
+      <IntroText>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia, ipsa totam laudantium cupiditate nam,
+        accusantium eum nobis vel perferendis libero nisi sapiente nulla, illo exercitationem impedit eos harum
+        assumenda iusto.
+      </IntroText>
+      <ButtonContainer>
+        <ButtonBase variant="primary" as={Link} href={randomLink}>
+          <YouTubeShuffle color="black" width={24} height={24} />
+          Shuffle
+        </ButtonBase>
+        <PlayButton variant="primary">
+          <PlayYouTube color="black" width={24} height={24} />
+          <ButtonName>Play</ButtonName>
+        </PlayButton>
+        <ButtonBase variant="secondary" as={Link} target="_blank" href="https://github.com/Jeromemn" passHref={true}>
+          <RadioPlay color="white" size={24} />
+          Subscribe
+        </ButtonBase>
+        <ButtonBase variant="icon">
+          <OptionsDots color="white" size={24} />
+        </ButtonBase>
+      </ButtonContainer>
+      <MobileButtonContainer>
+        <ButtonBase variant="primary" as={Link} href={randomLink}>
+          <YouTubeShuffle color="black" width={24} height={24} />
+          Shuffle
+        </ButtonBase>
+        <ButtonBase variant="secondary" as={Link} target="_blank" href="https://github.com/Jeromemn" passHref={true}>
+          <RadioPlay color="white" size={24} />
+          Subscribe
+        </ButtonBase>
+      </MobileButtonContainer>
+    </IntroContainer>
+  );
 };
 
 export default Intro;

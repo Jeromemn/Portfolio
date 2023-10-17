@@ -1,26 +1,24 @@
-"use client";
-import React, { useRef, useEffect } from "react";
-import resizeCanvas from "../utils/resizeCanvas";
+'use client';
+import React, { useRef, useEffect } from 'react';
 
 const Drawing = (props) => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    const ctx = canvas.getContext("2d", { willReadFrequently: true});
+    const ctx = canvas.getContext('2d', { willReadFrequently: true });
     if (ctx.getContextAttributes) {
       const attributes = ctx.getContextAttributes();
       console.log(JSON.stringify(attributes));
     } else {
-      console.log("CanvasRenderingContext2D.getContextAttributes() is not supported");
+      console.log('CanvasRenderingContext2D.getContextAttributes() is not supported');
     }
     canvas.width = 500;
     canvas.height = 700;
-    // resizeCanvas(canvas);
     const myImage = new Image();
-    myImage.src = "smallAbout-EDIT.jpg";
+    myImage.src = 'smallAbout-EDIT.jpg';
     myImage.onload = () => {
-      ctx.imageSmoothQuality = "high";
+      ctx.imageSmoothQuality = 'high';
       ctx.drawImage(myImage, 0, 0, canvas.width, canvas.height);
       // ctx.drawImage(myImage, 0, 0, ctx.canvas.width, ctx.canvas.height);
       const scannedImage = ctx.getImageData(0, 0, canvas.width, canvas.height);
@@ -32,10 +30,8 @@ const Drawing = (props) => {
         let row = [];
         for (let x = 0; x < canvas.width; x++) {
           const red = scannedImage.data[y * 4 * scannedImage.width + x * 4];
-          const green =
-            scannedImage.data[y * 4 * scannedImage.width + (x * 4 + 1)];
-          const blue =
-            scannedImage.data[y * 4 * scannedImage.width + (x * 4 + 2)];
+          const green = scannedImage.data[y * 4 * scannedImage.width + (x * 4 + 1)];
+          const blue = scannedImage.data[y * 4 * scannedImage.width + (x * 4 + 2)];
           const brightness = calculateRelativeBrightness(red, green, blue);
           const cell = [brightness, `rgb(${red}, ${green}, ${blue})`];
           row.push(cell);
@@ -44,11 +40,7 @@ const Drawing = (props) => {
       }
 
       function calculateRelativeBrightness(red, green, blue) {
-        return (
-          Math.sqrt(
-            red * red * 0.05 + green * green * 0.587 + blue * blue * 0.814
-          ) / 100
-        );
+        return Math.sqrt(red * red * 0.05 + green * green * 0.587 + blue * blue * 0.814) / 100;
       }
 
       class Particle {
@@ -88,7 +80,7 @@ const Drawing = (props) => {
       init();
       function animate() {
         ctx.globalAlpha = 0.02;
-        ctx.fillStyle = "rgba(0,0,0)";
+        ctx.fillStyle = 'rgba(0,0,0)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.globalAlpha = 0.01;
         for (let i = 0; i < particlesArray.length; i++) {
@@ -106,10 +98,10 @@ const Drawing = (props) => {
       ref={canvasRef}
       {...props}
       style={{
-        position: "absolute",
-        zIndex: "1",
-        bottom: "72px",
-        right: "0px",
+        position: 'absolute',
+        zIndex: '1',
+        bottom: '72px',
+        right: '0px',
       }}
     />
   );

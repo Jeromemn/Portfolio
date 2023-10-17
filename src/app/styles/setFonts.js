@@ -1,11 +1,11 @@
-import localFont from "next/font/local";
+import localFont from 'next/font/local';
 
 const youTubeDark = localFont({
   src: [
     {
-      path: "./YouTubeSansDarkBlack.otf",
-      variable: "--YTDark-Black",
-      display: "swap",
+      path: './YouTubeSansDarkBlack.otf',
+      variable: '--YTDark-Black',
+      display: 'swap',
       // weight: '900',
       // fallback: ['system-ui', 'arial']
       // style: 'normal',
@@ -16,15 +16,15 @@ const youTubeDark = localFont({
 const youTubeSans = localFont({
   src: [
     {
-      path: "/YouTubeSansBlack.otf",
-      weight: "200",
-      style: "normal",
+      path: '/YouTubeSansBlack.otf',
+      weight: '200',
+      style: 'normal',
     },
     {
-      path: "/YouTubeSansBold.otf",
-      weight: "400",
-      style: "normal",
-      variable: "--YTbold",
+      path: '/YouTubeSansBold.otf',
+      weight: '400',
+      style: 'normal',
+      variable: '--YTbold',
     },
   ],
 });
@@ -32,9 +32,9 @@ const youTubeSans = localFont({
 const youTubeSansDarkBold = localFont({
   src: [
     {
-      path: "/YouTubeSansDarkExtrabold.otf",
+      path: '/YouTubeSansDarkExtrabold.otf',
       // weight: "800",
-      style: "normal",
+      style: 'normal',
     },
   ],
 });
