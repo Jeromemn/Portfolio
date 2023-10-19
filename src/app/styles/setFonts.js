@@ -6,9 +6,6 @@ const youTubeDark = localFont({
       path: './YouTubeSansDarkBlack.otf',
       variable: '--YTDark-Black',
       display: 'swap',
-      // weight: '900',
-      // fallback: ['system-ui', 'arial']
-      // style: 'normal',
     },
   ],
 });

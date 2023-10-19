@@ -78,7 +78,6 @@ const FormWrapper = styled.div`
   flex-direction: column;
   gap: 0.5rem;
   width: 100%;
-  //padding-top: 2rem;
   align-items: center;
   flex-wrap: wrap;
   padding: 1rem 0;
@@ -135,7 +134,7 @@ const ContactInput = styled.input`
 `;
 
 const StyledTextArea = styled.textarea`
-  ${styles}
+  ${styles};
   resize: none;
   padding-top: 1rem;
 `;
@@ -145,8 +144,6 @@ const ContactPageWrapper = styled.div`
   flex-direction: column;
   width: 100%;
   height: 100%;
-  //justify-content: center;
-  //align-items: center;
   margin-top: 3rem;
 
   ${mq.largeMobile(`

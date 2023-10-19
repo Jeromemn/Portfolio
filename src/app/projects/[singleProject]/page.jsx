@@ -10,8 +10,6 @@ import ButtonBase from '@/app/components/ButtonBase';
 import { PlayYouTube, NewGitHub, ShareIcon } from '@/app/icons';
 import Thumbs from '@/app/components/Thumbs';
 import { youTubeSans } from '../../styles/setFonts';
-import OptionsDropDown from '@/app/components/OptionsDropDown';
-import { DropDownItem, GoToDev } from '@/app/components/DropDownItem';
 
 const SingleProjectPageWrapper = styled.div`
   height: auto;
@@ -59,10 +57,6 @@ const ProjectImage = styled.div`
 const ProjectDescriptionWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  /* gap: 0.5rem; */
-  // might need fitcontent for mobile
-  //width: fit-content;
-  /* justify-content: space-between; */
   justify-content: flex-start;
   gap: 1rem;
   width: 100%;
@@ -249,6 +243,7 @@ const DropDownDescription = styled.div`
   max-width: 640px;
   min-height: fit-content;
   border-radius: 10px;
+  background: #030303;
 
   ${mq.largeMobile(`
   position: relative;
@@ -273,15 +268,12 @@ const TechWrapper = styled.div`
   overflow: hidden;
   height: 40px;
   flex-wrap: wrap;
-  //gap: 1rem;
   align-items: center;
   justify-content: space-between;
   padding: 1rem 0;
 `;
 
 const TechItem = styled.p`
-  //color: rgba(255, 255, 255, 0.7);
-  //fix width
   width: ${(props) => props.width || 'fit-content'};
   margin-right: ${(props) => props.marginRight || '0'};
   padding-left: 0.5rem;
@@ -424,7 +416,6 @@ const TabletButtonsContainer = styled.div`
 // eslint-disable-next-line no-unused-vars
 const SingleProjectPage = ({ params, ...props }) => {
   const [showMore, setShowMore] = useState(false);
-  // const [isOpen, setIsOpen] = useState(false);
   const moreRef = useRef();
   const mobileMoreRef = useRef();
   useOnClickOutside(moreRef, () => setShowMore(false));
@@ -439,10 +430,6 @@ const SingleProjectPage = ({ params, ...props }) => {
   const handleClose = () => {
     setShowMore(false);
   };
-
-  // const openDropDown = () => {
-  //   !isOpen ? setIsOpen(true) : setIsOpen(false);
-  // };
 
   return (
     <SingleProjectPageWrapper>
@@ -484,15 +471,10 @@ const SingleProjectPage = ({ params, ...props }) => {
               <NewGitHub color="white" size={20} />
               Go to Repo
             </ButtonBase>
-            <OptionsDropDown>
-              <DropDownItem />
-              <GoToDev />
-            </OptionsDropDown>
           </ButtonContainer>
         </ProjectDescriptionWrapper>
       </ProjectContent>
 
-      {/*<CenterContent>*/}
       <MobileProjectContent>
         <ImageAndDescription>
           <ProjectImage>
@@ -552,10 +534,6 @@ const SingleProjectPage = ({ params, ...props }) => {
             <NewGitHub color="white" size={20} />
             Go to Repo
           </ButtonBase>
-          <OptionsDropDown>
-            <DropDownItem />
-            <GoToDev />
-          </OptionsDropDown>
         </TabletButtonsContainer>
       </MobileProjectContent>
       <TechStack>
@@ -563,7 +541,7 @@ const SingleProjectPage = ({ params, ...props }) => {
           <TechWrapper key={tech.label}>
             <TechStart>
               <TechIconBox>{tech.icon}</TechIconBox>
-              <TechItem width="150px" fontWeight="500">
+              <TechItem width="170px" fontWeight="500">
                 {tech.label}
               </TechItem>
             </TechStart>

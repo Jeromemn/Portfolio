@@ -46,7 +46,10 @@ const projectsData = [
     name: 'tuffSkin',
     title: 'Tuff Skin Website',
     team: 'WebFluent',
-    description: 'Tuff Skin Website and content management system',
+    description:
+      'Website for a Bedliner company called Tuff Skin. Introduces the customer to services offered,' +
+      ' benefits or services, displays reviews from past customers, as well as finding a location' +
+      ' A content management system was also built to allow the client to update the website as needed.',
     image: {
       url: '/tuffSkin.png',
       alt: 'Tuff Skin Website',
@@ -173,7 +176,9 @@ const projectsData = [
     name: 'tradersJournal',
     title: 'Traders Journal',
     team: 'Personal Project',
-    description: 'A trading journal application',
+    description:
+      'A trading journal dashboard, allows the user to record their trades and analyze their' +
+      ' performance and strategies. Performance can be compared to the S&P 500, Nasdaq, Russel and Dow Jones.',
     image: {
       url: '/TJAlbum.jpg',
       alt: 'Traders Journal',
@@ -237,7 +242,9 @@ const projectsData = [
     name: 'switch',
     title: 'Switch Application',
     team: 'WebFluent',
-    description: 'Switch a feature flag management application',
+    description:
+      'Switch is a feature flag management application, allowing the user to create and manage feature' +
+      ' flags for their applications. This project is still in progress and more features will be added.',
     image: {
       url: '/switchAlbum.jpg',
       alt: 'Switch webpage',
@@ -372,7 +379,9 @@ const projectsData = [
     title: 'PWA Text Editor',
     team: 'School Project',
     description:
-      'a Progressive Web Application that recognized JavaScript and can be typed in and saved both via a live web application and a local application that is off line. The online and offline versions will sync together to ensure nothing is lost',
+      'A Progressive Web Application that recognized JavaScript and can be typed in and saved both via a live web' +
+      ' application and a local application that is off line. The online and offline versions will sync together to' +
+      ' ensure nothing is lost.',
     image: {
       url: '/textedit.jpg',
       alt: 'text editor page',
