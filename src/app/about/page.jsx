@@ -44,7 +44,6 @@ const AboutSubHeader = styled.h3`
 
 const ButtonContainer = styled.div`
   display: flex;
-  flex-direction: row;
   gap: 1rem;
   width: 100%;
   ${mq.mobile(`
@@ -82,14 +81,15 @@ const MediumContainer = styled.div`
   gap: 1rem;
   flex-direction: column;
   width: 100%;
-  padding-top: 1rem;
+  padding: 1rem 0 2rem 0;
   align-items: center;
-  height: 100%;
+  height: auto;
+  position: relative;
+  top: 58px;
   justify-content: center;
 
   ${mq.largeMobile(`
-    padding-bottom: 2rem;
-    height: auto;
+    top: 0;
   `)}
 `;
 
@@ -117,10 +117,6 @@ const Box = styled.div`
   ${mq.mobile(`
     height: 200px;
     width: 200px;
-
-    margin-right: auto;
-    margin-left: auto;
-    right: 0;
   `)}
 `;
 
@@ -159,6 +155,10 @@ const ImageAndSocials = styled.div`
   flex-direction: column;
   gap: 1rem;
   justify-content: space-evenly;
+
+  ${mq.mobile(`
+    align-items: center;
+  `)}
 `;
 
 const AboutPage = () => {
