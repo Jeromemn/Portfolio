@@ -1,23 +1,23 @@
 const resizeCanvas = (canvas) => {
   const drawXLarge = () => {
-    canvas.width = 450;
-    canvas.height = 450;
-    canvas.xOffset = 50;
+    canvas.width = 400;
+    canvas.height = 403;
+    canvas.xOffset = 30;
     canvas.yOffset = 0;
-    canvas.size = 2;
+    canvas.size = 1;
   };
 
   const drawLarge = () => {
     canvas.width = 350;
-    canvas.height = 400;
+    canvas.height = 350;
     canvas.xOffset = 30;
     canvas.yOffset = 0;
     canvas.size = 1;
   };
 
   const drawMedium = () => {
-    canvas.width = 280;
-    canvas.height = 280;
+    canvas.width = 281;
+    canvas.height = 281;
     canvas.xOffset = 25;
     canvas.yOffset = 0;
     canvas.size = 0.5;
@@ -43,4 +43,3 @@ const resizeCanvas = (canvas) => {
 };
 
 export default resizeCanvas;
-
