@@ -213,7 +213,7 @@ const MoreButton = styled.button`
   align-items: center;
   background-color: transparent;
   border: none;
-  padding: 0;
+  padding: 0.5rem 0 0 0;
   width: fit-content;
   cursor: pointer;
   text-transform: uppercase;
@@ -222,7 +222,6 @@ const MoreButton = styled.button`
   font-size: 14px;
   align-self: start;
   position: relative;
-  padding-top: 0.5rem;
 
   ${({ $showMore }) =>
     $showMore &&
@@ -477,11 +476,11 @@ const SingleProjectPage = ({ params, ...props }) => {
             </LessButton>
           </DropDownDescription>
           <ButtonContainer>
-            <ButtonBase variant="primary" as="a" target="_blank" href={`${project?.website}`} passHref={true}>
+            <ButtonBase variant="primary" as="a" target="_blank" href={`${project?.website}`}>
               <PlayYouTube color="black" width={24} height={24} />
               Live Site
             </ButtonBase>
-            <ButtonBase variant="secondary" as="a" href={`${project?.github}`} passHref={true} color="#fff">
+            <ButtonBase variant="secondary" as="a" href={`${project?.github}`} color="#fff">
               <NewGitHub color="white" size={20} />
               Go to Repo
             </ButtonBase>
@@ -534,10 +533,10 @@ const SingleProjectPage = ({ params, ...props }) => {
           </ProjectDescriptionWrapper>
         </ImageAndDescription>
         <ButtonContainer>
-          <ButtonBase variant="mobileSecondary" as="a" href={`${project?.github}`} passHref={true}>
+          <ButtonBase variant="mobileSecondary" as="a" href={`${project?.github}`}>
             <NewGitHub color="white" size={25} />
           </ButtonBase>
-          <ButtonBase variant="mobilePrimary" as="a" href={`${project?.website}`} passHref={true}>
+          <ButtonBase variant="mobilePrimary" as="a" href={`${project?.website}`}>
             <PlayYouTube color="black" width={30} height={30} />
           </ButtonBase>
           <ButtonBase variant="mobileSecondary" as={Link} href={`${project?.github}`} passHref={true}>
@@ -545,11 +544,11 @@ const SingleProjectPage = ({ params, ...props }) => {
           </ButtonBase>
         </ButtonContainer>
         <TabletButtonsContainer>
-          <ButtonBase variant="primary" as={Link} href={`${project?.website}`} passHref={true}>
+          <ButtonBase variant="primary" as="a" href={`${project?.website}`}>
             <PlayYouTube color="black" width={24} height={24} />
             Live Site
           </ButtonBase>
-          <ButtonBase variant="secondary" as={Link} href={`${project?.github}`} passHref={true} color="#fff">
+          <ButtonBase variant="secondary" as="a" href={`${project?.github}`} color="#fff">
             <NewGitHub color="white" size={20} />
             Go to Repo
           </ButtonBase>
