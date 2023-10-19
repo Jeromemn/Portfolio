@@ -4,8 +4,6 @@ import Link from 'next/link';
 import styled, { css } from 'styled-components';
 import roboto from '../layout';
 
-//  check all buttons for border issues/ sizing issues
-
 const defaultStyles = css`
   display: flex;
   justify-content: center;
@@ -31,9 +29,7 @@ const defaultStyles = css`
 const PrimaryButton = styled.button`
   ${defaultStyles};
   color: black;
-  //border: none;
   background-color: #fff;
-  //this border could be issue
   border: 1px solid #fff;
 
   &:hover {
@@ -48,7 +44,6 @@ const SecondaryButton = styled.button`
   ${defaultStyles};
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: ${(props) => props.color || 'rgba(255, 255, 255, 0.7)'};
-  //color: rgba(255, 255, 255, 0.7);
   background: none;
 
   &:hover {
@@ -56,7 +51,7 @@ const SecondaryButton = styled.button`
     height: 36px;
   }
 `;
-//  compare icon and plain button might be able to consolidate
+
 const IconButton = styled.button`
   ${defaultStyles};
   background: none;
@@ -113,12 +108,9 @@ const MobilePrimary = styled.button`
   border-radius: 50px;
   border: none;
   background-color: #fff;
-  //width: 60px;
   width: ${({ width }) => width || '60px'};
   height: ${({ height }) => height || '60px'};
-  //height: 60px;
   padding: 6px;
-  //   check padding didnt caue style issues
 `;
 
 const MobileSecondary = styled.button`
@@ -127,10 +119,8 @@ const MobileSecondary = styled.button`
   align-items: center;
   border-radius: 50px;
   border: none;
-  //background-color: #fff;
   width: 50px;
   height: 50px;
-  //color: rgba(255, 255, 255, 0.7);
   background: rgba(255, 255, 255, 0.1);
 `;
 

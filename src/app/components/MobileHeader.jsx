@@ -5,7 +5,7 @@ import { MobileSideBar } from '@/app/components/SideBar';
 import { mq } from '../styles/mixins';
 
 const MobileHeaderContainer = styled.div`
-  display: none;
+  display: flex;
 
   ${mq.largeMobile(`
     display: flex;

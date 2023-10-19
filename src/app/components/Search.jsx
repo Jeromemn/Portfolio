@@ -25,11 +25,6 @@ const SearchContainer = Styled.div`
     display: none;
   `)}
 
-  ${mq.largeMobile(`
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-  `)}
 `;
 
 const SearchBox = Styled.div`
@@ -188,11 +183,9 @@ z-index: 50;
 padding-top: 1rem;
 // background-color: #030303;
 
-${({ $editMode }) =>
-  $editMode &&
-  `
-    background-color: transparent;
-    `}
+${mq.largeMobile(`
+  justify-content: center;
+`)}
 
 ${mq.mobile(`
 display: none;
@@ -228,7 +221,7 @@ const dropDownSelection = [
   {
     id: 6,
     title: 'Modern Pilgrim',
-    link: '/projects/modernPilgrim',
+    link: '/projects/modernpilgrim',
   },
   {
     id: 7,
@@ -258,6 +251,7 @@ const Search = () => {
   const path = usePathname();
   const isHomePage = path === '/';
   const toggling = () => setEditMode(true);
+  const select = () => setEditMode(false);
   const dropdownRef = useRef();
   useOnClickOutside(dropdownRef, () => setEditMode(false));
 
@@ -287,7 +281,7 @@ const Search = () => {
         {editMode && (
           <DropDownWrapper>
             {filteredItems.map(({ title, link }) => (
-              <Link key={title} href={link} onClick={toggling}>
+              <Link key={title} href={link} onClick={select}>
                 <DropDownItem>
                   <DropDownText>{title}</DropDownText>
                 </DropDownItem>

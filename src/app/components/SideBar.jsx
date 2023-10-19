@@ -29,7 +29,6 @@ const SideBarWrapper = styled.div`
   //
   // changes made from relative to fixed to allow overflow scroll on home page
   position: relative;
-  //position: fixed;
   top: 72px;
 
   ${mq.mobile(`
@@ -117,9 +116,6 @@ const MobileSideBarWrapper = styled.div`
 
 const SideBar = () => {
   const pathname = usePathname();
-  // const MobileMenuRef = useRef();
-  // useOnClickOutside(MobileMenuRef, () => setOpen(false));
-
   const isPathActive = (href) => (pathname === href ? 'active' : null);
 
   return (

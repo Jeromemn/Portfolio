@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 import { useMemo } from 'react';
 import AllLinks from '../utils/links';
 import { mq } from '../styles/mixins';
-import { PlayYouTube, YouTubeShuffle, Verified, RadioPlay, OptionsDots } from '../icons';
+import { PlayYouTube, YouTubeShuffle, Verified, RadioPlay } from '../icons';
 import ButtonBase from './ButtonBase';
 import { youTubeSansDarkBold } from '../styles/setFonts';
 
@@ -15,8 +15,6 @@ const IntroContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
   max-width: 640px;
-  //position: relative;
-  //bottom: -10%;
 
   ${mq.smallDesktop(`
     max-width: 60%;
@@ -124,9 +122,8 @@ const Intro = () => {
         <VerifiedHeader>Verified Developer</VerifiedHeader>
       </VerifiedContainer>
       <IntroText>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia, ipsa totam laudantium cupiditate nam,
-        accusantium eum nobis vel perferendis libero nisi sapiente nulla, illo exercitationem impedit eos harum
-        assumenda iusto.
+        I enjoy building ideas, trying new things and listening to tunes. Thank you for visiting my site, please click
+        around and explore!
       </IntroText>
       <ButtonContainer>
         <ButtonBase variant="primary" as={Link} href={randomLink}>
@@ -140,9 +137,6 @@ const Intro = () => {
         <ButtonBase variant="secondary" as={Link} target="_blank" href="https://github.com/Jeromemn" passHref={true}>
           <RadioPlay color="white" size={24} />
           Subscribe
-        </ButtonBase>
-        <ButtonBase variant="icon">
-          <OptionsDots color="white" size={24} />
         </ButtonBase>
       </ButtonContainer>
       <MobileButtonContainer>

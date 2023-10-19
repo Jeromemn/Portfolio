@@ -3,7 +3,6 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import { mq } from '../styles/mixins';
-
 import { ThumbsDown, ThumbsUp, FilledThumbsDown, FilledThumbsUp } from '../icons';
 
 const ThumbsWrapper = styled.div`
@@ -20,8 +19,6 @@ const ThumbsWrapper = styled.div`
 
 const styles = css`
   display: flex;
-  /* can i make display none and display when hovering parent container */
-  /* display: none; */
   justify-content: center;
   align-items: center;
   align-content: center;
@@ -40,19 +37,7 @@ const styles = css`
       #bbbbbb53 110%
     );
     border-radius: 50%;
-    /* display: flex; */
   }
-  /* for display on hover? */
-  /* ${({ $dislike }) =>
-    $dislike &&
-    `
-  display: flex;
-`}
-${({ $like }) =>
-    $like &&
-    `
-  display: flex;
-`}  */
 `;
 
 const HollowThumbsUp = styled.div`

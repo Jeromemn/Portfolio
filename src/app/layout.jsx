@@ -58,9 +58,7 @@ const ContentWrapper = styled.div`
 const LayoutRoot = styled.div`
   display: flex;
   background: #030303;
-  //overflow: auto;
   height: 100%;
-  //height: calc(100vh + 72px);
 
   ${({ $isHome }) =>
     $isHome &&
