@@ -47,12 +47,12 @@ const ContentWrapper = styled.div`
     padding: 0 4rem;
   `)}
   ${mq.mobile(`
-    padding: 0 3rem;
+    padding: 0 3rem 2rem;
     max-width: 320px;
     padding-bottom: 2rem;
   `)}
   ${mq.smallMobile(`
-    padding: 0 2rem;
+    padding: 0 2rem 2rem;
   `)}
 `;
 
