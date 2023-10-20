@@ -31,6 +31,7 @@ const FooterWrapper = styled.div`
   width: 100%;
   height: 72px;
   flex-direction: column;
+  z-index: 100;
 `;
 
 const PlayPauseWrapper = styled.div`
