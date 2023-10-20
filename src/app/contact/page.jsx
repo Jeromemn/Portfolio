@@ -153,7 +153,8 @@ const ContactPageWrapper = styled.div`
 
   ${mq.mobile(`
     margin-top: 0;
-    padding-bottom: 1rem;
+    padding-bottom: 3rem;
+    height: auto
   `)}
 `;
 

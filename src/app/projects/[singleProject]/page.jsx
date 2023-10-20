@@ -194,10 +194,7 @@ const TechStack = styled.div`
   `)}
 
   ${mq.mobile(`
-    padding: 2rem 0 0 0;
-  `)}
-  ${mq.smallMobile(`
-    padding: 1rem 0 0 0;
+    padding: 1rem 0 1rem 0;
   `)}
 `;
 

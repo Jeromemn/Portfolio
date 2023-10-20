@@ -48,6 +48,7 @@ const ButtonContainer = styled.div`
   width: 100%;
   ${mq.mobile(`
       justify-content: center;
+      margin-bottom: 2rem;
     `)}
 `;
 
