@@ -49,6 +49,7 @@ const ContentWrapper = styled.div`
   ${mq.mobile(`
     padding: 0 3rem;
     max-width: 320px;
+    padding-bottom: 2rem;
   `)}
   ${mq.smallMobile(`
     padding: 0 2rem;
