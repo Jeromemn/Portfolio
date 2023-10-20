@@ -29,7 +29,7 @@ const ProjectsContentWrapper = styled.div`
   padding-bottom: 3rem;
 
   ${mq.largeMobile(`
-        padding-top: 0;
+        padding: 0 0 4rem 0;
     `)}
 `;
 

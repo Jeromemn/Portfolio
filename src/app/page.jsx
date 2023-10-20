@@ -19,7 +19,8 @@ const ContentWrapper = styled.div`
   `)}
 
   ${mq.mobile(`
-  height: calc(100vh - 140px);
+  height: calc(100vh - 160px);
+  margin-top: -1rem;
   `)}
 `;
 
