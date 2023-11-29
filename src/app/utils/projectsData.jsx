@@ -62,6 +62,7 @@ const projectsData = [
     about: 'Tuff Skin Website',
     year: '2023',
     commits: '75',
+    isPrivate: true,
     techUsed: [
       {
         label: 'React',
@@ -257,6 +258,7 @@ const projectsData = [
     about: 'Switch a feature flag management application',
     year: '2023',
     commits: '75',
+    isPrivate: true,
     techUsed: [
       {
         label: 'React',

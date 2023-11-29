@@ -46,6 +46,14 @@ const SecondaryButton = styled.button`
   color: ${(props) => props.color || 'rgba(255, 255, 255, 0.7)'};
   background: none;
 
+  ${(props) =>
+    props.disabled &&
+    `
+    background: none;
+    pointer-events: none;
+    color: rgba(255, 255, 255, 0.2);
+  `}
+
   &:hover {
     background: rgba(255, 255, 255, 0.2);
     height: 36px;
@@ -133,7 +141,7 @@ const variants = {
   mobileSecondary: MobileSecondary,
 };
 
-const ButtonBase = ({ variant, onClick, children, ...props }) => {
+const ButtonBase = ({ variant, onClick, children, disabled, ...props }) => {
   const StyledButton = variants[variant] || variants.primary;
   return (
     <StyledButton
@@ -141,6 +149,7 @@ const ButtonBase = ({ variant, onClick, children, ...props }) => {
       as={props.href ? Link : undefined}
       onClick={onClick}
       className={roboto.className}
+      disabled={disabled}
       {...props}
     >
       {children}
