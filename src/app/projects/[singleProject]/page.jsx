@@ -464,8 +464,14 @@ const SingleProjectPage = ({ params, ...props }) => {
               <PlayYouTube color="black" width={24} height={24} />
               Live Site
             </ButtonBase>
-            <ButtonBase variant="secondary" as="a" href={`${project?.github}`} color="#fff">
-              <NewGitHub color="white" size={20} />
+            <ButtonBase
+              variant="secondary"
+              as="a"
+              href={`${project?.github}`}
+              color="#fff"
+              disabled={project?.isPrivate}
+            >
+              <NewGitHub color={project?.isPrivate ? 'rgba(255, 255, 255, 0.2)' : 'white'} size={20} />
               Go to Repo
             </ButtonBase>
           </ButtonContainer>
